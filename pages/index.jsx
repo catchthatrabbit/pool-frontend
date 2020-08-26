@@ -8,7 +8,9 @@ export default class Home extends PureComponent {
         <Head>
           <title>Catch that rabbit</title>
         </Head>
-        <h1>CATCH THAT RABBIT</h1>
+        <div>
+          <h1>CATCH THAT RABBIT</h1>
+        </div>
       </div>
     );
   }
