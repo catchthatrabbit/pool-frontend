@@ -1,7 +1,7 @@
-import { PureComponent } from "react";
-import { number, node, string } from "prop-types";
+import { PureComponent } from 'react';
+import { number, node, string } from 'prop-types';
 
-import { svgImage } from "./SvgImage.module.scss";
+import { svgImage } from './SvgImage.module.scss';
 
 export default class SvgImage extends PureComponent {
   static propTypes = {
@@ -15,7 +15,7 @@ export default class SvgImage extends PureComponent {
     children: null,
     width: 140,
     height: 90,
-    viewBox: "0 0 140 90",
+    viewBox: '0 0 140 90',
   };
 
   render() {

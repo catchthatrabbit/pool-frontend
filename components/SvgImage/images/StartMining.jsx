@@ -1,4 +1,4 @@
-import createSvgImage from "../createSvgImage";
+import createSvgImage from '../createSvgImage';
 
 const path = (
   <g transform="translate(-0.016)">
@@ -47,5 +47,5 @@ const path = (
 export default createSvgImage(path, {
   width: 141.794,
   height: 90.11,
-  viewBox: "0 0 141.794 90.11",
+  viewBox: '0 0 141.794 90.11',
 });

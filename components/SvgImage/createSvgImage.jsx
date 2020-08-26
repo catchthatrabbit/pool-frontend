@@ -1,6 +1,6 @@
-import { PureComponent } from "react";
-import { string, number } from "prop-types";
-import SvgImage from "./SvgImage";
+import { PureComponent } from 'react';
+import { string, number } from 'prop-types';
+import SvgImage from './SvgImage';
 
 export default (path, props = {}) =>
   class Image extends PureComponent {

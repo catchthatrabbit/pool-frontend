@@ -1,7 +1,7 @@
-import { PureComponent } from "react";
-import { string, func } from "prop-types";
+import { PureComponent } from 'react';
+import { string, func } from 'prop-types';
 
-import { contentTitle } from "./ContentTitle.module.scss";
+import { contentTitle } from './ContentTitle.module.scss';
 
 export default class ContentTitle extends PureComponent {
   static propTypes = {
@@ -10,7 +10,7 @@ export default class ContentTitle extends PureComponent {
   };
 
   static defaultProps = {
-    children: "Content Title",
+    children: 'Content Title',
     image: null,
   };
 

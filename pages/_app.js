@@ -1,4 +1,4 @@
-import "../styles/globals.scss";
+import '../styles/globals.scss';
 /* eslint-disable */
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
