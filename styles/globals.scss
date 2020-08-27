@@ -1,11 +1,10 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: $primary-font-family;
-  font-style: italic;
   background: $woodsmoke;
   color: $white;
 }
