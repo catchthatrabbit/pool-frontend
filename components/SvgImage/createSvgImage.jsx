@@ -1,12 +1,12 @@
 import { PureComponent } from 'react';
-import { string, number } from 'prop-types';
+import { string, number, oneOfType } from 'prop-types';
 import SvgImage from './SvgImage';
 
 export default (path, props = {}) =>
   class Image extends PureComponent {
     static propTypes = {
-      width: number,
-      height: number,
+      width: oneOfType([number, string]),
+      height: oneOfType([number, string]),
       viewBox: string,
     };
 
