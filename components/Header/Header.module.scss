@@ -1,0 +1,134 @@
+@import '../../styles/variables.scss';
+
+.header {
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: $woodsmoke;
+  transition: 0.3s;
+  padding: 20px 0;
+  height: 100px;
+  @media screen and (min-width: 980px) {
+    height: 120px;
+  }
+  @media screen and (min-width: 1320px) {
+    height: 140px;
+  }
+  &.fullHeight {
+    height: 100%;
+    @media screen and (min-width: 1320px) {
+      body {
+        overflow: visible;
+      }
+      height: unset;
+    }
+  }
+  &.hidden {
+    top: -200px;
+  }
+  .headerBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1640px;
+    width: 100%;
+    @media screen and (min-width: 1320px) {
+      width: 95%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .navHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      @media screen and (min-width: 1320px) {
+        width: auto;
+      }
+      svg {
+        width: 140px;
+        height: auto;
+        @media screen and (min-width: 980px) {
+          width: 200px;
+        }
+        @media screen and (min-width: 1320px) {
+          width: 240px;
+        }
+      }
+      button {
+        height: 48px;
+        width: 40px;
+        background: inherit;
+        border: none;
+        cursor: pointer;
+        user-select: none;
+        .bar1,
+        .bar2,
+        .bar3 {
+          width: 30px;
+          margin: 7px 0;
+          height: 2px;
+          border-radius: 2px;
+          background: $white;
+          transition: 0.3s;
+        }
+        &:focus {
+          outline: none;
+        }
+        &:hover {
+          .bar1,
+          .bar2,
+          .bar3 {
+            background: $aluminium;
+          }
+        }
+        @media screen and (min-width: 1320px) {
+          display: none;
+        }
+      }
+    }
+    .navBar {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      overflow: auto;
+      &.show {
+        display: flex;
+      }
+      a {
+        display: inline-block;
+        box-sizing: border-box;
+        font-size: 18px;
+        font-style: italic;
+        padding: 10px 0;
+        margin: 15px 0;
+        white-space: nowrap;
+        text-transform: capitalize;
+        height: 40px;
+        &:hover,
+        &.active {
+          border-bottom: 3px solid $white;
+        }
+        &:focus {
+          outline: none;
+        }
+        @media screen and (min-width: 1320px) {
+          margin: 0 60px 0 0;
+          height: auto;
+        }
+      }
+      @media screen and (min-width: 1320px) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 50px;
+        width: auto;
+      }
+    }
+  }
+}
