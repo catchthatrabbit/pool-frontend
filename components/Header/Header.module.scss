@@ -1,4 +1,6 @@
 @import '../../styles/variables.scss';
+$middle-screen: 980px;
+$large-screen: 1320px;
 
 .header {
   box-sizing: border-box;
@@ -12,15 +14,15 @@
   transition: 0.3s;
   padding: 20px 0;
   height: 100px;
-  @media screen and (min-width: 980px) {
+  @media screen and (min-width: $middle-screen) {
     height: 120px;
   }
-  @media screen and (min-width: 1320px) {
+  @media screen and (min-width: $large-screen) {
     height: 140px;
   }
   &.fullHeight {
     height: 100%;
-    @media screen and (min-width: 1320px) {
+    @media screen and (min-width: $large-screen) {
       body {
         overflow: visible;
       }
@@ -36,7 +38,7 @@
     align-items: center;
     max-width: 1640px;
     width: 100%;
-    @media screen and (min-width: 1320px) {
+    @media screen and (min-width: $large-screen) {
       width: 95%;
       flex-direction: row;
       justify-content: space-between;
@@ -46,16 +48,16 @@
       align-items: center;
       justify-content: space-between;
       width: 90%;
-      @media screen and (min-width: 1320px) {
+      @media screen and (min-width: $large-screen) {
         width: auto;
       }
       svg {
         width: 140px;
         height: auto;
-        @media screen and (min-width: 980px) {
+        @media screen and (min-width: $middle-screen) {
           width: 200px;
         }
-        @media screen and (min-width: 1320px) {
+        @media screen and (min-width: $large-screen) {
           width: 240px;
         }
       }
@@ -86,7 +88,7 @@
             background: $aluminium;
           }
         }
-        @media screen and (min-width: 1320px) {
+        @media screen and (min-width: $large-screen) {
           display: none;
         }
       }
@@ -117,12 +119,12 @@
         &:focus {
           outline: none;
         }
-        @media screen and (min-width: 1320px) {
+        @media screen and (min-width: $large-screen) {
           margin: 0 60px 0 0;
           height: auto;
         }
       }
-      @media screen and (min-width: 1320px) {
+      @media screen and (min-width: $large-screen) {
         display: flex;
         flex-direction: row;
         align-items: center;
