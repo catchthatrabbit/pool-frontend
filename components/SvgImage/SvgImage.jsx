@@ -1,13 +1,13 @@
 import { PureComponent } from 'react';
-import { number, node, string } from 'prop-types';
+import { number, node, string, oneOfType } from 'prop-types';
 
 import { svgImage } from './SvgImage.module.scss';
 
 export default class SvgImage extends PureComponent {
   static propTypes = {
     children: node,
-    width: number,
-    height: number,
+    width: oneOfType([number, string]),
+    height: oneOfType([number, string]),
     viewBox: string,
   };
 
@@ -28,10 +28,6 @@ export default class SvgImage extends PureComponent {
         width={width}
         height={height}
         focusable={false}
-        style={{
-          width,
-          height,
-        }}
       >
         {children}
       </svg>
