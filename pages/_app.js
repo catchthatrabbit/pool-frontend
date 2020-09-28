@@ -10,7 +10,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       {!isErrorPage && <Header />}
-      <Component {...pageProps} />
+      <main>
+        <Component {...pageProps} />
+      </main>
     </>
   );
 }
