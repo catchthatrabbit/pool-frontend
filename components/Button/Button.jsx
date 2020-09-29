@@ -3,7 +3,7 @@ import { PureComponent } from 'react';
 import { func, node, oneOf, string } from 'prop-types';
 import cn from 'classnames';
 
-import { button, theme_outline, theme_transparent } from './Button.module.scss';
+import { button, outline, transparent } from './Button.module.scss';
 
 export default class Button extends PureComponent {
   static propTypes = {
@@ -26,8 +26,8 @@ export default class Button extends PureComponent {
     const { children, className, onClick, href, theme } = this.props;
     const classes = cn(className, {
       [button]: true,
-      [theme_outline]: theme === 'outline',
-      [theme_transparent]: theme === 'transparent',
+      [outline]: theme === 'outline',
+      [transparent]: theme === 'transparent',
     });
 
     if (href) {
