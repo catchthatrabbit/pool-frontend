@@ -17,7 +17,7 @@ export default class Button extends PureComponent {
   static defaultProps = {
     children: 'Button',
     className: '',
-    onClick: null,
+    onClick: () => {},
     href: '',
     theme: 'outline',
   };
