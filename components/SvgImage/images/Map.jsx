@@ -23,6 +23,6 @@ const path = (
 
 export default createSvgImage(path, {
   width: '100%',
-  height: 'auto',
-  viewBox: '0 0 1921 934',
+  height: '100%',
+  viewBox: '71 -70 1900 940',
 });

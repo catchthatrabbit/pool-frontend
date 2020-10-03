@@ -13,6 +13,7 @@ import {
   bar1,
   bar2,
   bar3,
+  cross,
   hidden,
   show,
   fullHeight,
@@ -115,7 +116,11 @@ class Header extends PureComponent {
             <a href="/">
               <Logo />
             </a>
-            <button type="button" onClick={this.handleMenuClick}>
+            <button
+              type="button"
+              className={cn({ [cross]: isMenuOpened })}
+              onClick={this.handleMenuClick}
+            >
               <div className={bar1} />
               <div className={bar2} />
               <div className={bar3} />

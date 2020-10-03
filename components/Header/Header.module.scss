@@ -76,6 +76,7 @@ $large-screen: 1320px;
           height: 2px;
           border-radius: 2px;
           background: $white;
+          transition: background-color 0.3s ease-in-out;
           transition: 0.3s;
         }
         &:focus {
@@ -86,6 +87,19 @@ $large-screen: 1320px;
           .bar2,
           .bar3 {
             background: $aluminium;
+          }
+        }
+        &.cross {
+          .bar1 {
+            transform: translateY(4.5px) rotate(225deg);
+          }
+          .bar3 {
+            transform: translateY(-4.5px) rotate(315deg);
+          }
+          .bar2 {
+            position: absolute;
+            opacity: 0.2;
+            transform: translateY(7px);
           }
         }
         @media screen and (min-width: $large-screen) {
@@ -101,6 +115,7 @@ $large-screen: 1320px;
       overflow: auto;
       &.show {
         display: flex;
+        margin-top: 40px;
       }
       a {
         display: inline-block;
@@ -112,6 +127,7 @@ $large-screen: 1320px;
         white-space: nowrap;
         text-transform: capitalize;
         height: 40px;
+        transition: border 0.1s ease-in-out;
         &:hover,
         &.active {
           border-bottom: 3px solid $white;
