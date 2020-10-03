@@ -38,7 +38,8 @@
     "jsx-a11y/anchor-is-valid": "off",
     "react/state-in-constructor": "off",
     "class-methods-use-this": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "react/destructuring-assignment": "off"
   },
   "plugins": []
 }
