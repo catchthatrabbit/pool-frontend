@@ -1,11 +1,16 @@
 .contentTitle {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   h2 {
-    padding-left: 20px;
-    font-size: 24px;
+    font-size: min(max(1.25vw, 18px), 24px);
     font-weight: 400;
-    text-transform: capitalize;
+    white-space: nowrap;
+  }
+  @media screen and (min-width: 450px) {
+    flex-direction: row;
+    h2 {
+      margin-left: 20px;
+    }
   }
 }
