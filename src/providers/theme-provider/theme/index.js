@@ -3,7 +3,7 @@ import {
   mediaQueriesMinWidth,
 } from '../../responsive-provider/utils';
 
-const catchTheRabit = () => {
+const catchTheRabitTheme = () => {
   const colors = {
     selectiveYellow: '#ffbc00',
     pumpkin: '#ff7315',
@@ -193,4 +193,4 @@ letter-spacing: normal;
   };
 };
 
-export default catchTheRabit;
+export default catchTheRabitTheme;

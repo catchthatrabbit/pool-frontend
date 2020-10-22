@@ -5,11 +5,11 @@ import CommonEmailBox from '../../components/common/common-email-box';
 
 const ContactPageUi = () => (
   <>
-    <CommonPageTitle image="/images/blocker-logo.svg" title="BLOCK POOLS" />
+    <CommonPageTitle image="/images/contact.svg" title="CONTACT US" />
     <WrapperStyled>
       <CommonBox
         title="Support"
-        content={
+        content={(
           <>
             <p>
               If you have any questions about our pool, you can contact us
@@ -19,39 +19,37 @@ const ContactPageUi = () => (
               <CommonEmailBox>Support@catchthatrabbit.com</CommonEmailBox>
             </EmailBoxWrapperStyled>
           </>
-        }
+        )}
       />
     </WrapperStyled>
     <WrapperStyled>
       <CommonBox
-        title="Support"
-        content={
+        title="Security & Bug reports"
+        content={(
           <>
             <p>
-              If you have any questions about our pool, you can contact us
-              freely through this email.
+              Any bug or any other security issues reports are highly and greatly appreciated.
             </p>
             <EmailBoxWrapperStyled>
-              <CommonEmailBox>Support@catchthatrabbit.com</CommonEmailBox>
+              <CommonEmailBox>issues@catchthatrabbit.com</CommonEmailBox>
             </EmailBoxWrapperStyled>
           </>
-        }
+        )}
       />
     </WrapperStyled>
     <WrapperStyled>
       <CommonBox
-        title="Support"
-        content={
+        title="Legal & Commercial"
+        content={(
           <>
             <p>
-              If you have any questions about our pool, you can contact us
-              freely through this email.
+              For legal and commercial questions please feel free to email us.
             </p>
             <EmailBoxWrapperStyled>
-              <CommonEmailBox>Support@catchthatrabbit.com</CommonEmailBox>
+              <CommonEmailBox>office@catchthatrabbit.com</CommonEmailBox>
             </EmailBoxWrapperStyled>
           </>
-        }
+        )}
       />
     </WrapperStyled>
   </>

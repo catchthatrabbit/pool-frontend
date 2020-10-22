@@ -7,13 +7,16 @@ const WrapperStyled = styled.div`
 `;
 const TitleWrapperStyled = styled.div`
   color: white;
-  font-size: 1.1rem;
+  font-size: 0.7rem;
   border-bottom: 1px solid #424259;
   padding: 1.2rem 0;
+  color: ${({ titleColor }) => titleColor && '#46B549'};
+  font-family: arial;
 `;
 const ContentWrapperStyled = styled.div`
   font-size: 0.4rem;
   padding: 1.1rem 0;
+  ${({ twoColumn }) => !twoColumn && 'padding: 0'};
 `;
 
 export { WrapperStyled, TitleWrapperStyled, ContentWrapperStyled };

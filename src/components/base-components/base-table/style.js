@@ -20,6 +20,7 @@ const TableCellStyled = styled.td`
   &:first-child {
     padding-left: 2rem;
   }
+  ${({ active }) => active && 'color: #46B549'}
 `;
 const TableHeadStyled = styled.th`
   text-align: left;

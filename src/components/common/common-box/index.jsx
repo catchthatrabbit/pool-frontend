@@ -5,10 +5,10 @@ import {
   ContentWrapperStyled,
 } from './style';
 
-const CommonBox = ({ title, content }) => (
+const CommonBox = ({ title, content, titleColor, twoColumn }) => (
   <WrapperStyled>
-    <TitleWrapperStyled>{title}</TitleWrapperStyled>
-    <ContentWrapperStyled>{content}</ContentWrapperStyled>
+    <TitleWrapperStyled titleColor={titleColor}>{title}</TitleWrapperStyled>
+    <ContentWrapperStyled twoColumn={twoColumn}>{content}</ContentWrapperStyled>
   </WrapperStyled>
 );
 
