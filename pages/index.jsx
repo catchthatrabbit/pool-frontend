@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import Jumbotron from '../components/Jumbotron';
 import SearchBar from '../components/SearchBar';
+import Stats from '../components/Stats';
 
 export default class Home extends PureComponent {
   state = {
@@ -28,6 +29,7 @@ export default class Home extends PureComponent {
           onChange={this.handleSearchValueChange}
           onSearch={this.handleSearch}
         />
+        <Stats />
       </>
     );
   }
