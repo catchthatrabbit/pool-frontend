@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.chart {
+  position: relative;
+  width: 100%;
+  .tip {
+    display: none;
+    position: absolute;
+    color: $white;
+    font-family: $secondary-font-family;
+    font-size: 12px;
+    background-color: $gun-powder;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  svg {
+    font-family: $primary-font-family;
+    font-size: 18px;
+    text {
+      fill: $white;
+    }
+    g:last-child .hour {
+      fill: $green-yellow;
+    }
+    .axisCircle {
+      fill: none;
+      stroke: $gun-powder;
+    }
+  }
+}
