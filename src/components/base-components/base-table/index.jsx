@@ -2,7 +2,6 @@
 /* eslint-disable arrow-body-style */
 
 import { memo, useState } from 'react';
-import BasePagination from '../base-pagination';
 import {
   TableStyled,
   TableRowStyled,
@@ -12,7 +11,7 @@ import {
 } from './style';
 
 /* eslint-disable no-unused-vars */
-const BaseTable = memo(({ data, hasPagination }) => {
+const BaseTable = memo(({ data, footer, hightLightColIds }) => {
   const mockTableData = {
     head: [
       { key: 'time', value: 'Time' },
@@ -70,7 +69,6 @@ const BaseTable = memo(({ data, hasPagination }) => {
     footer: null,
   };
   const [tableData, setTableData] = useState(data || mockTableData);
-  const handlePage = (page) => setTableData(mockTableData);
 
   return (
     <TableStyled cellpadding="10">
@@ -92,7 +90,10 @@ const BaseTable = memo(({ data, hasPagination }) => {
             <TableRowStyled>
               {tableRow.map((tableCell) => {
                 return (
-                  <TableCellStyled key={tableCell.key}>
+                  <TableCellStyled
+                    key={tableCell.key}
+                    hightLight={hightLightColIds && hightLightColIds.includes(tableCell.key)}
+                  >
                     {tableCell.value}
                   </TableCellStyled>
                 );
@@ -101,13 +102,11 @@ const BaseTable = memo(({ data, hasPagination }) => {
           );
         })}
       </tbody>
-      {hasPagination && (
+      {footer && (
         <TableFooterStyled>
-          <tr>
-            <td colSpan="5">
-              <BasePagination onChange={(page) => handlePage(page)} />
-            </td>
-          </tr>
+          <td colSpan="6" style={{ width: '100%' }}>
+            {footer}
+          </td>
         </TableFooterStyled>
       )}
     </TableStyled>

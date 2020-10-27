@@ -14,6 +14,7 @@
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-paginate": "^6.5.0",
     "sass": "^1.26.10",
     "styled-components": "^5.2.0"
   },
