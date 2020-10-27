@@ -2,15 +2,22 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 html, body {
-    margin: 0;
-    padding: 0;
-    direction: ${({ theme }) => theme.direction.rtl};
-    font-family: IranYekan;
+  padding: 0;
+  margin: 0;
+  font: ${({ theme }) => theme.typography.defaultFont}
+  background: $woodsmoke;
+  color: $white;
+  font-size: 24px;
 }
 
 p {
   margin: 0;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 * {
     box-sizing: border-box;
   }

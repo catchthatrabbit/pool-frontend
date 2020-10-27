@@ -55,7 +55,7 @@ const catchTheRabitTheme = () => {
 
   const typography = {
     defaultFont: {
-      name: 'IRANYekan',
+      name: 'good-times',
       light: {
         10: `
         font-size: 10px;
@@ -116,7 +116,7 @@ const catchTheRabitTheme = () => {
   line-height: normal;
   letter-spacing: normal;`,
         10: `
-font-family: IRANYekan;
+font-family: goodTimes;
 font-size: 10px;
 font-weight: normal;
 font-stretch: normal;
@@ -176,17 +176,11 @@ letter-spacing: normal;
     },
   };
 
-  const direction = {
-    rtl: 'rtl',
-    ltr: 'ltr',
-  };
-
   return {
     colors,
     dimensions,
     typography,
     defaultColors,
-    direction,
     mediaQueriesMaxWidth,
     mediaQueriesMinWidth,
     defaults,

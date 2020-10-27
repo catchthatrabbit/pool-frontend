@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable arrow-body-style */
 
+import { memo, useState } from 'react';
 import BasePagination from '../base-pagination';
 import {
   TableStyled,
@@ -11,218 +12,99 @@ import {
 } from './style';
 
 /* eslint-disable no-unused-vars */
-const BaseTable = ({ data, twoColumn }) => {
-  const handlePage = (page) => console.log(page);
+const BaseTable = memo(({ data, hasPagination }) => {
+  const mockTableData = {
+    head: [
+      { key: 'time', value: 'Time' },
+      { key: 'amount', value: 'Amount' },
+      { key: 'address', value: 'Address' },
+      { key: 'txId', value: 'Tx ID' },
+    ],
+    body: [
+      [
+        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
+        { key: 'amount', value: '0.223' },
+        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        {
+          key: 'txId',
+          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+        },
+      ],
+      [
+        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
+        { key: 'amount', value: '0.223' },
+        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        {
+          key: 'txId',
+          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+        },
+      ],
+      [
+        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
+        { key: 'amount', value: '0.223' },
+        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        {
+          key: 'txId',
+          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+        },
+      ],
+      [
+        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
+        { key: 'amount', value: '0.223' },
+        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        {
+          key: 'txId',
+          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+        },
+      ],
+      [
+        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
+        { key: 'amount', value: '0.223' },
+        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        {
+          key: 'txId',
+          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+        },
+      ],
+    ],
+    footer: null,
+  };
+  const [tableData, setTableData] = useState(data || mockTableData);
+  const handlePage = (page) => setTableData(mockTableData);
+
   return (
-    <TableStyled cellpadding="10" twoColumn>
-      {twoColumn ? (
-        <>
-          <tbody>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Server</TableCellStyled>
-              <TableCellStyled twoColumn>eu.ctrpool.io</TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Port</TableCellStyled>
-              <TableCellStyled twoColumn>4444</TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Secure(SSL) port</TableCellStyled>
-              <TableCellStyled twoColumn>5555</TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Username</TableCellStyled>
-              <TableCellStyled twoColumn>
-                {'<your Core Coin Address>.<Worker Name>'}
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Password</TableCellStyled>
-              <TableCellStyled twoColumn>{'<empty>'}</TableCellStyled>
-            </TableRowStyled>
-          </tbody>
-        </>
-      ) : (
-        <>
-          <thead>
-            <TableRowStyled>
-              <TableHeadStyled>Time</TableHeadStyled>
-              <TableHeadStyled>Amount</TableHeadStyled>
-              <TableHeadStyled>Address</TableHeadStyled>
-              <TableHeadStyled>Tx ID</TableHeadStyled>
-            </TableRowStyled>
-          </thead>
-          <tbody>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
+    <TableStyled cellpadding="10">
+      <thead>
+        <TableRowStyled>
+          {tableData.head.map((tableItem) => {
+            return (
+              <TableHeadStyled key={tableItem.key}>
+                {tableItem.value}
+              </TableHeadStyled>
+            );
+          })}
+        </TableRowStyled>
+      </thead>
 
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
+      <tbody>
+        {tableData.body.map((tableRow) => {
+          return (
             <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
+              {tableRow.map((tableCell) => {
+                return (
+                  <TableCellStyled key={tableCell.key}>
+                    {tableCell.value}
+                  </TableCellStyled>
+                );
+              })}
             </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-          </tbody>
-        </>
-      )}
-      {!twoColumn && (
+          );
+        })}
+      </tbody>
+      {hasPagination && (
         <TableFooterStyled>
           <tr>
             <td colSpan="5">
-              {' '}
               <BasePagination onChange={(page) => handlePage(page)} />
             </td>
           </tr>
@@ -230,6 +112,6 @@ const BaseTable = ({ data, twoColumn }) => {
       )}
     </TableStyled>
   );
-};
+});
 
 export default BaseTable;
