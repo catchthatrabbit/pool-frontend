@@ -1,0 +1,46 @@
+.stats {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .chartContainer {
+    width: 100%;
+    margin: 50px 0;
+    background: url('../../public/images/stats-bg.svg') no-repeat top left / cover;
+    .chart {
+      width: 100%;
+      @media screen and (min-width: 900px) {
+        width: 70%;
+      }
+    }
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    list-style-type: none;
+    li:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    @media screen and (min-width: 450px) {
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      li:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+    @media screen and(min-width:900px) {
+      position: absolute;
+      flex-flow: column nowrap;
+      margin: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      li:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}

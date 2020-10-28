@@ -121,6 +121,7 @@ export default class Jumbotron extends PureComponent {
           <br />
         </p>
         <Button>Start Mining</Button>
+        {/* TODO change to a reusable component */}
         <ul>
           {this.boxesInfo.map(({ title, value }) => (
             <li key={title}>
