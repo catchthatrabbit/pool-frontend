@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { StyledButton } from './style';
+import StyledButton from './style';
 
 const BaseButton = ({
   children,
