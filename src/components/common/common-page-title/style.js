@@ -5,8 +5,7 @@ const WrapperStyled = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const TitleStyled = styled.div`
-  font-size: 1.1rem;
+const TitleStyled = styled.h1`
 `;
 const ImageStyled = styled.img`
   margin-right: 1rem;

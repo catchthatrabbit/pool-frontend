@@ -5,7 +5,6 @@ const TableStyled = styled.table`
   max-width: 100%;
   overflow: auto;
   border: 1px solid #424259;
-  font-size: 11px;
   border-spacing: 0;
 `;
 const TableRowStyled = styled.tr`
@@ -25,8 +24,9 @@ const TableCellStyled = styled.td`
 const TableHeadStyled = styled.th`
   text-align: left;
   padding-top: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   font-size: 1.2em;
+  font-style: italic;
   &:first-child {
     padding-left: 2rem;
   }

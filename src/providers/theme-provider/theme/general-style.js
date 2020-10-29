@@ -7,7 +7,6 @@ html, body {
   font: ${({ theme }) => theme.typography.defaultFont}
   background: $woodsmoke;
   color: $white;
-  font-size: 24px;
 }
 
 p {

@@ -93,7 +93,7 @@ class Header extends PureComponent {
           role="link"
           tabIndex="0"
         >
-          {text}
+          <h3>{text}</h3>
         </a>
       </Link>
     ));

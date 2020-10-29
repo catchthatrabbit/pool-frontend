@@ -20,7 +20,6 @@ const TableInfoStyled = styled.div`
 `;
 
 const TextStyled = styled.p`
-  font-size: 0.4rem;
 `;
 
 const ColStyled = styled.div`
@@ -32,11 +31,17 @@ const RowStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 2rem 0;
+  text-align: center;
 `;
 const BoxStyled = styled.div`
   background-color: #424259;
   border-radius: 8px;
   padding: 1rem;
+`;
+
+const ServerButtonStyled = styled.div`
+  cursor: pointer;
+  color: #46b549;
 `;
 
 export {
@@ -48,4 +53,5 @@ export {
   ColStyled,
   RowStyled,
   BoxStyled,
+  ServerButtonStyled,
 };

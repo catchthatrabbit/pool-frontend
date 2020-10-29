@@ -12,26 +12,7 @@ $large-screen: 1320px;
   z-index: 100;
   background: $woodsmoke;
   transition: 0.3s;
-  padding: 20px 0;
-  height: 100px;
-  @media screen and (min-width: $middle-screen) {
-    height: 120px;
-  }
-  @media screen and (min-width: $large-screen) {
-    height: 140px;
-  }
-  &.fullHeight {
-    height: 100%;
-    @media screen and (min-width: $large-screen) {
-      body {
-        overflow: visible;
-      }
-      height: unset;
-    }
-  }
-  &.hidden {
-    top: -200px;
-  }
+
   .headerBody {
     display: flex;
     flex-direction: column;
@@ -62,7 +43,6 @@ $large-screen: 1320px;
         }
       }
       button {
-        height: 48px;
         width: 40px;
         background: inherit;
         border: none;
@@ -125,7 +105,6 @@ $large-screen: 1320px;
         padding: 10px 0;
         margin: 15px 0;
         white-space: nowrap;
-        height: 40px;
         transition: border 0.1s ease-in-out;
         &:hover,
         &.active {
@@ -143,7 +122,6 @@ $large-screen: 1320px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        height: 50px;
         width: auto;
       }
     }
