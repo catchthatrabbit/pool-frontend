@@ -1,10 +1,12 @@
 import { SWRConfig } from 'swr';
+import fetcher from '../../services/http-client';
 
+// eslint-disable-next-line react/prop-types
 const UseSwrConfigProvider = ({ children }) => (
   <SWRConfig
     value={{
       refreshInterval: 3000,
-      fetcher: (...args) => fetch(...args).then((res) => res.json()),
+      fetcher,
     }}
   >
     {children}

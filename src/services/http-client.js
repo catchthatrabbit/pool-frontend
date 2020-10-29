@@ -1,5 +1,5 @@
 import fetch from 'unfetch';
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default fetcher;
