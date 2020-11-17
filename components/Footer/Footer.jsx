@@ -2,8 +2,7 @@ import { PureComponent } from 'react';
 import Link from 'next/link';
 
 import Button from '../Button';
-import ContentTitle from '../ContentTitle';
-import StartMining from '../SvgImage/images/StartMining';
+import CommonContentTitle from '../../src/components/common/common-content-title';
 import Logo from '../SvgImage/images/Logo';
 
 import {
@@ -64,7 +63,9 @@ export default class Footer extends PureComponent {
     return (
       <footer className={footer}>
         <div className={headerSection}>
-          <ContentTitle image={StartMining}>Start Mining</ContentTitle>
+          <CommonContentTitle image="/images/start-mining.svg">
+            Start Mining
+          </CommonContentTitle>
           <h3>Let&apos;s jump into it</h3>
           <Button>Start mining</Button>
         </div>

@@ -7,7 +7,8 @@
   .chartContainer {
     width: 100%;
     margin: 50px 0;
-    background: url('../../public/images/stats-bg.svg') no-repeat top left / cover;
+    background: url('../../public/images/stats-bg.svg') no-repeat top left /
+      cover;
     .chart {
       width: 100%;
       @media screen and (min-width: 900px) {

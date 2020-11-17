@@ -87,13 +87,8 @@ class Header extends PureComponent {
 
     return this.links.map(({ text, href }) => (
       <Link href={href} key={href}>
-        <a
-          className={cn({ [active]: href === pathname })}
-          onClick={this.handleLinkClick}
-          role="link"
-          tabIndex="0"
-        >
-          <h3>{text}</h3>
+        <a onClick={this.handleLinkClick} role="link" tabIndex="0">
+          <h3 className={cn({ [active]: href === pathname })}>{text}</h3>
         </a>
       </Link>
     ));

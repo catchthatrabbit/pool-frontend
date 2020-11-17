@@ -1,55 +1,80 @@
 /* eslint-disable quotes */
-import styled, { createGlobalStyle } from 'styled-components';
-
-const WrapperStyled = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const PrevNextBtnStyled = styled.div`
-  color: #717198;
-  padding: 8px;
-  padding-right: 32px;
-  cursor: pointer;
-`;
-
-const SepratorStyled = styled.div`
-  margin: 0 16px;
-  width: 1px;
-  height: 30px;
-  background-color: #424259;
-`;
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-ul.pagination {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  li {
-    cursor: pointer;
-    a {
-      padding: 12px;
-      &:focus {
-        border: none;
-        outline: none;
+  ul.pagination {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.35rem;
+    color: ${({ theme }) => theme.colors.kimberly};
+    li {
+      &.active {
+        a {
+          color: ${({ theme }) => theme.colors.white}; 
+          background-color: rgba(${({ theme }) =>
+            theme.colors.getRGBValue(theme.colors.gunPowder)}, 0.25);
+          border: 1px solid ${({ theme }) => theme.colors.gunPowder};
+          border-radius: 10px;
+        }
+      }
+      &.break-me {
+        pointer-events: none;
+        a {
+          padding: 0;
+        }
+      }
+      &.next {
+        margin-left: 0.2rem;
+        padding: 0.75rem 0;
+        border-left: 1px solid;
+      }
+      &.previous.disabled, &.next.disabled {
+        display: none;
+      }
+      a {
+        padding: 0.3rem;
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+          color: ${({ theme }) => theme.colors.white};
+          transition: color 0.3s;
+        }
+        &:focus {
+          border: none;
+          outline: none;
+        }
       }
     }
-    &.active {
-      padding: 0;
-      a {
-        border: 1px solid #424259;
-        background-color: rgba(66,66,89,0.25);
-         color: white; 
-         border-radius: 8px;
-         padding: 12px;
+    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileS} {
+      font-size: 0.5rem;
+    }
+    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
+      font-size: 0.583rem;
+    }
+    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
+      li {
+        a {
+          padding: 0.5rem;
+        }
+        &.break-me {
+          a {
+            padding: 0.5rem;
+          }
+        }
+        &.previous {
+          margin-right: 1.5rem;
+        }
+        &.next {
+          margin-left: 0.75rem;
+          padding: 0.75rem;
+        }
       }
-     
     }
   }
-}
 `;
 
 export default GlobalStyle;
-
-export { WrapperStyled, PrevNextBtnStyled, SepratorStyled };

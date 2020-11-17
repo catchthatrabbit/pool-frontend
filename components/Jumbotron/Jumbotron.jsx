@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 
-import InfoBox from '../InfoBox';
+import CommonInfoBox from '../../src/components/common/common-info-box';
 import MapButton from '../MapButton';
 import Button from '../Button';
 import Map from '../SvgImage/images/Map';
@@ -125,7 +125,7 @@ export default class Jumbotron extends PureComponent {
         <ul>
           {this.boxesInfo.map(({ title, value }) => (
             <li key={title}>
-              <InfoBox title={title} value={value} />
+              <CommonInfoBox title={title} value={value} />
             </li>
           ))}
         </ul>

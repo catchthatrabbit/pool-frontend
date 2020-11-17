@@ -190,8 +190,9 @@
       flex-flow: row wrap;
       justify-content: space-evenly;
       width: 100%;
-      *:not(li:last-child) {
+      li:not(:last-child) {
         margin-right: 5px;
+        margin-bottom: 50px;
       }
     }
     @media screen and(min-width:900px) {

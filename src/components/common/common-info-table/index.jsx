@@ -1,31 +1,43 @@
-/* eslint-disable react/prop-types */
+import { arrayOf, shape, string } from 'prop-types';
 import {
-  WrapperStyled,
-  StyledRow,
-  StyledTitle,
-  StyledValue,
-  StyledSeperator,
+  TableWrapperStyled,
+  TableStyled,
+  TableRowStyled,
+  TableHeadStyled,
+  TableDataStyled,
 } from './style';
 
-const CommonInfoTable = () => {
-  const data = [
-    { key: '1', title: 'server', value: '<server>' },
-    { key: '2', title: 'port', value: '<port>' },
-    { key: '3', title: 'secure port', value: '<secure port>' },
-    { key: '4', title: 'user name', value: '<userName>' },
-    { key: '5', title: 'password', value: '<Password>' },
-  ];
-  return (
-    <WrapperStyled>
-      <StyledSeperator />
-      {data.map((row) => (
-        <StyledRow key={row.key}>
-          <StyledTitle>{row.title}</StyledTitle>
-          <StyledValue>{row.value}</StyledValue>
-        </StyledRow>
-      ))}
-    </WrapperStyled>
-  );
+const CommonInfoTable = ({ data }) => (
+  <TableWrapperStyled>
+    <TableStyled>
+      <tbody>
+        {data.map(({ key, title, value }) => (
+          <TableRowStyled key={key}>
+            <TableHeadStyled>{title}</TableHeadStyled>
+            <TableDataStyled>{value}</TableDataStyled>
+          </TableRowStyled>
+        ))}
+      </tbody>
+    </TableStyled>
+  </TableWrapperStyled>
+);
+
+CommonInfoTable.propTypes = {
+  data: arrayOf(shape({ key: string, title: string, value: string })),
+};
+
+CommonInfoTable.defaultProps = {
+  data: [
+    { key: '1', title: 'server', value: 'eu.ctrpool.io' },
+    { key: '2', title: 'port', value: '4444' },
+    { key: '3', title: 'secure (ssl) port', value: '5555' },
+    {
+      key: '4',
+      title: 'Username',
+      value: '<your Core Coin Address>.<Worker Name>',
+    },
+    { key: '5', title: 'Password', value: '<empty>' },
+  ],
 };
 
 export default CommonInfoTable;

@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
+import { node } from 'prop-types';
 
 import GlobalResponsiveStyless from './style';
 import ResponsiveContext from './context';
 import { getDeviceNameBasedOnSize, getDeviceDimensions } from './utils';
 
-const ResponsiveProvider = () => {
-  const [deviceType, setDeviceType] = useState(null);
+const ResponsiveProvider = ({ children }) => {
+  const [deviceType, setDeviceType] = useState(
+    getDeviceNameBasedOnSize(getDeviceDimensions())
+  );
+
   const setDeviceTypeEventListener = () => {
     setDeviceType(getDeviceNameBasedOnSize(getDeviceDimensions()));
   };
@@ -15,7 +19,7 @@ const ResponsiveProvider = () => {
     if (process.browser) {
       resizeEventListener = window.addEventListener(
         'resize',
-        setDeviceTypeEventListener,
+        setDeviceTypeEventListener
       );
     }
     return function () {
@@ -27,9 +31,14 @@ const ResponsiveProvider = () => {
     <>
       <ResponsiveContext.Provider value={deviceType}>
         <GlobalResponsiveStyless />
+        {children}
       </ResponsiveContext.Provider>
     </>
   );
+};
+
+ResponsiveProvider.propTypes = {
+  children: node.isRequired,
 };
 
 export default ResponsiveProvider;

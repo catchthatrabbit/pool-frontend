@@ -1,12 +1,22 @@
-/* eslint-disable react/prop-types */
-import { WrapperStyled, TitleWrapperStyled } from './style';
+import { oneOf, string } from 'prop-types';
+import { TitleWrapperStyled } from './style';
 
-const CommonTitle = ({ children, titleColor, seperatorColor }) => (
-  <WrapperStyled>
-    <TitleWrapperStyled titleColor={titleColor} seperatorColor={seperatorColor}>
-      {children}
-    </TitleWrapperStyled>
-  </WrapperStyled>
+const CommonTitle = ({ children, color, size }) => (
+  <TitleWrapperStyled color={color} size={size}>
+    {children}
+  </TitleWrapperStyled>
 );
+
+CommonTitle.propTypes = {
+  children: string,
+  color: oneOf(['green', 'white']),
+  size: oneOf(['medium', 'large']),
+};
+
+CommonTitle.defaultProps = {
+  children: 'Title',
+  color: 'white',
+  size: 'large',
+};
 
 export default CommonTitle;

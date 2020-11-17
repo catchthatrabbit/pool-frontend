@@ -1,8 +1,7 @@
 import { PureComponent } from 'react';
 
-import ContentTitle from '../ContentTitle';
-import PoolStatistics from '../SvgImage/images/PoolStatistics';
-import InfoBox from '../InfoBox';
+import CommonContentTitle from '../../src/components/common/common-content-title';
+import CommonInfoBox from '../../src/components/common/common-info-box';
 
 import RadialBarChart from '../RadialBarChart';
 
@@ -52,7 +51,9 @@ export default class Stats extends PureComponent {
   render() {
     return (
       <div className={stats}>
-        <ContentTitle image={PoolStatistics}>Pool Statistics</ContentTitle>
+        <CommonContentTitle image="/images/statistics.svg">
+          Pool Statistics
+        </CommonContentTitle>
         <div className={chartContainer}>
           <RadialBarChart data={this.chartData} className={chart} />
         </div>
@@ -60,7 +61,7 @@ export default class Stats extends PureComponent {
         <ul>
           {this.boxesInfo.map(({ title, value }) => (
             <li key={title}>
-              <InfoBox title={title} value={value} />
+              <CommonInfoBox title={title} value={value} />
             </li>
           ))}
         </ul>

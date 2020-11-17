@@ -2,6 +2,7 @@
 import StyledMargin from './style';
 
 const BaseMargin = ({
+  id,
   children,
   x,
   y,
@@ -14,6 +15,7 @@ const BaseMargin = ({
   flex,
 }) => (
   <StyledMargin
+    id={id}
     x={x}
     y={y}
     right={right}

@@ -1,25 +1,35 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-html, body {
-  padding: 0;
+html,
+body {
   margin: 0;
-  font: ${({ theme }) => theme.typography.defaultFont}
-  background: $woodsmoke;
-  color: $white;
+  padding: 0;
+  font-family: ${({ theme }) => theme.typography.primary};
+  background: ${({ theme }) => theme.colors.woodsmoke};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 24px;
 }
 
-p {
-  margin: 0;
-}
 a {
   color: inherit;
   text-decoration: none;
 }
 
-* {
-    box-sizing: border-box;
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 100px auto 0;
+  width: 90%;
+  max-width: 1640px;
+  @media screen and (min-width: 980px) {
+    margin-top: 120px;
   }
+  @media screen and (min-width: 1320px) {
+    margin-top: 140px;
+  }
+}
 `;
 
 export default GlobalStyle;

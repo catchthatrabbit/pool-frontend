@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
-import { WrapperStyled, ContentWrapperStyled } from './style';
+import { WrapperStyled } from './style';
 
 const CommonEmailBox = ({ children }) => (
-  <WrapperStyled>
-    <ContentWrapperStyled>{children}</ContentWrapperStyled>
-  </WrapperStyled>
+  <WrapperStyled>{children}</WrapperStyled>
 );
 
 export default CommonEmailBox;

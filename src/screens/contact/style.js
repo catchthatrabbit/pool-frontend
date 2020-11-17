@@ -1,31 +1,25 @@
 import styled from 'styled-components';
 
-const ColStyled = styled.div``;
-const RowStyled = styled.div`
+const BoxStyled = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 2rem 0;
-`;
-const WrapperStyled = styled.div`
-  margin: 1rem 0;
+  flex-direction: column;
+  padding: 1.4rem;
+  border: 1px solid ${({ theme }) => theme.colors.gunPowder};
+  border-radius: 10px;
 `;
 
-const SearchWrapperStyled = styled.div`
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const TextStyled = styled.p`
+  margin: 1rem 0 0;
+  font-family: ${({ theme }) => theme.typography.secondary};
+  font-size: 0.583rem;
 `;
 
 const EmailBoxWrapperStyled = styled.div`
   margin: 2rem 0 0 0;
+  align-self: center;
+  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileM} {
+    align-self: flex-start;
+  }
 `;
 
-export {
-  ColStyled,
-  RowStyled,
-  WrapperStyled,
-  SearchWrapperStyled,
-  EmailBoxWrapperStyled,
-};
+export { BoxStyled, TextStyled, EmailBoxWrapperStyled };

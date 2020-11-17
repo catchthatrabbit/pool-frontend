@@ -1,68 +1,199 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable arrow-body-style */
 
 import { memo, useState } from 'react';
 import {
+  WrapperStyled,
+  TableWrapperStyled,
   TableStyled,
   TableRowStyled,
   TableHeadStyled,
   TableCellStyled,
-  TableFooterStyled,
+  FooterStyled,
 } from './style';
 
 /* eslint-disable no-unused-vars */
-const BaseTable = memo(({ data, footer, hightLightColIds }) => {
+const BaseTable = memo(({ data, footer }) => {
   const mockTableData = {
     head: [
-      { key: 'time', value: 'Time' },
-      { key: 'amount', value: 'Amount' },
-      { key: 'address', value: 'Address' },
-      { key: 'txId', value: 'Tx ID' },
+      { key: 'height', value: 'Height' },
+      { key: 'type', value: 'Type' },
+      { key: 'mined on', value: 'Mined on' },
+      { key: 'miner', value: 'Miner' },
+      { key: 'reward', value: 'Reward' },
+      { key: 'round time', value: 'Round Time' },
     ],
     body: [
       [
-        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
-        { key: 'amount', value: '0.223' },
-        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
         {
-          key: 'txId',
-          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
         },
       ],
       [
-        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
-        { key: 'amount', value: '0.223' },
-        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
         {
-          key: 'txId',
-          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
         },
       ],
       [
-        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
-        { key: 'amount', value: '0.223' },
-        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
         {
-          key: 'txId',
-          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
         },
       ],
       [
-        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
-        { key: 'amount', value: '0.223' },
-        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
         {
-          key: 'txId',
-          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
         },
       ],
       [
-        { key: 'time', value: '8/9/2020, 2:43:09 PM' },
-        { key: 'amount', value: '0.223' },
-        { key: 'address', value: 'CBd27e990fe5167a37bb4a4ebd10233ea71ec83603' },
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
         {
-          key: 'txId',
-          value: ' a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86',
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
         },
       ],
     ],
@@ -70,46 +201,34 @@ const BaseTable = memo(({ data, footer, hightLightColIds }) => {
   };
   const [tableData, setTableData] = useState(data || mockTableData);
 
-  return (
-    <TableStyled cellpadding="10">
-      <thead>
-        <TableRowStyled>
-          {tableData.head.map((tableItem) => {
-            return (
-              <TableHeadStyled key={tableItem.key}>
-                {tableItem.value}
-              </TableHeadStyled>
-            );
-          })}
-        </TableRowStyled>
-      </thead>
+  const cutValue = (value) => `${value.slice(0, 10)}...${value.slice(-6)}`;
 
-      <tbody>
-        {tableData.body.map((tableRow) => {
-          return (
+  return (
+    <WrapperStyled>
+      <TableWrapperStyled>
+        <TableStyled>
+          <thead>
             <TableRowStyled>
-              {tableRow.map((tableCell) => {
-                return (
-                  <TableCellStyled
-                    key={tableCell.key}
-                    hightLight={hightLightColIds && hightLightColIds.includes(tableCell.key)}
-                  >
-                    {tableCell.value}
-                  </TableCellStyled>
-                );
-              })}
+              {tableData.head.map(({ key, value }) => (
+                <TableHeadStyled key={key}>{value}</TableHeadStyled>
+              ))}
             </TableRowStyled>
-          );
-        })}
-      </tbody>
-      {footer && (
-        <TableFooterStyled>
-          <td colSpan="6" style={{ width: '100%' }}>
-            {footer}
-          </td>
-        </TableFooterStyled>
-      )}
-    </TableStyled>
+          </thead>
+          <tbody>
+            {tableData.body.map((tableRow, index) => (
+              <TableRowStyled key={index}>
+                {tableRow.map(({ key, value, href }) => (
+                  <TableCellStyled key={key}>
+                    {href ? <a href={href}>{cutValue(value)}</a> : value}
+                  </TableCellStyled>
+                ))}
+              </TableRowStyled>
+            ))}
+          </tbody>
+        </TableStyled>
+      </TableWrapperStyled>
+      {footer && <FooterStyled>{footer}</FooterStyled>}
+    </WrapperStyled>
   );
 });
 
