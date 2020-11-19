@@ -1,21 +1,31 @@
 import styled from 'styled-components';
 
-const ColStyled = styled.div``;
-const RowStyled = styled.div`
+const BoxesWrapperStyled = styled.ul`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 2rem 0;
-`;
-const WrapperStyled = styled.div`
-  margin: 1rem 0;
+  align-self: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  li {
+    display: flex;
+    justify-content: center;
+    flex-basis: 25%;
+    margin-top: 20px;
+  }
+  @media screen and (min-width: ${({ theme }) =>
+      theme.responsive.mobileDevice.medium}) {
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    li {
+      margin-top: 50px;
+    }
+  }
+  @media screen and (min-width: ${({ theme }) =>
+      theme.responsive.mobileDevice.large}) {
+    justify-content: space-between;
+  }
 `;
 
-const SearchWrapperStyled = styled.div`
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export { ColStyled, RowStyled, WrapperStyled, SearchWrapperStyled };
+export { BoxesWrapperStyled };

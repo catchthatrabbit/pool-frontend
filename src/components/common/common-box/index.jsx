@@ -1,15 +1,6 @@
 /* eslint-disable react/prop-types */
-import {
-  WrapperStyled,
-  TitleWrapperStyled,
-  ContentWrapperStyled,
-} from './style';
+import WrapperStyled from './style';
 
-const CommonBox = ({ title, content, titleColor, twoColumn }) => (
-  <WrapperStyled>
-    <TitleWrapperStyled titleColor={titleColor}>{title}</TitleWrapperStyled>
-    <ContentWrapperStyled twoColumn={twoColumn}>{content}</ContentWrapperStyled>
-  </WrapperStyled>
-);
+const CommonBox = ({ children }) => <WrapperStyled>{children}</WrapperStyled>;
 
 export default CommonBox;

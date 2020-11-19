@@ -1,34 +1,31 @@
 import {
+  responsive,
   mediaQueriesMaxWidth,
   mediaQueriesMinWidth,
 } from '../../responsive-provider/utils';
 
-const catchTheRabitTheme = () => {
+const catchThatRabitTheme = () => {
   const colors = {
-    selectiveYellow: '#ffbc00',
-    pumpkin: '#ff7315',
-    mirage: '#1b262c',
-    picatonBlue: '#42a5f5',
-    mountainMeadow: '#21bf73',
-    pomegranate: '#e84118',
-    alabaster: '#f7f7f7',
-    white: 'white',
-    lightGray: 'rgba(27, 38, 44, 0.2)',
-    transparent: 'transparent',
-    gray: '#ededed',
+    abbey: 'rgb(70, 72, 76)',
+    aluminium: 'rgb(162, 163, 165)',
+    apple: 'rgb(70, 181, 73)',
+    casal: 'rgb(49, 93, 101)',
+    charade: 'rgb(39, 40, 51)',
+    greenYellow: 'rgb(173, 255, 47)',
+    gunPowder: 'rgb(66, 66, 89)',
+    kimberly: 'rgb(113, 113, 152)',
+    rollingStone: 'rgb(116, 118, 121)',
+    santasGray: 'rgb(153, 158, 172)',
+    shark: 'rgb(28, 29, 37)',
+    spindle: 'rgb(188, 203, 240)',
+    sushi: 'rgb(102, 179, 46)',
+    white: 'rgb(255, 255, 255)',
+    woodsmoke: 'rgb(24, 26, 31)',
+    getRGBValue: (rgbColor) => rgbColor.match(/\d{1,3}, \d{1,3}, \d{1,3}/)[0],
   };
 
   const defaultColors = {
-    white: colors.white,
-    primary: colors.pumpkin,
-    secondary: colors.selectiveYellow,
-    black: colors.mirage,
-    information: colors.picatonBlue,
-    success: colors.mountainMeadow,
-    error: colors.pomegranate,
-    danger: colors.pomegranate,
-    neutral: colors.alabaster,
-    gray: colors.gray,
+    //TODO fill or delete
   };
   const dimensions = {
     5: '5px',
@@ -54,8 +51,10 @@ const catchTheRabitTheme = () => {
   };
 
   const typography = {
+    primary: 'good-times, sans-serif',
+    secondary: 'Verdana, Geneva, Tahoma, sans-serif',
     defaultFont: {
-      name: 'IRANYekan',
+      name: 'good-times',
       light: {
         10: `
         font-size: 10px;
@@ -116,7 +115,7 @@ const catchTheRabitTheme = () => {
   line-height: normal;
   letter-spacing: normal;`,
         10: `
-font-family: IRANYekan;
+font-family: goodTimes;
 font-size: 10px;
 font-weight: normal;
 font-stretch: normal;
@@ -176,21 +175,16 @@ letter-spacing: normal;
     },
   };
 
-  const direction = {
-    rtl: 'rtl',
-    ltr: 'ltr',
-  };
-
   return {
     colors,
     dimensions,
     typography,
     defaultColors,
-    direction,
     mediaQueriesMaxWidth,
     mediaQueriesMinWidth,
+    responsive,
     defaults,
   };
 };
 
-export default catchTheRabitTheme;
+export default catchThatRabitTheme;

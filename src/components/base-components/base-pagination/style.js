@@ -1,56 +1,80 @@
 /* eslint-disable quotes */
-import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-const WrapperStyled = styled.div`
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-`;
-const PrevBtnStyled = styled.div`
-  color: #717198;
-  padding: 16px;
-  cursor: pointer;
-  &:hover {
-    transition: all 0.3s;
-    color: white;
+const GlobalStyle = createGlobalStyle`
+  ul.pagination {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.35rem;
+    color: ${({ theme }) => theme.colors.kimberly};
+    li {
+      &.active {
+        a {
+          color: ${({ theme }) => theme.colors.white}; 
+          background-color: rgba(${({ theme }) =>
+            theme.colors.getRGBValue(theme.colors.gunPowder)}, 0.25);
+          border: 1px solid ${({ theme }) => theme.colors.gunPowder};
+          border-radius: 10px;
+        }
+      }
+      &.break-me {
+        pointer-events: none;
+        a {
+          padding: 0;
+        }
+      }
+      &.next {
+        margin-left: 0.2rem;
+        padding: 0.75rem 0;
+        border-left: 1px solid;
+      }
+      &.previous.disabled, &.next.disabled {
+        display: none;
+      }
+      a {
+        padding: 0.3rem;
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+          color: ${({ theme }) => theme.colors.white};
+          transition: color 0.3s;
+        }
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileS} {
+      font-size: 0.5rem;
+    }
+    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
+      font-size: 0.583rem;
+    }
+    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
+      li {
+        a {
+          padding: 0.5rem;
+        }
+        &.break-me {
+          a {
+            padding: 0.5rem;
+          }
+        }
+        &.previous {
+          margin-right: 1.5rem;
+        }
+        &.next {
+          margin-left: 0.75rem;
+          padding: 0.75rem;
+        }
+      }
+    }
   }
 `;
-const NextBtnStyled = styled.div`
-  color: #717198;
-  padding: 16px;
-  cursor: pointer;
-  &:hover {
-    transition: all 0.3s;
-    color: white;
-  }
-`;
-const SepratorStyled = styled.div`
-  margin: 0 32px;
-  width: 1px;
-  height: 30px;
-  background-color: #424259;
-`;
 
-const PageStyled = styled.div`
-  color: #717198;
-  padding: 16px;
-  cursor: pointer;
-  &:hover {
-    transition: all 0.3s;
-    color: white;
-  }
-  ${({ active }) =>
-    active
-    && `border: 1px solid #424259; background-color: rgba(66,66,89,0.25); color: white; border-radius: 8px`}
-`;
-
-export {
-  WrapperStyled,
-  PrevBtnStyled,
-  NextBtnStyled,
-  SepratorStyled,
-  PageStyled,
-};
+export default GlobalStyle;

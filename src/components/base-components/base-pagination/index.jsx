@@ -1,46 +1,44 @@
-import { useEffect, useState } from 'react';
-import {
-  WrapperStyled,
-  PrevBtnStyled,
-  NextBtnStyled,
-  SepratorStyled,
-  PageStyled,
-} from './style';
+/* eslint-disable react/jsx-wrap-multilines */
+import { func, number } from 'prop-types';
+import ReactPaginate from 'react-paginate';
+import GlobalStyle from './style';
 
 // eslint-disable-next-line react/prop-types
-const BasePagination = ({ onChange }) => {
-  const [activePage, setActivePage] = useState(1);
-  const handleChange = (page) => {
-    setActivePage(page);
+const BasePagination = ({ onPageChange, pageCount }) => {
+  const handlePageChange = ({ selected: page }) => {
+    const currentPage = page + 1;
+
+    onPageChange(currentPage);
   };
-  useEffect(() => {
-    onChange(activePage);
-  }, [activePage]);
+
   return (
-    <div>
-      <WrapperStyled>
-        <PrevBtnStyled>Previous</PrevBtnStyled>
-        <PageStyled onClick={() => handleChange(1)} active={activePage === 1}>
-          1
-        </PageStyled>
-        <PageStyled onClick={() => handleChange(2)} active={activePage === 2}>
-          2
-        </PageStyled>
-        <PageStyled onClick={() => handleChange(3)} active={activePage === 3}>
-          3
-        </PageStyled>
-        <PageStyled onClick={() => handleChange(4)} active={activePage === 4}>
-          4
-        </PageStyled>
-        <PageStyled>...</PageStyled>
-        <PageStyled onClick={() => handleChange(10)} active={activePage === 10}>
-          10
-        </PageStyled>
-        <SepratorStyled />
-        <NextBtnStyled> Next </NextBtnStyled>
-      </WrapperStyled>
-    </div>
+    <>
+      <GlobalStyle />
+      <ReactPaginate
+        previousLabel="Previous"
+        nextLabel="Next"
+        breakLabel="..."
+        breakClassName="break-me"
+        pageCount={pageCount}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={3}
+        onPageChange={handlePageChange}
+        containerClassName="pagination"
+        subContainerClassName="pages pagination"
+        activeClassName="active"
+      />
+    </>
   );
+};
+
+BasePagination.propTypes = {
+  onPageChange: func,
+  pageCount: number,
+};
+
+BasePagination.defaultProps = {
+  onPageChange: () => {},
+  pageCount: 1,
 };
 
 export default BasePagination;

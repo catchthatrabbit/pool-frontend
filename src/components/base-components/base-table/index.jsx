@@ -1,235 +1,235 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable arrow-body-style */
 
-import BasePagination from '../base-pagination';
+import { memo, useState } from 'react';
 import {
+  WrapperStyled,
+  TableWrapperStyled,
   TableStyled,
   TableRowStyled,
   TableHeadStyled,
   TableCellStyled,
-  TableFooterStyled,
+  FooterStyled,
 } from './style';
 
 /* eslint-disable no-unused-vars */
-const BaseTable = ({ data, twoColumn }) => {
-  const handlePage = (page) => console.log(page);
+const BaseTable = memo(({ data, footer }) => {
+  const mockTableData = {
+    head: [
+      { key: 'height', value: 'Height' },
+      { key: 'type', value: 'Type' },
+      { key: 'mined on', value: 'Mined on' },
+      { key: 'miner', value: 'Miner' },
+      { key: 'reward', value: 'Reward' },
+      { key: 'round time', value: 'Round Time' },
+    ],
+    body: [
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+      [
+        { key: 'height', value: '10619917' },
+        { key: 'type', value: 'Block' },
+        { key: 'mined on', value: '8 Aug 2020, 17:08' },
+        {
+          key: 'miner',
+          href:
+            'https://flexpool.io/0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+          value: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+        },
+        {
+          key: 'reward',
+          value: '2.89 XCB',
+        },
+        {
+          key: 'round time',
+          value: '41.38 Seconds',
+        },
+      ],
+    ],
+    footer: null,
+  };
+  const [tableData, setTableData] = useState(data || mockTableData);
+
+  const cutValue = (value) => `${value.slice(0, 10)}...${value.slice(-6)}`;
+
   return (
-    <TableStyled cellpadding="10" twoColumn>
-      {twoColumn ? (
-        <>
-          <tbody>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Server</TableCellStyled>
-              <TableCellStyled twoColumn>eu.ctrpool.io</TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Port</TableCellStyled>
-              <TableCellStyled twoColumn>4444</TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Secure(SSL) port</TableCellStyled>
-              <TableCellStyled twoColumn>5555</TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Username</TableCellStyled>
-              <TableCellStyled twoColumn>
-                {'<your Core Coin Address>.<Worker Name>'}
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled twoColumn>
-              <TableCellStyled twoColumn>Password</TableCellStyled>
-              <TableCellStyled twoColumn>{'<empty>'}</TableCellStyled>
-            </TableRowStyled>
-          </tbody>
-        </>
-      ) : (
-        <>
+    <WrapperStyled>
+      <TableWrapperStyled>
+        <TableStyled>
           <thead>
             <TableRowStyled>
-              <TableHeadStyled>Time</TableHeadStyled>
-              <TableHeadStyled>Amount</TableHeadStyled>
-              <TableHeadStyled>Address</TableHeadStyled>
-              <TableHeadStyled>Tx ID</TableHeadStyled>
+              {tableData.head.map(({ key, value }) => (
+                <TableHeadStyled key={key}>{value}</TableHeadStyled>
+              ))}
             </TableRowStyled>
           </thead>
           <tbody>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
-            <TableRowStyled>
-              <TableCellStyled>8/9/2020, 2:43:09 PM</TableCellStyled>
-              <TableCellStyled>0.223</TableCellStyled>
-
-              <TableCellStyled active>
-                {' '}
-                CBd27e990fe5167a37bb4a4ebd10233ea71ec83603
-              </TableCellStyled>
-              <TableCellStyled>
-                a6538e82b7e510bb2c9ab58b…aa7fb6283691c6e5842a1a86
-              </TableCellStyled>
-            </TableRowStyled>
+            {tableData.body.map((tableRow, index) => (
+              <TableRowStyled key={index}>
+                {tableRow.map(({ key, value, href }) => (
+                  <TableCellStyled key={key}>
+                    {href ? <a href={href}>{cutValue(value)}</a> : value}
+                  </TableCellStyled>
+                ))}
+              </TableRowStyled>
+            ))}
           </tbody>
-        </>
-      )}
-      {!twoColumn && (
-        <TableFooterStyled>
-          <tr>
-            <td colSpan="5">
-              {' '}
-              <BasePagination onChange={(page) => handlePage(page)} />
-            </td>
-          </tr>
-        </TableFooterStyled>
-      )}
-    </TableStyled>
+        </TableStyled>
+      </TableWrapperStyled>
+      {footer && <FooterStyled>{footer}</FooterStyled>}
+    </WrapperStyled>
   );
-};
+});
 
 export default BaseTable;

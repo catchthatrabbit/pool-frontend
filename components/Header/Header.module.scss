@@ -118,12 +118,21 @@ $large-screen: 1320px;
         margin-top: 40px;
       }
       a {
+        margin: 15px 0;
+        &:focus {
+          outline: none;
+        }
+        @media screen and (min-width: $large-screen) {
+          margin: 0 60px 0 0;
+        }
+      }
+      h3 {
         display: inline-block;
         box-sizing: border-box;
         font-size: 18px;
         font-style: italic;
+        font-weight: 500;
         padding: 10px 0;
-        margin: 15px 0;
         white-space: nowrap;
         height: 40px;
         transition: border 0.1s ease-in-out;
@@ -131,11 +140,7 @@ $large-screen: 1320px;
         &.active {
           border-bottom: 3px solid $white;
         }
-        &:focus {
-          outline: none;
-        }
         @media screen and (min-width: $large-screen) {
-          margin: 0 60px 0 0;
           height: auto;
         }
       }
