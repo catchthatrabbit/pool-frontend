@@ -2,22 +2,15 @@ import { PureComponent } from 'react';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import cn from 'classnames';
-import Logo from '../SvgImage/images/Logo';
 
 import {
-  header,
-  headerBody,
-  navHeader,
-  navBar,
-  active,
-  bar1,
-  bar2,
-  bar3,
-  cross,
-  hidden,
-  show,
-  fullHeight,
-} from './Header.module.scss';
+  HeaderStyled,
+  HeaderBodyStyled,
+  NavHeaderStyled,
+  LogoStyled,
+  ButtonStyled,
+  NavBarStyled,
+} from './style';
 
 class Header extends PureComponent {
   state = {
@@ -46,7 +39,7 @@ class Header extends PureComponent {
   }
 
   handleResize = () => {
-    if (window.innerWidth >= 1320) {
+    if (window.innerWidth >= 1440) {
       document.body.style.overflow = 'visible';
       this.setState({ isMenuOpened: false });
     }
@@ -54,10 +47,6 @@ class Header extends PureComponent {
 
   handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
-
-    if (currentScrollPos < 200) {
-      return;
-    }
 
     const { prevScrollPos } = this.state;
     const visible = prevScrollPos > currentScrollPos;
@@ -88,7 +77,7 @@ class Header extends PureComponent {
     return this.links.map(({ text, href }) => (
       <Link href={href} key={href}>
         <a onClick={this.handleLinkClick} role="link" tabIndex="0">
-          <h3 className={cn({ [active]: href === pathname })}>{text}</h3>
+          <h3 className={cn({ active: href === pathname })}>{text}</h3>
         </a>
       </Link>
     ));
@@ -99,33 +88,32 @@ class Header extends PureComponent {
     const { visible, isMenuOpened } = this.state;
 
     return (
-      <header
+      <HeaderStyled
         className={cn({
-          [header]: true,
-          [hidden]: !visible,
-          [fullHeight]: isMenuOpened,
+          hidden: !visible,
+          fullHeight: isMenuOpened,
         })}
       >
-        <div className={headerBody}>
-          <div className={navHeader}>
+        <HeaderBodyStyled>
+          <NavHeaderStyled>
             <a href="/">
-              <Logo />
+              <LogoStyled src="/images/logo.svg" />
             </a>
-            <button
+            <ButtonStyled
               type="button"
-              className={cn({ [cross]: isMenuOpened })}
+              className={cn({ cross: isMenuOpened })}
               onClick={this.handleMenuClick}
             >
-              <div className={bar1} />
-              <div className={bar2} />
-              <div className={bar3} />
-            </button>
-          </div>
-          <nav className={cn({ [navBar]: true, [show]: isMenuOpened })}>
+              <div className="bar1" />
+              <div className="bar2" />
+              <div className="bar3" />
+            </ButtonStyled>
+          </NavHeaderStyled>
+          <NavBarStyled className={cn({ show: isMenuOpened })}>
             {this.renderLinks()}
-          </nav>
-        </div>
-      </header>
+          </NavBarStyled>
+        </HeaderBodyStyled>
+      </HeaderStyled>
     );
   }
 }

@@ -23,10 +23,11 @@ main {
   margin: 100px auto 0;
   width: 90%;
   max-width: 1640px;
-  @media screen and (min-width: 980px) {
+  @media screen and (min-width: ${({ theme }) =>
+    theme.responsive.tablet.medium}) {
     margin-top: 120px;
   }
-  @media screen and (min-width: 1320px) {
+  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
     margin-top: 140px;
   }
 }
