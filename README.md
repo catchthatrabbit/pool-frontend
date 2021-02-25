@@ -12,6 +12,6 @@ After installation just open the project and write "nvm use" in your terminal to
 
 ### Install packages
 
-Run `npm install` on the project directory to install dependencies.
+Run `yarn` on the project directory to install dependencies.
 
-Then run `npm run dev` to start the project and navigate to [localhost:3000](http://localhost:3000/)
+Then run `yarn dev` to start the project and navigate to [localhost:3000](http://localhost:3000/)
