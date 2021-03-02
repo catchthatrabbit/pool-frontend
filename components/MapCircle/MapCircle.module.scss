@@ -1,13 +1,12 @@
-@import '../../styles/variables.scss';
 $middle-screen: 980px;
 $large-screen: 1320px;
 
 .circle {
   height: 18px;
   width: 18px;
-  background: $white;
+  background: var(--white);
   border-radius: 50%;
-  @media screen and (min-width: $large-screen) {
+  @media screen and (min-width: var(--large-screen)) {
     height: 24px;
     width: 24px;
   }
@@ -35,15 +34,15 @@ $large-screen: 1320px;
 
 @keyframes pulse {
   0% {
-    border-color: rgba($color: $white, $alpha: 0.6);
+    border-color: rgba($color: var(--white), $alpha: 0.6);
   }
   33% {
-    border-color: rgba($color: $white, $alpha: 1);
+    border-color: rgba($color: var(--white), $alpha: 1);
   }
   66% {
-    border-color: rgba($color: $white, $alpha: 0.4);
+    border-color: rgba($color: var(--white), $alpha: 0.4);
   }
   100% {
-    border-color: rgba($color: $white, $alpha: 0.2);
+    border-color: rgba($color: var(--white), $alpha: 0.2);
   }
 }

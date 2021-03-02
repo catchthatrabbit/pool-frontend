@@ -1,5 +1,3 @@
-@import '../../styles/variables.scss';
-
 .jumbotron {
   position: relative;
   display: flex;
@@ -105,14 +103,14 @@
       .mouse {
         width: 3px;
         height: 18px;
-        background: $woodsmoke;
+        background: var(--woodsmoke);
         padding: 8px 10px;
-        border: 2px solid $gun-powder;
+        border: 2px solid var(--gun-powder);
         border-radius: 20px;
         .scroll {
           width: 3px;
           height: 8px;
-          background: $white;
+          background: var(--white);
           border-radius: 25%;
           animation: scroll 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
         }
@@ -142,7 +140,7 @@
     order: -1;
     span {
       white-space: nowrap;
-      color: $apple;
+      color: var(--apple);
     }
     @media screen and (min-width: 900px) {
       order: 0;
@@ -151,9 +149,9 @@
   p {
     margin: 30px 0;
     line-height: min(max(1.5vw, 20px), 29px);
-    font-family: $secondary-font-family;
+    font-family: var(--secondary-font-family);
     font-size: min(max(1.2vw, 15px), 24px);
-    color: $santas-gray;
+    color: var(--santas-gray);
     text-align: center;
   }
   @media screen and (min-width: 1200px) {

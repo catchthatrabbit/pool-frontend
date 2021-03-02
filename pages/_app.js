@@ -3,7 +3,7 @@ import CommonHeader from '../src/components/common/common-header';
 import Footer from '../components/Footer';
 
 import RootProvider from '../src/providers';
-import '../styles/globals.scss';
+import '../styles/goblasVariables.css';
 
 /* eslint-disable */
 function MyApp({ Component, pageProps }) {

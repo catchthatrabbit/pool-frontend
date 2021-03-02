@@ -1,4 +1,3 @@
-@import '../../styles/variables.scss';
 $middle-screen: 980px;
 $large-screen: 1320px;
 
@@ -11,8 +10,8 @@ $large-screen: 1320px;
     justify-content: center;
     align-items: center;
     height: 495px;
-    background: rgba($color: $gun-powder, $alpha: 0.25);
-    border: 1px solid $gun-powder;
+    background: rgba($color: var(--gun-powder), $alpha: 0.25);
+    border: 1px solid var(--gun-powder);
     h3 {
       margin: 65px 0;
       font-size: min(max(1.25vw, 18px), 24px);
@@ -41,13 +40,13 @@ $large-screen: 1320px;
         margin: 30px 0 0 0;
         font-size: min(max(1vw, 12px), 18px);
         span {
-          color: $apple;
+          color: var(--apple);
         }
       }
     }
     .info {
       margin-top: 24px;
-      font-family: $secondary-font-family;
+      font-family: var(--secondary-font-family);
       h4 {
         margin: 0;
         font-size: 18px;
@@ -76,8 +75,8 @@ $large-screen: 1320px;
     align-items: center;
     width: 100%;
     height: 90px;
-    background: rgba($color: $gun-powder, $alpha: 0.25);
-    border: 1px solid $gun-powder;
+    background: rgba($color: var(--gun-powder), $alpha: 0.25);
+    border: 1px solid var(--gun-powder);
     font-size: 10px;
     line-height: 15px;
     text-align: center;
