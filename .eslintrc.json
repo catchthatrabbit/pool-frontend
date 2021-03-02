@@ -39,7 +39,8 @@
     "react/state-in-constructor": "off",
     "class-methods-use-this": "off",
     "react/jsx-one-expression-per-line": "off",
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+    "react/prop-types": 0
   },
   "plugins": []
 }
