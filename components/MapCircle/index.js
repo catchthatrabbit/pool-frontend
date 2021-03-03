@@ -1,1 +1,1 @@
-export { default } from './MapCircle';
+export { default } from './MapCircle.tsx';

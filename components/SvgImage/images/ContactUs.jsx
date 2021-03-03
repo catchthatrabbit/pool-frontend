@@ -1,4 +1,5 @@
-import createSvgImage from '../createSvgImage';
+import React from 'react';
+import createSvgImage from '../createSvgImage.tsx';
 
 const path = (
   <g transform="translate(0 -0.002)">
@@ -20,8 +21,8 @@ const path = (
   </g>
 );
 
-export default createSvgImage(path, {
+export default createSvgImage({
   width: 120.51,
   height: 57.638,
   viewBox: '0 0 120.51 57.638',
-});
+}, path);
