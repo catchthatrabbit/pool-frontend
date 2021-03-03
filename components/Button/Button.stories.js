@@ -16,16 +16,16 @@ export default {
     },
     value: {
       control: 'text',
-    }
+    },
   },
 };
 
 export const ButtonStory = (args) => (
-    <Button {...args}>
-      {args.value}
-    </Button>
-  );
+  <Button {...args}>
+    {args.value}
+  </Button>
+);
 
 ButtonStory.args = {
-  value: 'Test'
-}
+  value: 'Test',
+};

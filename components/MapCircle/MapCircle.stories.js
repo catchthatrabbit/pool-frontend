@@ -1,11 +1,11 @@
 import React from 'react';
-import MapCircle from './MapCircle';
+import MapCircle from './MapCircle.tsx';
 
 export default {
   title: 'MapCircle',
   component: MapCircle,
 };
 
-export const MapCircleBasic = () => (
+export const MapCircleStory = () => (
   <MapCircle />
 );
