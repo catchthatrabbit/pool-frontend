@@ -53,7 +53,7 @@ const SearchBarStyle = styled.div`
 interface IProps {
   value: string,
   placeholder: string,
-  onChange: React.ChangeEvent<HTMLInputElement>,
+  onChange: React.ChangeEventHandler<HTMLInputElement>,
   onSearch: () => void
 }
 
