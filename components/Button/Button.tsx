@@ -12,7 +12,8 @@ const StyledButton = styled.button`
   border-radius: 10px;
   color: var(--white);
   padding: 20px;
-  font-family: inherit;
+  font-family: var(--primary-font-family);
+  font-style: italic
   font-size: 12px;
   min-width: 215px;
   text-align: center;
@@ -22,7 +23,7 @@ const StyledButton = styled.button`
     outline: none;
   }
   &:hover {
-    border: 1px solid rgba(var(--white-rgb), 1);
+    border: 1px solid rgba(var(--gun-powder-rgb), 1);
   }
   ${(props: { theme: string; }) =>
     props.theme === 'outline' &&
