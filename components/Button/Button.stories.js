@@ -27,5 +27,5 @@ export const ButtonStory = (args) => (
 );
 
 ButtonStory.args = {
-  value: 'Test',
+  value: 'Connected to US',
 };
