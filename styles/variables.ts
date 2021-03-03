@@ -1,5 +1,5 @@
 export const fonts = {
-  primary: "good-times sans-serif",
+  primary: "good-times, sans-serif",
   secondary: "Verdana, Geneva, Tahoma, sans-serif",
 }
 
