@@ -1,3 +1,4 @@
+// @ts-nocheck
 import BlockerLogoIcon from './icons/blocker-logo.svg';
 import LogoIcon from './icons/logo.svg';
 import ContactUsIcon from './icons/contact-us.svg';
