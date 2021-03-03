@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from './SearchBar.tsx';
+import styled from 'styled-components';
 
 export default {
   title: 'SearchBar',
   component: SearchBar,
   argTypes: {
-    value: {
-      control: 'text',
-    },
     placeholder: {
       control: 'text',
     },
@@ -16,10 +14,20 @@ export default {
   },
 };
 
-export const SearchBarStory = (args) => (
-  <SearchBar {...args} />
-);
+const Container = styled.div`
+  width: 80%;
+`
+
+export const SearchBarStory = (args) => {
+  const [text, setText] = useState();
+
+  useEffect(() => { setText(args.Text)}, [args.Text])
+
+  return <Container>
+    <SearchBar {...args} onChange={(t) => setText(t.target.value)} value={text}/>
+  </Container>
+};
 
 SearchBarStory.args = {
-  value: 'Test',
+  Text: 'Test',
 };
