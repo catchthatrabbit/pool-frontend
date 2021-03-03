@@ -1,4 +1,4 @@
-const ConfigureWebpack = require('../webpack/configureWebpack');
+const ConfigureWebpack = require('./webpack/configureWebpack');
 
 module.exports = {
   devIndicators: {

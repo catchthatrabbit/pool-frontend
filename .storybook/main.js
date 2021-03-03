@@ -1,4 +1,5 @@
 const ConfigureWebpack = require('../webpack/configureWebpack');
+const fixStoryBookNotFindingModules = require('../webpack/fixStoryBookNotFindingModules');
 
 const path = require("path");
 
@@ -13,5 +14,5 @@ module.exports = {
   typescript: {
     check: true, // type-check stories during Storybook build
   },
-  webpackFinal: ConfigureWebpack
+  webpackFinal: (...args) => fixStoryBookNotFindingModules(ConfigureWebpack(...args))
 };
