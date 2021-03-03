@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: var(--woodsmoke);
+  background: #181a1f;
   flex-direction: column;
 
   font-style: normal;
@@ -14,5 +14,5 @@
   width: 100px;
   display: inline-block;
   height: 100px;
-  color: var(--white);
+  color: #fff;
 }
