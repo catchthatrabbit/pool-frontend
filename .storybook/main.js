@@ -1,3 +1,5 @@
+const ConfigureWebpack = require('../webpack/configureWebpack');
+
 const path = require("path");
 
 module.exports = {
@@ -11,4 +13,5 @@ module.exports = {
   typescript: {
     check: true, // type-check stories during Storybook build
   },
+  webpackFinal: ConfigureWebpack
 };

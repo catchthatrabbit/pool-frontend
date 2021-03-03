@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import Search from '../SvgImage/images/Search';
+import { SearchIcon } from '../icons';
 
 const SearchBarStyle = styled.div`
   display: flex;
@@ -73,7 +73,7 @@ const SearchBar: FC<IProps> = ({
         onKeyDown={handleKeyDown}
       />
       <button type="button" onClick={onSearch}>
-        <Search />
+        <SearchIcon />
       </button>
     </SearchBarStyle>
   );
