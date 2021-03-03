@@ -6,34 +6,34 @@
     --secondary-font-family: Verdana, Geneva, Tahoma, sans-serif;
     /*base-colors*/
     --abbey-rgb: 70, 72, 76;
-    /*--aluminium: #a2a3a5;*/
-    /*--apple: #46b549;*/
-    /*--casal: #315d65;*/
-    /*--charade: #272833;*/
-    /*--green-yellow: #adff2f;*/
+    --aluminium-rgb: 162, 163, 165;
+    --apple-rgb: 70, 181, 73;
+    --casal-rgb: 49, 93, 101;
+    --charade-rgb: 39, 40, 51;
+    --green-yellow-rgb: 173, 255, 47;
     --gun-powder-rgb: 66, 66, 89;
-    /*--kimberly: #717198;*/
-    /*--rolling-stone: #747679;*/
-    /*--santas-gray: #999eac;*/
-    /*--shark: #1c1d25;*/
-    /*--spindle: #bccbf0;*/
-    /*--sushi: #66b32e;*/
+    --kimberly-rgb: 113, 113, 152;
+    --rolling-stone-rgb: 116, 118, 121;
+    --santas-gray-rgb: 153, 158, 172;
+    --shark-rgb: 28, 29, 37;
+    --spindle-rgb: 188, 203, 240;
+    --sushi-rgb: 102, 179, 46;
     --white-rgb: 255, 255, 255;
-    /*--woodsmoke: #181a1f;*/
+    --woodsmoke-rgb: 24, 26, 31;
     /*colors*/
-    --abbey: #46484c;
-    --aluminium: #a2a3a5;
-    --apple: #46b549;
-    --casal: #315d65;
-    --charade: #272833;
-    --green-yellow: #adff2f;
+    --abbey: rgb(var(--abbey-rgb));
+    --aluminium: rgb(var(--aluminium-rgb));
+    --apple: rgb(var(--apple-rgb));
+    --casal: rgb(var(--casal-rgb));
+    --charade: rgb(var(--charade-rgb));
+    --green-yellow: rgb(var(--green-yellow-rgb));
     --gun-powder: rgb(var(--gun-powder-rgb));
-    --kimberly: #717198;
-    --rolling-stone: #747679;
-    --santas-gray: #999eac;
-    --shark: #1c1d25;
-    --spindle: #bccbf0;
-    --sushi: #66b32e;
+    --kimberly: rgb(var(--kimberly-rgb));
+    --rolling-stone: rgb(var(--rolling-stone-rgb));
+    --santas-gray: rgb(var(--santas-gray-rgb));
+    --shark: rgb(var(--shark-rgb));
+    --spindle: rgb(var(--spindle-rgb));
+    --sushi: rgb(var(--sushi-rgb));
     --white: rgb(var(--white-rgb));
-    --woodsmoke: #181a1f;
+    --woodsmoke: rgb(var(--woodsmoke-rgb));
 }

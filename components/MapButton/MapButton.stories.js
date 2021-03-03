@@ -1,18 +1,25 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import MapButton from './MapButton';
+import MapButton from './MapButton.tsx';
 
 export default {
   title: 'MapButton',
   component: MapButton,
+  argTypes: {
+    href: {
+      control: 'text',
+    },
+    value: {
+      control: 'text',
+    },
+  },
 };
 
-export const MapButtonBasic = () => {
-  const value = 'US';
+export const MapButtonStory = (args) => (
+  <MapButton {...args}>
+    {args.value}
+  </MapButton>
+);
 
-  return (
-    <MapButton href="/#" className="mapButton">
-      {value}
-    </MapButton>
-  );
+MapButtonStory.args = {
+  value: 'Test',
 };

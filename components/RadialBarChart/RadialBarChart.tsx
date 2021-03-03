@@ -1,46 +1,69 @@
-import { PureComponent } from 'react';
 import * as d3 from 'd3';
-import cn from 'classnames';
-import { arrayOf, number, shape, string } from 'prop-types';
+import React, { FC } from 'react';
 
-import { chart, hour, axisCircle, tip } from './RadialBarChart.module.scss';
+import styled from 'styled-components';
 
-export default class RadialBarChart extends PureComponent {
-  static propTypes = {
-    data: arrayOf(shape({ time: string, value: number })),
-    className: string,
-  };
+const Hour = styled.div`
+  fill: var(green-yellow);
+`;
+const AxisCircle = styled.div`
+  fill: none;
+  stroke: var(--gun-powder);
+`;
+const Tip = styled.div`
+  display: none;
+  position: absolute;
+  color: var(--white);
+  font-family: var(--secondary-font-family);
+  font-size: 12px;
+  background-color: var(--gun-powder);
+  border-radius: 5px;
+  padding: 10px;
+`;
+const Chart = styled.div`
+  position: relative;
+  width: 100%;
+  ${Tip};
+  svg {
+    font-family: var(--primary-font-family);
+    font-size: 18px;
+    text {
+      fill: var(--white);
+    }
+    g:last-child ${Hour};
+    ${AxisCircle};
+   
+  }
+`;
 
-  static defaultProps = {
-    data: null,
-    className: '',
-  };
+interface IProps {
+  data: {
+    time: string,
+    value: number
+  }[],
+  className: string
+}
+const RadialBarChart: FC<IProps> = ({ data = null, className = '',
+}) => {
+  const width = 900;
+  const height = width;
+  const innerRadius = 250;
+  const outerRadius = width * 0.6;
 
-  width = 900;
-
-  height = this.width;
-
-  innerRadius = 250;
-
-  outerRadius = this.width * 0.6;
-
-  componentDidMount() {
-    this.updateChart();
+  function componentDidMount() {
+    updateChart();
   }
 
-  componentDidUpdate() {
-    this.updateChart();
+  function componentDidUpdate() {
+    updateChart();
   }
 
-  updateChart = () => {
-    /* eslint-disable */
-    const { data } = this.props;
-
+  const updateChart = () => {
     if (!data) {
       return;
     }
 
-    d3.selectAll(`.${chart} svg g`).remove();
+    d3.selectAll(`.${Chart} svg g`).remove();
 
     const x = d3
       .scaleBand()
@@ -53,16 +76,16 @@ export default class RadialBarChart extends PureComponent {
     const y = d3
       .scaleRadial()
       .domain([0, maxYDomainValue + maxYDomainValue * 0.2])
-      .range([this.innerRadius, this.outerRadius]);
+      .range([innerRadius, outerRadius]);
 
     const arc = d3
       .arc()
-      .innerRadius(this.innerRadius)
+      .innerRadius(innerRadius)
       .outerRadius((d) => y(d.value))
       .startAngle((d) => x(d.time))
       .endAngle((d) => x(d.time) + x.bandwidth())
       .padAngle(0.1)
-      .padRadius(this.innerRadius);
+      .padRadius(innerRadius);
 
     const xAxis = (g) =>
       g.attr('text-anchor', 'middle').call((g) =>
@@ -75,19 +98,19 @@ export default class RadialBarChart extends PureComponent {
             'transform',
             (d) => `
               rotate(${((x(d.time) + x.bandwidth() / 2) * 180) / Math.PI - 90})
-              translate(${this.innerRadius - 30},0)
+              translate(${innerRadius - 30},0)
             `
           )
           .call((g) =>
             g
               .append('text')
-              .attr('class', hour)
+              .attr('class', Hour)
               .attr(
                 'transform',
                 (d) =>
                   `rotate(${
                     90 - ((x(d.time) + x.bandwidth() / 2) * 180) / Math.PI
-                  }) translate(0, 6)`
+                  }) translate(0, 6)`,
               )
               .text((d) => `${d.time.split(' ')[1].slice(0, 2)}H`)
           )
@@ -110,11 +133,11 @@ export default class RadialBarChart extends PureComponent {
             .data(y.ticks(5))
             .join('g')
             .call((g) =>
-              g.append('circle').attr('class', axisCircle).attr('r', y)
+              g.append('circle').attr('class', AxisCircle).attr('r', y)
             )
         );
 
-    const tooltip = d3.select(`.${tip}`);
+    const tooltip = d3.select(`.${Tip}`);
 
     const onMouseover = (event, datum) => {
       tooltip
@@ -127,7 +150,7 @@ export default class RadialBarChart extends PureComponent {
 
     const onMousemove = (event, datum) => {
       const { pageX, pageY } = event;
-      const rect = document.querySelector(`.${chart}`).getBoundingClientRect();
+      const rect = document.querySelector(`.${Chart}`).getBoundingClientRect();
       const tipRect = tooltip.node().getBoundingClientRect();
       const tipX = pageX - window.scrollX - rect.x;
       const tipY = pageY - window.scrollY - rect.y - tipRect.height - 20;
@@ -145,11 +168,11 @@ export default class RadialBarChart extends PureComponent {
     };
 
     const svg = d3
-      .select(`.${chart} svg`)
+      .select(`.${Chart} svg`)
       .attr(
         'viewBox',
-        `${-this.width / 2 - 150} ${-this.height / 2 - 150} 
-        ${this.width + 300} ${this.height + 300}`
+        `${-width / 2 - 150} ${-height / 2 - 150} 
+        ${width + 300} ${height + 300}`,
       )
       .style('width', '100%')
       .style('height', 'auto');
@@ -189,29 +212,26 @@ export default class RadialBarChart extends PureComponent {
     );
     /* eslint-enable */
   };
+  return data ? (
+    <Chart className={className}>
+      <svg>
+        <defs>
+          <radialGradient
+            id="arcGrad"
+            gradientUnits="userSpaceOnUse"
+            cx="0"
+            cy="0"
+            fr="180"
+          >
+            <stop offset="0%" style={{ stopColor: '#365e67' }} />
+            <stop offset="30%" style={{ stopColor: '#396a72' }} />
+            <stop offset="60%" style={{ stopColor: '#67a542' }} />
+          </radialGradient>
+        </defs>
+      </svg>
+      <Tip />
+    </Chart>
+  ) : null;
+};
 
-  render() {
-    const { data, className } = this.props;
-
-    return data ? (
-      <div className={cn(chart, className)}>
-        <svg>
-          <defs>
-            <radialGradient
-              id="arcGrad"
-              gradientUnits="userSpaceOnUse"
-              cx="0"
-              cy="0"
-              fr="180"
-            >
-              <stop offset="0%" style={{ stopColor: '#365e67' }} />
-              <stop offset="30%" style={{ stopColor: '#396a72' }} />
-              <stop offset="60%" style={{ stopColor: '#67a542' }} />
-            </radialGradient>
-          </defs>
-        </svg>
-        <div className={tip} />
-      </div>
-    ) : null;
-  }
-}
+export default RadialBarChart;
