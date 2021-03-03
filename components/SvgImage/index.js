@@ -1,1 +1,1 @@
-export { default } from './SvgImage';
+export { default } from './SvgImage.tsx';
