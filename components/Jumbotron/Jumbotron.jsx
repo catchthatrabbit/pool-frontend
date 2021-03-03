@@ -3,8 +3,8 @@ import { PureComponent } from 'react';
 import CommonInfoBox from '../../src/components/common/common-info-box';
 import MapButton from '../MapButton';
 import Button from '../Button';
-import Map from '../SvgImage/images/Map';
-import Arrow from '../SvgImage/images/Arrow';
+import Map from '../icons/icons/Map';
+import Arrow from '../icons/icons/Arrow';
 import {
   jumbotron,
   map,

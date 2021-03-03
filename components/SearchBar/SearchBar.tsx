@@ -1,32 +1,33 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { colorVariables, fonts } from 'styles/variables';
+import { transparentize } from 'polished';
 
-import Search from '../SvgImage/images/Search';
+import { SearchIcon } from '../icons';
 
 const SearchBarStyle = styled.div`
   display: flex;
-  width: 83%;
+  width: 100%;
   border-radius: 10px;
-  margin: 85px auto;
-   input {
-    box-sizing: border-box;
-    height: 55px;
+  height: 55px;
+
+  input {    
     width: calc(100% - 68px);
     padding: 18px 20px;
-    font-family: var(--secondary-font-family);
+    font-family: ${fonts.secondary};
     font-size: 16px;
     border-radius: 10px 0 0 10px;
-    border: 1px solid var(--gun-powder);
-    color: var(--kimberly);
-    background-color: rgba($color: var(--gun-powder), $alpha: 0.35);
+    border: 1px solid ${colorVariables.gunPowder};
+    color: ${colorVariables.white};
+    background-color: ${transparentize(0.35, colorVariables.gunPowder)};
     transition: 0.1s ease-in-out;
     &::placeholder {
-      color: var(--kimberly);
+      color: ${colorVariables.kimberly};
     }
     &:focus,
     &:hover {
       outline: none;
-      color: var(--white);
+      color: ${colorVariables.white};
     }
   }
   button {
@@ -36,15 +37,15 @@ const SearchBarStyle = styled.div`
     user-select: none;
     border: none;
     border-radius: 0 10px 10px 0;
-    color: var(--white);
-    background: var(--gun-powder);
+    color: ${colorVariables.white};
+    background: ${colorVariables.gunPowder};
     transition: 0.1s ease-in-out;
     &:focus {
       outline: none;
     }
     &:hover {
-      color: var(--gun-powder);
-      background: var(--white);
+      color: ${colorVariables.gunPowder};
+      background: ${colorVariables.white};
     }
   }
 `;
@@ -52,7 +53,7 @@ const SearchBarStyle = styled.div`
 interface IProps {
   value: string,
   placeholder: string,
-  onChange: () => void,
+  onChange: React.ChangeEvent<HTMLInputElement>,
   onSearch: () => void
 }
 
@@ -73,7 +74,7 @@ const SearchBar: FC<IProps> = ({
         onKeyDown={handleKeyDown}
       />
       <button type="button" onClick={onSearch}>
-        <Search />
+        <SearchIcon />
       </button>
     </SearchBarStyle>
   );

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import Button from '../Button';
 import CommonContentTitle from '../../src/components/common/common-content-title';
-import Logo from '../SvgImage/images/Logo';
+import { LogoIcon } from '../icons';
 
 const InfoStyled = styled.div`
   margin-top: 24px;
@@ -147,7 +147,7 @@ const Footer = () => {
       </HeaderSection>
       <MainSection>
         <LogoStyled>
-          <Logo />
+          <LogoIcon />
           <h4>
             Dedicated Pool
             <br />

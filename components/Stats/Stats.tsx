@@ -17,7 +17,7 @@ const Chart = styled.button`
 const ChartContainer = styled.button`
   width: 100%;
   margin: 50px 0;
-  background: url('../../public/images/stats-bg.svg') no-repeat top left / cover;
+  background: url('../icons/icons/stats-bg.svg') no-repeat top left / cover;
   ${Chart};
 `;
 const StatsStyled = styled.button`
