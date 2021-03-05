@@ -70,7 +70,7 @@ const Button: FC<IProps> = ({
   }
   return (
     <StyledButton theme={theme} type="button" onClick={onClick}>
-      <Text size="small" fontFamily="primary" color="white" italic>{children}</Text>
+          <Text size="small" italic> {children} </Text>
     </StyledButton>
   );
 };
