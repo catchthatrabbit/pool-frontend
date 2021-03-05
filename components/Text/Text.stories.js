@@ -5,25 +5,50 @@ export default {
   title: 'Text',
   component: Text,
   argTypes: {
-    theme: {
+    fontSize: {
       control: {
         type: 'select',
         options: [
-          'header-tittle',
-          'header-tittle-alt-color',
-          'header-sub-text',
-          'footer-title',
-          'footer-title-alt-color',
-          'paragraph-text',
-          'table-text',
-          'button-text',
-          'info-box-number',
-          'info-box-second',
-          'info-box-third',
-          'info-box-fourth',
-          'pool-graph-label',
-          'pool-graph-centre-date',
-          'pool-graph-time-line',
+          'tiny',
+          'small',
+          'medium',
+          'large',
+          'very-large',
+          'ultra-large',
+        ],
+      },
+    },
+    fontFamily: {
+      control: {
+        type: 'select',
+        options: [
+          'primary',
+          'secondary',
+        ],
+      },
+    },
+    color: {
+      control: {
+        type: 'select',
+        options: [
+          'white',
+          'apple',
+          'santasGray',
+        ],
+      },
+    },
+    italic: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    fontWeight: {
+      control: {
+        type: 'select',
+        options: [
+          'bold',
+          'normal',
+          'light',
         ],
       },
     },
@@ -41,4 +66,9 @@ export const TextStory = (args) => (
 
 TextStory.args = {
   value: 'Lorem ipsum dolor sit amet',
+  fontSize: 'large',
+  fontFamily: 'primary',
+  color: 'white',
+  italic: false,
+  fontWeight: 'normal',
 };

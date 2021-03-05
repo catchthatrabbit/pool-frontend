@@ -1,166 +1,54 @@
 import React, { FC } from 'react';
 import { colorVariables, fonts } from 'styles/variables';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const StyledText = styled.text`
-  ${(props: { theme: string; }) =>
-    props.theme === 'header-tittle'
-    && css`
-      font-size: 42px;
-      font-family: ${fonts.primary};
-      font-style: italic;
-      color: ${colorVariables.white};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'header-tittle-alt-color'
-    && css`
-      font-size: 42px;
-      font-family: ${fonts.primary};
-      font-style: italic;
-      color: ${colorVariables.apple};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'header-sub-text'
-    && css`
-      font-size: 24px;
-      font-family: ${fonts.secondary};
-      color: ${colorVariables.santasGray};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'footer-title'
-    && css`
-      font-size: 18px;
-      font-family: ${fonts.primary};
-      font-style: italic;
-      color: ${colorVariables.white};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'footer-title-alt-color'
-    && css`
-      font-size: 18px;
-      font-family: ${fonts.primary};
-      font-style: italic;
-      color: ${colorVariables.apple};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'paragraph-text'
-    && css`
-      font-size: 14px;
-      font-family: ${fonts.secondary};
-      color: ${colorVariables.white};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'table-text'
-    && css`
-      font-size: 14px;
-      font-family: ${fonts.secondary};
-      font-weight: bold;
-      color: ${colorVariables.white};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'button-text'
-    && css`
-      font-size: 12px;
-      font-family: ${fonts.primary};
-      font-style: italic;
-      color: ${colorVariables.white};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'info-box-number'
-    && css`
-      font-size: 24px;
-      font-family: ${fonts.primary};
-      font-style: italic;
-      color: ${colorVariables.white};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'info-box-second'
-    && css`
-      font-size: 18px;
-      font-family: ${fonts.primary};
-      font-style: italic;
-      color: ${colorVariables.white};
-    `
-}
-  ${(props: { theme: string; }) =>
-    props.theme === 'info-box-third'
-    && css`
-      font-size: 12px;
-      font-family: ${fonts.primary};
-      font-style: italic;
-      color: ${colorVariables.white};
-    `
-}
- ${(props: { theme: string; }) =>
-    props.theme === 'info-box-fourth'
-    && css`
-      font-size: 12px;
-      font-family: ${fonts.primary};
-      font-weight: 100;
-      color: ${colorVariables.white};
-    `
-}
- ${(props: { theme: string; }) =>
-    props.theme === 'pool-graph-label'
-    && css`
-      font-size: 12px;
-      font-family: ${fonts.secondary};
-      color: ${colorVariables.white};
-    `
-}
- ${(props: { theme: string; }) =>
-    props.theme === 'pool-graph-centre-date'
-    && css`
-      font-size: 24px;
-      font-family: ${fonts.primary};
-      font-weight: bold;
-      color: ${colorVariables.white};
-    `
-}
- ${(props: { theme: string; }) =>
-    props.theme === 'pool-graph-time-line'
-    && css`
-      font-size: 18px;
-      font-family: ${fonts.primary};
-      color: ${colorVariables.white};
-    `
-}
+  font-size: ${(props) =>
+    props.fontSize === 'tiny' && '10px' ||
+    props.fontSize === 'small' && '12px' ||
+    props.fontSize === 'medium' && '14px' ||
+    props.fontSize === 'large' && '18px' ||
+    props.fontSize === 'very-large' && '24px' ||
+    '48px'
+};
+  font-family: ${(props) => (props.fontFamily === 'primary' ? fonts.primary : fonts.secondary)};
+  color: ${(props) =>
+    props.color === 'white' && colorVariables.white ||
+    props.color === 'apple' && colorVariables.apple ||
+    colorVariables.santasGray
+};
+  font-style: ${(props) => (props.italic ? 'italic' : 'normal')};
+  font-weight: ${(props) =>
+    props.fontWeight === 'bold' && 'bold' ||
+    props.fontWeight === 'light' && '100' ||
+    'normal'
+};
 `;
 
 interface IProps {
-  theme:
-    'header-tittle' |
-    'header-tittle-alt-color' |
-    'header-sub-text' |
-    'footer-title' |
-    'footer-title-alt-color' |
-    'paragraph-text' |
-    'table-text' |
-    'button-text' |
-    'info-box-number' |
-    'info-box-second' |
-    'info-box-third' |
-    'info-box-fourth' |
-    'pool-graph-label' |
-    'pool-graph-centre-date' |
-    'pool-graph-time-line';
+  fontSize: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
+  fontFamily: 'primary' | 'secondary',
+  color: 'white' | 'apple' | 'santasGray',
+  italic: boolean,
+  fontWeight: 'bold' | 'normal' | 'light'
 }
 
 const Text: FC<IProps> = ({
   children,
-  theme = '',
+  fontSize = '24',
+  fontFamily = 'good-times, sans-serif',
+  color = 'white',
+  italic = false,
+  fontWeight = 'normal',
 }) => (
-  <StyledText theme={theme}>
+  <StyledText
+    fontSize={fontSize}
+    fontFamily={fontFamily}
+    color={color}
+    italic={italic}
+    fontWeight={fontWeight}
+  >
     {children}
   </StyledText>
 );
