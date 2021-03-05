@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import styled, { css } from 'styled-components';
-import { colorVariables, fonts, screen } from 'styles/variables';
+import { colorVariables, fonts } from 'styles/variables';
 import applyTransparence from 'helpers/transparentize.ts';
 import Button from 'components/Button/Button';
 import Text from 'components/Text/Text';
@@ -47,11 +47,11 @@ const LogoStyled = styled.div`
    svg {
       width: 140px;
       height: auto;
-      @media screen and (min-width: ${screen.middleScreen}) {
-        width: 100%;
+      @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptop} {
+        width: 200px;
       }
-      @media screen and (min-width: ${screen.largeScreen}) {
-         width: 100%;
+      @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
+         width: 240px;
       }
    }
    h4 {
@@ -74,7 +74,7 @@ const MainSection = styled.div`
   margin: 40px auto;
   ${LogoStyled};
   ${InfoStyled};
-  @media screen and (min-width: 600px) {
+  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
     flex-flow: row;
     // ${InfoMargin};
   }
