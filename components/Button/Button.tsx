@@ -63,7 +63,7 @@ const Button: FC<IProps> = ({
     return (
       <Link href={href}>
         <StyledButton type="button" theme={theme}>
-          <Text size="small" fontFamily="primary" color="white" italic> {children} </Text>
+          <Text size="small" italic> {children} </Text>
         </StyledButton>
       </Link>
     );
