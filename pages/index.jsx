@@ -6,7 +6,7 @@ import SearchBar from '../components/SearchBar';
 import Stats from '../components/Stats';
 import BaseTable from '../src/components/base-components/base-table';
 import Button from '../components/Button';
-import CommonContentTitle from '../src/components/common/common-content-title';
+import CommonContentTitle from '../components/ContentTitle';
 import BaseMargin from '../src/components/base-components/base-margin';
 
 export default class Home extends PureComponent {

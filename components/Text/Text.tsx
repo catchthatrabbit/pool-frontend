@@ -4,9 +4,9 @@ import { colorVariables, fonts } from 'styles/variables';
 import styled from 'styled-components';
 
 interface IProps {
-  size: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
-  fontFamily: 'primary' | 'secondary',
-  color: 'white' | 'apple' | 'santasGray',
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
+  fontFamily?: 'primary' | 'secondary',
+  color?: 'white' | 'apple' | 'santasGray',
   italic?: boolean,
   fontWeight?: 'bold' | 'normal' | 'light'
 }
