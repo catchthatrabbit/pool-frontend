@@ -37,7 +37,7 @@ interface IProps {
 const Text: FC<IProps> = ({
   children,
   size = 'medium',
-  fontFamily = 'good-times, sans-serif',
+  fontFamily = 'primary',
   color = 'white',
   italic = false,
   fontWeight = 'normal',
