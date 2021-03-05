@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { colorVariables, fonts } from 'styles/variables';
-import applyTransparence from 'helpers/transparentize.ts';
+import applyTransparence from 'helpers/transparentize';
 import Button from 'components/Button/Button';
 import Text from 'components/Text/Text';
 import ContentTitle from 'components/ContentTitle/ContentTitle';
@@ -12,15 +12,10 @@ import { LogoIcon, StartMiningIcon } from '../icons';
 const InfoStyled = styled.div`
   margin-top: 24px;
   font-family: ${fonts.secondary};
-  h4 {
-      margin: 0;
-      font-size: 18px;
-  }
   ul {
     margin-bottom: 0;
     padding: 0;
     list-style-type: none;
-    font-size: 14px;
     li {
        margin-top: 10px;
     }
@@ -38,8 +33,6 @@ const FooterSection = styled.div`
   height: 90px;
   background: ${applyTransparence(0.25, colorVariables.gunPowder)};;
   border: 1px solid ${colorVariables.gunPowder};
-  font-size: 10px;
-  line-height: 15px;
   text-align: center;
 `;
 const LogoStyled = styled.div`
@@ -54,16 +47,12 @@ const LogoStyled = styled.div`
          width: 240px;
       }
    }
-   h4 {
-      margin: 30px 0 0 0;
-      font-size: min(max(1vw, 12px), 18px);
-      span {
-        color: ${colorVariables.apple};
-      }
-   }
 `;
-const InfoMargin = css`
-  margin: 0;
+const LogoTextStyle = styled.div`
+  margin: 30px 0 0 0;
+`;
+const HeaderTextStyle = styled.div`
+  margin: 65px 0;
 `;
 const MainSection = styled.div`
   display: flex;
@@ -76,7 +65,6 @@ const MainSection = styled.div`
   ${InfoStyled};
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
     flex-flow: row;
-    // ${InfoMargin};
   }
 `;
 const HeaderSection = styled.div`
@@ -88,18 +76,10 @@ const HeaderSection = styled.div`
     height: 495px;
     background: ${applyTransparence(0.25, colorVariables.gunPowder)};
     border: 1px solid ${colorVariables.gunPowder};
-    h3 {
-      margin: 65px 0;
-      font-size: min(max(1.25vw, 18px), 24px);
-    }
 `;
 const FooterStyled = styled.footer`
   width: 100%;
-  ${HeaderSection};
-  ${MainSection};
-  ${FooterSection};
 `;
-/* eslint-disable */
 const FooterInfo = ({ title, list }) => (
   <InfoStyled>
     <h4><Text size="medium" fontFamily="secondary">{title}</Text></h4>
@@ -148,18 +128,18 @@ const Footer = () => {
         <ContentTitle Image={<StartMiningIcon />}>
           Start Mining
         </ContentTitle>
-        <h3><Text size="very-large" italic>Let&apos;s jump into it</Text></h3>
+        <HeaderTextStyle><Text size="very-large" italic>Let&apos;s jump into it</Text></HeaderTextStyle>
         <Button>Start mining</Button>
       </HeaderSection>
       <MainSection>
         <LogoStyled>
           <LogoIcon />
-          <h4>
+          <LogoTextStyle>
             <Text italic>Dedicated Pool</Text>
             <br />
             <Text italic>for </Text>
-            <span><Text color="apple" italic>CORE COIN</Text></span>
-          </h4>
+            <Text color="apple" italic>CORE COIN</Text>
+          </LogoTextStyle>
         </LogoStyled>
         {footerData.map(({ title, list }) => (
           <FooterInfo key={title} title={title} list={list} />
