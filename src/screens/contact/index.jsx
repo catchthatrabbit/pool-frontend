@@ -1,5 +1,5 @@
 import { BoxStyled, TextStyled, EmailBoxWrapperStyled } from './style';
-import CommonContentTitle from '../../components/common/common-content-title';
+import CommonContentTitle from '../../../components/ContentTitle';
 import CommonEmailBox from '../../components/common/common-email-box';
 import CommonTitle from '../../components/common/common-title';
 import BaseMargin from '../../components/base-components/base-margin';
