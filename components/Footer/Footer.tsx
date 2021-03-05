@@ -6,7 +6,7 @@ import { colorVariables, fonts, screen } from 'styles/variables';
 import applyTransparence from 'helpers/transparentize.ts';
 import Button from 'components/Button/Button';
 import Text from 'components/Text/Text';
-import { WrapperStyled, TitleStyled } from '../../src/components/common/common-content-title/style';
+import ContentTitle from 'components/ContentTitle/ContentTitle';
 import { LogoIcon, StartMiningIcon } from '../icons';
 
 const InfoStyled = styled.div`
@@ -99,11 +99,6 @@ const FooterStyled = styled.footer`
   ${MainSection};
   ${FooterSection};
 `;
-const ImageStyled = styled.div`
-  @media screen and (min-width: 1320px) {
-    margin-right: 1rem;
-  }
-`;
 /* eslint-disable */
 const FooterInfo = ({ title, list }) => (
   <InfoStyled>
@@ -150,10 +145,9 @@ const Footer = () => {
   return (
     <FooterStyled>
       <HeaderSection>
-        <WrapperStyled>
-          <ImageStyled><StartMiningIcon /></ImageStyled>
-          <TitleStyled><Text size="very-large" italic>Start Mining</Text></TitleStyled>
-        </WrapperStyled>
+        <ContentTitle Image={<StartMiningIcon />}>
+          Start Mining
+        </ContentTitle>
         <h3><Text size="very-large" italic>Let&apos;s jump into it</Text></h3>
         <Button>Start mining</Button>
       </HeaderSection>
