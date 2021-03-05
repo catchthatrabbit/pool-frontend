@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import React, { FC } from 'react';
 import { colorVariables, fonts } from 'styles/variables';
-import { transparentize } from 'polished';
-
 import styled, { css } from 'styled-components';
+// @ts-ignore
+import Text from '../Text/Text.tsx';
+import applyTransparence from '../../helpers/transparentize';
 
 const StyledButton = styled.button`
   box-sizing: border-box;
@@ -14,25 +15,22 @@ const StyledButton = styled.button`
   border-radius: 10px;
   color: ${colorVariables.white};
   padding: 20px;
-  font-family: ${fonts.primary};
-  font-style: italic;
-  font-size: 12px;
   min-width: 215px;
   text-align: center;
   white-space: nowrap;
-  border: 1px solid ${transparentize(0.5, colorVariables.gunPowder)};
+  border: 1px solid ${applyTransparence(0.5, colorVariables.gunPowder)};
   &:focus {
     outline: none;
   }
   &:hover {
-    border: 1px solid ${transparentize(1, colorVariables.gunPowder)};
+    border: 1px solid ${applyTransparence(1, colorVariables.gunPowder)};
   }
   ${(props: { theme: string; }) =>
     props.theme === 'outline' &&
     css`
-      background-color: ${transparentize(0.1, colorVariables.gunPowder)};
+      background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
       &:hover {
-        background-color: ${transparentize(0.5, colorVariables.gunPowder)};
+        background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
       }
     `
   }
@@ -65,14 +63,14 @@ const Button: FC<IProps> = ({
     return (
       <Link href={href}>
         <StyledButton type="button" theme={theme}>
-          {children}
+          <Text size="small" fontFamily="primary" color="white" italic> {children} </Text>
         </StyledButton>
       </Link>
     );
   }
   return (
     <StyledButton theme={theme} type="button" onClick={onClick}>
-      {children}
+      <Text size="small" fontFamily="primary" color="white" italic>{children}</Text>
     </StyledButton>
   );
 };
