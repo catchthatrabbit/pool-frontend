@@ -4,6 +4,7 @@ import { colorVariables, fonts } from 'styles/variables';
 import styled, { css } from 'styled-components';
 import Text from 'components/Text/Text';
 import applyTransparence from 'helpers/transparentize';
+import { red } from 'colorette';
 
 const StyledButton = styled.button`
   box-sizing: border-box;
@@ -58,20 +59,19 @@ const Button: FC<IProps> = ({
   href,
   theme = 'outline',
 }) => {
-  if (href) {
-    return (
-      <Link href={href}>
-        <StyledButton type="button" theme={theme}>
-          <Text size="small" italic> {children} </Text>
-        </StyledButton>
-      </Link>
-    );
-  }
-  return (
-    <StyledButton theme={theme} type="button" onClick={onClick}>
+  const renderedButton = (
+    <StyledButton type="button" theme={theme}>
       <Text size="small" italic> {children} </Text>
     </StyledButton>
   );
+  if (href) {
+    return (
+      <Link href={href}>
+        {renderedButton}
+      </Link>
+    );
+  }
+  return renderedButton;
 };
 
 export default Button;
