@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as d3 from 'd3';
 import React, { FC, useEffect } from 'react';
 import { colorVariables, fonts } from 'styles/variables';
