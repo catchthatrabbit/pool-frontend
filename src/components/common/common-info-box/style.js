@@ -8,7 +8,7 @@ const WrapperStyled = styled.div`
   justify-content: space-between;
   height: min(max(4.4vw, 70px), 85px);
   width: min(max(13.1vw, 200px), 250px);
-  border: 1px solid ${({ theme }) => theme.colors.spindle};
+  border: 1px solid #bccbf0;
   border-radius: 10px;
   padding: 15px 0;
 `;
