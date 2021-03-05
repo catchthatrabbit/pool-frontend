@@ -4,9 +4,9 @@ import { colorVariables, fonts } from 'styles/variables';
 import styled from 'styled-components';
 
 interface IProps {
-  size: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
-  fontFamily: 'primary' | 'secondary',
-  color: 'white' | 'apple' | 'santasGray',
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
+  fontFamily?: 'primary' | 'secondary',
+  color?: 'white' | 'apple' | 'santasGray',
   italic?: boolean,
   fontWeight?: 'bold' | 'normal' | 'light'
 }
@@ -18,7 +18,8 @@ const StyledText = styled.text < IProps > `
     props.size === 'medium' && '14px' ||
     props.size === 'large' && '18px' ||
     props.size === 'very-large' && '24px' ||
-    props.size === 'ultra-large' && '42px'
+    props.size === 'ultra-large' && '42px' ||
+    '18px'
 };
   font-family: ${(props: IProps) => (props.fontFamily === 'primary' ? fonts.primary : fonts.secondary)};
   color: ${(props: IProps) =>
