@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import styled, { css } from 'styled-components';
 import { colorVariables, fonts } from 'styles/variables';
-import applyTransparence from 'helpers/transparentize.ts';
+import applyTransparence from 'helpers/transparentize';
 import Button from 'components/Button/Button';
 import Text from 'components/Text/Text';
 import ContentTitle from 'components/ContentTitle/ContentTitle';
