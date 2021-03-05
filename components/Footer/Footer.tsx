@@ -107,12 +107,12 @@ const ImageStyled = styled.div`
 /* eslint-disable */
 const FooterInfo = ({ title, list }) => (
   <InfoStyled>
-    <h4><Text size="medium" fontFamily="secondary" color="white">{title}</Text></h4>
+    <h4><Text size="medium" fontFamily="secondary">{title}</Text></h4>
     <ul>
       {list.map((item) => (
         <li key={item.text}>
           <Link href={item.href}>
-            <a><Text size="medium" fontFamily="secondary" color="white">{item.text}</Text></a>
+            <a><Text size="medium" fontFamily="secondary">{item.text}</Text></a>
           </Link>
         </li>
       ))}
@@ -152,19 +152,19 @@ const Footer = () => {
       <HeaderSection>
         <WrapperStyled>
           <ImageStyled><StartMiningIcon /></ImageStyled>
-          <TitleStyled><Text size="very-large" fontFamily="primary" color="white" italic>Start Mining</Text></TitleStyled>
+          <TitleStyled><Text size="very-large" italic>Start Mining</Text></TitleStyled>
         </WrapperStyled>
-        <h3><Text size="very-large" fontFamily="primary" color="white" italic>Let&apos;s jump into it</Text></h3>
+        <h3><Text size="very-large" italic>Let&apos;s jump into it</Text></h3>
         <Button>Start mining</Button>
       </HeaderSection>
       <MainSection>
         <LogoStyled>
           <LogoIcon />
           <h4>
-            <Text size="large" fontFamily="primary" color="white" italic>Dedicated Pool</Text>
+            <Text italic>Dedicated Pool</Text>
             <br />
-            <Text size="large" fontFamily="primary" color="white" italic>for </Text>
-            <span><Text size="large" fontFamily="primary" color="apple" italic>CORE COIN</Text></span>
+            <Text italic>for </Text>
+            <span><Text color="apple" italic>CORE COIN</Text></span>
           </h4>
         </LogoStyled>
         {footerData.map(({ title, list }) => (
@@ -172,7 +172,7 @@ const Footer = () => {
         ))}
       </MainSection>
       <FooterSection>
-        <Text size="tiny" fontFamily="primary" color="white">© 2020 Catch That Rabbit. All rights reserved.</Text>
+        <Text size="tiny">© 2020 Catch That Rabbit. All rights reserved.</Text>
       </FooterSection>
     </FooterStyled>
   );
