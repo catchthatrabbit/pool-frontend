@@ -1,28 +1,30 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { colorVariables } from 'styles/variables';
+import { transparentize } from 'polished';
 
 const Circle = styled.div`
   height: 18px;
   width: 18px;
-  background: var(--white);
+  background: ${colorVariables.white};
   border-radius: 50%;
-  @media screen and (min-width: var(--large-screen)) {
+  @media screen and (min-width: 1320px) {
     height: 24px;
     width: 24px;
   }
 `;
 const pulse = keyframes`
   0% {
-    border-color: rgba(var(--white-rgb), 0.6);
+    border-color: ${transparentize(0.6, colorVariables.white)}
   }
   33% {
-    border-color: rgba(var(--white-rgb), 1);
+    border-color: ${transparentize(1, colorVariables.white)}
   }
   66% {
-    border-color: rgba(var(--white-rgb), 0.4);
+    border-color: ${transparentize(0.4, colorVariables.white)}
   }
   100% {
-    border-color: rgba(var(--white-rgb), 0.2);
+    border-color: ${transparentize(0.2, colorVariables.white)}
   }
 `;
 const Border = styled.div`
