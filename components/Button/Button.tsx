@@ -4,7 +4,7 @@ import { colorVariables, fonts } from 'styles/variables';
 import styled, { css } from 'styled-components';
 // @ts-ignore
 import Text from 'components/Text/Text.tsx';
-import applyTransparence from '../../helpers/transparentize';
+import applyTransparence from 'helpers/transparentize';
 
 const StyledButton = styled.button`
   box-sizing: border-box;
