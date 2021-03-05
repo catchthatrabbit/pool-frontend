@@ -2,13 +2,16 @@ import React from 'react';
 import Link from 'next/link';
 
 import styled, { css } from 'styled-components';
-import Button from '../Button';
-import CommonContentTitle from '../../src/components/common/common-content-title';
-import { LogoIcon } from '../icons';
+import { colorVariables, fonts, screen } from 'styles/variables';
+import applyTransparence from 'helpers/transparentize.ts';
+import Button from 'components/Button/Button';
+import Text from 'components/Text/Text';
+import { WrapperStyled, TitleStyled } from '../../src/components/common/common-content-title/style';
+import { LogoIcon, StartMiningIcon } from '../icons';
 
 const InfoStyled = styled.div`
   margin-top: 24px;
-  font-family: var(--secondary-font-family);
+  font-family: ${fonts.secondary};
   h4 {
       margin: 0;
       font-size: 18px;
@@ -22,6 +25,9 @@ const InfoStyled = styled.div`
        margin-top: 10px;
     }
  }
+ a {
+    text-decoration: none;
+ }
 `;
 const FooterSection = styled.div`
   box-sizing: border-box;
@@ -30,8 +36,8 @@ const FooterSection = styled.div`
   align-items: center;
   width: 100%;
   height: 90px;
-  background: rgba(var(--gun-powder-rgb), 0.25);
-  border: 1px solid var(--gun-powder);
+  background: ${applyTransparence(0.25, colorVariables.gunPowder)};;
+  border: 1px solid ${colorVariables.gunPowder};
   font-size: 10px;
   line-height: 15px;
   text-align: center;
@@ -41,18 +47,18 @@ const LogoStyled = styled.div`
    svg {
       width: 140px;
       height: auto;
-      @media screen and (min-width: $middle-screen) {
-        width: 200px;
+      @media screen and (min-width: ${screen.middleScreen}) {
+        width: 100%;
       }
-      @media screen and (min-width: $large-screen) {
-         width: 240px;
+      @media screen and (min-width: ${screen.largeScreen}) {
+         width: 100%;
       }
    }
    h4 {
       margin: 30px 0 0 0;
       font-size: min(max(1vw, 12px), 18px);
       span {
-        color: var(--apple);
+        color: ${colorVariables.apple};
       }
    }
 `;
@@ -70,7 +76,7 @@ const MainSection = styled.div`
   ${InfoStyled};
   @media screen and (min-width: 600px) {
     flex-flow: row;
-    ${InfoMargin};
+    // ${InfoMargin};
   }
 `;
 const HeaderSection = styled.div`
@@ -80,8 +86,8 @@ const HeaderSection = styled.div`
     justify-content: center;
     align-items: center;
     height: 495px;
-    background: rgba(var(--gun-powder-rgb), 0.25);
-    border: 1px solid var(--gun-powder);
+    background: ${applyTransparence(0.25, colorVariables.gunPowder)};
+    border: 1px solid ${colorVariables.gunPowder};
     h3 {
       margin: 65px 0;
       font-size: min(max(1.25vw, 18px), 24px);
@@ -93,15 +99,20 @@ const FooterStyled = styled.footer`
   ${MainSection};
   ${FooterSection};
 `;
+const ImageStyled = styled.div`
+  @media screen and (min-width: 1320px) {
+    margin-right: 1rem;
+  }
+`;
 /* eslint-disable */
 const FooterInfo = ({ title, list }) => (
   <InfoStyled>
-    <h4>{title}</h4>
+    <h4><Text size="medium" fontFamily="secondary">{title}</Text></h4>
     <ul>
       {list.map((item) => (
         <li key={item.text}>
           <Link href={item.href}>
-            <a>{item.text}</a>
+            <a><Text size="medium" fontFamily="secondary">{item.text}</Text></a>
           </Link>
         </li>
       ))}
@@ -139,19 +150,21 @@ const Footer = () => {
   return (
     <FooterStyled>
       <HeaderSection>
-        <CommonContentTitle image="/images/start-mining.svg">
-          Start Mining
-        </CommonContentTitle>
-        <h3>Let&apos;s jump into it</h3>
+        <WrapperStyled>
+          <ImageStyled><StartMiningIcon /></ImageStyled>
+          <TitleStyled><Text size="very-large" italic>Start Mining</Text></TitleStyled>
+        </WrapperStyled>
+        <h3><Text size="very-large" italic>Let&apos;s jump into it</Text></h3>
         <Button>Start mining</Button>
       </HeaderSection>
       <MainSection>
         <LogoStyled>
           <LogoIcon />
           <h4>
-            Dedicated Pool
+            <Text italic>Dedicated Pool</Text>
             <br />
-            for <span>CORE COIN</span>
+            <Text italic>for </Text>
+            <span><Text color="apple" italic>CORE COIN</Text></span>
           </h4>
         </LogoStyled>
         {footerData.map(({ title, list }) => (
@@ -159,7 +172,7 @@ const Footer = () => {
         ))}
       </MainSection>
       <FooterSection>
-        © 2020 Catch That Rabbit. All rights reserved.
+        <Text size="tiny">© 2020 Catch That Rabbit. All rights reserved.</Text>
       </FooterSection>
     </FooterStyled>
   );

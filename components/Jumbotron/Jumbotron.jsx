@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 
-import CommonInfoBox from '../../src/components/common/common-info-box';
+import CommonInfoBox from '../InfoBox';
 import MapButton from '../MapButton';
 import Button from '../Button';
 import Map from '../icons/icons/Map';

@@ -5,7 +5,7 @@ import {
   MinerCardsWrapperStyled,
   LinksWrapperStyled,
 } from './style';
-import CommonContentTitle from '../../components/common/common-content-title';
+import CommonContentTitle from '../../../components/ContentTitle';
 import CommonBox from '../../components/common/common-box';
 import CommonInfoTable from '../../components/common/common-info-table';
 import CommonTitle from '../../components/common/common-title';

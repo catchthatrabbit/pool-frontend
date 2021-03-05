@@ -20,3 +20,7 @@ export const colorVariables = {
   white: "#ffffff",
   woodsmoke: "#181a1f",
 }
+export const screen = {
+  middleScreen: "980px",
+  largeScreen: "1320px",
+}
