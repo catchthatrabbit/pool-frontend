@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { colorVariables } from 'styles/variables';
-import { transparentize } from 'polished';
+import applyTransparence from '../../helpers/transparentize';
 
 const Circle = styled.div`
   height: 18px;
@@ -15,16 +15,16 @@ const Circle = styled.div`
 `;
 const pulse = keyframes`
   0% {
-    border-color: ${transparentize(0.6, colorVariables.white)}
+    border-color: ${applyTransparence(0.6, colorVariables.white)}
   }
   33% {
-    border-color: ${transparentize(1, colorVariables.white)}
+    border-color: ${applyTransparence(1, colorVariables.white)}
   }
   66% {
-    border-color: ${transparentize(0.4, colorVariables.white)}
+    border-color: ${applyTransparence(0.4, colorVariables.white)}
   }
   100% {
-    border-color: ${transparentize(0.2, colorVariables.white)}
+    border-color: ${applyTransparence(0.2, colorVariables.white)}
   }
 `;
 const Border = styled.div`
