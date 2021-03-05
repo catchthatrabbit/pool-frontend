@@ -3,7 +3,7 @@ import { colorVariables, fonts } from 'styles/variables';
 
 import styled from 'styled-components';
 
-const StyledText = styled.text`
+const StyledText = styled.text<IProps>`
   font-size: ${(props) =>
     props.fontSize === 'tiny' && '10px' ||
     props.fontSize === 'small' && '12px' ||
