@@ -20,9 +20,6 @@ const InfoStyled = styled.div`
        margin-top: 10px;
     }
  }
- a {
-    text-decoration: none;
- }
 `;
 const FooterSection = styled.div`
   box-sizing: border-box;
@@ -87,7 +84,7 @@ const FooterInfo = ({ title, list }) => (
       {list.map((item) => (
         <li key={item.text}>
           <Link href={item.href}>
-            <a><Text size="medium" fontFamily="secondary">{item.text}</Text></a>
+            <Text size="medium" fontFamily="secondary">{item.text}</Text>
           </Link>
         </li>
       ))}
