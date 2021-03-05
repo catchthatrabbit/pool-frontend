@@ -2,8 +2,7 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import { colorVariables, fonts } from 'styles/variables';
 import styled, { css } from 'styled-components';
-// @ts-ignore
-import Text from 'components/Text/Text.tsx';
+import Text from 'components/Text/Text';
 import applyTransparence from 'helpers/transparentize';
 
 const StyledButton = styled.button`
@@ -70,7 +69,7 @@ const Button: FC<IProps> = ({
   }
   return (
     <StyledButton theme={theme} type="button" onClick={onClick}>
-          <Text size="small" italic> {children} </Text>
+      <Text size="small" italic> {children} </Text>
     </StyledButton>
   );
 };
