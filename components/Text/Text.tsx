@@ -17,7 +17,7 @@ const StyledText = styled.text < IProps > `
     props.size === 'small' && '12px' ||
     props.size === 'medium' && '14px' ||
     props.size === 'very-large' && '24px' ||
-    props.size === 'ultra-large' && '48px' ||
+    props.size === 'ultra-large' && '42px' ||
     '18px'
 };
   font-family: ${(props: IProps) => (props.fontFamily === 'primary' ? fonts.primary : fonts.secondary)};
