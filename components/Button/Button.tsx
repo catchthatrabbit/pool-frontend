@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { colorVariables, fonts } from 'styles/variables';
+import { colorVariables } from 'styles/variables';
 import styled, { css } from 'styled-components';
 import Text from 'components/Text/Text';
 import applyTransparence from 'helpers/transparentize';
-import { red } from 'colorette';
 
 const StyledButton = styled.button`
   box-sizing: border-box;
@@ -49,8 +48,8 @@ const StyledButton = styled.button`
 
 interface IProps {
   onClick?: () => void;
-  href: string;
-  theme: 'outline' | 'transparent';
+  href?: string;
+  theme?: 'outline' | 'transparent';
 }
 
 const Button: FC<IProps> = ({
@@ -60,7 +59,7 @@ const Button: FC<IProps> = ({
   theme = 'outline',
 }) => {
   const renderedButton = (
-    <StyledButton type="button" theme={theme}>
+    <StyledButton type="button" theme={theme} onClick={onClick}>
       <Text size="small" italic> {children} </Text>
     </StyledButton>
   );
