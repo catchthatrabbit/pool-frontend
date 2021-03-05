@@ -5,7 +5,7 @@ export default {
   title: 'Text',
   component: Text,
   argTypes: {
-    fontSize: {
+    size: {
       control: {
         type: 'select',
         options: [
@@ -66,7 +66,7 @@ export const TextStory = (args) => (
 
 TextStory.args = {
   value: 'Lorem ipsum dolor sit amet',
-  fontSize: 'large',
+  size: 'large',
   fontFamily: 'primary',
   color: 'white',
   italic: false,

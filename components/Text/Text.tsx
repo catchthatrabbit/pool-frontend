@@ -27,23 +27,23 @@ const StyledText = styled.text`
 `;
 
 interface IProps {
-  fontSize: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
+  size: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
   fontFamily: 'primary' | 'secondary',
   color: 'white' | 'apple' | 'santasGray',
-  italic: boolean,
-  fontWeight: 'bold' | 'normal' | 'light'
+  italic?: boolean,
+  fontWeight?: 'bold' | 'normal' | 'light'
 }
 
 const Text: FC<IProps> = ({
   children,
-  fontSize = '24',
+  size = 'medium',
   fontFamily = 'good-times, sans-serif',
   color = 'white',
   italic = false,
   fontWeight = 'normal',
 }) => (
   <StyledText
-    fontSize={fontSize}
+    fontSize={size}
     fontFamily={fontFamily}
     color={color}
     italic={italic}
