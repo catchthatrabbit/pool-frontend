@@ -1,38 +1,39 @@
+// @ts-nocheck
 import * as d3 from 'd3';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
+import { colorVariables, fonts } from 'styles/variables';
 
 import styled from 'styled-components';
 
-const Hour = styled.div`
-  fill: var(green-yellow);
-`;
-const AxisCircle = styled.div`
-  fill: none;
-  stroke: var(--gun-powder);
-`;
+const axisCircleClass = 'radial-bar-axis-circle';
+const hourClass = 'radial-bar-hour';
+
 const Tip = styled.div`
   display: none;
   position: absolute;
-  color: var(--white);
-  font-family: var(--secondary-font-family);
+  color: ${colorVariables.white};
+  font-family: ${fonts.secondary};
   font-size: 12px;
-  background-color: var(--gun-powder);
+  background-color: ${colorVariables.gunPowder};
   border-radius: 5px;
   padding: 10px;
 `;
 const Chart = styled.div`
   position: relative;
   width: 100%;
-  ${Tip};
   svg {
-    font-family: var(--primary-font-family);
+    font-family: ${fonts.primary};
     font-size: 18px;
     text {
-      fill: var(--white);
+      fill: ${colorVariables.white};
     }
-    g:last-child ${Hour};
-    ${AxisCircle};
-   
+    g:last-child .${hourClass} {
+      fill: ${colorVariables.greenYellow};
+    };
+    .${axisCircleClass} {
+      fill: none;
+      stroke: ${colorVariables.gunPowder};
+    }   
   }
 `;
 
@@ -41,29 +42,25 @@ interface IProps {
     time: string,
     value: number
   }[],
-  className: string
 }
-const RadialBarChart: FC<IProps> = ({ data = null, className = '',
+
+const RadialBarChart: FC<IProps> = ({
+  data = null,
 }) => {
-  const width = 900;
-  const height = width;
+  const size = 900;
   const innerRadius = 250;
-  const outerRadius = width * 0.6;
+  const outerRadius = size * 0.6;
 
-  function componentDidMount() {
-    updateChart();
-  }
-
-  function componentDidUpdate() {
-    updateChart();
-  }
+  useEffect(() => {
+    updateChart()
+  }, [data])
 
   const updateChart = () => {
     if (!data) {
       return;
     }
 
-    d3.selectAll(`.${Chart} svg g`).remove();
+    d3.selectAll(`${Chart} svg g`).remove();
 
     const x = d3
       .scaleBand()
@@ -82,7 +79,7 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
       .arc()
       .innerRadius(innerRadius)
       .outerRadius((d) => y(d.value))
-      .startAngle((d) => x(d.time))
+      .startAngle((d) => x(d.time) || 0)
       .endAngle((d) => x(d.time) + x.bandwidth())
       .padAngle(0.1)
       .padRadius(innerRadius);
@@ -99,12 +96,12 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
             (d) => `
               rotate(${((x(d.time) + x.bandwidth() / 2) * 180) / Math.PI - 90})
               translate(${innerRadius - 30},0)
-            `
+            `,
           )
           .call((g) =>
             g
               .append('text')
-              .attr('class', Hour)
+              .attr('class', hourClass)
               .attr(
                 'transform',
                 (d) =>
@@ -112,8 +109,8 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
                     90 - ((x(d.time) + x.bandwidth() / 2) * 180) / Math.PI
                   }) translate(0, 6)`,
               )
-              .text((d) => `${d.time.split(' ')[1].slice(0, 2)}H`)
-          )
+              .text((d) => `${d.time.split(' ')[1].slice(0, 2)}H`),
+          ),
       );
 
     const yAxis = (g) =>
@@ -123,9 +120,9 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
           g
             .append('text')
             .attr('x', 0)
-            .attr('y', -y(y.ticks().pop()))
+            .attr('y', -y(y.ticks().pop() || 0))
             .attr('dy', '-2em')
-            .text('POOL HASH RATE')
+            .text('POOL HASH RATE'),
         )
         .call((g) =>
           g
@@ -133,24 +130,24 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
             .data(y.ticks(5))
             .join('g')
             .call((g) =>
-              g.append('circle').attr('class', AxisCircle).attr('r', y)
-            )
+              g.append('circle').attr('class', axisCircleClass ).attr('r', y),
+            ),
         );
 
-    const tooltip = d3.select(`.${Tip}`);
+    const tooltip = d3.select(Tip.toString());
 
     const onMouseover = (event, datum) => {
       tooltip
         .style('display', 'block')
         .html(
-          `Time: ${datum.time}<br/>Hash rate: ${d3.format('0.4s')(datum.value)}`
+          `Time: ${datum.time}<br/>Hash rate: ${d3.format('0.4s')(datum.value)}`,
         )
         .style('opacity', '0.8');
     };
 
     const onMousemove = (event, datum) => {
       const { pageX, pageY } = event;
-      const rect = document.querySelector(`.${Chart}`).getBoundingClientRect();
+      const rect = document.querySelector(Chart.toString()).getBoundingClientRect();
       const tipRect = tooltip.node().getBoundingClientRect();
       const tipX = pageX - window.scrollX - rect.x;
       const tipY = pageY - window.scrollY - rect.y - tipRect.height - 20;
@@ -158,7 +155,7 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
       tooltip
         .style(
           'left',
-          `${x(datum.time) < Math.PI ? tipX - tipRect.width : tipX}px`
+          `${x(datum.time) < Math.PI ? tipX - tipRect.width : tipX}px`,
         )
         .style('top', `${tipY}px`);
     };
@@ -168,11 +165,11 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
     };
 
     const svg = d3
-      .select(`.${Chart} svg`)
+      .select(`${Chart} svg`)
       .attr(
         'viewBox',
-        `${-width / 2 - 150} ${-height / 2 - 150} 
-        ${width + 300} ${height + 300}`,
+        `${-size / 2 - 150} ${-size / 2 - 150} 
+        ${size + 300} ${size + 300}`,
       )
       .style('width', '100%')
       .style('height', 'auto');
@@ -207,13 +204,14 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
             .attr('x', 0)
             .attr('y', (d) => -y(d))
             .attr('dy', '0.35em')
-            .text(y.tickFormat(10, 's'))
-        )
+            .text(y.tickFormat(10, 's')),
+        ),
     );
     /* eslint-enable */
   };
+
   return data ? (
-    <Chart className={className}>
+    <Chart>
       <svg>
         <defs>
           <radialGradient
@@ -223,13 +221,13 @@ const RadialBarChart: FC<IProps> = ({ data = null, className = '',
             cy="0"
             fr="180"
           >
-            <stop offset="0%" style={{ stopColor: '#365e67' }} />
-            <stop offset="30%" style={{ stopColor: '#396a72' }} />
-            <stop offset="60%" style={{ stopColor: '#67a542' }} />
+            <stop offset="0%" style={{ stopColor: '#365e67' }}/>
+            <stop offset="30%" style={{ stopColor: '#396a72' }}/>
+            <stop offset="60%" style={{ stopColor: '#67a542' }}/>
           </radialGradient>
         </defs>
       </svg>
-      <Tip />
+      <Tip/>
     </Chart>
   ) : null;
 };

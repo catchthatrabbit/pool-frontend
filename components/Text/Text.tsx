@@ -3,29 +3,6 @@ import { colorVariables, fonts } from 'styles/variables';
 
 import styled from 'styled-components';
 
-const StyledText = styled.text`
-  font-size: ${(props) =>
-    props.fontSize === 'tiny' && '10px' ||
-    props.fontSize === 'small' && '12px' ||
-    props.fontSize === 'medium' && '14px' ||
-    props.fontSize === 'large' && '18px' ||
-    props.fontSize === 'very-large' && '24px' ||
-    '48px'
-};
-  font-family: ${(props) => (props.fontFamily === 'primary' ? fonts.primary : fonts.secondary)};
-  color: ${(props) =>
-    props.color === 'white' && colorVariables.white ||
-    props.color === 'apple' && colorVariables.apple ||
-    colorVariables.santasGray
-};
-  font-style: ${(props) => (props.italic ? 'italic' : 'normal')};
-  font-weight: ${(props) =>
-    props.fontWeight === 'bold' && 'bold' ||
-    props.fontWeight === 'light' && '100' ||
-    'normal'
-};
-`;
-
 interface IProps {
   size: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
   fontFamily: 'primary' | 'secondary',
@@ -34,16 +11,39 @@ interface IProps {
   fontWeight?: 'bold' | 'normal' | 'light'
 }
 
+const StyledText = styled.text < IProps > `
+  font-size: ${(props: IProps) =>
+    props.size === 'tiny' && '10px' ||
+    props.size === 'small' && '12px' ||
+    props.size === 'medium' && '14px' ||
+    props.size === 'large' && '18px' ||
+    props.size === 'very-large' && '24px' ||
+    props.size === 'ultra-large' && '42px'
+};
+  font-family: ${(props: IProps) => (props.fontFamily === 'primary' ? fonts.primary : fonts.secondary)};
+  color: ${(props: IProps) =>
+    props.color === 'white' && colorVariables.white ||
+    props.color === 'apple' && colorVariables.apple ||
+    colorVariables.santasGray
+};
+  font-style: ${(props: IProps) => (props.italic ? 'italic' : 'normal')};
+  font-weight: ${(props: IProps) =>
+    props.fontWeight === 'bold' && 'bold' ||
+    props.fontWeight === 'light' && '100' ||
+    'normal'
+};
+`;
+
 const Text: FC<IProps> = ({
   children,
-  size = 'medium',
-  fontFamily = 'good-times, sans-serif',
+  size = 'large',
+  fontFamily = 'primary',
   color = 'white',
   italic = false,
   fontWeight = 'normal',
 }) => (
   <StyledText
-    fontSize={size}
+    size={size}
     fontFamily={fontFamily}
     color={color}
     italic={italic}
