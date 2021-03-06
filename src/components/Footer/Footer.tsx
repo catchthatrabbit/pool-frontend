@@ -2,12 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 
 import styled from 'styled-components';
-import { colorVariables, fonts } from 'src/styles/variables';
-import applyTransparence from 'src/helpers/transparentize';
-import Button from 'src/atoms/Button/Button';
-import Text from 'src/atoms/Text/Text';
-import ContentTitle from 'src/atoms/ContentTitle/ContentTitle';
-import { LogoIcon, StartMiningIcon } from '../../atoms/icons';
+import { colorVariables, fonts } from 'styles/variables';
+import applyTransparence from 'helpers/transparentize';
+import Button from 'atoms/Button/Button';
+import Text from 'atoms/Text/Text';
+import ContentTitle from 'atoms/ContentTitle/ContentTitle';
+import { LogoIcon, StartMiningIcon } from 'atoms/icons';
 
 const InfoStyled = styled.div`
   margin-top: 24px;

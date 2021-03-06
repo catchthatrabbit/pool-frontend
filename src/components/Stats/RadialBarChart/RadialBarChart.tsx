@@ -1,10 +1,10 @@
 // @ts-nocheck
 import * as d3 from 'd3';
 import React, { FC, useEffect } from 'react';
-import { colorVariables, fonts } from 'src/styles/variables';
+import { colorVariables, fonts } from 'styles/variables';
 
 import styled from 'styled-components';
-import { ChartData } from '../../../types/app';
+import { ChartData } from 'types/app';
 
 const axisCircleClass = 'radial-bar-axis-circle';
 const hourClass = 'radial-bar-hour';

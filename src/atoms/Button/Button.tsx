@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { colorVariables } from 'src/styles/variables';
+import { colorVariables } from 'styles/variables';
 import styled, { css } from 'styled-components';
-import Text from 'src/atoms/Text/Text';
-import applyTransparence from 'src/helpers/transparentize';
+import Text from 'atoms/Text/Text';
+import applyTransparence from 'helpers/transparentize';
 
 const StyledButton = styled.button`
   box-sizing: border-box;

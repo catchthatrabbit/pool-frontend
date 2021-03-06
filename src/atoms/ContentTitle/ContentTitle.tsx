@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, { FC, ReactNode } from 'react';
-import Text from 'src/atoms/Text/Text';
+import Text from 'atoms/Text/Text';
 
 const WrapperStyled = styled.div`
   display: flex;

@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { StatisticsIcon } from 'src/atoms/icons'
+import { StatisticsIcon } from 'atoms/icons'
 import RadialBarChart from './RadialBarChart/index';
-import { ChartData } from 'src/types/app';
-import ContentTitle from 'src/atoms/ContentTitle/ContentTitle';
-import InfoBox from 'src/atoms/InfoBox/InfoBox';
+import { ChartData } from 'types/app';
+import ContentTitle from 'atoms/ContentTitle/ContentTitle';
+import InfoBox from 'atoms/InfoBox/InfoBox';
 
 const Chart = styled.button`
   width: 100%;

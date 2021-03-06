@@ -9,9 +9,8 @@ import CommonContentTitle from '../../../components/ContentTitle';
 import CommonBox from '../../components/common/common-box';
 import CommonInfoTable from '../../components/common/common-info-table';
 import CommonTitle from '../../components/common/common-title';
-import BaseMinerCard from '../../components/base-components/base-miner-card';
+import BaseMinerCard from '../../components/MinerCard';
 import SearchBar from '../../atoms/SearchBar';
-import BaseMargin from '../../components/base-components/base-margin';
 
 const minerData = {
   title: 'Sentinel',
@@ -53,38 +52,31 @@ const ContactPageUi = () => {
         START MINING
       </CommonContentTitle>
 
-      <BaseMargin y="1rem" id="europe">
         <CommonBox>
           <CommonTitle color="green">Connect Europe Pool</CommonTitle>
           <TableInfoStyled>
             <CommonInfoTable />
           </TableInfoStyled>
         </CommonBox>
-      </BaseMargin>
 
-      <BaseMargin y="1rem" id="united_states">
         <CommonBox>
           <CommonTitle color="green">Connect United States Pool</CommonTitle>
           <TableInfoStyled>
             <CommonInfoTable />
           </TableInfoStyled>
         </CommonBox>
-      </BaseMargin>
 
-      <BaseMargin y="1rem" id="asia">
         <CommonBox>
           <CommonTitle color="green">Connect Asia Pool</CommonTitle>
           <TableInfoStyled>
             <CommonInfoTable />
           </TableInfoStyled>
         </CommonBox>
-      </BaseMargin>
 
       <CommonContentTitle image="/images/minings.svg">
         START GUIDE
       </CommonContentTitle>
 
-      <BaseMargin y="1rem">
         <CommonBox>
           <CommonTitle size="medium">Step 1: Get a Wallet</CommonTitle>
           <TextStyled>
@@ -123,16 +115,13 @@ const ContactPageUi = () => {
           </TextStyled>
           <SearchBar />
         </CommonBox>
-      </BaseMargin>
 
-      <BaseMargin top="0.5rem" bottom="2rem">
         <CommonBox>
           <CommonTitle>Pool details</CommonTitle>
           <TableInfoStyled>
             <CommonInfoTable data={poolDetails} />
           </TableInfoStyled>
         </CommonBox>
-      </BaseMargin>
     </>
   );
 };

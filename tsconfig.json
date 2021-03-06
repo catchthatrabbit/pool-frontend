@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "noImplicitAny": false,
     "jsx": "preserve",
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
       "@components/*": ["./components/*"]
     }

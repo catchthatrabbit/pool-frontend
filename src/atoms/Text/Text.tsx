@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { colorVariables, fonts } from 'src/styles/variables';
+import { colorVariables, fonts } from 'styles/variables';
 
 import styled from 'styled-components';
 

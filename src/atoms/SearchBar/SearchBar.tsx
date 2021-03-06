@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { colorVariables, fonts } from 'src/styles/variables';
-import applyTransparence from 'src/helpers/transparentize';
+import { colorVariables, fonts } from 'styles/variables';
+import applyTransparence from 'helpers/transparentize';
 import { SearchIcon } from '../icons';
 
 const SearchBarStyle = styled.div`
