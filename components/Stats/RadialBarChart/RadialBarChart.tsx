@@ -4,6 +4,7 @@ import React, { FC, useEffect } from 'react';
 import { colorVariables, fonts } from 'styles/variables';
 
 import styled from 'styled-components';
+import { ChartData } from '../../../types/app';
 
 const axisCircleClass = 'radial-bar-axis-circle';
 const hourClass = 'radial-bar-hour';
@@ -38,10 +39,7 @@ const Chart = styled.div`
 `;
 
 interface IProps {
-  data: {
-    time: string,
-    value: number
-  }[],
+  data: ChartData,
 }
 
 const RadialBarChart: FC<IProps> = ({

@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { colorVariables, fonts } from 'styles/variables';
-import { transparentize } from 'polished';
-
+import applyTransparence from 'helpers/transparentize';
 import { SearchIcon } from '../icons';
 
 const SearchBarStyle = styled.div`
@@ -19,7 +18,7 @@ const SearchBarStyle = styled.div`
     border-radius: 10px 0 0 10px;
     border: 1px solid ${colorVariables.gunPowder};
     color: ${colorVariables.white};
-    background-color: ${transparentize(0.35, colorVariables.gunPowder)};
+    background-color: ${applyTransparence(0.35, colorVariables.gunPowder)};
     transition: 0.1s ease-in-out;
     &::placeholder {
       color: ${colorVariables.kimberly};
