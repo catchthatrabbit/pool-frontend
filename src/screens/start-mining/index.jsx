@@ -6,11 +6,11 @@ import {
   LinksWrapperStyled,
 } from './style';
 import CommonContentTitle from '../../../components/ContentTitle';
-import CommonBox from '../../components/common/common-box';
-import CommonInfoTable from '../../components/common/common-info-table';
-import CommonTitle from '../../components/common/common-title';
+import CommonTitle from '../../atoms/common-title';
 import BaseMinerCard from '../../components/MinerCard';
 import SearchBar from '../../atoms/SearchBar';
+import MiningInfo from '../../components/MiningInfo/MiningInfo';
+import InfoTable from '../../atoms/InfoTable/InfoTable';
 
 const minerData = {
   title: 'Sentinel',
@@ -46,32 +46,28 @@ const ContactPageUi = () => {
     ));
   };
 
+  const minerData = [
+      { key: '1', title: 'server', value: 'eu.ctrpool.io' },
+      { key: '2', title: 'port', value: '4444' },
+      { key: '3', title: 'secure (ssl) port', value: '5555' },
+      {
+        key: '4',
+        title: 'Username',
+        value: '<your Core Coin Address>.<Worker Name>',
+      },
+      { key: '5', title: 'Password', value: '<empty>' },
+    ];
+
   return (
     <>
       <CommonContentTitle image="/images/minings.svg">
         START MINING
       </CommonContentTitle>
 
-        <CommonBox>
-          <CommonTitle color="green">Connect Europe Pool</CommonTitle>
-          <TableInfoStyled>
-            <CommonInfoTable />
-          </TableInfoStyled>
-        </CommonBox>
-
-        <CommonBox>
-          <CommonTitle color="green">Connect United States Pool</CommonTitle>
-          <TableInfoStyled>
-            <CommonInfoTable />
-          </TableInfoStyled>
-        </CommonBox>
-
-        <CommonBox>
-          <CommonTitle color="green">Connect Asia Pool</CommonTitle>
-          <TableInfoStyled>
-            <CommonInfoTable />
-          </TableInfoStyled>
-        </CommonBox>
+      <MiningInfo data={minerData} title='Connect Europe Pool'/>
+      <MiningInfo data={minerData} title='Connect United States Pool'/>
+      <MiningInfo data={minerData} title='Connect Asia Pool'/>
+      <MiningInfo data={minerData} title='Connect Europe Pool'/>
 
       <CommonContentTitle image="/images/minings.svg">
         START GUIDE
@@ -119,7 +115,7 @@ const ContactPageUi = () => {
         <CommonBox>
           <CommonTitle>Pool details</CommonTitle>
           <TableInfoStyled>
-            <CommonInfoTable data={poolDetails} />
+            <InfoTable data={poolDetails} />
           </TableInfoStyled>
         </CommonBox>
     </>

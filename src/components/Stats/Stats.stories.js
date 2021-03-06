@@ -38,7 +38,6 @@ export default {
   },
 };
 
-
 const Container = styled.div`
   width: 1920px;
   height: 1500px;

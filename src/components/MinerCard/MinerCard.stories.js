@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import MinerCard from './MinerCard';
 
-
 export default {
   title: 'MinerCard',
   component: MinerCard,
@@ -24,7 +23,6 @@ const Container = styled.div`
   width: 500px;
   height: 1500px;
 `;
-
 
 
 export const MinerCardBasic = (args) => (

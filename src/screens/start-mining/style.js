@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-const TableInfoStyled = styled.div`
-  margin: 16px 0;
-`;
+
 
 const TextStyled = styled.p`
   margin: 1rem 0;
