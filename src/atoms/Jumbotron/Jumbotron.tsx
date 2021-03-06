@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { colorVariables, fonts } from 'styles/variables';
 
-import Button from 'components/Button/Button';
-import MapButton from 'components/MapButton/MapButton';
-import CommonInfoBox from '../../src/components/common/common-info-box';
-import { Arrow } from '../../../components/icons';
+import Button from 'atoms/Button/Button';
+import MapButton from 'atoms/MapButton/MapButton';
+import { Arrow } from 'atoms/icons';
+import InfoBox from 'atoms/InfoBox/InfoBox';
 
 const scrollTranslate = keyframes`
   0% {
@@ -314,7 +314,7 @@ const Jumbotron: FC = () => {
       <ul>
         {boxesInfo.map(({ title, value }) => (
           <li key={title}>
-            <CommonInfoBox title={title} value={value} />
+            <InfoBox title={title} value={value} />
           </li>
         ))}
       </ul>
