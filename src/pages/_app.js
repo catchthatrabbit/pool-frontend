@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import CommonHeader from 'components/common/common-header';
+import Header from 'components/Header/Header';
 import Footer from 'components/Footer';
 
 import RootProvider from '../providers';
@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <RootProvider>
-      {!isErrorPage && <CommonHeader />}
+      {!isErrorPage && <Header />}
       <main>
         <Component {...pageProps} />
       </main>
