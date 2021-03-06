@@ -11,8 +11,11 @@ import {
   ButtonStyled,
   NavBarStyled,
 } from './style';
+import { WithRouterProps } from 'next/dist/client/with-router';
 
-class Header extends PureComponent {
+type Props = WithRouterProps
+
+class Header extends PureComponent<Props> {
   state = {
     prevScrollPos: 0,
     visible: true,
