@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Jumbotron from '../atoms/Jumbotron';
 import SearchBar from '../atoms/SearchBar';
 import Stats from '../components/Stats';
-import BaseTable from '../components/base-components/base-table';
+import BaseTable from '../components/Table';
 import Button from '../atoms/Button';
 import CommonContentTitle from '../components/ContentTitle';
 

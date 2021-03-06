@@ -5,7 +5,7 @@ import CommonContentTitle from '../../../components/ContentTitle';
 import CommonInfoBox from '../../../components/InfoBox';
 import SearchBar from '../../atoms/SearchBar';
 import Pagination from '../../components/Pagination';
-import BaseTable from '../../components/base-components/base-table';
+import BaseTable from '../../components/Table';
 
 const boxesInfo = [
   { title: 'Pool hashrate', value: '69.9 GH/S' },

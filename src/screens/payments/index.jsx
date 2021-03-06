@@ -1,4 +1,4 @@
-import BaseTable from '../../components/base-components/base-table';
+import BaseTable from '../../components/Table';
 import CommonInfoBox from '../../../components/InfoBox';
 import { BoxesWrapperStyled } from './style';
 import CommonContentTitle from '../../../components/ContentTitle';

@@ -1,6 +1,6 @@
 import CommonContentTitle from '../../../components/ContentTitle';
 import CommonInfoBox from '../../../components/InfoBox';
-import BaseTable from '../../components/base-components/base-table';
+import BaseTable from '../../components/Table';
 import Pagination from '../../components/Pagination';
 
 import { BoxesWrapperStyled } from './style';

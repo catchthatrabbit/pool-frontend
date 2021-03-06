@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { colorVariables } from 'styles/variables';
+import applyTransparence from 'helpers/transparentize';
 
 const PaginationContainer = styled.div`
   ul.pagination {
@@ -9,14 +11,13 @@ const PaginationContainer = styled.div`
     padding: 0;
     list-style: none;
     font-size: 0.35rem;
-    color: ${({ theme }) => theme.colors.kimberly};
+    color: ${colorVariables.kimberly};
     li {
       &.active {
         a {
-          color: ${({ theme }) => theme.colors.white}; 
-          background-color: rgba(${({ theme }) =>
-            theme.colors.getRGBValue(theme.colors.gunPowder)}, 0.25);
-          border: 1px solid ${({ theme }) => theme.colors.gunPowder};
+          color: ${colorVariables.white}; 
+          background-color: ${applyTransparence(0.25, colorVariables.gunPowder)} 
+          border: 1px solid ${colorVariables.gunPowder};
           border-radius: 10px;
         }
       }
@@ -29,7 +30,7 @@ const PaginationContainer = styled.div`
       &.next {
         margin-left: 0.2rem;
         padding: 0.75rem 0;
-        border-left: 1px solid;
+        border-left: 1px solid ${colorVariables.gunPowder};
       }
       &.previous.disabled, &.next.disabled {
         display: none;
@@ -39,7 +40,7 @@ const PaginationContainer = styled.div`
         cursor: pointer;
         user-select: none;
         &:hover {
-          color: ${({ theme }) => theme.colors.white};
+          color: ${colorVariables.white};
           transition: color 0.3s;
         }
         &:focus {

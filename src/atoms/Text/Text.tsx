@@ -12,6 +12,7 @@ interface IProps {
 }
 
 const StyledText = styled.text < IProps > `
+  white-space: nowrap;
   font-size: ${(props: IProps) =>
     props.size === 'tiny' && '10px' ||
     props.size === 'small' && '12px' ||
