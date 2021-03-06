@@ -1,7 +1,6 @@
-/* eslint-disable quotes */
-import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+const PaginationContainer = styled.div`
   ul.pagination {
     display: flex;
     align-items: center;
@@ -77,4 +76,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default GlobalStyle;
+export default PaginationContainer;

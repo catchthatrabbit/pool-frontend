@@ -1,7 +1,7 @@
 import CommonContentTitle from '../../../components/ContentTitle';
 import CommonInfoBox from '../../../components/InfoBox';
 import BaseTable from '../../components/base-components/base-table';
-import BasePagination from '../../components/base-components/base-pagination';
+import Pagination from '../../components/Pagination';
 
 import { BoxesWrapperStyled } from './style';
 
@@ -25,7 +25,7 @@ const MinersPageUi = () => (
     <BaseTable
       footer={
         // eslint-disable-next-line react/jsx-wrap-multilines
-        <BasePagination
+        <Pagination
           pageCount={20}
           onPageChange={(page) => console.log(page)}
         />

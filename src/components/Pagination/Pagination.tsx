@@ -1,10 +1,13 @@
-/* eslint-disable react/jsx-wrap-multilines */
-import { func, number } from 'prop-types';
 import ReactPaginate from 'react-paginate';
-import GlobalStyle from './style';
+import PaginationContainer from './PaginationContainer';
+import React, { FC } from 'react';
 
-// eslint-disable-next-line react/prop-types
-const BasePagination = ({ onPageChange, pageCount }) => {
+interface IProps {
+  onPageChange: (page: number) => void,
+  pageCount: number,
+}
+
+const Pagination: FC<IProps> = ({ onPageChange, pageCount }) => {
   const handlePageChange = ({ selected: page }) => {
     const currentPage = page + 1;
 
@@ -12,8 +15,7 @@ const BasePagination = ({ onPageChange, pageCount }) => {
   };
 
   return (
-    <>
-      <GlobalStyle />
+    <PaginationContainer>
       <ReactPaginate
         previousLabel="Previous"
         nextLabel="Next"
@@ -27,18 +29,8 @@ const BasePagination = ({ onPageChange, pageCount }) => {
         subContainerClassName="pages pagination"
         activeClassName="active"
       />
-    </>
+    </PaginationContainer>
   );
 };
 
-BasePagination.propTypes = {
-  onPageChange: func,
-  pageCount: number,
-};
-
-BasePagination.defaultProps = {
-  onPageChange: () => {},
-  pageCount: 1,
-};
-
-export default BasePagination;
+export default Pagination;

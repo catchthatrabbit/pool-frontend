@@ -4,7 +4,7 @@ import { BoxesWrapperStyled } from './style';
 import CommonContentTitle from '../../../components/ContentTitle';
 import CommonInfoBox from '../../../components/InfoBox';
 import SearchBar from '../../atoms/SearchBar';
-import BasePagination from '../../components/base-components/base-pagination';
+import Pagination from '../../components/Pagination';
 import BaseTable from '../../components/base-components/base-table';
 
 const boxesInfo = [
@@ -23,7 +23,7 @@ const BlocksPageUi = () => {
   const [seaarchValue, setValue] = useState('');
 
   const renderTableFooter = () => (
-    <BasePagination pageCount={20} onPageChange={(page) => console.log(page)} />
+    <Pagination pageCount={20} onPageChange={(page) => console.log(page)} />
   );
 
   const handleSearchValueChange = (event) => setValue(event.target.value);

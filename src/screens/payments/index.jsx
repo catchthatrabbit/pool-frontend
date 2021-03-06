@@ -2,7 +2,7 @@ import BaseTable from '../../components/base-components/base-table';
 import CommonInfoBox from '../../../components/InfoBox';
 import { BoxesWrapperStyled } from './style';
 import CommonContentTitle from '../../../components/ContentTitle';
-import BasePagination from '../../components/base-components/base-pagination';
+import Pagination from '../../components/Pagination';
 
 const boxesInfo = [
   { title: 'Pool hashrate', value: '69.9 GH/S' },
@@ -26,7 +26,7 @@ const PaymentPageUi = () => (
     <BaseTable
       footer={
         // eslint-disable-next-line react/jsx-wrap-multilines
-        <BasePagination
+        <Pagination
           pageCount={20}
           onPageChange={(page) => console.log(page)}
         />
