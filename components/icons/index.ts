@@ -1,4 +1,5 @@
 // @ts-nocheck
+import Arrow from './icons/arrow.svg';
 import BlockerLogoIcon from './icons/blocker-logo.svg';
 import LogoIcon from './icons/logo.svg';
 import ContactUsIcon from './icons/contact-us.svg';
@@ -12,6 +13,7 @@ import StatisticsIcon from './icons/statistics.svg';
 import SearchIcon from './icons/search.svg'
 
 export {
+  Arrow,
   BlockerLogoIcon,
   LogoIcon,
   ContactUsIcon,
