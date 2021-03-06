@@ -1,5 +1,5 @@
 const path = require('path');
-const pathToInlineSvg = path.resolve(__dirname, '../components/icons');
+const pathToInlineSvg = path.resolve(__dirname, '../src/atoms/icons');
 
 module.exports = function ConfigureWebpack(config) {
 

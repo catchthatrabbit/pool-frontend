@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from '../../../../components/Button';
+import Button from '../../../atoms/Button';
 
 const StyledBox = styled.div`
   box-sizing: border-box;

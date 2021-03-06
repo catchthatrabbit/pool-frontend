@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { BoxesWrapperStyled } from './style';
 import CommonContentTitle from '../../../components/ContentTitle';
 import CommonInfoBox from '../../../components/InfoBox';
-import SearchBar from '../../../components/SearchBar';
+import SearchBar from '../../atoms/SearchBar';
 import BasePagination from '../../components/base-components/base-pagination';
 import BaseTable from '../../components/base-components/base-table';
 

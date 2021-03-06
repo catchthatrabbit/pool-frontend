@@ -10,7 +10,7 @@ import CommonBox from '../../components/common/common-box';
 import CommonInfoTable from '../../components/common/common-info-table';
 import CommonTitle from '../../components/common/common-title';
 import BaseMinerCard from '../../components/base-components/base-miner-card';
-import SearchBar from '../../../components/SearchBar';
+import SearchBar from '../../atoms/SearchBar';
 import BaseMargin from '../../components/base-components/base-margin';
 
 const minerData = {
