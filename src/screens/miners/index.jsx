@@ -1,5 +1,5 @@
-import CommonContentTitle from '../../components/common/common-content-title';
-import CommonInfoBox from '../../components/common/common-info-box';
+import CommonContentTitle from '../../../components/ContentTitle';
+import CommonInfoBox from '../../../components/InfoBox';
 import BaseTable from '../../components/base-components/base-table';
 import BasePagination from '../../components/base-components/base-pagination';
 

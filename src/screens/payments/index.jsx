@@ -1,7 +1,7 @@
 import BaseTable from '../../components/base-components/base-table';
-import CommonInfoBox from '../../components/common/common-info-box';
+import CommonInfoBox from '../../../components/InfoBox';
 import { BoxesWrapperStyled } from './style';
-import CommonContentTitle from '../../components/common/common-content-title';
+import CommonContentTitle from '../../../components/ContentTitle';
 import BasePagination from '../../components/base-components/base-pagination';
 
 const boxesInfo = [

@@ -27,7 +27,7 @@ const ContentTitle: FC<IProps> = ({ children: title, Image }) => (
     <ImageStyled>
       {Image}
     </ImageStyled>
-    <Text size='very-large' fontFamily='secondary' italic>{title}</Text>
+    <Text size='very-large' italic>{title}</Text>
   </WrapperStyled>
 );
 
