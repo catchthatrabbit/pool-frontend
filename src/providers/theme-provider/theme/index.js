@@ -24,32 +24,6 @@ const catchThatRabitTheme = () => {
     getRGBValue: (rgbColor) => rgbColor.match(/\d{1,3}, \d{1,3}, \d{1,3}/)[0],
   };
 
-  const defaultColors = {
-    //TODO fill or delete
-  };
-  const dimensions = {
-    5: '5px',
-    10: '10px',
-    15: '15px',
-    20: '20px',
-    25: '25px',
-    30: '30px',
-    35: '35px',
-    40: '40px',
-    45: '45px',
-    50: '50px',
-    55: '55px',
-    60: '60px',
-    65: '65px',
-    full: '100%',
-    fullViewPortWidth: '100vw',
-    fullViewPortHeight: '100vh',
-  };
-
-  const defaults = {
-    shadow: '0 0 15px 0 rgba(0, 0, 0, 0.25);',
-  };
-
   const typography = {
     primary: 'good-times, sans-serif',
     secondary: 'Verdana, Geneva, Tahoma, sans-serif',
@@ -177,13 +151,10 @@ letter-spacing: normal;
 
   return {
     colors,
-    dimensions,
     typography,
-    defaultColors,
     mediaQueriesMaxWidth,
     mediaQueriesMinWidth,
     responsive,
-    defaults,
   };
 };
 

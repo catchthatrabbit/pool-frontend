@@ -1,8 +1,6 @@
 const ConfigureWebpack = require('../webpack/configureWebpack');
 const fixStoryBookNotFindingModules = require('../webpack/fixStoryBookNotFindingModules');
 
-const path = require("path");
-
 module.exports = {
   stories: ["../src/**/*.stories.@(ts|tsx|js|jsx)"],
   addons: [
