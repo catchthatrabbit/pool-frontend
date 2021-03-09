@@ -54,7 +54,7 @@ const MainSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
   max-width: 1200px;
-  height: 282.4px;
+  height: 282px;
   margin: 50px 442px 28px 278px;
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
     flex-flow: row;
