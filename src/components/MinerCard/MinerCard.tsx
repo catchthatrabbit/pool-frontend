@@ -22,8 +22,8 @@ const StyledBox = styled.div`
 `;
 
 const StyledTitle = styled.div`
-  padding: 0 0 26.5px 4.5px;
-  margin: 0 0 35.5px 21.5px;
+  padding: 0 0 27px 5px;
+  margin: 0 0 35px 21px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gunPowder};
 `;
 const StyledInfoContent = styled.div`
