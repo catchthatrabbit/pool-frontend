@@ -36,21 +36,18 @@ const TableRowStyled = styled.tr < IProps > `
   th {
     ${cellStyling};
     padding: ${(props) =>
-    props.width === 'large' && '1rem 134px 1rem 47px' ||
-    props.width === 'small' && '1rem 239px 1rem 47px'
+    props.width === 'large' && '1rem 239px 1rem 47px' ||
+    props.width === 'small' && '1rem 133px 1rem 47px'
     };
-    min-width: 10vw;
     border-right: 1px solid ${({ theme }) => theme.colors.gunPowder};  
   }
   
   td {
     ${cellStyling};
     padding: ${(props) =>
-    props.width === 'large' && '1rem 764px 1rem 65px' ||
+    props.width === 'large' && '1rem 764px 1rem 64px' ||
     props.width === 'small' && '1rem 251px 1rem 45px'
     };
-    min-width: 40vw;
-    padding-left: min(max(4vw, 0.5rem), 4rem);
   }
 `;
 
