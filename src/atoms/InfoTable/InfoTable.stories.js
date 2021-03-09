@@ -29,9 +29,18 @@ const Container = styled.div`
   width: 1640px;
   height: 432px;
 `;
+const ContainerSmall = styled.div`
+  width: 812px;
+  height: 1500px;
+`;
 
-export const InfoTableBasic = (args) => (
+export const InfoTableLarge = (args) => (
   <Container>
-    <InfoTable {...args}/>
+    <InfoTable {...args} width="large" />
   </Container>
+);
+export const InfoTableSmall = (args) => (
+  <ContainerSmall>
+    <InfoTable {...args} width="small" />
+  </ContainerSmall>
 );
