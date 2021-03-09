@@ -4,8 +4,8 @@ import { colorVariables } from 'styles/variables';
 import applyTransparence from 'helpers/transparentize';
 
 const Circle = styled.div`
-  height: 18px;
-  width: 18px;
+  height: 24px;
+  width: 24px;
   background: ${colorVariables.white};
   border-radius: 50%;
   @media screen and (min-width: 1320px) {
@@ -29,20 +29,22 @@ const pulse = keyframes`
 `;
 const Border = styled.div`
   box-sizing: border-box;
-  padding: 3px;
   border-radius: 50%;
 `;
 const Border1 = styled(Border)`
   border: 3px solid;
+  padding: 3px;
   animation: ${pulse} infinite normal 2s 0s;
 `;
 const Border2 = styled(Border)`
   border: 2px solid;
+  padding: 4px;
   animation: ${pulse} infinite normal 2s 0.5s;
 `;
 const Border3 = styled(Border)`
   display: inline-block;
   border: 1px solid;
+  padding: 5px;
   animation: ${pulse} infinite normal 2s 1s;
 `;
 
