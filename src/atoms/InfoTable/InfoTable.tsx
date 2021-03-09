@@ -2,18 +2,22 @@ import styled, { css } from 'styled-components';
 import React, { FC } from 'react';
 import applyTransparence from 'helpers/transparentize';
 import { colorVariables } from 'styles/variables';
-import Text from 'atoms/Text/Text';
+import Text, { TextColor } from 'atoms/Text/Text';
 
 export type InfoTableItem = {
   key: number,
   title: string,
   value: string,
-  color: 'white' | 'apple' | 'red',
+  color: TextColor,
+}
+
+export type WidthStyle = {
+  width: 'small' | 'large',
 }
 
 interface IProps {
-  data: InfoTableItem[];
-  width: 'small' | 'large';
+  data: InfoTableItem[],
+  width: WidthStyle,
 }
 
 const TableWrapperStyled = styled.table`
@@ -29,13 +33,13 @@ const cellStyling = css`
   white-space: nowrap;
 `;
 
-const TableRowStyled = styled.tr < IProps > `
+const TableRowStyled = styled.tr < WidthStyle > `
   &:nth-child(even) {
     background-color: ${applyTransparence(0.2, colorVariables.gunPowder)}
   }
   th {
     ${cellStyling};
-    padding: ${(props) =>
+    padding: ${(props: WidthStyle) =>
     props.width === 'large' && '16px 239px 16px 47px' ||
     props.width === 'small' && '16px 133px 16px 47px'
     };
@@ -44,7 +48,7 @@ const TableRowStyled = styled.tr < IProps > `
   
   td {
     ${cellStyling};
-    padding: ${(props) =>
+    padding: ${(props: WidthStyle) =>
     props.width === 'large' && '16px 697px 16px 64px' ||
     props.width === 'small' && '16px 251px 16px 45px'
     };
@@ -55,7 +59,7 @@ const InfoTable: FC<IProps> = ({ data, width }) => (
   <TableWrapperStyled>
     <tbody>
       {data.map(({ key, title, value, color }) => (
-        <TableRowStyled key={key} width={width}>
+        <TableRowStyled key={key} width={width.width}>
           <th><Text italic>{title}</Text></th>
           <td><Text fontFamily='secondary' color={color}>{value}</Text></td>
         </TableRowStyled>
