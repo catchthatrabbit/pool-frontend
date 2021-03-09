@@ -3,10 +3,12 @@ import { colorVariables, fonts } from 'styles/variables';
 
 import styled from 'styled-components';
 
+export type TextColor = 'white' | 'apple' | 'santasGray' | 'red';
+
 interface IProps {
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
   fontFamily?: 'primary' | 'secondary',
-  color?: 'white' | 'apple' | 'santasGray' | 'red',
+  color?: TextColor,
   italic?: boolean,
   fontWeight?: 'bold' | 'normal' | 'light'
 }
