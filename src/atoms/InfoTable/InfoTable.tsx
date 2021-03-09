@@ -36,8 +36,8 @@ const TableRowStyled = styled.tr < IProps > `
   th {
     ${cellStyling};
     padding: ${(props) =>
-    props.width === 'large' && '26px 239px 26px 47px' ||
-    props.width === 'small' && '26px 133px 26px 47px'
+    props.width === 'large' && '16px 239px 16px 47px' ||
+    props.width === 'small' && '16px 133px 16px 47px'
     };
     border-right: 1px solid ${({ theme }) => theme.colors.gunPowder};  
   }
@@ -45,8 +45,8 @@ const TableRowStyled = styled.tr < IProps > `
   td {
     ${cellStyling};
     padding: ${(props) =>
-    props.width === 'large' && '26px 697px 26px 64px' ||
-    props.width === 'small' && '26px 251px 26px 45px'
+    props.width === 'large' && '16px 697px 16px 64px' ||
+    props.width === 'small' && '16px 251px 16px 45px'
     };
   }
 `;
