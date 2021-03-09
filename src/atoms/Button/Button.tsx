@@ -13,7 +13,7 @@ const StyledButton = styled.button`
   user-select: none;
   border-radius: 10px;
   color: ${colorVariables.white};
-  padding: 20px;
+  padding: 17px;
   min-width: 215px;
   text-align: center;
   white-space: nowrap;
@@ -27,9 +27,9 @@ const StyledButton = styled.button`
   ${(props: { theme: string; }) =>
     props.theme === 'outline' &&
     css`
-      background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
+      background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
       &:hover {
-        background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
+        background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
       }
     `
   }
