@@ -7,7 +7,6 @@ const WrapperStyled = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 1.5rem 0;
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
     flex-direction: row;
   }

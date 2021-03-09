@@ -10,7 +10,6 @@ import ContentTitle from 'atoms/ContentTitle/ContentTitle';
 import { LogoIcon, StartMiningIcon } from 'atoms/icons';
 
 const InfoStyled = styled.div`
-  margin-top: 24px;
   font-family: ${fonts.secondary};
   ul {
     margin-bottom: 0;
@@ -33,7 +32,6 @@ const FooterSection = styled.div`
   text-align: center;
 `;
 const LogoStyled = styled.div`
-   align-self: center;
    svg {
       width: 140px;
       height: auto;
@@ -49,37 +47,43 @@ const LogoTextStyle = styled.div`
   margin: 30px 0 0 0;
 `;
 const HeaderTextStyle = styled.div`
-  margin: 65px 0;
+  margin: 60px 0;
 `;
 const MainSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 90%;
   max-width: 1200px;
-  margin: 40px auto;
-  ${LogoStyled};
-  ${InfoStyled};
+  height: 282px;
+  margin: 50px 442px 28px 278px;
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
     flex-flow: row;
   }
 `;
 const HeaderSection = styled.div`
   box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 495px;
-    background: ${applyTransparence(0.25, colorVariables.gunPowder)};
-    border: 1px solid ${colorVariables.gunPowder};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 494px;
+  background: ${applyTransparence(0.25, colorVariables.gunPowder)};
+  border: 1px solid ${colorVariables.gunPowder};
+`;
+const HeaderDiv = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 103px 0 103px 0
 `;
 const FooterStyled = styled.footer`
   width: 100%;
 `;
 const FooterInfo = ({ title, list }) => (
   <InfoStyled>
-    <h4><Text size="medium" fontFamily="secondary">{title}</Text></h4>
+    <Text size="large" fontFamily="primary">{title}</Text>
     <ul>
       {list.map((item) => (
         <li key={item.text}>
@@ -122,11 +126,13 @@ const Footer = () => {
   return (
     <FooterStyled>
       <HeaderSection>
-        <ContentTitle Image={<StartMiningIcon />}>
-          Start Mining
-        </ContentTitle>
-        <HeaderTextStyle><Text size="very-large" italic>Let&apos;s jump into it</Text></HeaderTextStyle>
-        <Button>Start mining</Button>
+        <HeaderDiv>
+          <ContentTitle Image={<StartMiningIcon />}>
+            Start Mining
+          </ContentTitle>
+          <HeaderTextStyle><Text size="very-large" italic>Let&apos;s jump into it</Text></HeaderTextStyle>
+          <Button>Start mining</Button>
+        </HeaderDiv>
       </HeaderSection>
       <MainSection>
         <LogoStyled>
