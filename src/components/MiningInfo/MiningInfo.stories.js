@@ -28,8 +28,8 @@ export default {
 };
 
 const Container = styled.div`
-  width: 812px;
-  height: 1500px;
+  width: 1640px;
+  height: 478px;
 `;
 
 export const MiningInfoBasic = (args) => (

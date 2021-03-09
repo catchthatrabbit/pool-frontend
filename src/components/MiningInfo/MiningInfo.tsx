@@ -5,13 +5,13 @@ import { colorVariables } from 'styles/variables';
 import Text from 'atoms/Text/Text';
 
 const Container = styled.div`
-  padding: 1.4rem;
   border: 1px solid ${({ theme }) => theme.colors.gunPowder};
   border-radius: 10px;
 `;
 
 const TitleContainer = styled.div`
-  padding: 1rem 0;
+  margin: 0 47px;
+  padding: 1.5rem 0;
   border-bottom: 1px solid ${colorVariables.gunPowder};
 `
 
@@ -30,7 +30,7 @@ const MiningInfo: FC<IProps> = ({ data, title }) => (
       <Text size='very-large' color='apple'>{title}</Text>
       </TitleContainer>
     <TableContainer>
-      <InfoTable data={data}/>
+      <InfoTable data={data} width='large' />
     </TableContainer>
   </Container>
 );
