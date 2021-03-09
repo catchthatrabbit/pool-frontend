@@ -11,12 +11,13 @@ export type InfoTableItem = {
   color: TextColor,
 }
 
-export type WidthStyle = {
-  width: 'small' | 'large',
-}
+export type WidthStyle = 'small' | 'large';
 
 interface IProps {
   data: InfoTableItem[],
+  width: WidthStyle,
+}
+interface IPropsWidth {
   width: WidthStyle,
 }
 
@@ -33,13 +34,13 @@ const cellStyling = css`
   white-space: nowrap;
 `;
 
-const TableRowStyled = styled.tr < WidthStyle > `
+const TableRowStyled = styled.tr < IPropsWidth > `
   &:nth-child(even) {
     background-color: ${applyTransparence(0.2, colorVariables.gunPowder)}
   }
   th {
     ${cellStyling};
-    padding: ${(props: WidthStyle) =>
+    padding: ${(props: IPropsWidth) =>
     props.width === 'large' && '16px 239px 16px 47px' ||
     props.width === 'small' && '16px 133px 16px 47px'
     };
@@ -48,18 +49,18 @@ const TableRowStyled = styled.tr < WidthStyle > `
   
   td {
     ${cellStyling};
-    padding: ${(props: WidthStyle) =>
+    padding: ${(props: IPropsWidth) =>
     props.width === 'large' && '16px 697px 16px 64px' ||
     props.width === 'small' && '16px 251px 16px 45px'
     };
   }
 `;
 
-const InfoTable: FC<IProps> = ({ data, width }) => (
+const InfoTable: FC<IProps> = ({ data, width = 'small' }) => (
   <TableWrapperStyled>
     <tbody>
       {data.map(({ key, title, value, color }) => (
-        <TableRowStyled key={key} width={width.width}>
+        <TableRowStyled key={key} width={width}>
           <th><Text italic>{title}</Text></th>
           <td><Text fontFamily='secondary' color={color}>{value}</Text></td>
         </TableRowStyled>
