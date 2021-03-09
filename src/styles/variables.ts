@@ -19,4 +19,5 @@ export const colorVariables = {
   sushi: "#66b32e",
   white: "#ffffff",
   woodsmoke: "#181a1f",
+  red: "#ff0000"
 }
