@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const TitleContainer = styled.div`
   margin: 0 47px;
-  padding: 1.5rem 0;
+  padding: 24px 0;
   border-bottom: 1px solid ${colorVariables.gunPowder};
 `
 
