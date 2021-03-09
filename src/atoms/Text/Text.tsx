@@ -6,7 +6,7 @@ import styled from 'styled-components';
 interface IProps {
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large',
   fontFamily?: 'primary' | 'secondary',
-  color?: 'white' | 'apple' | 'santasGray',
+  color?: 'white' | 'apple' | 'santasGray' | 'red',
   italic?: boolean,
   fontWeight?: 'bold' | 'normal' | 'light'
 }
@@ -26,7 +26,8 @@ const StyledText = styled.text < IProps > `
   color: ${(props: IProps) =>
     props.color === 'white' && colorVariables.white ||
     props.color === 'apple' && colorVariables.apple ||
-    colorVariables.santasGray
+    props.color === 'santasGray' && colorVariables.santasGray ||
+    props.color === 'red' && colorVariables.red
 };
   font-style: ${(props: IProps) => (props.italic ? 'italic' : 'normal')};
   font-weight: ${(props: IProps) =>
