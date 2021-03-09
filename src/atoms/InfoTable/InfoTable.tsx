@@ -1,9 +1,25 @@
-import { arrayOf, shape, string } from 'prop-types';
 import styled, { css } from 'styled-components';
 import React, { FC } from 'react';
 import applyTransparence from 'helpers/transparentize';
 import { colorVariables } from 'styles/variables';
-import Text from 'atoms/Text/Text';
+import Text, { TextColor } from 'atoms/Text/Text';
+
+export type InfoTableItem = {
+  key: number,
+  title: string,
+  value: string,
+  color: TextColor,
+}
+
+export type WidthStyle = 'small' | 'large';
+
+interface IProps {
+  data: InfoTableItem[],
+  width: WidthStyle,
+}
+interface IPropsWidth {
+  width: WidthStyle,
+}
 
 const TableWrapperStyled = styled.table`
   box-sizing: border-box;
@@ -15,44 +31,38 @@ const TableWrapperStyled = styled.table`
 
 const cellStyling = css`
   box-sizing: border-box;
-  padding: 1rem 0.5rem;
   white-space: nowrap;
 `;
 
-const TableRowStyled = styled.tr`
+const TableRowStyled = styled.tr < IPropsWidth > `
   &:nth-child(even) {
     background-color: ${applyTransparence(0.2, colorVariables.gunPowder)}
   }
   th {
     ${cellStyling};
-    min-width: 10vw;
+    padding: ${(props: IPropsWidth) =>
+    props.width === 'large' && '16px 239px 16px 47px' ||
+    props.width === 'small' && '16px 133px 16px 47px'
+    };
     border-right: 1px solid ${({ theme }) => theme.colors.gunPowder};  
   }
   
   td {
     ${cellStyling};
-    min-width: 40vw;
-    padding-left: min(max(3.75vw, 0.5rem), 3rem);
+    padding: ${(props: IPropsWidth) =>
+    props.width === 'large' && '16px 697px 16px 64px' ||
+    props.width === 'small' && '16px 251px 16px 45px'
+    };
   }
 `;
 
-export type InfoTableItem = {
-  key: number,
-  title: string,
-  value: string,
-}
-
-interface IProps {
-  data: InfoTableItem[];
-}
-
-const InfoTable: FC<IProps> = ({ data }) => (
+const InfoTable: FC<IProps> = ({ data, width = 'small' }) => (
   <TableWrapperStyled>
     <tbody>
-      {data.map(({ key, title, value }) => (
-        <TableRowStyled key={key}>
-          <th><Text size='very-large' italic>{title}</Text></th>
-          <td><Text fontFamily='secondary'>{value}</Text></td>
+      {data.map(({ key, title, value, color }) => (
+        <TableRowStyled key={key} width={width}>
+          <th><Text italic>{title}</Text></th>
+          <td><Text fontFamily='secondary' color={color}>{value}</Text></td>
         </TableRowStyled>
       ))}
     </tbody>
