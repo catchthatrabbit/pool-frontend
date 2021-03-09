@@ -42,7 +42,7 @@ const TableRowStyled = styled.tr < IPropsWidth > `
     ${cellStyling};
     padding: ${(props: IPropsWidth) =>
     props.width === 'large' && '16px 239px 16px 47px' ||
-    props.width === 'small' && '16px 133px 16px 47px'
+    props.width === 'small' && '16px 43px 16px 47px'
     };
     border-right: 1px solid ${({ theme }) => theme.colors.gunPowder};  
   }
