@@ -32,7 +32,7 @@ const StyledText = styled.text < IProps > `
   font-weight: ${(props: IProps) =>
     props.fontWeight === 'bold' && 'bold' ||
     props.fontWeight === 'light' && '100' ||
-    'normal'
+    '600'
 };
 `;
 
