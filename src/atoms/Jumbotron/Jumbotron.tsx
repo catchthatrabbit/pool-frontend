@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { colorVariables, fonts } from 'styles/variables';
 
@@ -22,6 +22,8 @@ const scrollTranslate = keyframes`
   }
 `;
 const ScrollStyle = styled.div`
+  position: absolute;
+  top: 5px;
   width: 3px;
   height: 8px;
   background: ${colorVariables.white};
@@ -44,7 +46,7 @@ const MouseContainerStyle = styled.div`
   align-items: center;
   width: 24px;
   height: 64px;
-  left: calc(50% - 24px);
+  left: calc(50% + 40px);
   bottom: 5%;
   @media screen and (min-width: 1200px) {
     display: flex;
@@ -126,6 +128,7 @@ const APStyle = styled(LocationStyle)`
 `;
 const MapStyle = styled.div`
    position: absolute;
+   left: -80px;
    top: 50px;
    height: 934px; 
    // position: relative;
@@ -189,7 +192,7 @@ const StyledInfoComponent = styled.div`
   position: absolute;
   align-self: start;
   text-align: start;
-  width: 16%;
+  width: 355px;
   h1 {
     bottom: 60%;
     margin: 20px 0 0;
@@ -210,38 +213,16 @@ const StyledInfoComponent = styled.div`
 `;
 
 const Jumbotron: FC = () => {
-  const state = {
-    isFullMap: true,
-    isMapButton: true,
-  };
-
+  const [isMapButton, setIsMapButton] = useState(true);
   const boxesInfo = [
     { title: 'Pool hashrate', value: '69.9 GH/S' },
     { title: 'Network hashrate', value: '192.9 TH/S' },
     { title: 'Network difficulty', value: '6.6 GH' },
     { title: 'Active miners', value: '10,000' },
   ];
-  function isFullMap() {
-    return window.innerWidth >= 1200;
-  }
-
-  function isMapButton() {
-    return window.innerWidth >= 840;
-  }
-  function handleResize() {
-    state.isFullMap = isFullMap();
-    state.isMapButton = isMapButton();
-  }
-  function componentDidMount() {
-    handleResize();
-    window.addEventListener('resize', handleResize);
-  }
-  function componentWillUnmount() {
-    window.removeEventListener('resize', handleResize);
-  }
 
   function renderButtons() {
-    return state.isMapButton ? (
+    return isMapButton ? (
       <>
         <USStyle>
           <MapButton href="/">
