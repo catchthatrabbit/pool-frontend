@@ -13,4 +13,10 @@ export type MiningInfo = {
   minerLink: string,
 }
 
+type BoxInfoItem = {
+  title: string,
+  value: string
+}
+export type BoxInfo = BoxInfoItem[];
+
 export type ChartData = ChartItem[];

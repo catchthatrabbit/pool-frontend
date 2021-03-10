@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { colorVariables, fonts } from 'styles/variables';
 
@@ -7,6 +7,7 @@ import Text from 'atoms/Text/Text';
 import MapButton from 'atoms/MapButton/MapButton';
 import { Arrow } from 'atoms/icons';
 import InfoBox from 'atoms/InfoBox/InfoBox';
+import { BoxInfo } from 'types/app';
 
 const scrollTranslate = keyframes`
   0% {
@@ -56,21 +57,15 @@ const MouseContainerStyle = styled.div`
 const LocationStyle = styled.div`
    position: absolute;
    top: 50%;
-   // transform: translateY(-50%);
    font-weight: 600;
    font-size: 10px;
    padding: 15px 10px;
    min-width: min(12vw, 215px);
-   @media screen and (min-width: 0) and(max-width:340px) {
-      // transform: translateX(-50%);
-   }
    @media screen and (min-width: 840px) {
-      // transform: translateX(-50%);
       font-size: 12px;
       padding: 20px;
    }
    @media screen and (min-width: 1200px) {
-      // transform: translateX(-50%);
       font-size: 12px;
       padding: 20px;
    }
@@ -79,59 +74,20 @@ const USStyle = styled(LocationStyle)`
   left: 0;
   top: 25%;
   left: 35%;
-   //  @media screen and (min-width: 0) and(max-width:340px) {
-   //    left: 20%;
-   //    top: 10%;
-   // }
-   // @media screen and (min-width: 840px) {
-   //    top: 25%;
-   //    left: 15%;
-   // }
-   // @media screen and (min-width: 1200px) {
-   //    top: 33%;
-   //    left: 39%;
-   // }
 `;
 const EUStyle = styled(LocationStyle)`
   top: 25%;
   left: 58%;
-  // transform: translate(-50%, -50%);
-  // @media screen and (min-width: 0) and(max-width:340px) {
-  //     top: 50%;
-  //     transform: translate(-50%, -50%);
-  //  }
-  //  @media screen and (min-width: 840px) {
-  //     top: 25%;
-  //     left: 50%;
-  //  }
-  //  @media screen and (min-width: 1200px) {
-  //     top: 33%;
-  //     left: 61%;
-  //  }
 `;
 const APStyle = styled(LocationStyle)`
   top: 35%;
   left: 77%;
-  // @media screen and (min-width: 0) and(max-width:340px) {
-  //     left: 80%;
-  //     top: 90%;
-  //     // transform: translate(-50%, -100%);
-  //  }
-  //  @media screen and (min-width: 840px) {
-  //     top: 35%;
-  //     left: 78%;
-  //  }
-  //  @media screen and (min-width: 1200px) {
-  //      top: 42%;
-  //      left: 82%;
-  //  }
 `;
 const MapStyle = styled.div`
    position: absolute;
    left: -80px;
    top: 50px;
    height: 934px; 
-   // position: relative;
    width: 100%;
    background: url('/images/map_bg.png')
 `;
@@ -211,18 +167,13 @@ const StyledInfoComponent = styled.div`
     color: ${colorVariables.santasGray};
   }
 `;
+interface IProps {
+  data: BoxInfo,
+}
 
-const Jumbotron: FC = () => {
-  const [isMapButton, setIsMapButton] = useState(true);
-  const boxesInfo = [
-    { title: 'Pool hashrate', value: '69.9 GH/S' },
-    { title: 'Network hashrate', value: '192.9 TH/S' },
-    { title: 'Network difficulty', value: '6.6 GH' },
-    { title: 'Active miners', value: '10,000' },
-  ];
-
+const Jumbotron: FC<IProps> = ({ data }) => {
   function renderButtons() {
-    return isMapButton ? (
+    return (
       <>
         <USStyle>
           <MapButton href="/">
@@ -240,30 +191,12 @@ const Jumbotron: FC = () => {
           </MapButton>
         </APStyle>
       </>
-    ) : (
-      <>
-        <USStyle>
-          <Button theme="transparent">
-            Connect US
-          </Button>
-        </USStyle>
-        <EUStyle>
-          <Button theme="transparent">
-            Connect EU
-          </Button>
-        </EUStyle>
-        <APStyle>
-          <Button theme="transparent">
-            Connect AP
-          </Button>
-        </APStyle>
-      </>
     );
   }
   return (
     <JumbotronStyle>
       <ul>
-        {boxesInfo.map(({ title, value }) => (
+        { data.map(({ title, value }) => (
           <li key={title}>
             <InfoBox title={title} value={value} />
           </li>
