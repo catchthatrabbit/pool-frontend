@@ -9,10 +9,10 @@ export default {
     data: {
       type: { name: 'object', required: true },
       defaultValue: [
-        { title: 'Pool hashrate', value: '69.9 GH/S' },
-        { title: 'Network hashrate', value: '192.9 TH/S' },
-        { title: 'Network difficulty', value: '6.6 GH' },
-        { title: 'Active miners', value: '10,000' },
+        { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' },
+        { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' },
+        { title: 'Network difficulty', value: 6600, type: 'hash' },
+        { title: 'Active miners', value: 10000, type: 'number' },
       ],
     },
   },

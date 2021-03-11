@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
 import Text from 'atoms/Text/Text';
+import numberToString from 'helpers/number';
 
 const WrapperStyled = styled.div`
-  padding: 18px 0;
+  padding: 15px 0 20px;
   height: 88px;
   width: 260px;
   box-sizing: border-box;
@@ -15,15 +16,50 @@ const WrapperStyled = styled.div`
   border-radius: 10px;
 `;
 
-interface IProps {
-  value: string;
-  title: string;
+type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro';
+
+export type InfoBoxItem = {
+  title: string,
+  value: number,
+  type: TypeNumber,
 }
-const InfoBox: FC<IProps> = ({ value, title }) => (
-  <WrapperStyled>
-    <Text size='very-large' fontWeight='bold' italic>{value}</Text>
-    <Text size='small' fontWeight='light'>{title}</Text>
-  </WrapperStyled>
-);
+
+const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
+  function renderValue() {
+    switch (type) {
+      case 'hashSpeed':
+      case 'hash':
+        let metric = 'GH';
+        let unit = 1000;
+
+        if (value / unit >= 1000) {
+          metric = 'TH';
+          unit = 1000000;
+        }
+        return (
+          <>
+            {value / unit}
+            <Text size="large" fontWeight="bold" italic> { metric }{type === 'hashSpeed' && '/' }</Text>
+            {type === 'hashSpeed' && <Text size="small" fontWeight="bold" italic>s</Text>}
+          </>
+        );
+      case 'percent':
+        return `${value}%`;
+      case 'euro':
+        return `€ ${numberToString(value)}`;
+      default:
+        return numberToString(value);
+    }
+  }
+  return (
+    <WrapperStyled>
+      <Text size="very-large" fontWeight="bold" italic>
+        {renderValue()}
+      </Text>
+      <Text size="small" fontWeight="light">{title}</Text>
+    </WrapperStyled>
+
+  );
+};
 
 export default InfoBox;
