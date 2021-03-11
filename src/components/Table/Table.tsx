@@ -56,13 +56,16 @@ const TableRowStyled = styled.tr`
     text-align: left;
   }
   td {
-    padding: 1rem 1rem;
+    padding: 26px 16px 21px;
   }
 `;
 
 const FooterStyled = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 36px;
+`;
+const StyledPaginationContainer = styled.div`
   margin-top: 36px;
 `;
 
@@ -121,7 +124,11 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
           )
         }
         {
-          !moreLink && <Pagination onPageChange={() => null} pageCount={4}/>
+          !moreLink && (
+          <StyledPaginationContainer>
+            <Pagination onPageChange={() => null} pageCount={4} />
+          </StyledPaginationContainer>
+          )
         }
       </FooterStyled>
     </WrapperStyled>
