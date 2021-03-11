@@ -41,7 +41,6 @@ const MouseStyle = styled.div`
 `;
 const MouseContainerStyle = styled.div`
   position: absolute;
-  display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -127,15 +126,6 @@ const StyledInfoComponent = styled.div`
   align-self: start;
   text-align: start;
   width: 355px;
-  h1 {
-    bottom: 60%;
-    margin: 20px 0 0;
-    order: -1;
-    span {
-      white-space: nowrap;
-      color: ${colorVariables.apple};
-    }
-  }
   p {
     bottom: 25%;
     margin: 30px 0;
