@@ -236,7 +236,6 @@ const Jumbotron: FC<IProps> = ({ data }) => {
           <Button>Start Mining</Button>
         </StyledButtonContent>
       </StyledInfoComponent>
-      {/* TODO change to a reusable component */}
     </JumbotronStyle>
   );
 };
