@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
 import Text from 'atoms/Text/Text';
-import { TypeNumber } from 'types/app';
+import numberToString from 'helpers/number';
 
 const WrapperStyled = styled.div`
   padding: 18px 0;
@@ -16,17 +16,16 @@ const WrapperStyled = styled.div`
   border-radius: 10px;
 `;
 
-// export type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro';
+type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro';
 
-interface IProps {
-  value: number;
-  title: string;
-  type: TypeNumber;
+export type InfoBoxItem = {
+  title: string,
+  value: number,
+  type: TypeNumber,
 }
-const InfoBox: FC<IProps> = ({ value, title, type = 'hash' }) => {
+
+const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
   function renderValue() {
-    let metric = 'GH';
-    let unit = 1000;
     switch (type) {
       case 'hashSpeed':
       case 'hash':
@@ -53,9 +52,9 @@ const InfoBox: FC<IProps> = ({ value, title, type = 'hash' }) => {
       case 'percent':
         return `${value}%`;
       case 'euro':
-        return `€ ${value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}`;
+        return `€ ${numberToString(value)}`;
       default:
-        return value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+        return numberToString(value);
     }
   }
   return (

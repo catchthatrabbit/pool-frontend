@@ -13,13 +13,4 @@ export type MiningInfo = {
   minerLink: string,
 }
 
-export type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro';
-
-type BoxInfoItem = {
-  title: string,
-  value: number,
-  type: TypeNumber,
-}
-export type BoxInfo = BoxInfoItem[];
-
 export type ChartData = ChartItem[];
