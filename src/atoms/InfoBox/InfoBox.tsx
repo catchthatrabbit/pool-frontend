@@ -29,6 +29,10 @@ const InfoBox: FC<IProps> = ({ value, title, type = 'hash' }) => {
     let unit = 1000;
     switch (type) {
       case 'hashSpeed':
+      case 'hash':
+        let metric = 'GH';
+        let unit = 1000;
+
         if (value / unit >= 1000) {
           metric = 'TH';
           unit = 1000000;
@@ -37,14 +41,9 @@ const InfoBox: FC<IProps> = ({ value, title, type = 'hash' }) => {
           <>
             {value / unit}
             <Text size="large" fontWeight="bold" italic> { metric }/</Text>
-            <Text size="small" fontWeight="bold" italic>s</Text>
+            {type === 'hashSpeed' && <Text size="small" fontWeight="bold" italic>s</Text>}
           </>
         );
-      case 'hash':
-        if (value / unit >= 1000) {
-          metric = 'TH';
-          unit = 1000000;
-        }
         return (
           <>
             {value / unit}
