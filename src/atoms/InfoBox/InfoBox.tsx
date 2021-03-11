@@ -4,7 +4,7 @@ import Text from 'atoms/Text/Text';
 import numberToString from 'helpers/number';
 
 const WrapperStyled = styled.div`
-  padding: 18px 0;
+  padding: 15px 0 20px;
   height: 88px;
   width: 260px;
   box-sizing: border-box;
