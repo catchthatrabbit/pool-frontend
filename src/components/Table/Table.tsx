@@ -102,8 +102,8 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
             <TableRowStyled key={index}>
               {columns.map(({ id }) => (
                 <td key={id}>
-                  <Text fontFamily='secondary' size='medium' fontWeight='bold'>
-                    {dataItem[id]}
+                  <Text fontFamily="secondary" size="medium" fontWeight="bold" color={id === 'miner' && 'apple' || 'white'}>
+                    {id === 'miner' && `${dataItem[id].slice(0, 10)}.........${dataItem[id].slice(-6)}` || dataItem[id]}
                   </Text>
                 </td>
               ))}
