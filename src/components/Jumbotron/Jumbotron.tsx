@@ -171,72 +171,63 @@ interface IProps {
   data: BoxInfo,
 }
 
-const Jumbotron: FC<IProps> = ({ data }) => {
-  function renderButtons() {
-    return (
-      <>
-        <USStyle>
-          <MapButton href="/">
-            Connect US location
-          </MapButton>
-        </USStyle>
-        <EUStyle>
-          <MapButton href="/">
-            Connect EU location
-          </MapButton>
-        </EUStyle>
-        <APStyle>
-          <MapButton href="/">
-            Connect AP location
-          </MapButton>
-        </APStyle>
-      </>
-    );
-  }
-  return (
-    <JumbotronStyle>
-      <ul>
-        { data.map(({ title, value }) => (
-          <li key={title}>
-            <InfoBox title={title} value={value} />
-          </li>
-        ))}
-      </ul>
-      <MapStyle>
-        {renderButtons()}
-        <MouseContainerStyle>
-          <MouseStyle>
-            <ScrollStyle />
-          </MouseStyle>
-          <Arrow />
-        </MouseContainerStyle>
-      </MapStyle>
-      <StyledInfoComponent>
-        <StyledTitleTex>
-          <Text size="ultra-large" italic>Dedicated</Text>
-          <Text size="ultra-large" italic>Pool for</Text>
-          <Text size="ultra-large" color="apple" italic>CORE COIN</Text>
-        </StyledTitleTex>
-        <p>
-          We have several locations for you to select from.
-          <br />
-          Please select one of the locations to start your mines today!
-          <br />
-          <br />
-          PPLNS System
-          <br />
-          2% Pool Fee
-          <br />
-          Payout Threshhold 20 XCB
-          <br />
-          Payout 3 times per day
-          <br />
-        </p>
-        <StyledButtonContent>
-          <Button>Start Mining</Button>
-        </StyledButtonContent>
-      </StyledInfoComponent>
-    </JumbotronStyle>
-  );
-};
+const Jumbotron: FC<IProps> = ({ data }) => (
+  <JumbotronStyle>
+    <ul>
+      { data.map(({ title, value }) => (
+        <li key={title}>
+          <InfoBox title={title} value={value} />
+        </li>
+      ))}
+    </ul>
+    <MapStyle>
+      <USStyle>
+        <MapButton href="/">
+          Connect US location
+        </MapButton>
+      </USStyle>
+      <EUStyle>
+        <MapButton href="/">
+          Connect EU location
+        </MapButton>
+      </EUStyle>
+      <APStyle>
+        <MapButton href="/">
+          Connect AP location
+        </MapButton>
+      </APStyle>
+      <MouseContainerStyle>
+        <MouseStyle>
+          <ScrollStyle />
+        </MouseStyle>
+        <Arrow />
+      </MouseContainerStyle>
+    </MapStyle>
+    <StyledInfoComponent>
+      <StyledTitleTex>
+        <Text size="ultra-large" italic>Dedicated</Text>
+        <Text size="ultra-large" italic>Pool for</Text>
+        <Text size="ultra-large" color="apple" italic>CORE COIN</Text>
+      </StyledTitleTex>
+      <p>
+        We have several locations for you to select from.
+        <br />
+        Please select one of the locations to start your mines today!
+        <br />
+        <br />
+        PPLNS System
+        <br />
+        2% Pool Fee
+        <br />
+        Payout Threshhold 20 XCB
+        <br />
+        Payout 3 times per day
+        <br />
+      </p>
+      <StyledButtonContent>
+        <Button>Start Mining</Button>
+      </StyledButtonContent>
+    </StyledInfoComponent>
+  </JumbotronStyle>
+);
 export default Jumbotron;
