@@ -49,29 +49,17 @@ const MouseContainerStyle = styled.div`
   height: 64px;
   left: calc(50% + 40px);
   bottom: 5%;
-  @media screen and (min-width: 1200px) {
-    display: flex;
-  }
+  display: flex;
 `;
 
 const LocationStyle = styled.div`
    position: absolute;
    top: 50%;
    font-weight: 600;
-   font-size: 10px;
-   padding: 15px 10px;
+   padding: 20px;
    min-width: min(12vw, 215px);
-   @media screen and (min-width: 840px) {
-      font-size: 12px;
-      padding: 20px;
-   }
-   @media screen and (min-width: 1200px) {
-      font-size: 12px;
-      padding: 20px;
-   }
 `;
 const USStyle = styled(LocationStyle)`
-  left: 0;
   top: 25%;
   left: 35%;
 `;
@@ -102,25 +90,15 @@ const JumbotronStyle = styled.div`
     z-index: 1;
     display: flex;
     flex-direction: column;
-    margin: 60px 0 0;
+    margin: 20px 0 0;
     padding: 0;
     list-style-type: none;
-    @media screen and (min-width: 450px) {
-      flex-flow: row wrap;
-      justify-content: space-evenly;
-      width: 100%;
-      li:not(:last-child) {
-        margin-right: 65px;
-        margin-bottom: 50px;
-      }
-    }
-    @media screen and(min-width:900px) {
-      justify-content: space-between;
-      position: absolute;
-      margin-top: 10px;
-      li {
-        margin: 0;
-      }
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    li:not(:last-child) {
+      margin-right: 65px;
+      margin-bottom: 50px;
     }
   }
 `;
