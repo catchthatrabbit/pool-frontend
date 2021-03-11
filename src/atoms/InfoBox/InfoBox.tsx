@@ -39,14 +39,8 @@ const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
         return (
           <>
             {value / unit}
-            <Text size="large" fontWeight="bold" italic> { metric }/</Text>
+            <Text size="large" fontWeight="bold" italic> { metric }{type === 'hashSpeed' && '/' }</Text>
             {type === 'hashSpeed' && <Text size="small" fontWeight="bold" italic>s</Text>}
-          </>
-        );
-        return (
-          <>
-            {value / unit}
-            <Text size="large" fontWeight="bold" italic> { metric }</Text>
           </>
         );
       case 'percent':
