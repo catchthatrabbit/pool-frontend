@@ -1,7 +1,7 @@
 import { PureComponent } from 'react';
 import Head from 'next/head';
 
-import Jumbotron from '../atoms/Jumbotron';
+import Jumbotron from '../components/Jumbotron';
 import SearchBar from '../atoms/SearchBar';
 import Stats from '../components/Stats';
 import BaseTable from '../components/Table';
