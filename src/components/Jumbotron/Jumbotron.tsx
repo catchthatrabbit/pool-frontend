@@ -6,8 +6,7 @@ import Button from 'atoms/Button/Button';
 import Text from 'atoms/Text/Text';
 import MapButton from 'atoms/MapButton/MapButton';
 import { Arrow } from 'atoms/icons';
-import InfoBox from 'atoms/InfoBox/InfoBox';
-import { BoxInfo } from 'types/app';
+import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox';
 
 const scrollTranslate = keyframes`
   0% {
@@ -136,7 +135,7 @@ const StyledInfoComponent = styled.div`
   }
 `;
 interface IProps {
-  data: BoxInfo,
+  data: InfoBoxItem[],
 }
 
 const Jumbotron: FC<IProps> = ({ data }) => (
