@@ -13,7 +13,7 @@ const WrapperStyled = styled.div`
 `;
 const ImageStyled = styled.div`
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
-    margin-right: 1rem;
+    margin-right: 25px;
   }
 `;
 
