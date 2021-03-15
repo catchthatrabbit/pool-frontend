@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { FC, useState } from 'react';
 import Head from 'next/head';
 
 import styled from 'styled-components';
@@ -24,50 +24,46 @@ const StyledTitle = styled.div`
   margin-bottom: 60px;
 `;
 
-export default class Home extends PureComponent {
-  state = {
-    searchValue: '',
-  };
+const Home: FC = () => {
+  const [searchValue, setSearchValue] = useState('');
 
-  handleSearchValueChange = (event) => {
-    this.setState({ searchValue: event.target.value });
-  };
-
-  handleSearch = () => console.log(`Searching for: ${this.state.searchValue}`);
-
-  render() {
-    const { searchValue } = this.state;
-
-    return (
-      <StyledContainer>
-        <Head>
-          <title>Catch that rabbit</title>
-        </Head>
-        <Jumbotron data={JumbotronData} />
-        <StyledSearchBarContainer>
-          <SearchBar
-            value={searchValue}
-            onChange={this.handleSearchValueChange}
-            onSearch={this.handleSearch}
-          />
-        </StyledSearchBarContainer>
-        <Stats
-          chartData={StatsData.chartData}
-          infoBoxData={StatsData.infoBoxData}
-        />
-        <StyledTableContainer>
-          <StyledTitle>
-            <ContentTitle Image={<RecentBlocksIcon />}>
-              RECENT BLOCKS
-            </ContentTitle>
-          </StyledTitle>
-          <BaseTable
-            data={TableData.data}
-            columns={TableData.columns}
-            moreLink={{ href: '/blocks', text: 'View More Blocks' }}
-          />
-        </StyledTableContainer>
-      </StyledContainer>
-    );
+  function handleSearchValueChange(event) {
+    setSearchValue(event.target.value);
   }
-}
+  function handleSearch() {
+    console.log(`Searching for: ${searchValue}`);
+  }
+
+  return (
+    <StyledContainer>
+      <Head>
+        <title>Catch that rabbit</title>
+      </Head>
+      <Jumbotron data={JumbotronData} />
+      <StyledSearchBarContainer>
+        <SearchBar
+          value={searchValue}
+          onChange={handleSearchValueChange}
+          onSearch={handleSearch()}
+        />
+      </StyledSearchBarContainer>
+      <Stats
+        chartData={StatsData.chartData}
+        infoBoxData={StatsData.infoBoxData}
+      />
+      <StyledTableContainer>
+        <StyledTitle>
+          <ContentTitle Image={<RecentBlocksIcon />}>
+            RECENT BLOCKS
+          </ContentTitle>
+        </StyledTitle>
+        <BaseTable
+          data={TableData.data}
+          columns={TableData.columns}
+          moreLink={{ href: '/blocks', text: 'View More Blocks' }}
+        />
+      </StyledTableContainer>
+    </StyledContainer>
+  );
+};
+export default Home;
