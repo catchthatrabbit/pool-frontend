@@ -1,5 +1,3 @@
-import { arrayOf } from 'prop-types'
-
 type ChartItem = {
   time: string
   value: number
