@@ -65,15 +65,15 @@ const FooterStyled = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 36px;
-`;
+`
 const StyledPaginationContainer = styled.div`
   margin-top: 36px;
-`;
+`
 
 type Column = {
-  name: string,
-  id: string,
-  color: 'white' | 'apple',
+  name: string
+  id: string
+  color: 'white' | 'apple'
   hideMiddle: boolean
 }
 
@@ -89,7 +89,7 @@ interface IProps {
 }
 
 function hideMiddleContent(value) {
-  return `${value.slice(0, 10)}.........${value.slice(-6)}`;
+  return `${value.slice(0, 10)}.........${value.slice(-6)}`
 }
 
 const Table: FC<IProps> = ({ data, columns, moreLink }) => {
@@ -109,41 +109,33 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
             </TableRowStyled>
           </thead>
           <tbody>
-          {data.map((dataItem, index) => (
-            <TableRowStyled key={index}>
-              {columns.map(({ id, color = 'white', hideMiddle = false }) => (
-                <td key={id}>
-                  <Text
-                    fontFamily="secondary"
-                    size="medium"
-                    fontWeight="bold"
-                    color={color}
-                  >
-                    {hideMiddle && hideMiddleContent(dataItem[id])}
-                    {!hideMiddle && dataItem[id]}
-                  </Text>
-                </td>
-              ))}
-            </TableRowStyled>
-          ))}
+            {data.map((dataItem, index) => (
+              <TableRowStyled key={index}>
+                {columns.map(({ id, color = 'white', hideMiddle = false }) => (
+                  <td key={id}>
+                    <Text
+                      fontFamily="secondary"
+                      size="medium"
+                      fontWeight="bold"
+                      color={color}
+                    >
+                      {hideMiddle && hideMiddleContent(dataItem[id])}
+                      {!hideMiddle && dataItem[id]}
+                    </Text>
+                  </td>
+                ))}
+              </TableRowStyled>
+            ))}
           </tbody>
         </TableStyled>
       </TableWrapperStyled>
       <FooterStyled>
-        {
-          moreLink && (
-              <Button href={moreLink.href}>
-                {moreLink.text}
-              </Button>
-          )
-        }
-        {
-          !moreLink && (
+        {moreLink && <Button href={moreLink.href}>{moreLink.text}</Button>}
+        {!moreLink && (
           <StyledPaginationContainer>
             <Pagination onPageChange={() => null} pageCount={4} />
           </StyledPaginationContainer>
-          )
-        }
+        )}
       </FooterStyled>
     </WrapperStyled>
   )
