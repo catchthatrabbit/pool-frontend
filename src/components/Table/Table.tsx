@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import applyTransparence from 'helpers/transparentize';
-import hideMiddleContent from 'helpers/spliceString';
 import { colorVariables } from 'styles/variables';
 import Text from 'atoms/Text/Text';
 import Button from 'atoms/Button/Button';
@@ -89,6 +88,9 @@ interface IProps {
 }
 
 const Table: FC<IProps> = ({ data, columns, moreLink }) => {
+  function hideMiddleContent(value) {
+    return `${value.slice(0, 10)}.........${value.slice(-6)}`;
+  }
 
   return (
     <WrapperStyled>
