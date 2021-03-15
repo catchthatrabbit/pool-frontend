@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { node } from 'prop-types'
 
 import GlobalResponsiveStyless from './style'
 import ResponsiveContext from './context'
@@ -35,10 +34,6 @@ const ResponsiveProvider = ({ children }) => {
       </ResponsiveContext.Provider>
     </>
   )
-}
-
-ResponsiveProvider.propTypes = {
-  children: node.isRequired,
 }
 
 export default ResponsiveProvider
