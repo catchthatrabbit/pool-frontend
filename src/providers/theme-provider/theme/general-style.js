@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-  @import 'https://use.typekit.net/rbr1pzd.css';
   html,
   body {
     margin: 0;
