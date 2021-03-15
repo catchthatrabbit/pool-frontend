@@ -6,16 +6,9 @@ import ContentTitle from 'atoms/ContentTitle/ContentTitle';
 import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox';
 import RadialBarChart from './RadialBarChart/index';
 
-const Chart = styled.button`
-  width: 100%;
-  @media screen and (min-width: 900px) {
-    width: 70%;
-  }
-`;
 const ChartContainer = styled.div`
   width: 100%;
   margin: 50px 0;
-  ${Chart};
 `;
 const StatsStyled = styled.div`
   position: relative;
@@ -30,7 +23,7 @@ const ContentContainer = styled.div`
   width: 100%;
   padding: 0 160px;
   box-sizing: border-box;
-  background: url('images/statistics_bg.png');
+  background: url('images/statistics_bg.png') no-repeat;
   background-position: -1%;
   
   ul {
@@ -59,7 +52,7 @@ const Stats: FC<IProps> = ({ chartData, infoBoxData }) => (
 
     <ContentContainer>
       <ChartContainer>
-        <RadialBarChart data={chartData} className={Chart} />
+        <RadialBarChart data={chartData} />
       </ChartContainer>
       <ul>
         {infoBoxData.map(({ title, value, type }) => (
