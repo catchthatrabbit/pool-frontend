@@ -73,7 +73,7 @@ const StyledPaginationContainer = styled.div`
 type Column = {
   name: string,
   id: string,
-  color: string,
+  color: 'white' | 'apple',
   hideMiddle: boolean
 }
 
@@ -106,13 +106,13 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
           <tbody>
           {data.map((dataItem, index) => (
             <TableRowStyled key={index}>
-              {columns.map(({ id, color, hideMiddle }) => (
+              {columns.map(({ id, color = 'white', hideMiddle = false }) => (
                 <td key={id}>
                   <Text
                     fontFamily="secondary"
                     size="medium"
                     fontWeight="bold"
-                    color={color === 'apple' && 'apple' || 'white'}
+                    color={color}
                   >
                     {hideMiddle && hideMiddleContent(dataItem[id]) || dataItem[id]}
                   </Text>

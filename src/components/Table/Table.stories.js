@@ -89,20 +89,14 @@ export default {
         {
           name: 'height',
           id: 'height',
-          color: 'white',
-          hideMiddle: false,
         },
         {
           name: 'type',
           id: 'type',
-          color: 'white',
-          hideMiddle: false,
         },
         {
           name: 'mined on',
           id: 'mined on',
-          color: 'white',
-          hideMiddle: false,
         },
         {
           name: 'miner',
@@ -113,14 +107,10 @@ export default {
         {
           name: 'reward',
           id: 'reward',
-          color: 'white',
-          hideMiddle: false,
         },
         {
           name: 'round time',
           id: 'round time',
-          color: 'white',
-          hideMiddle: false,
         },
       ],
     },
