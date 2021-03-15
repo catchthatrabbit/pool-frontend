@@ -117,7 +117,8 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
                     fontWeight="bold"
                     color={color}
                   >
-                    {hideMiddle && hideMiddleContent(dataItem[id]) || dataItem[id]}
+                    {hideMiddle && hideMiddleContent(dataItem[id])}
+                    {!hideMiddle && dataItem[id]}
                   </Text>
                 </td>
               ))}
