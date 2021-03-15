@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px auto 0;
+    margin: 100px 0 0;
     width: 90%;
     max-width: 1640px;
     @media screen and (min-width: ${({ theme }) =>
