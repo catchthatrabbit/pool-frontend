@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const WrapperStyled = styled.div`
   box-sizing: border-box;
@@ -8,17 +8,17 @@ const WrapperStyled = styled.div`
   border: 1px solid
     rgba(${({ theme }) => theme.colors.getRGBValue(theme.colors.spindle)}, 0.5);
   border-radius: 10px;
-`;
+`
 
 const TableWrapperStyled = styled.div`
   overflow-x: auto;
-`;
+`
 
 const TableStyled = styled.table`
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-`;
+`
 
 const TableRowStyled = styled.tr`
   &:nth-child(even) {
@@ -33,7 +33,7 @@ const TableRowStyled = styled.tr`
       0.5
     );
   }
-`;
+`
 
 const TableHeadStyled = styled.th`
   box-sizing: border-box;
@@ -48,7 +48,7 @@ const TableHeadStyled = styled.th`
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
     min-width: 0;
   }
-`;
+`
 
 const TableCellStyled = styled.td`
   box-sizing: border-box;
@@ -67,13 +67,13 @@ const TableCellStyled = styled.td`
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
     min-width: 0;
   }
-`;
+`
 
 const FooterStyled = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 1.3rem;
-`;
+`
 
 export {
   WrapperStyled,
@@ -83,4 +83,4 @@ export {
   TableHeadStyled,
   TableCellStyled,
   FooterStyled,
-};
+}

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const HeaderStyled = styled.header`
   box-sizing: border-box;
@@ -13,7 +13,7 @@ const HeaderStyled = styled.header`
   padding: 20px 0;
   height: 100px;
   @media screen and (min-width: ${({ theme }) =>
-    theme.responsive.tablet.medium}) {
+      theme.responsive.tablet.medium}) {
     height: 120px;
   }
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
@@ -31,7 +31,7 @@ const HeaderStyled = styled.header`
   &.hidden {
     top: -200px;
   }
-`;
+`
 
 const HeaderBodyStyled = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ const HeaderBodyStyled = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
-`;
+`
 
 const NavHeaderStyled = styled.div`
   display: flex;
@@ -54,19 +54,19 @@ const NavHeaderStyled = styled.div`
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
     width: auto;
   }
-`;
+`
 
 const LogoStyled = styled.img`
   width: 140px;
   height: auto;
   @media screen and (min-width: ${({ theme }) =>
-    theme.responsive.tablet.medium}) {
+      theme.responsive.tablet.medium}) {
     width: 200px;
   }
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
     width: 240px;
   }
-`;
+`
 
 const ButtonStyled = styled.button`
   height: 48px;
@@ -112,7 +112,7 @@ const ButtonStyled = styled.button`
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
     display: none;
   }
-`;
+`
 
 const NavBarStyled = styled.nav`
   display: none;
@@ -159,7 +159,7 @@ const NavBarStyled = styled.nav`
     height: 50px;
     width: auto;
   }
-`;
+`
 
 export {
   HeaderStyled,
@@ -168,4 +168,4 @@ export {
   LogoStyled,
   ButtonStyled,
   NavBarStyled,
-};
+}

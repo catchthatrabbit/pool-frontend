@@ -1,7 +1,7 @@
-import { BoxStyled, TextStyled, EmailBoxWrapperStyled } from './style';
-import CommonContentTitle from '../../../components/ContentTitle';
-import CommonTitle from '../../atoms/common-title';
-import styled from 'styled-components';
+import { BoxStyled, TextStyled, EmailBoxWrapperStyled } from './style'
+import CommonContentTitle from '../../../components/ContentTitle'
+import CommonTitle from '../../atoms/common-title'
+import styled from 'styled-components'
 
 const EmailContainer = styled.div`
   display: inline-block;
@@ -18,7 +18,7 @@ const EmailContainer = styled.div`
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
     padding: 1.4rem 3rem;
   }
-`;
+`
 
 const ContactPageUi = () => (
   <>
@@ -55,6 +55,6 @@ const ContactPageUi = () => (
       </EmailBoxWrapperStyled>
     </BoxStyled>
   </>
-);
+)
 
-export default ContactPageUi;
+export default ContactPageUi

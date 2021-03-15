@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Table from './Table';
+import React from 'react'
+import styled from 'styled-components'
+import Table from './Table'
 
 export default {
   title: 'Table',
@@ -115,15 +115,15 @@ export default {
       ],
     },
   },
-};
+}
 
 const Container = styled.div`
   width: 1640px;
   height: 1500px;
-`;
+`
 
 export const TableBasic = (args) => (
   <Container>
-    <Table {...args}/>
+    <Table {...args} />
   </Container>
-);
+)

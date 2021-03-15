@@ -1,1 +1,1 @@
-export { default } from './RadialBarChart.tsx';
+export { default } from './RadialBarChart.tsx'

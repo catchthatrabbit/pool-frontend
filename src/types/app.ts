@@ -1,16 +1,16 @@
-import { arrayOf } from 'prop-types';
+import { arrayOf } from 'prop-types'
 
 type ChartItem = {
-  time: string,
+  time: string
   value: number
 }
 
 export type MiningInfo = {
-  title: string,
-  description: string,
-  info: string[],
-  configLink: string,
-  minerLink: string,
+  title: string
+  description: string
+  info: string[]
+  configLink: string
+  minerLink: string
 }
 
-export type ChartData = ChartItem[];
+export type ChartData = ChartItem[]

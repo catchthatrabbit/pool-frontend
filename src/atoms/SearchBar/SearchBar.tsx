@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
-import { colorVariables, fonts } from 'styles/variables';
-import applyTransparence from 'helpers/transparentize';
-import { SearchIcon } from '../icons';
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { colorVariables, fonts } from 'styles/variables'
+import applyTransparence from 'helpers/transparentize'
+import { SearchIcon } from '../icons'
 
 const SearchBarStyle = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const SearchBarStyle = styled.div`
   border-radius: 10px;
   height: 55px;
 
-  input {    
+  input {
     width: calc(100% - 68px);
     padding: 18px 20px;
     font-family: ${fonts.secondary};
@@ -47,12 +47,12 @@ const SearchBarStyle = styled.div`
       background: ${colorVariables.white};
     }
   }
-`;
+`
 
 interface IProps {
-  value: string,
-  placeholder: string,
-  onChange: React.ChangeEventHandler<HTMLInputElement>,
+  value: string
+  placeholder: string
+  onChange: React.ChangeEventHandler<HTMLInputElement>
   onSearch: () => void
 }
 
@@ -62,7 +62,7 @@ const SearchBar: FC<IProps> = ({
   placeholder = 'Search by wallet address...',
   value = '',
 }) => {
-  const handleKeyDown = (event) => event.keyCode === 13 && onSearch();
+  const handleKeyDown = (event) => event.keyCode === 13 && onSearch()
   return (
     <SearchBarStyle>
       <input
@@ -76,7 +76,7 @@ const SearchBar: FC<IProps> = ({
         <SearchIcon />
       </button>
     </SearchBarStyle>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

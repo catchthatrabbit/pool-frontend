@@ -1,5 +1,5 @@
-const { default: BlocksPageUi } = require('../../screens/blocks');
+const { default: BlocksPageUi } = require('../../screens/blocks')
 
-const BlocksPage = () => <BlocksPageUi />;
+const BlocksPage = () => <BlocksPageUi />
 
-export default BlocksPage;
+export default BlocksPage

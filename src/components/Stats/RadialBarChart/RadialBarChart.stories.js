@@ -1,6 +1,6 @@
-import React from 'react';
-import RadialBarChart from './RadialBarChart';
-import styled from 'styled-components';
+import React from 'react'
+import RadialBarChart from './RadialBarChart'
+import styled from 'styled-components'
 
 export default {
   title: 'RadialBarChart',
@@ -36,15 +36,15 @@ export default {
       ],
     },
   },
-};
+}
 
 const Container = styled.div`
   width: 1000px;
   height: 1000px;
-`;
+`
 
 export const RadialBarChartBasic = (args) => (
   <Container>
     <RadialBarChart {...args} />
   </Container>
-);
+)

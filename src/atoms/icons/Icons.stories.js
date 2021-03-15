@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 import * as icons from './index'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default {
-  title: 'Icons'
+  title: 'Icons',
 }
 
 const MainContainer = styled.div`
@@ -28,13 +28,14 @@ const Text = styled.span`
 `
 
 export const IconStory = (args) => {
-
-  return <MainContainer {...args}>
-    {Object.entries(icons).map(([name, Icon]) =>
-      <Container>
-        <Icon/>
-        <Text>{name}</Text>
-      </Container>
-    )}
+  return (
+    <MainContainer {...args}>
+      {Object.entries(icons).map(([name, Icon]) => (
+        <Container>
+          <Icon />
+          <Text>{name}</Text>
+        </Container>
+      ))}
     </MainContainer>
+  )
 }
