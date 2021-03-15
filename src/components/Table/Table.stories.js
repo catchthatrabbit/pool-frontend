@@ -101,6 +101,8 @@ export default {
         {
           name: 'miner',
           id: 'miner',
+          color: 'apple',
+          hideMiddle: true,
         },
         {
           name: 'reward',

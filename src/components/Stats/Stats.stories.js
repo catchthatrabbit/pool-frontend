@@ -6,7 +6,7 @@ export default {
   title: 'Stats',
   component: Stats,
   argTypes: {
-    data: {
+    chartData: {
       type: { name: 'object', required: true },
       defaultValue: [
         { time: '2020-10-19 16:00', value: 87930194 },
@@ -33,6 +33,16 @@ export default {
         { time: '2020-10-20 13:00', value: 87130942 },
         { time: '2020-10-20 14:00', value: 63791200 },
         { time: '2020-10-20 15:00', value: 50542491 },
+      ],
+    },
+    infoBoxData: {
+      type: { name: 'object', required: true },
+      defaultValue: [
+        { title: '24H Hashrate High', value: 192900000, type: 'hashSpeed' },
+        { title: '24H Hashrate low', value: 19200, type: 'hashSpeed' },
+        { title: 'Round Variance', value: 200, type: 'percentage' },
+        { title: 'Blockchain Height', value: 99000000, type: 'number' },
+        { title: 'Last XCB Payout', value: 330000, type: 'euro' },
       ],
     },
   },
