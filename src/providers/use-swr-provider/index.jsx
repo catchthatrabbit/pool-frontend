@@ -1,7 +1,6 @@
-import { SWRConfig } from 'swr';
-import fetcher from '../../services/http-client';
+import { SWRConfig } from 'swr'
+import fetcher from 'services/http-client'
 
-// eslint-disable-next-line react/prop-types
 const UseSwrConfigProvider = ({ children }) => (
   <SWRConfig
     value={{
@@ -11,6 +10,6 @@ const UseSwrConfigProvider = ({ children }) => (
   >
     {children}
   </SWRConfig>
-);
+)
 
-export default UseSwrConfigProvider;
+export default UseSwrConfigProvider

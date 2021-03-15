@@ -2,7 +2,7 @@ import {
   responsive,
   mediaQueriesMaxWidth,
   mediaQueriesMinWidth,
-} from '../../responsive-provider/utils';
+} from '../../responsive-provider/utils'
 
 const catchThatRabitTheme = () => {
   const colors = {
@@ -22,7 +22,7 @@ const catchThatRabitTheme = () => {
     white: 'rgb(255, 255, 255)',
     woodsmoke: 'rgb(24, 26, 31)',
     getRGBValue: (rgbColor) => rgbColor.match(/\d{1,3}, \d{1,3}, \d{1,3}/)[0],
-  };
+  }
 
   const typography = {
     primary: 'good-times, sans-serif',
@@ -147,7 +147,7 @@ letter-spacing: normal;
   `,
       },
     },
-  };
+  }
 
   return {
     colors,
@@ -155,7 +155,7 @@ letter-spacing: normal;
     mediaQueriesMaxWidth,
     mediaQueriesMinWidth,
     responsive,
-  };
-};
+  }
+}
 
-export default catchThatRabitTheme;
+export default catchThatRabitTheme

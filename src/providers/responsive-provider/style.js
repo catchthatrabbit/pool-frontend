@@ -1,8 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
-import { mediaQueriesMinWidth, mediaQueriesMaxWidth } from './utils';
+import { createGlobalStyle } from 'styled-components'
+import { mediaQueriesMinWidth, mediaQueriesMaxWidth } from './utils'
 
 const createMediaQueriesHelper = () => {
-  let result = [];
+  let result = []
 
   for (let mediaQuery in mediaQueriesMaxWidth) {
     const mediaQueriyCss = `
@@ -15,8 +15,8 @@ const createMediaQueriesHelper = () => {
             width: 100%;
           }
         }
-      `;
-    result.push(mediaQueriyCss);
+      `
+    result.push(mediaQueriyCss)
   }
   for (let mediaQuery in mediaQueriesMinWidth) {
     const mediaQueriyCss = `
@@ -28,14 +28,14 @@ const createMediaQueriesHelper = () => {
             display: none;
           }
         }
-      `;
-    result.push(mediaQueriyCss);
+      `
+    result.push(mediaQueriyCss)
   }
-  return result;
-};
+  return result
+}
 
 const GlobalResponsiveStyles = createGlobalStyle`
   ${createMediaQueriesHelper()}
-`;
+`
 
-export default GlobalResponsiveStyles;
+export default GlobalResponsiveStyles

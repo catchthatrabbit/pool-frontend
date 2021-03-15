@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { colorVariables, fonts } from 'styles/variables';
+import React, { FC } from 'react'
+import styled, { keyframes } from 'styled-components'
+import { colorVariables, fonts } from 'styles/variables'
 
-import Button from 'atoms/Button/Button';
-import Text from 'atoms/Text/Text';
-import MapButton from 'atoms/MapButton/MapButton';
-import { Arrow } from 'atoms/icons';
-import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox';
+import Button from 'atoms/Button/Button'
+import Text from 'atoms/Text/Text'
+import MapButton from 'atoms/MapButton/MapButton'
+import { Arrow } from 'atoms/icons'
+import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox'
 
 const scrollTranslate = keyframes`
   0% {
@@ -20,7 +20,7 @@ const scrollTranslate = keyframes`
     transform: translateY(10px);
       opacity: 0;
   }
-`;
+`
 const ScrollStyle = styled.div`
   position: absolute;
   top: 5px;
@@ -28,16 +28,17 @@ const ScrollStyle = styled.div`
   height: 8px;
   background: ${colorVariables.white};
   border-radius: 25%;
-  animation: ${scrollTranslate} 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
-`;
+  animation: ${scrollTranslate} 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94)
+    infinite;
+`
 const MouseStyle = styled.div`
-   width: 3px;
-   height: 18px;
-   background: ${colorVariables.woodsmoke};
-   padding: 8px 10px;
-   border: 2px solid ${colorVariables.gunPowder};
-   border-radius: 20px;
-`;
+  width: 3px;
+  height: 18px;
+  background: ${colorVariables.woodsmoke};
+  padding: 8px 10px;
+  border: 2px solid ${colorVariables.gunPowder};
+  border-radius: 20px;
+`
 const MouseContainerStyle = styled.div`
   position: absolute;
   flex-direction: column;
@@ -48,37 +49,37 @@ const MouseContainerStyle = styled.div`
   left: calc(50% + 40px);
   bottom: 5%;
   display: flex;
-`;
+`
 
 const LocationStyle = styled.div`
-   position: absolute;
-   top: 50%;
-   font-weight: 600;
-   padding: 20px;
-   min-width: min(12vw, 215px);
-`;
+  position: absolute;
+  top: 50%;
+  font-weight: 600;
+  padding: 20px;
+  min-width: min(12vw, 215px);
+`
 const USStyle = styled(LocationStyle)`
   top: 25%;
   left: 35%;
-`;
+`
 const EUStyle = styled(LocationStyle)`
   top: 25%;
   left: 58%;
-`;
+`
 const APStyle = styled(LocationStyle)`
   top: 35%;
   left: 77%;
-`;
+`
 const MapStyle = styled.div`
-   position: absolute;
-   left: -80px;
-   top: 50px;
-   height: 934px; 
-   width: 100%;
-   background: url('/images/map_bg.png')
-`;
+  position: absolute;
+  left: -80px;
+  top: 50px;
+  height: 934px;
+  width: 100%;
+  background: url('/images/map_bg.png');
+`
 const JumbotronStyle = styled.div`
-  height: 934px; 
+  height: 934px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -99,16 +100,16 @@ const JumbotronStyle = styled.div`
       margin-bottom: 50px;
     }
   }
-`;
+`
 const StyledTitleTex = styled.div`
   bottom: 60%;
   margin: 20px 0 0;
   order: -1;
   word-break: break-all;
   span {
-   white-space: nowrap;
+    white-space: nowrap;
   }
-`;
+`
 
 const StyledButtonContent = styled.div`
   width: 100%;
@@ -116,7 +117,7 @@ const StyledButtonContent = styled.div`
   button {
     margin-left: 20px;
   }
-`;
+`
 
 const StyledInfoComponent = styled.div`
   margin-left: 140px;
@@ -133,15 +134,15 @@ const StyledInfoComponent = styled.div`
     font-size: 24px;
     color: ${colorVariables.santasGray};
   }
-`;
+`
 interface IProps {
-  data: InfoBoxItem[],
+  data: InfoBoxItem[]
 }
 
 const Jumbotron: FC<IProps> = ({ data }) => (
   <JumbotronStyle>
     <ul>
-      { data.map(({ title, value, type }) => (
+      {data.map(({ title, value, type }) => (
         <li key={title}>
           <InfoBox title={title} value={value} type={type} />
         </li>
@@ -149,19 +150,13 @@ const Jumbotron: FC<IProps> = ({ data }) => (
     </ul>
     <MapStyle>
       <USStyle>
-        <MapButton href="/">
-          Connect US location
-        </MapButton>
+        <MapButton href="/">Connect US location</MapButton>
       </USStyle>
       <EUStyle>
-        <MapButton href="/">
-          Connect EU location
-        </MapButton>
+        <MapButton href="/">Connect EU location</MapButton>
       </EUStyle>
       <APStyle>
-        <MapButton href="/">
-          Connect AP location
-        </MapButton>
+        <MapButton href="/">Connect AP location</MapButton>
       </APStyle>
       <MouseContainerStyle>
         <MouseStyle>
@@ -172,9 +167,15 @@ const Jumbotron: FC<IProps> = ({ data }) => (
     </MapStyle>
     <StyledInfoComponent>
       <StyledTitleTex>
-        <Text size="ultra-large" italic>Dedicated</Text>
-        <Text size="ultra-large" italic>Pool for</Text>
-        <Text size="ultra-large" color="apple" italic>CORE COIN</Text>
+        <Text size="ultra-large" italic>
+          Dedicated
+        </Text>
+        <Text size="ultra-large" italic>
+          Pool for
+        </Text>
+        <Text size="ultra-large" color="apple" italic>
+          CORE COIN
+        </Text>
       </StyledTitleTex>
       <p>
         We have several locations for you to select from.
@@ -196,5 +197,5 @@ const Jumbotron: FC<IProps> = ({ data }) => (
       </StyledButtonContent>
     </StyledInfoComponent>
   </JumbotronStyle>
-);
-export default Jumbotron;
+)
+export default Jumbotron

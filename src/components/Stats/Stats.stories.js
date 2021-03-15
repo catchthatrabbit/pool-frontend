@@ -1,6 +1,6 @@
-import React from 'react';
-import Stats from './Stats';
-import styled from 'styled-components';
+import React from 'react'
+import Stats from './Stats'
+import styled from 'styled-components'
 
 export default {
   title: 'Stats',
@@ -46,15 +46,15 @@ export default {
       ],
     },
   },
-};
+}
 
 const Container = styled.div`
   width: 1920px;
   height: 1500px;
-`;
+`
 
 export const StatsBasic = (args) => (
   <Container>
     <Stats {...args} />
   </Container>
-);
+)

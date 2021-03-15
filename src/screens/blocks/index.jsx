@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-import { BoxesWrapperStyled } from './style';
-import CommonContentTitle from '../../../components/ContentTitle';
-import CommonInfoBox from '../../../components/InfoBox';
-import SearchBar from '../../atoms/SearchBar';
-import Pagination from '../../components/Pagination';
-import BaseTable from '../../components/Table';
+import { BoxesWrapperStyled } from './style'
+import CommonContentTitle from '../../../components/ContentTitle'
+import CommonInfoBox from '../../../components/InfoBox'
+import SearchBar from '../../atoms/SearchBar'
+import Pagination from '../../components/Pagination'
+import BaseTable from '../../components/Table'
 
 const boxesInfo = [
   { title: 'Pool hashrate', value: '69.9 GH/S' },
@@ -17,16 +17,16 @@ const boxesInfo = [
   { title: 'Round Variance', value: '200%' },
   { title: 'Blockchain Height', value: '99,000,000' },
   { title: 'Last XCB Payout', value: '₡ 330,000' },
-];
+]
 
 const BlocksPageUi = () => {
-  const [seaarchValue, setValue] = useState('');
+  const [seaarchValue, setValue] = useState('')
 
   const renderTableFooter = () => (
     <Pagination pageCount={20} onPageChange={(page) => console.log(page)} />
-  );
+  )
 
-  const handleSearchValueChange = (event) => setValue(event.target.value);
+  const handleSearchValueChange = (event) => setValue(event.target.value)
 
   return (
     <>
@@ -44,7 +44,7 @@ const BlocksPageUi = () => {
 
       <BaseTable footer={renderTableFooter()} />
     </>
-  );
-};
+  )
+}
 
-export default BlocksPageUi;
+export default BlocksPageUi

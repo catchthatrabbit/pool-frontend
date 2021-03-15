@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
-import { StartMiningIcon } from 'atoms/icons';
-import ContentTitle from './ContentTitle.tsx';
+import React, { ReactNode } from 'react'
+import { StartMiningIcon } from 'atoms/icons'
+import ContentTitle from './ContentTitle.tsx'
 
 export default {
   title: 'ContentTitle',
@@ -13,15 +13,13 @@ export default {
       control: 'text',
     },
   },
-};
+}
 
 export const ContentTitleBasic = (args) => (
-  <ContentTitle {...args}>
-    {args.value}
-  </ContentTitle>
-);
+  <ContentTitle {...args}>{args.value}</ContentTitle>
+)
 
 ContentTitleBasic.args = {
   value: 'Lorem ipsum dolor sit amet',
   Image: <StartMiningIcon />,
-};
+}

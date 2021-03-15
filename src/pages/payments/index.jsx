@@ -1,5 +1,5 @@
-const { default: PaymentPageUi } = require('../../screens/payments');
+const { default: PaymentPageUi } = require('../../screens/payments')
 
-const PaymentPage = () => <PaymentPageUi />;
+const PaymentPage = () => <PaymentPageUi />
 
-export default PaymentPage;
+export default PaymentPage

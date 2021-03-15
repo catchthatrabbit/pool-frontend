@@ -1,22 +1,22 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
-import { StatisticsIcon } from 'atoms/icons';
-import { ChartData } from 'types/app';
-import ContentTitle from 'atoms/ContentTitle/ContentTitle';
-import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox';
-import RadialBarChart from './RadialBarChart/index';
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { StatisticsIcon } from 'atoms/icons'
+import { ChartData } from 'types/app'
+import ContentTitle from 'atoms/ContentTitle/ContentTitle'
+import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox'
+import RadialBarChart from './RadialBarChart/index'
 
 const ChartContainer = styled.div`
   width: 100%;
   margin: 50px 0;
-`;
+`
 const StatsStyled = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-`;
+`
 
 const ContentContainer = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const ContentContainer = styled.div`
   box-sizing: border-box;
   background: url('images/statistics_bg.png') no-repeat;
   background-position: -1%;
-  
+
   ul {
     list-style-type: none;
     margin-left: 180px;
@@ -37,18 +37,16 @@ const ContentContainer = styled.div`
       margin-bottom: 50px;
     }
   }
-`;
+`
 
 interface IProps {
-  chartData: ChartData,
-  infoBoxData: InfoBoxItem[],
+  chartData: ChartData
+  infoBoxData: InfoBoxItem[]
 }
 
 const Stats: FC<IProps> = ({ chartData, infoBoxData }) => (
   <StatsStyled>
-    <ContentTitle Image={<StatisticsIcon />}>
-      Pool Statistics
-    </ContentTitle>
+    <ContentTitle Image={<StatisticsIcon />}>Pool Statistics</ContentTitle>
 
     <ContentContainer>
       <ChartContainer>
@@ -63,6 +61,6 @@ const Stats: FC<IProps> = ({ chartData, infoBoxData }) => (
       </ul>
     </ContentContainer>
   </StatsStyled>
-);
+)
 
-export default Stats;
+export default Stats

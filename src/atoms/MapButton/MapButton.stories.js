@@ -1,5 +1,5 @@
-import React from 'react';
-import MapButton from './MapButton.tsx';
+import React from 'react'
+import MapButton from './MapButton.tsx'
 
 export default {
   title: 'MapButton',
@@ -12,14 +12,12 @@ export default {
       control: 'text',
     },
   },
-};
+}
 
 export const MapButtonStory = (args) => (
-  <MapButton {...args}>
-    {args.value}
-  </MapButton>
-);
+  <MapButton {...args}>{args.value}</MapButton>
+)
 
 MapButtonStory.args = {
   value: 'Test',
-};
+}

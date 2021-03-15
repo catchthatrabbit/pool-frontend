@@ -1,31 +1,30 @@
-import { useState, useEffect } from 'react';
-import { node } from 'prop-types';
+import { useState, useEffect } from 'react'
 
-import GlobalResponsiveStyless from './style';
-import ResponsiveContext from './context';
-import { getDeviceNameBasedOnSize, getDeviceDimensions } from './utils';
+import GlobalResponsiveStyless from './style'
+import ResponsiveContext from './context'
+import { getDeviceNameBasedOnSize, getDeviceDimensions } from './utils'
 
 const ResponsiveProvider = ({ children }) => {
   const [deviceType, setDeviceType] = useState(
-    getDeviceNameBasedOnSize(getDeviceDimensions())
-  );
+    getDeviceNameBasedOnSize(getDeviceDimensions()),
+  )
 
   const setDeviceTypeEventListener = () => {
-    setDeviceType(getDeviceNameBasedOnSize(getDeviceDimensions()));
-  };
+    setDeviceType(getDeviceNameBasedOnSize(getDeviceDimensions()))
+  }
 
   useEffect(() => {
-    let resizeEventListener;
+    let resizeEventListener
     if (process.browser) {
       resizeEventListener = window.addEventListener(
         'resize',
-        setDeviceTypeEventListener
-      );
+        setDeviceTypeEventListener,
+      )
     }
     return function () {
-      window.removeEventListener('resize', resizeEventListener);
-    };
-  }, []);
+      window.removeEventListener('resize', resizeEventListener)
+    }
+  }, [])
 
   return (
     <>
@@ -34,11 +33,7 @@ const ResponsiveProvider = ({ children }) => {
         {children}
       </ResponsiveContext.Provider>
     </>
-  );
-};
+  )
+}
 
-ResponsiveProvider.propTypes = {
-  children: node.isRequired,
-};
-
-export default ResponsiveProvider;
+export default ResponsiveProvider

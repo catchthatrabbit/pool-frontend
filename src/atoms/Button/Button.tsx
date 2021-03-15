@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import React, { FC } from 'react';
-import { colorVariables } from 'styles/variables';
-import styled, { css } from 'styled-components';
-import Text from 'atoms/Text/Text';
-import applyTransparence from 'helpers/transparentize';
+import Link from 'next/link'
+import React, { FC } from 'react'
+import { colorVariables } from 'styles/variables'
+import styled, { css } from 'styled-components'
+import Text from 'atoms/Text/Text'
+import applyTransparence from 'helpers/transparentize'
 
 const StyledButton = styled.button`
   box-sizing: border-box;
@@ -24,16 +24,15 @@ const StyledButton = styled.button`
   &:hover {
     border: 1px solid ${applyTransparence(1, colorVariables.gunPowder)};
   }
-  ${(props: { theme: string; }) =>
+  ${(props: { theme: string }) =>
     props.theme === 'outline' &&
     css`
       background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
       &:hover {
         background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
       }
-    `
-  }
-  ${(props: { theme: string; }) =>
+    `}
+  ${(props: { theme: string }) =>
     props.theme === 'transparent' &&
     css`
       backdrop-filter: blur(6px);
@@ -42,35 +41,28 @@ const StyledButton = styled.button`
         transform: scale(1.05);
         backdrop-filter: blur(18px);
       }
-    `
-  }
-`;
+    `}
+`
 
 interface IProps {
-  onClick?: () => void;
-  href?: string;
-  theme?: 'outline' | 'transparent';
+  onClick?: () => void
+  href?: string
+  theme?: 'outline' | 'transparent'
 }
 
-const Button: FC<IProps> = ({
-  onClick,
-  children,
-  href,
-  theme = 'outline',
-}) => {
+const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline' }) => {
   const renderedButton = (
     <StyledButton type="button" theme={theme} onClick={onClick}>
-      <Text size="small" italic> {children} </Text>
+      <Text size="small" italic>
+        {' '}
+        {children}{' '}
+      </Text>
     </StyledButton>
-  );
+  )
   if (href) {
-    return (
-      <Link href={href}>
-        {renderedButton}
-      </Link>
-    );
+    return <Link href={href}>{renderedButton}</Link>
   }
-  return renderedButton;
-};
+  return renderedButton
+}
 
-export default Button;
+export default Button

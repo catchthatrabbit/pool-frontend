@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prettier": "prettier --write .",
     "storybook": "start-storybook -p 6006 -c .storybook -s ./public"
   },
   "dependencies": {
@@ -15,7 +16,6 @@
     "d3": "^6.2.0",
     "next": "9.5.2",
     "polished": "^4.1.1",
-    "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-paginate": "^6.5.0",
@@ -58,7 +58,7 @@
     "husky": "^4.2.5",
     "jest": "^26.4.2",
     "lint-staged": "^10.2.11",
-    "prettier": "2.1.0",
+    "prettier": "^2.2.1",
     "source-map-loader": "^2.0.1",
     "storybook-addon-next-router": "^2.0.4",
     "style-loader": "^2.0.0",
@@ -66,15 +66,12 @@
     "typescript": "^4.2.2"
   },
   "lint-staged": {
-    "*.{css,scss}": [
-      "prettier --write"
-    ],
-    "*.{js,jsx}": [
-      "eslint --ext .js,.jsx",
-      "prettier --write"
-    ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
+    "*": "prettier --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
   }
 }

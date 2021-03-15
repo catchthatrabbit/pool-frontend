@@ -1,18 +1,18 @@
-import ReactPaginate from 'react-paginate';
-import PaginationContainer from './PaginationContainer';
-import React, { FC } from 'react';
+import ReactPaginate from 'react-paginate'
+import PaginationContainer from './PaginationContainer'
+import React, { FC } from 'react'
 
 interface IProps {
-  onPageChange: (page: number) => void,
-  pageCount: number,
+  onPageChange: (page: number) => void
+  pageCount: number
 }
 
 const Pagination: FC<IProps> = ({ onPageChange, pageCount }) => {
   const handlePageChange = ({ selected: page }) => {
-    const currentPage = page + 1;
+    const currentPage = page + 1
 
-    onPageChange(currentPage);
-  };
+    onPageChange(currentPage)
+  }
 
   return (
     <PaginationContainer>
@@ -30,7 +30,7 @@ const Pagination: FC<IProps> = ({ onPageChange, pageCount }) => {
         activeClassName="active"
       />
     </PaginationContainer>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination
