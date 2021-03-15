@@ -89,26 +89,38 @@ export default {
         {
           name: 'height',
           id: 'height',
+          color: 'white',
+          splice: false,
         },
         {
           name: 'type',
           id: 'type',
+          color: 'white',
+          splice: false,
         },
         {
           name: 'mined on',
           id: 'mined on',
+          color: 'white',
+          splice: false,
         },
         {
           name: 'miner',
           id: 'miner',
+          color: 'apple',
+          splice: true,
         },
         {
           name: 'reward',
           id: 'reward',
+          color: 'white',
+          splice: false,
         },
         {
           name: 'round time',
           id: 'round time',
+          color: 'white',
+          splice: false,
         },
       ],
     },

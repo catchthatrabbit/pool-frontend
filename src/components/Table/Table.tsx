@@ -71,7 +71,9 @@ const StyledPaginationContainer = styled.div`
 
 type Column = {
   name: string,
-  id: string
+  id: string,
+  color: string,
+  splice: boolean
 }
 
 type DataItem = { [key: string]: string }
@@ -103,10 +105,15 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
           <tbody>
           {data.map((dataItem, index) => (
             <TableRowStyled key={index}>
-              {columns.map(({ id }) => (
+              {columns.map(({ id, color, splice }) => (
                 <td key={id}>
-                  <Text fontFamily="secondary" size="medium" fontWeight="bold" color={id === 'miner' && 'apple' || 'white'}>
-                    {id === 'miner' && `${dataItem[id].slice(0, 10)}.........${dataItem[id].slice(-6)}` || dataItem[id]}
+                  <Text
+                    fontFamily="secondary"
+                    size="medium"
+                    fontWeight="bold"
+                    color={color === 'apple' && 'apple' || 'white'}
+                  >
+                    {splice && `${dataItem[id].slice(0, 10)}.........${dataItem[id].slice(-6)}` || dataItem[id]}
                   </Text>
                 </td>
               ))}
