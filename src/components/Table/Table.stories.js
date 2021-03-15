@@ -120,7 +120,7 @@ export default {
           name: 'round time',
           id: 'round time',
           color: 'white',
-          splice: false,
+          hideMiddle: false,
         },
       ],
     },

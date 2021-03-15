@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import applyTransparence from 'helpers/transparentize';
+import hideMiddleContent from 'helpers/spliceString';
 import { colorVariables } from 'styles/variables';
 import Text from 'atoms/Text/Text';
 import Button from 'atoms/Button/Button';
@@ -73,7 +74,7 @@ type Column = {
   name: string,
   id: string,
   color: string,
-  splice: boolean
+  hideMiddle: boolean
 }
 
 type DataItem = { [key: string]: string }
@@ -105,7 +106,7 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
           <tbody>
           {data.map((dataItem, index) => (
             <TableRowStyled key={index}>
-              {columns.map(({ id, color, splice }) => (
+              {columns.map(({ id, color, hideMiddle }) => (
                 <td key={id}>
                   <Text
                     fontFamily="secondary"
@@ -113,7 +114,7 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
                     fontWeight="bold"
                     color={color === 'apple' && 'apple' || 'white'}
                   >
-                    {splice && `${dataItem[id].slice(0, 10)}.........${dataItem[id].slice(-6)}` || dataItem[id]}
+                    {hideMiddle && hideMiddleContent(dataItem[id]) || dataItem[id]}
                   </Text>
                 </td>
               ))}
