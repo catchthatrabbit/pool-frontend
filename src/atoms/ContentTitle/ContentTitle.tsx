@@ -22,12 +22,7 @@ interface IProps {
 }
 
 const ContentTitle: FC<IProps> = ({ children: title, Image }) => (
-  <WrapperStyled>
-    <ImageStyled>
-      {Image}
-    </ImageStyled>
-    <Text size='very-large' italic>{title}</Text>
-  </WrapperStyled>
+  <WrapperStyled><ImageStyled>{Image}</ImageStyled><Text size='very-large' italic>{title} sadasdasfsfsagasasfasasfasfsafsafjjjjjjjjjjjjjjjjjjjjj</Text></WrapperStyled>
 );
 
 export default ContentTitle;
