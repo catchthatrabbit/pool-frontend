@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import MiningInfo from './MiningInfo';
+import React from 'react'
+import styled from 'styled-components'
+import MiningInfo from './MiningInfo'
 
 export default {
   title: 'MiningInfo',
@@ -23,25 +23,25 @@ export default {
       ],
     },
   },
-};
+}
 
 const Container = styled.div`
   width: 1640px;
   height: 478px;
-`;
+`
 const ContainerSmall = styled.div`
   width: 812px;
   height: 478px;
-`;
+`
 
 export const MiningInfoLarge = (args) => (
   <Container>
     <MiningInfo {...args} width="large" />
   </Container>
-);
+)
 
 export const MiningInfoSmall = (args) => (
   <ContainerSmall>
     <MiningInfo {...args} width="small" />
   </ContainerSmall>
-);
+)

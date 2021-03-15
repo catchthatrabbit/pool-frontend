@@ -1,37 +1,37 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
+import React, { FC } from 'react'
+import styled from 'styled-components'
 import { StatisticsIcon } from 'atoms/icons'
-import RadialBarChart from './RadialBarChart/index';
-import { ChartData } from 'types/app';
-import ContentTitle from 'atoms/ContentTitle/ContentTitle';
-import InfoBox from 'atoms/InfoBox/InfoBox';
+import RadialBarChart from './RadialBarChart/index'
+import { ChartData } from 'types/app'
+import ContentTitle from 'atoms/ContentTitle/ContentTitle'
+import InfoBox from 'atoms/InfoBox/InfoBox'
 
 const Chart = styled.button`
   width: 100%;
   @media screen and (min-width: 900px) {
     width: 70%;
   }
-`;
+`
 const ChartContainer = styled.div`
   width: 100%;
   margin: 50px 0;
   background: url('images/statistics_bg.png') no-repeat top left / cover;
   ${Chart};
-`;
+`
 const StatsStyled = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-`;
+`
 
 const ContentContainer = styled.div`
   display: flex;
   width: 100%;
   padding: 0 160px;
   box-sizing: border-box;
-  
+
   ul {
     list-style-type: none;
     margin-left: 180px;
@@ -46,23 +46,20 @@ const ContentContainer = styled.div`
 `
 
 interface IProps {
-  data: ChartData,
+  data: ChartData
 }
 
 const Stats: FC<IProps> = ({ data }) => {
-
   const boxesInfo = [
     { title: '24H Hashrate High', value: '192.9 GH/S' },
     { title: '24H Hashrate low', value: '19.2 GH/S' },
     { title: 'Round Variance', value: '200%' },
     { title: 'Blockchain Height', value: '99,000,000' },
     { title: 'Last XCB Payout', value: '₡ 330,000' },
-  ];
+  ]
   return (
     <StatsStyled>
-      <ContentTitle Image={<StatisticsIcon/>}>
-        Pool Statistics
-      </ContentTitle>
+      <ContentTitle Image={<StatisticsIcon />}>Pool Statistics</ContentTitle>
 
       <ContentContainer>
         <ChartContainer>
@@ -77,7 +74,7 @@ const Stats: FC<IProps> = ({ data }) => {
         </ul>
       </ContentContainer>
     </StatsStyled>
-  );
-};
+  )
+}
 
-export default Stats;
+export default Stats

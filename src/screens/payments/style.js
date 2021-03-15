@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const BoxesWrapperStyled = styled.ul`
   display: flex;
@@ -24,6 +24,6 @@ const BoxesWrapperStyled = styled.ul`
       theme.responsive.mobileDevice.large}) {
     justify-content: space-between;
   }
-`;
+`
 
-export { BoxesWrapperStyled };
+export { BoxesWrapperStyled }

@@ -1,7 +1,7 @@
-import { PureComponent } from 'react';
-import Link from 'next/link';
-import { withRouter } from 'next/router';
-import cn from 'classnames';
+import { PureComponent } from 'react'
+import Link from 'next/link'
+import { withRouter } from 'next/router'
+import cn from 'classnames'
 
 import {
   HeaderStyled,
@@ -10,8 +10,8 @@ import {
   LogoStyled,
   ButtonStyled,
   NavBarStyled,
-} from './style';
-import { WithRouterProps } from 'next/dist/client/with-router';
+} from './style'
+import { WithRouterProps } from 'next/dist/client/with-router'
 
 type Props = WithRouterProps
 
@@ -20,7 +20,7 @@ class Header extends PureComponent<Props> {
     prevScrollPos: 0,
     visible: true,
     isMenuOpened: false,
-  };
+  }
 
   links = [
     { text: 'Home', href: '/' },
@@ -29,53 +29,53 @@ class Header extends PureComponent<Props> {
     { text: 'Miners', href: '/miners' },
     { text: 'Start Mining', href: '/start-mining' },
     { text: 'Contact', href: '/contact' },
-  ];
+  ]
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.handleResize);
+    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('resize', this.handleResize)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('resize', this.handleResize)
   }
 
   handleResize = () => {
     if (window.innerWidth >= 1440) {
-      document.body.style.overflow = 'visible';
-      this.setState({ isMenuOpened: false });
+      document.body.style.overflow = 'visible'
+      this.setState({ isMenuOpened: false })
     }
-  };
+  }
 
   handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
+    const currentScrollPos = window.pageYOffset
 
-    const { prevScrollPos } = this.state;
-    const visible = prevScrollPos > currentScrollPos;
+    const { prevScrollPos } = this.state
+    const visible = prevScrollPos > currentScrollPos
 
     this.setState({
       prevScrollPos: currentScrollPos,
       visible,
-    });
-  };
+    })
+  }
 
   handleMenuClick = () => {
-    const { isMenuOpened } = this.state;
-    document.body.style.overflow = !isMenuOpened ? 'hidden' : 'visible';
-    this.setState({ isMenuOpened: !isMenuOpened });
-  };
+    const { isMenuOpened } = this.state
+    document.body.style.overflow = !isMenuOpened ? 'hidden' : 'visible'
+    this.setState({ isMenuOpened: !isMenuOpened })
+  }
 
   handleLinkClick = () => {
-    document.body.style.overflow = 'visible';
-    this.setState({ isMenuOpened: false });
-  };
+    document.body.style.overflow = 'visible'
+    this.setState({ isMenuOpened: false })
+  }
 
   renderLinks = () => {
     /* eslint-disable */
     const {
       router: { pathname },
-    } = this.props;
+    } = this.props
 
     return this.links.map(({ text, href }) => (
       <Link href={href} key={href}>
@@ -83,12 +83,12 @@ class Header extends PureComponent<Props> {
           <h3 className={cn({ active: href === pathname })}>{text}</h3>
         </a>
       </Link>
-    ));
+    ))
     /* eslint-enable */
-  };
+  }
 
   render() {
-    const { visible, isMenuOpened } = this.state;
+    const { visible, isMenuOpened } = this.state
 
     return (
       <HeaderStyled
@@ -117,8 +117,8 @@ class Header extends PureComponent<Props> {
           </NavBarStyled>
         </HeaderBodyStyled>
       </HeaderStyled>
-    );
+    )
   }
 }
 
-export default withRouter(Header);
+export default withRouter(Header)

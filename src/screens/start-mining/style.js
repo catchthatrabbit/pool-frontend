@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-
+import styled from 'styled-components'
 
 const TextStyled = styled.p`
   margin: 1rem 0;
@@ -9,7 +7,7 @@ const TextStyled = styled.p`
   a {
     color: ${({ theme }) => theme.colors.apple};
   }
-`;
+`
 
 const MinerCardsWrapperStyled = styled.div`
   display: flex;
@@ -17,7 +15,7 @@ const MinerCardsWrapperStyled = styled.div`
   align-items: center;
   flex-flow: row wrap;
   margin: 2rem 0;
-`;
+`
 
 const LinksWrapperStyled = styled.div`
   display: flex;
@@ -34,11 +32,11 @@ const LinksWrapperStyled = styled.div`
     justify-content: space-evenly;
     margin: 3rem 0;
   }
-`;
+`
 
 export {
   TableInfoStyled,
   TextStyled,
   MinerCardsWrapperStyled,
   LinksWrapperStyled,
-};
+}

@@ -1,5 +1,5 @@
-import MinersPageUi from '../../screens/miners';
+import MinersPageUi from '../../screens/miners'
 
-const MinersPage = () => <MinersPageUi />;
+const MinersPage = () => <MinersPageUi />
 
-export default MinersPage;
+export default MinersPage

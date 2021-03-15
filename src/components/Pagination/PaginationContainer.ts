@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { colorVariables } from 'styles/variables';
-import applyTransparence from 'helpers/transparentize';
+import styled from 'styled-components'
+import { colorVariables } from 'styles/variables'
+import applyTransparence from 'helpers/transparentize'
 
 const PaginationContainer = styled.div`
   ul.pagination {
@@ -16,7 +16,10 @@ const PaginationContainer = styled.div`
       &.active {
         a {
           color: ${colorVariables.white}; 
-          background-color: ${applyTransparence(0.25, colorVariables.gunPowder)} 
+          background-color: ${applyTransparence(
+            0.25,
+            colorVariables.gunPowder,
+          )} 
           border: 1px solid ${colorVariables.gunPowder};
           border-radius: 10px;
         }
@@ -75,6 +78,6 @@ const PaginationContainer = styled.div`
       }
     }
   }
-`;
+`
 
-export default PaginationContainer;
+export default PaginationContainer

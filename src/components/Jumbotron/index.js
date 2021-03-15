@@ -1,1 +1,1 @@
-export { default } from './Jumbotron.tsx';
+export { default } from './Jumbotron.tsx'

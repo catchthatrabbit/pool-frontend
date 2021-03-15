@@ -1,5 +1,5 @@
-import StartMiningPageUi from '../../screens/start-mining';
+import StartMiningPageUi from '../../screens/start-mining'
 
-const StartMiningPage = () => <StartMiningPageUi />;
+const StartMiningPage = () => <StartMiningPageUi />
 
-export default StartMiningPage;
+export default StartMiningPage

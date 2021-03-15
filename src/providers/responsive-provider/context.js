@@ -1,7 +1,7 @@
-import React from 'react';
-import { getDeviceDimensions, getDeviceNameBasedOnSize } from './utils';
+import React from 'react'
+import { getDeviceDimensions, getDeviceNameBasedOnSize } from './utils'
 
-const deviceNameBasedOnSize = getDeviceNameBasedOnSize(getDeviceDimensions());
-const ResponsiveContext = React.createContext(deviceNameBasedOnSize);
+const deviceNameBasedOnSize = getDeviceNameBasedOnSize(getDeviceDimensions())
+const ResponsiveContext = React.createContext(deviceNameBasedOnSize)
 
-export default ResponsiveContext;
+export default ResponsiveContext

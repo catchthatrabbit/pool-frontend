@@ -1,5 +1,5 @@
-import React from 'react';
-import Text from './Text.tsx';
+import React from 'react'
+import Text from './Text.tsx'
 
 export default {
   title: 'Text',
@@ -21,20 +21,13 @@ export default {
     fontFamily: {
       control: {
         type: 'select',
-        options: [
-          'primary',
-          'secondary',
-        ],
+        options: ['primary', 'secondary'],
       },
     },
     color: {
       control: {
         type: 'select',
-        options: [
-          'white',
-          'apple',
-          'santasGray',
-        ],
+        options: ['white', 'apple', 'santasGray'],
       },
     },
     italic: {
@@ -45,24 +38,16 @@ export default {
     fontWeight: {
       control: {
         type: 'select',
-        options: [
-          'bold',
-          'normal',
-          'light',
-        ],
+        options: ['bold', 'normal', 'light'],
       },
     },
     value: {
       control: 'text',
     },
   },
-};
+}
 
-export const TextStory = (args) => (
-  <Text {...args}>
-    {args.value}
-  </Text>
-);
+export const TextStory = (args) => <Text {...args}>{args.value}</Text>
 
 TextStory.args = {
   value: 'Lorem ipsum dolor sit amet',
@@ -71,4 +56,4 @@ TextStory.args = {
   color: 'white',
   italic: false,
   fontWeight: 'normal',
-};
+}

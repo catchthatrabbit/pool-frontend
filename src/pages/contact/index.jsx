@@ -1,5 +1,5 @@
-import ContactsPageUi from '../../screens/contact';
+import ContactsPageUi from '../../screens/contact'
 
-const ContactsPage = () => <ContactsPageUi />;
+const ContactsPage = () => <ContactsPageUi />
 
-export default ContactsPage;
+export default ContactsPage

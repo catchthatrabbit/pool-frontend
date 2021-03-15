@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from './Button.tsx';
+import React from 'react'
+import Button from './Button.tsx'
 
 export default {
   title: 'Button',
@@ -18,14 +18,10 @@ export default {
       control: 'text',
     },
   },
-};
+}
 
-export const ButtonStory = (args) => (
-  <Button {...args}>
-    {args.value}
-  </Button>
-);
+export const ButtonStory = (args) => <Button {...args}>{args.value}</Button>
 
 ButtonStory.args = {
   value: 'Connected to US',
-};
+}

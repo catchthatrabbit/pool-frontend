@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import InfoTable from './InfoTable';
+import React from 'react'
+import styled from 'styled-components'
+import InfoTable from './InfoTable'
 
 export default {
   title: 'InfoTable',
@@ -23,24 +23,24 @@ export default {
       ],
     },
   },
-};
+}
 
 const Container = styled.div`
   width: 1640px;
   height: 432px;
-`;
+`
 const ContainerSmall = styled.div`
   width: 812px;
   height: 1500px;
-`;
+`
 
 export const InfoTableLarge = (args) => (
   <Container>
     <InfoTable {...args} width="large" />
   </Container>
-);
+)
 export const InfoTableSmall = (args) => (
   <ContainerSmall>
     <InfoTable {...args} width="small" />
   </ContainerSmall>
-);
+)
