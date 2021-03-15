@@ -1,22 +1,14 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { StatisticsIcon } from 'atoms/icons'
-import RadialBarChart from './RadialBarChart/index';
+import { StatisticsIcon } from 'atoms/icons';
 import { ChartData } from 'types/app';
 import ContentTitle from 'atoms/ContentTitle/ContentTitle';
-import InfoBox from 'atoms/InfoBox/InfoBox';
+import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox';
+import RadialBarChart from './RadialBarChart/index';
 
-const Chart = styled.button`
-  width: 100%;
-  @media screen and (min-width: 900px) {
-    width: 70%;
-  }
-`;
 const ChartContainer = styled.div`
   width: 100%;
   margin: 50px 0;
-  background: url('images/statistics_bg.png') no-repeat top left / cover;
-  ${Chart};
 `;
 const StatsStyled = styled.div`
   position: relative;
@@ -31,6 +23,8 @@ const ContentContainer = styled.div`
   width: 100%;
   padding: 0 160px;
   box-sizing: border-box;
+  background: url('images/statistics_bg.png') no-repeat;
+  background-position: -1%;
   
   ul {
     list-style-type: none;
@@ -43,41 +37,32 @@ const ContentContainer = styled.div`
       margin-bottom: 50px;
     }
   }
-`
+`;
 
 interface IProps {
-  data: ChartData,
+  chartData: ChartData,
+  infoBoxData: InfoBoxItem[],
 }
 
-const Stats: FC<IProps> = ({ data }) => {
+const Stats: FC<IProps> = ({ chartData, infoBoxData }) => (
+  <StatsStyled>
+    <ContentTitle Image={<StatisticsIcon />}>
+      Pool Statistics
+    </ContentTitle>
 
-  const boxesInfo = [
-    { title: '24H Hashrate High', value: '192.9 GH/S' },
-    { title: '24H Hashrate low', value: '19.2 GH/S' },
-    { title: 'Round Variance', value: '200%' },
-    { title: 'Blockchain Height', value: '99,000,000' },
-    { title: 'Last XCB Payout', value: '₡ 330,000' },
-  ];
-  return (
-    <StatsStyled>
-      <ContentTitle Image={<StatisticsIcon/>}>
-        Pool Statistics
-      </ContentTitle>
-
-      <ContentContainer>
-        <ChartContainer>
-          <RadialBarChart data={data} className={Chart} />
-        </ChartContainer>
-        <ul>
-          {boxesInfo.map(({ title, value }) => (
-            <li key={title}>
-              <InfoBox title={title} value={value} />
-            </li>
-          ))}
-        </ul>
-      </ContentContainer>
-    </StatsStyled>
-  );
-};
+    <ContentContainer>
+      <ChartContainer>
+        <RadialBarChart data={chartData} />
+      </ChartContainer>
+      <ul>
+        {infoBoxData.map(({ title, value, type }) => (
+          <li key={title}>
+            <InfoBox title={title} value={value} type={type} />
+          </li>
+        ))}
+      </ul>
+    </ContentContainer>
+  </StatsStyled>
+);
 
 export default Stats;
