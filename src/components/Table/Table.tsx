@@ -87,10 +87,11 @@ interface IProps {
   }
 }
 
+function hideMiddleContent(value) {
+  return `${value.slice(0, 10)}.........${value.slice(-6)}`;
+}
+
 const Table: FC<IProps> = ({ data, columns, moreLink }) => {
-  function hideMiddleContent(value) {
-    return `${value.slice(0, 10)}.........${value.slice(-6)}`;
-  }
 
   return (
     <WrapperStyled>
