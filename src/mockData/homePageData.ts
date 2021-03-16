@@ -40,6 +40,7 @@ export const StatsData = {
     { title: 'Last XCB Payout', value: 330000, type: 'euro' },
   ],
 }
+
 export const TableData = {
   data: [
     {
@@ -144,24 +145,26 @@ export const TableData = {
     },
   ],
 }
+
 export const BlocksInfoBoxData = [
-  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' },
-  { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' },
-  { title: 'Network difficulty', value: 6600, type: 'hash' },
-  { title: 'Active miners', value: 10000, type: 'number' },
-  { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' },
-  { title: '24H Hashrate Low', value: 192900000, type: 'hashSpeed' },
-  { title: 'Round Variance', value: 200, type: 'percent' },
-  { title: 'Blockchain Height', value: 99000000, type: 'number' },
-  { title: 'Last XCB Payout', value: 330000, type: 'euro' },
+  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' as const },
+  { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' as const },
+  { title: 'Network difficulty', value: 6600, type: 'hash' as const },
+  { title: 'Active miners', value: 10000, type: 'number' as const },
+  { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' as const },
+  { title: '24H Hashrate Low', value: 192900000, type: 'hashSpeed' as const },
+  { title: 'Round Variance', value: 200, type: 'percent' as const },
+  { title: 'Blockchain Height', value: 99000000, type: 'number' as const },
+  { title: 'Last XCB Payout', value: 330000, type: 'euro' as const },
 ]
 
 export const PaymentsInfoBox = [
-  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' },
-  { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' },
-  { title: 'Active miners', value: 10000, type: 'number' },
-  { title: 'Last XCB Payout', value: 330000, type: 'euro' },
+  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' as const },
+  { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' as const },
+  { title: 'Active miners', value: 10000, type: 'number' as const },
+  { title: 'Last XCB Payout', value: 330000, type: 'euro' as const },
 ]
+
 export const MinerDataCard = {
   title: 'Sentinel',
   description: 'Fast miner with 0% fees',
@@ -169,6 +172,7 @@ export const MinerDataCard = {
   configLink: 'https://mega.nz/folder/O4YA2JgD#n2b4iSHQDruEsYUvTQP5_w',
   minerLink: 'https://mega.nz/folder/O4YA2JgD#n2b4iSHQDruEsYUvTQP5_w',
 }
+
 export const PoolDetails = [
   { key: '1', title: 'Reward scheme', value: 'PPLNS (Pay Per Last N Shares)' },
   { key: '2', title: 'We pay regularly', value: '3 times per day' },
@@ -178,6 +182,7 @@ export const PoolDetails = [
   { key: '6', title: 'Share difficulty', value: '4 GH' },
   { key: '7', title: 'Mining algorithm', value: 'CryptOre' },
 ]
+
 export const MinerDataInfo = [
   { key: '1', title: 'server', value: 'eu.ctrpool.io' },
   { key: '2', title: 'port', value: '4444' },
@@ -189,6 +194,7 @@ export const MinerDataInfo = [
   },
   { key: '5', title: 'Password', value: '<empty>' },
 ]
+
 export const Links = [
   { href: '#europe', text: 'Europe' },
   { href: '#united_states', text: 'United States' },
