@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './fonts.css'
+import 'styles/fonts.css'
 import './decorator.css'
 import RootProvider from '../src/providers'
 

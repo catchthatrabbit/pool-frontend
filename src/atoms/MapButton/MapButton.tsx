@@ -18,7 +18,7 @@ interface IProps {
 
 const MapButton: FC<IProps> = ({ children, href = '' }) => (
   <MapButtonStyled>
-    {/*<MapCircle />*/}
+    <MapCircle />
     <Button theme="transparent" href={href}>
       {children}
     </Button>

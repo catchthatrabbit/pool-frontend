@@ -1,8 +1,10 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer'
 import RootProvider from '../providers'
+import 'styles/fonts.css'
 
 function MyApp({ Component, pageProps }) {
   const { pathname } = useRouter()
@@ -10,6 +12,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <RootProvider>
+      <Head>
+        <title>Catch that Rabbit</title>
+      </Head>
       {!isErrorPage && <Header />}
       <main>
         <Component {...pageProps} />

@@ -27,23 +27,4 @@ export default class MyDocument extends Document {
       sheet.seal()
     }
   }
-
-  render() {
-    return (
-      <Html>
-        <Head>
-          <link
-            href="https://use.typekit.net/rbr1pzd.css"
-            rel="stylesheet"
-            type="text/css"
-          />
-          <title>Catch that Rabbit</title>
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
 }

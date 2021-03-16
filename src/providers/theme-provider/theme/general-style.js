@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
-import { colorVariables } from '../../../styles/variables'
-import applyTransparence from '../../../helpers/transparentize'
+import { colorVariables } from 'styles/variables'
+import applyTransparence from 'helpers/transparentize'
 
 const GlobalStyle = createGlobalStyle`
   html,
