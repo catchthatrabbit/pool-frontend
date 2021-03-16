@@ -1,26 +1,26 @@
 import React, { FC } from 'react'
-import CommonContentTitle from 'atoms/ContentTitle'
+import ContentTitle from 'atoms/ContentTitle'
 import MinerCard from 'components/MinerCard'
 import SearchBar from 'atoms/SearchBar'
 import MiningInfo from 'components/MiningInfo'
 import { StartMiningIcon, RecentBlocksIcon } from 'atoms/icons'
 import styled from 'styled-components'
 import {
-  MinerDataInfo,
-  MinerDataCard,
-  PoolDetails,
-  Links,
+  MinerDataInfoData,
+  MinerDataCardData,
+  PoolDetailsData,
+  LinksData,
 } from '../../mockData/homePageData'
 import Text from 'atoms/Text/Text'
 import Background from 'atoms/Background'
+import { colorVariables } from 'styles/variables'
 
 const TextStyled = styled.p`
   width: 807px;
   margin: 34px 0 0;
-  font-family: ${({ theme }) => theme.typography.secondary};
   font-size: 0.583rem;
   a {
-    color: ${({ theme }) => theme.colors.apple};
+    color: ${colorVariables.apple};
   }
 `
 
@@ -40,7 +40,7 @@ const LinksWrapperStyled = styled.div`
   a {
     margin: 0.5rem 0;
     white-space: nowrap;
-    color: ${({ theme }) => theme.colors.apple};
+    color: ${colorVariables.apple};
   }
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
     flex-direction: row;
@@ -68,7 +68,7 @@ const StyledTitleContainer = styled.div`
   margin: 57px 0 73px;
 `
 const StyledBoxContent = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.gunPowder};
+  border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
   margin-bottom: 31px;
 `
@@ -76,7 +76,7 @@ const StyledBoxGuide = styled.div`
   margin: 55px 47px 0;
 `
 const StyledTextGuide = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gunPowder};
+  border-bottom: 1px solid ${colorVariables.gunPowder};
   padding-bottom: 25px;
 `
 const TextStyledGuide1 = styled(TextStyled)`
@@ -96,7 +96,7 @@ const StartMiningPage: FC = () => {
   const renderServerLinks = () => {
     const onClickHandler = () => setTimeout(() => window.scrollBy(0, -140), 0)
 
-    return Links.map(({ href, text }) => (
+    return LinksData.map(({ href, text }) => (
       <a onClick={onClickHandler} href={href}>
         {text}
       </a>
@@ -107,30 +107,26 @@ const StartMiningPage: FC = () => {
     <>
       <Background />
       <StyledContainer>
-        <CommonContentTitle Image={<StartMiningIcon />}>
-          START MINING
-        </CommonContentTitle>
+        <ContentTitle Image={<StartMiningIcon />}>START MINING</ContentTitle>
         <StyledMiningInfoContainer>
           <StyledMiningInfo>
-            <MiningInfo data={MinerDataInfo} title="Connect Europe Pool" />
+            <MiningInfo data={MinerDataInfoData} title="Connect Europe Pool" />
           </StyledMiningInfo>
           <StyledMiningInfo>
             <MiningInfo
-              data={MinerDataInfo}
+              data={MinerDataInfoData}
               title="Connect United States Pool"
             />
           </StyledMiningInfo>
           <StyledMiningInfo>
-            <MiningInfo data={MinerDataInfo} title="Connect Asia Pool" />
+            <MiningInfo data={MinerDataInfoData} title="Connect Asia Pool" />
           </StyledMiningInfo>
           <StyledMiningInfo>
-            <MiningInfo data={MinerDataInfo} title="Connect Europe Pool" />
+            <MiningInfo data={MinerDataInfoData} title="Connect Europe Pool" />
           </StyledMiningInfo>
         </StyledMiningInfoContainer>
         <StyledTitleContainer>
-          <CommonContentTitle Image={<RecentBlocksIcon />}>
-            START GUIDE
-          </CommonContentTitle>
+          <ContentTitle Image={<RecentBlocksIcon />}>START GUIDE</ContentTitle>
         </StyledTitleContainer>
         <StyledBoxContent>
           <StyledBoxGuide>
@@ -161,16 +157,16 @@ const StartMiningPage: FC = () => {
             </TextStyledGuide2>
             <MinerCardsWrapperStyled>
               <StyledMiningCard>
-                <MinerCard data={MinerDataCard} />
+                <MinerCard data={MinerDataCardData} />
               </StyledMiningCard>
               <StyledMiningCard>
-                <MinerCard data={MinerDataCard} />
+                <MinerCard data={MinerDataCardData} />
               </StyledMiningCard>
               <StyledMiningCard>
-                <MinerCard data={MinerDataCard} />
+                <MinerCard data={MinerDataCardData} />
               </StyledMiningCard>
               <StyledMiningCard>
-                <MinerCard data={MinerDataCard} />
+                <MinerCard data={MinerDataCardData} />
               </StyledMiningCard>
             </MinerCardsWrapperStyled>
             <StyledTextGuide>
@@ -191,7 +187,7 @@ const StartMiningPage: FC = () => {
             </StyledSearchBarContainer>
           </StyledBoxGuide>
         </StyledBoxContent>
-        <MiningInfo data={PoolDetails} title="Pool details" color="white" />
+        <MiningInfo data={PoolDetailsData} title="Pool details" color="white" />
       </StyledContainer>
     </>
   )

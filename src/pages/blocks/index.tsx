@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react'
 
-import CommonContentTitle from 'atoms/ContentTitle'
-import CommonInfoBox from 'atoms/InfoBox/InfoBox'
+import ContentTitle from 'atoms/ContentTitle'
+import InfoBox from 'atoms/InfoBox/InfoBox'
 import SearchBar from 'atoms/SearchBar'
-import BaseTable from 'components/Table'
-import { BlockerLogoIcon } from '../../atoms/icons'
-import { TableData, BlocksInfoBoxData } from '../../mockData/homePageData'
+import Table from 'components/Table'
+import { BlockerLogoIcon } from 'atoms/icons'
+import { TableData, BlocksInfoBoxData } from 'mockData/homePageData'
 import styled from 'styled-components'
 import Background from 'atoms/Background'
 
@@ -51,23 +51,17 @@ const StyledSearchBarContainer = styled.div`
 const BlocksPage: FC = () => {
   const [searchValue, setValue] = useState('')
 
-  // const renderTableFooter = () => (
-  //   <Pagination pageCount={20} onPageChange={(page) => console.log(page)} />
-  // )
-
   const handleSearchValueChange = (event) => setValue(event.target.value)
 
   return (
     <>
       <Background />
       <StyledContainer>
-        <CommonContentTitle Image={<BlockerLogoIcon />}>
-          POOL BLOCKS
-        </CommonContentTitle>
+        <ContentTitle Image={<BlockerLogoIcon />}>POOL BLOCKS</ContentTitle>
         <BoxesWrapperStyled>
           {BlocksInfoBoxData.map(({ title, value, type }) => (
             <li key={title}>
-              <CommonInfoBox title={title} value={value} type={type} />
+              <InfoBox title={title} value={value} type={type} />
             </li>
           ))}
         </BoxesWrapperStyled>
@@ -75,7 +69,7 @@ const BlocksPage: FC = () => {
           <SearchBar onChange={handleSearchValueChange} value={searchValue} />
         </StyledSearchBarContainer>
 
-        <BaseTable data={TableData.data} columns={TableData.columns} />
+        <Table data={TableData.data} columns={TableData.columns} />
       </StyledContainer>
     </>
   )

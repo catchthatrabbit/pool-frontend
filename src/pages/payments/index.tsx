@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import BaseTable from 'components/Table'
-import CommonInfoBox from 'atoms/InfoBox'
-import CommonContentTitle from 'atoms/ContentTitle'
-import { PaymentsInfoBox, TableData } from '../../mockData/homePageData'
+import Table from 'components/Table'
+import InfoBox from 'atoms/InfoBox'
+import ContentTitle from 'atoms/ContentTitle'
+import { PaymentsInfoBoxData, TableData } from 'mockData/homePageData'
 import { PaymentsIcon } from 'atoms/icons'
 import styled from 'styled-components'
 import Background from 'atoms/Background'
@@ -46,15 +46,15 @@ const PaymentPage: FC = () => (
   <>
     <Background />
     <StyledContainer>
-      <CommonContentTitle Image={<PaymentsIcon />}>PAYMETNS</CommonContentTitle>
+      <ContentTitle Image={<PaymentsIcon />}>PAYMETNS</ContentTitle>
       <BoxesWrapperStyled>
-        {PaymentsInfoBox.map(({ title, value, type }) => (
+        {PaymentsInfoBoxData.map(({ title, value, type }) => (
           <li key={title}>
-            <CommonInfoBox title={title} value={value} type={type} />
+            <InfoBox title={title} value={value} type={type} />
           </li>
         ))}
       </BoxesWrapperStyled>
-      <BaseTable data={TableData.data} columns={TableData.columns} />
+      <Table data={TableData.data} columns={TableData.columns} />
     </StyledContainer>
   </>
 )

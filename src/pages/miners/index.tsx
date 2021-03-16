@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
-import CommonContentTitle from 'atoms/ContentTitle'
-import CommonInfoBox from 'atoms/InfoBox'
-import BaseTable from 'components/Table'
+import ContentTitle from 'atoms/ContentTitle'
+import InfoBox from 'atoms/InfoBox'
+import Table from 'components/Table'
 import styled from 'styled-components'
 import Background from 'atoms/Background'
 
-import { PaymentsInfoBox, TableData } from '../../mockData/homePageData'
+import { PaymentsInfoBoxData, TableData } from 'mockData/homePageData'
 import { MinersIcon } from 'atoms/icons'
 
 const BoxesWrapperStyled = styled.ul`
@@ -47,15 +47,15 @@ const MinersPage: FC = () => (
   <>
     <Background />
     <StyledContainer>
-      <CommonContentTitle Image={<MinersIcon />}>MINERS</CommonContentTitle>
+      <ContentTitle Image={<MinersIcon />}>MINERS</ContentTitle>
       <BoxesWrapperStyled>
-        {PaymentsInfoBox.map(({ title, value, type }) => (
+        {PaymentsInfoBoxData.map(({ title, value, type }) => (
           <li key={title}>
-            <CommonInfoBox title={title} value={value} type={type} />
+            <InfoBox title={title} value={value} type={type} />
           </li>
         ))}
       </BoxesWrapperStyled>
-      <BaseTable data={TableData.data} columns={TableData.columns} />
+      <Table data={TableData.data} columns={TableData.columns} />
     </StyledContainer>
   </>
 )

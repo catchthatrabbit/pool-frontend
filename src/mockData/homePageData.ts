@@ -158,14 +158,14 @@ export const BlocksInfoBoxData = [
   { title: 'Last XCB Payout', value: 330000, type: 'euro' as const },
 ]
 
-export const PaymentsInfoBox = [
+export const PaymentsInfoBoxData = [
   { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' as const },
   { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' as const },
   { title: 'Active miners', value: 10000, type: 'number' as const },
   { title: 'Last XCB Payout', value: 330000, type: 'euro' as const },
 ]
 
-export const MinerDataCard = {
+export const MinerDataCardData = {
   title: 'Sentinel',
   description: 'Fast miner with 0% fees',
   info: ['OS: Windows, Linux', 'CPUs: AMD, NVIDIA', 'Fee: 0%'],
@@ -173,7 +173,7 @@ export const MinerDataCard = {
   minerLink: 'https://mega.nz/folder/O4YA2JgD#n2b4iSHQDruEsYUvTQP5_w',
 }
 
-export const PoolDetails = [
+export const PoolDetailsData = [
   { key: '1', title: 'Reward scheme', value: 'PPLNS (Pay Per Last N Shares)' },
   { key: '2', title: 'We pay regularly', value: '3 times per day' },
   { key: '3', title: 'Pool fee', value: '2%' },
@@ -183,7 +183,7 @@ export const PoolDetails = [
   { key: '7', title: 'Mining algorithm', value: 'CryptOre' },
 ]
 
-export const MinerDataInfo = [
+export const MinerDataInfoData = [
   { key: '1', title: 'server', value: 'eu.ctrpool.io' },
   { key: '2', title: 'port', value: '4444' },
   { key: '3', title: 'secure (ssl) port', value: '5555' },
@@ -195,7 +195,7 @@ export const MinerDataInfo = [
   { key: '5', title: 'Password', value: '<empty>' },
 ]
 
-export const Links = [
+export const LinksData = [
   { href: '#europe', text: 'Europe' },
   { href: '#united_states', text: 'United States' },
   { href: '#asia', text: 'Asia' },
