@@ -37,16 +37,15 @@ const StyledLinksWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 2rem 0;
+  margin: 70px 0 100px;
   a {
-    margin: 0.5rem 0;
     white-space: nowrap;
     color: ${colorVariables.apple};
   }
   @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
     flex-direction: row;
     justify-content: space-evenly;
-    margin: 3rem 0;
+    margin: 70px 0 100px;
   }
 `
 const StyledContainer = styled.div`
