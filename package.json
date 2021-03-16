@@ -5,19 +5,47 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prettier": "prettier --write .",
+    "storybook": "start-storybook -p 6006 -c .storybook -s ./public"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
+    "babel-plugin-styled-components": "^1.11.1",
+    "d3": "^6.2.0",
     "next": "9.5.2",
-    "prop-types": "^15.7.2",
+    "polished": "^4.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "sass": "^1.26.10"
+    "react-paginate": "^6.5.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.1.1",
+    "styled-components": "^5.2.1",
+    "swr": "^0.3.6",
+    "unfetch": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.8",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@storybook/addon-controls": "^6.1.20",
+    "@storybook/addon-essentials": "^6.1.20",
+    "@storybook/addon-knobs": "^6.1.20",
+    "@storybook/addon-links": "^6.1.20",
+    "@storybook/addons": "^6.1.20",
+    "@storybook/preset-create-react-app": "^3.1.6",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^6.1.20",
+    "@svgr/webpack": "^5.5.0",
+    "@types/d3": "^6.3.0",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "@types/styled-components": "^5.1.7",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
+    "css-loader": "^5.1.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "eslint": "^7.7.0",
@@ -29,23 +57,20 @@
     "husky": "^4.2.5",
     "jest": "^26.4.2",
     "lint-staged": "^10.2.11",
-    "prettier": "2.1.0"
+    "prettier": "^2.2.1",
+    "source-map-loader": "^2.0.1",
+    "storybook-addon-next-router": "^2.0.4",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.2.2"
+  },
+  "lint-staged": {
+    "*": "prettier --write"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
     }
-  },
-  "lint-staged": {
-    "*.{css,scss}": [
-      "prettier --write"
-    ],
-    "*.{js,jsx}": [
-      "eslint --ext .js,.jsx",
-      "prettier --write"
-    ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
   }
 }

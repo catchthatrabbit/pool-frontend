@@ -1,0 +1,18 @@
+.decorator-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #181a1f;
+  flex-direction: column;
+
+  font-style: normal;
+  font-weight: normal;
+}
+
+.icon-item {
+  width: 100px;
+  display: inline-block;
+  height: 100px;
+  color: #fff;
+}
