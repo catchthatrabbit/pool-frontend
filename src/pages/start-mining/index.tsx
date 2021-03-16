@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import CommonContentTitle from 'atoms/ContentTitle'
-// import CommonTitle from 'atoms/commonTitle'
 import MinerCard from 'components/MinerCard'
 import SearchBar from 'atoms/SearchBar'
 import MiningInfo from 'components/MiningInfo'
@@ -13,6 +12,7 @@ import {
   Links,
 } from '../../mockData/homePageData'
 import Text from 'atoms/Text/Text'
+import Background from 'atoms/Background'
 
 const TextStyled = styled.p`
   width: 807px;
@@ -50,7 +50,6 @@ const LinksWrapperStyled = styled.div`
 `
 const StyledContainer = styled.div`
   margin: 60px 140px 73px;
-  background: url('images/statistics_bg.png') no-repeat;
 `
 const StyledSearchBarContainer = styled.div`
   margin: 83px 140px;
@@ -105,89 +104,96 @@ const StartMiningPage: FC = () => {
   }
 
   return (
-    <StyledContainer>
-      <CommonContentTitle Image={<StartMiningIcon />}>
-        START MINING
-      </CommonContentTitle>
-      <StyledMiningInfoContainer>
-        <StyledMiningInfo>
-          <MiningInfo data={MinerDataInfo} title="Connect Europe Pool" />
-        </StyledMiningInfo>
-        <StyledMiningInfo>
-          <MiningInfo data={MinerDataInfo} title="Connect United States Pool" />
-        </StyledMiningInfo>
-        <StyledMiningInfo>
-          <MiningInfo data={MinerDataInfo} title="Connect Asia Pool" />
-        </StyledMiningInfo>
-        <StyledMiningInfo>
-          <MiningInfo data={MinerDataInfo} title="Connect Europe Pool" />
-        </StyledMiningInfo>
-      </StyledMiningInfoContainer>
-      <StyledTitleContainer>
-        <CommonContentTitle Image={<RecentBlocksIcon />}>
-          START GUIDE
+    <>
+      <Background />
+      <StyledContainer>
+        <CommonContentTitle Image={<StartMiningIcon />}>
+          START MINING
         </CommonContentTitle>
-      </StyledTitleContainer>
-      <StyledBoxContent>
-        <StyledBoxGuide>
-          <StyledTextGuide>
-            <Text size="medium">Step 1: Get a Wallet</Text>
-          </StyledTextGuide>
-          <TextStyledGuide1>
-            The easiest way to get a wallet is to register on{' '}
-            <a href="https://pingexchange.com/">Ping Exchange</a> or download
-            the mobile application <a href="https://corepass.net/">CorePass</a>.
-            <br />
-            <br />
-            Alternatively should you want a hardware wallet you are welcome to
-            purchase a <a href="">Ledger wallet</a> where you can generate you
-            Core Coin wallet.
-          </TextStyledGuide1>
-          <StyledTextGuide>
-            <Text size="medium">Step 2: Download mining software</Text>
-          </StyledTextGuide>
-          <TextStyledGuide2>
-            You need to download the mining software, install and configure to
-            start the mining application.
-            <br />
-            <br />
-            <br />
-            We recommend the following miners:
-          </TextStyledGuide2>
-          <MinerCardsWrapperStyled>
-            <StyledMiningCard>
-              <MinerCard data={MinerDataCard} />
-            </StyledMiningCard>
-            <StyledMiningCard>
-              <MinerCard data={MinerDataCard} />
-            </StyledMiningCard>
-            <StyledMiningCard>
-              <MinerCard data={MinerDataCard} />
-            </StyledMiningCard>
-            <StyledMiningCard>
-              <MinerCard data={MinerDataCard} />
-            </StyledMiningCard>
-          </MinerCardsWrapperStyled>
-          <StyledTextGuide>
-            <Text size="medium">Step 3: Choose your server</Text>
-          </StyledTextGuide>
-          <TextStyledGuide3>
-            We have 3 servers for you to choose from:
-          </TextStyledGuide3>
-          <LinksWrapperStyled>{renderServerLinks()}</LinksWrapperStyled>
-          <StyledTextGuide>
-            <Text size="medium">Step 4: Go To Dashboard</Text>
-          </StyledTextGuide>
-          <TextStyledGuide4>
-            To access the dashboard, type your address below.
-          </TextStyledGuide4>
-          <StyledSearchBarContainer>
-            <SearchBar />
-          </StyledSearchBarContainer>
-        </StyledBoxGuide>
-      </StyledBoxContent>
-      <MiningInfo data={PoolDetails} title="Pool details" color="white" />
-    </StyledContainer>
+        <StyledMiningInfoContainer>
+          <StyledMiningInfo>
+            <MiningInfo data={MinerDataInfo} title="Connect Europe Pool" />
+          </StyledMiningInfo>
+          <StyledMiningInfo>
+            <MiningInfo
+              data={MinerDataInfo}
+              title="Connect United States Pool"
+            />
+          </StyledMiningInfo>
+          <StyledMiningInfo>
+            <MiningInfo data={MinerDataInfo} title="Connect Asia Pool" />
+          </StyledMiningInfo>
+          <StyledMiningInfo>
+            <MiningInfo data={MinerDataInfo} title="Connect Europe Pool" />
+          </StyledMiningInfo>
+        </StyledMiningInfoContainer>
+        <StyledTitleContainer>
+          <CommonContentTitle Image={<RecentBlocksIcon />}>
+            START GUIDE
+          </CommonContentTitle>
+        </StyledTitleContainer>
+        <StyledBoxContent>
+          <StyledBoxGuide>
+            <StyledTextGuide>
+              <Text size="medium">Step 1: Get a Wallet</Text>
+            </StyledTextGuide>
+            <TextStyledGuide1>
+              The easiest way to get a wallet is to register on{' '}
+              <a href="https://pingexchange.com/">Ping Exchange</a> or download
+              the mobile application{' '}
+              <a href="https://corepass.net/">CorePass</a>.
+              <br />
+              <br />
+              Alternatively should you want a hardware wallet you are welcome to
+              purchase a <a href="">Ledger wallet</a> where you can generate you
+              Core Coin wallet.
+            </TextStyledGuide1>
+            <StyledTextGuide>
+              <Text size="medium">Step 2: Download mining software</Text>
+            </StyledTextGuide>
+            <TextStyledGuide2>
+              You need to download the mining software, install and configure to
+              start the mining application.
+              <br />
+              <br />
+              <br />
+              We recommend the following miners:
+            </TextStyledGuide2>
+            <MinerCardsWrapperStyled>
+              <StyledMiningCard>
+                <MinerCard data={MinerDataCard} />
+              </StyledMiningCard>
+              <StyledMiningCard>
+                <MinerCard data={MinerDataCard} />
+              </StyledMiningCard>
+              <StyledMiningCard>
+                <MinerCard data={MinerDataCard} />
+              </StyledMiningCard>
+              <StyledMiningCard>
+                <MinerCard data={MinerDataCard} />
+              </StyledMiningCard>
+            </MinerCardsWrapperStyled>
+            <StyledTextGuide>
+              <Text size="medium">Step 3: Choose your server</Text>
+            </StyledTextGuide>
+            <TextStyledGuide3>
+              We have 3 servers for you to choose from:
+            </TextStyledGuide3>
+            <LinksWrapperStyled>{renderServerLinks()}</LinksWrapperStyled>
+            <StyledTextGuide>
+              <Text size="medium">Step 4: Go To Dashboard</Text>
+            </StyledTextGuide>
+            <TextStyledGuide4>
+              To access the dashboard, type your address below.
+            </TextStyledGuide4>
+            <StyledSearchBarContainer>
+              <SearchBar />
+            </StyledSearchBarContainer>
+          </StyledBoxGuide>
+        </StyledBoxContent>
+        <MiningInfo data={PoolDetails} title="Pool details" color="white" />
+      </StyledContainer>
+    </>
   )
 }
 

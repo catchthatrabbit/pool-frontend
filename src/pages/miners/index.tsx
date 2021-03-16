@@ -3,6 +3,7 @@ import CommonContentTitle from 'atoms/ContentTitle'
 import CommonInfoBox from 'atoms/InfoBox'
 import BaseTable from 'components/Table'
 import styled from 'styled-components'
+import Background from 'atoms/Background'
 
 import { PaymentsInfoBox, TableData } from '../../mockData/homePageData'
 import { MinersIcon } from 'atoms/icons'
@@ -43,17 +44,20 @@ const StyledContainer = styled.div`
 `
 
 const MinersPage: FC = () => (
-  <StyledContainer>
-    <CommonContentTitle Image={<MinersIcon />}>MINERS</CommonContentTitle>
-    <BoxesWrapperStyled>
-      {PaymentsInfoBox.map(({ title, value, type }) => (
-        <li key={title}>
-          <CommonInfoBox title={title} value={value} type={type} />
-        </li>
-      ))}
-    </BoxesWrapperStyled>
-    <BaseTable data={TableData.data} columns={TableData.columns} />
-  </StyledContainer>
+  <>
+    <Background />
+    <StyledContainer>
+      <CommonContentTitle Image={<MinersIcon />}>MINERS</CommonContentTitle>
+      <BoxesWrapperStyled>
+        {PaymentsInfoBox.map(({ title, value, type }) => (
+          <li key={title}>
+            <CommonInfoBox title={title} value={value} type={type} />
+          </li>
+        ))}
+      </BoxesWrapperStyled>
+      <BaseTable data={TableData.data} columns={TableData.columns} />
+    </StyledContainer>
+  </>
 )
 
 export default MinersPage

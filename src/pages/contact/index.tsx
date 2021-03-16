@@ -3,6 +3,7 @@ import CommonContentTitle from 'atoms/ContentTitle'
 import styled from 'styled-components'
 import { ContactUsIcon } from 'atoms/icons'
 import Text from 'atoms/Text'
+import Background from 'atoms/Background'
 
 const BoxStyled = styled.div`
   display: flex;
@@ -56,46 +57,49 @@ const StyledTextTitle = styled.div`
 `
 
 const ContactsPage: FC = () => (
-  <StyledContainer>
-    <CommonContentTitle Image={<ContactUsIcon />}>
-      CONTACT US
-    </CommonContentTitle>
-    <StyledBoxContent>
-      <BoxStyled>
-        <Text>Support</Text>
-        <TextStyled>
-          If you have any questions about our pool, you can contact us freely
-          through this email.
-        </TextStyled>
-        <EmailBoxWrapperStyled>
-          <EmailContainer>support@catchthatrabbit.com</EmailContainer>
-        </EmailBoxWrapperStyled>
-      </BoxStyled>
-      <BoxStyled>
-        <StyledTextTitle>
-          <Text>Security &amp; Bug reports</Text>
-        </StyledTextTitle>
-        <TextStyled>
-          Any bug or any other security issues reports are highly and greatly
-          appreciated.
-        </TextStyled>
-        <EmailBoxWrapperStyled>
-          <EmailContainer>issues@catchthatrabbit.com</EmailContainer>
-        </EmailBoxWrapperStyled>
-      </BoxStyled>
-      <BoxStyled>
-        <StyledTextTitle>
-          <Text>Legal &amp; Commercial</Text>
-        </StyledTextTitle>
-        <TextStyled>
-          For legal and commercial questions please feel free to email us.
-        </TextStyled>
-        <EmailBoxWrapperStyled>
-          <EmailContainer>office@catchthatrabbit.com</EmailContainer>
-        </EmailBoxWrapperStyled>
-      </BoxStyled>
-    </StyledBoxContent>
-  </StyledContainer>
+  <>
+    <Background />
+    <StyledContainer>
+      <CommonContentTitle Image={<ContactUsIcon />}>
+        CONTACT US
+      </CommonContentTitle>
+      <StyledBoxContent>
+        <BoxStyled>
+          <Text>Support</Text>
+          <TextStyled>
+            If you have any questions about our pool, you can contact us freely
+            through this email.
+          </TextStyled>
+          <EmailBoxWrapperStyled>
+            <EmailContainer>support@catchthatrabbit.com</EmailContainer>
+          </EmailBoxWrapperStyled>
+        </BoxStyled>
+        <BoxStyled>
+          <StyledTextTitle>
+            <Text>Security &amp; Bug reports</Text>
+          </StyledTextTitle>
+          <TextStyled>
+            Any bug or any other security issues reports are highly and greatly
+            appreciated.
+          </TextStyled>
+          <EmailBoxWrapperStyled>
+            <EmailContainer>issues@catchthatrabbit.com</EmailContainer>
+          </EmailBoxWrapperStyled>
+        </BoxStyled>
+        <BoxStyled>
+          <StyledTextTitle>
+            <Text>Legal &amp; Commercial</Text>
+          </StyledTextTitle>
+          <TextStyled>
+            For legal and commercial questions please feel free to email us.
+          </TextStyled>
+          <EmailBoxWrapperStyled>
+            <EmailContainer>office@catchthatrabbit.com</EmailContainer>
+          </EmailBoxWrapperStyled>
+        </BoxStyled>
+      </StyledBoxContent>
+    </StyledContainer>
+  </>
 )
 
 export default ContactsPage

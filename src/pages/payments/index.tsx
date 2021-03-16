@@ -5,6 +5,7 @@ import CommonContentTitle from 'atoms/ContentTitle'
 import { PaymentsInfoBox, TableData } from '../../mockData/homePageData'
 import { PaymentsIcon } from 'atoms/icons'
 import styled from 'styled-components'
+import Background from 'atoms/Background'
 
 const BoxesWrapperStyled = styled.ul`
   display: flex;
@@ -42,17 +43,20 @@ const StyledContainer = styled.div`
 `
 
 const PaymentPage: FC = () => (
-  <StyledContainer>
-    <CommonContentTitle Image={<PaymentsIcon />}>PAYMETNS</CommonContentTitle>
-    <BoxesWrapperStyled>
-      {PaymentsInfoBox.map(({ title, value, type }) => (
-        <li key={title}>
-          <CommonInfoBox title={title} value={value} type={type} />
-        </li>
-      ))}
-    </BoxesWrapperStyled>
-    <BaseTable data={TableData.data} columns={TableData.columns} />
-  </StyledContainer>
+  <>
+    <Background />
+    <StyledContainer>
+      <CommonContentTitle Image={<PaymentsIcon />}>PAYMETNS</CommonContentTitle>
+      <BoxesWrapperStyled>
+        {PaymentsInfoBox.map(({ title, value, type }) => (
+          <li key={title}>
+            <CommonInfoBox title={title} value={value} type={type} />
+          </li>
+        ))}
+      </BoxesWrapperStyled>
+      <BaseTable data={TableData.data} columns={TableData.columns} />
+    </StyledContainer>
+  </>
 )
 
 export default PaymentPage

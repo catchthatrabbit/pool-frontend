@@ -7,6 +7,7 @@ import BaseTable from 'components/Table'
 import { BlockerLogoIcon } from '../../atoms/icons'
 import { TableData, BlocksInfoBoxData } from '../../mockData/homePageData'
 import styled from 'styled-components'
+import Background from 'atoms/Background'
 
 const BoxesWrapperStyled = styled.ul`
   display: flex;
@@ -57,23 +58,26 @@ const BlocksPage: FC = () => {
   const handleSearchValueChange = (event) => setValue(event.target.value)
 
   return (
-    <StyledContainer>
-      <CommonContentTitle Image={<BlockerLogoIcon />}>
-        POOL BLOCKS
-      </CommonContentTitle>
-      <BoxesWrapperStyled>
-        {BlocksInfoBoxData.map(({ title, value, type }) => (
-          <li key={title}>
-            <CommonInfoBox title={title} value={value} type={type} />
-          </li>
-        ))}
-      </BoxesWrapperStyled>
-      <StyledSearchBarContainer>
-        <SearchBar onChange={handleSearchValueChange} value={searchValue} />
-      </StyledSearchBarContainer>
+    <>
+      <Background />
+      <StyledContainer>
+        <CommonContentTitle Image={<BlockerLogoIcon />}>
+          POOL BLOCKS
+        </CommonContentTitle>
+        <BoxesWrapperStyled>
+          {BlocksInfoBoxData.map(({ title, value, type }) => (
+            <li key={title}>
+              <CommonInfoBox title={title} value={value} type={type} />
+            </li>
+          ))}
+        </BoxesWrapperStyled>
+        <StyledSearchBarContainer>
+          <SearchBar onChange={handleSearchValueChange} value={searchValue} />
+        </StyledSearchBarContainer>
 
-      <BaseTable data={TableData.data} columns={TableData.columns} />
-    </StyledContainer>
+        <BaseTable data={TableData.data} columns={TableData.columns} />
+      </StyledContainer>
+    </>
   )
 }
 
