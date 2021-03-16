@@ -8,7 +8,7 @@ import Background from 'atoms/Background'
 import { PaymentsInfoBoxData, TableData } from 'mockData/homePageData'
 import { MinersIcon } from 'atoms/icons'
 
-const BoxesWrapperStyled = styled.ul`
+const StyledBoxesWrapper = styled.ul`
   display: flex;
   align-self: center;
   flex-direction: column;
@@ -48,13 +48,13 @@ const MinersPage: FC = () => (
     <Background />
     <StyledContainer>
       <ContentTitle Image={<MinersIcon />}>MINERS</ContentTitle>
-      <BoxesWrapperStyled>
+      <StyledBoxesWrapper>
         {PaymentsInfoBoxData.map(({ title, value, type }) => (
           <li key={title}>
             <InfoBox title={title} value={value} type={type} />
           </li>
         ))}
-      </BoxesWrapperStyled>
+      </StyledBoxesWrapper>
       <Table data={TableData.data} columns={TableData.columns} />
     </StyledContainer>
   </>

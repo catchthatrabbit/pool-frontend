@@ -13,18 +13,19 @@ import {
 } from '../../mockData/homePageData'
 import Text from 'atoms/Text/Text'
 import Background from 'atoms/Background'
-import { colorVariables } from 'styles/variables'
+import { colorVariables, fonts } from 'styles/variables'
 
-const TextStyled = styled.p`
+const StyledText = styled.p`
   width: 807px;
   margin: 34px 0 0;
-  font-size: 0.583rem;
+  font-family: ${fonts.secondary};
+  font-size: 14px;
   a {
     color: ${colorVariables.apple};
   }
 `
 
-const MinerCardsWrapperStyled = styled.div`
+const StyledMinerCardsWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -32,7 +33,7 @@ const MinerCardsWrapperStyled = styled.div`
   margin: 54px 0 87px;
 `
 
-const LinksWrapperStyled = styled.div`
+const StyledLinksWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -79,16 +80,16 @@ const StyledTextGuide = styled.div`
   border-bottom: 1px solid ${colorVariables.gunPowder};
   padding-bottom: 25px;
 `
-const TextStyledGuide1 = styled(TextStyled)`
+const StyledTextGuide1 = styled(StyledText)`
   margin-bottom: 111px;
 `
-const TextStyledGuide2 = styled(TextStyled)`
+const StyledTextGuide2 = styled(StyledText)`
   margin-bottom: 54px;
 `
-const TextStyledGuide3 = styled(TextStyled)`
+const StyledTextGuide3 = styled(StyledText)`
   margin-bottom: 70px;
 `
-const TextStyledGuide4 = styled(TextStyled)`
+const StyledTextGuide4 = styled(StyledText)`
   margin-bottom: 75px;
 `
 
@@ -133,7 +134,7 @@ const StartMiningPage: FC = () => {
             <StyledTextGuide>
               <Text size="medium">Step 1: Get a Wallet</Text>
             </StyledTextGuide>
-            <TextStyledGuide1>
+            <StyledTextGuide1>
               The easiest way to get a wallet is to register on{' '}
               <a href="https://pingexchange.com/">Ping Exchange</a> or download
               the mobile application{' '}
@@ -143,19 +144,19 @@ const StartMiningPage: FC = () => {
               Alternatively should you want a hardware wallet you are welcome to
               purchase a <a href="">Ledger wallet</a> where you can generate you
               Core Coin wallet.
-            </TextStyledGuide1>
+            </StyledTextGuide1>
             <StyledTextGuide>
               <Text size="medium">Step 2: Download mining software</Text>
             </StyledTextGuide>
-            <TextStyledGuide2>
+            <StyledTextGuide2>
               You need to download the mining software, install and configure to
               start the mining application.
               <br />
               <br />
               <br />
               We recommend the following miners:
-            </TextStyledGuide2>
-            <MinerCardsWrapperStyled>
+            </StyledTextGuide2>
+            <StyledMinerCardsWrapper>
               <StyledMiningCard>
                 <MinerCard data={MinerDataCardData} />
               </StyledMiningCard>
@@ -168,20 +169,20 @@ const StartMiningPage: FC = () => {
               <StyledMiningCard>
                 <MinerCard data={MinerDataCardData} />
               </StyledMiningCard>
-            </MinerCardsWrapperStyled>
+            </StyledMinerCardsWrapper>
             <StyledTextGuide>
               <Text size="medium">Step 3: Choose your server</Text>
             </StyledTextGuide>
-            <TextStyledGuide3>
+            <StyledTextGuide3>
               We have 3 servers for you to choose from:
-            </TextStyledGuide3>
-            <LinksWrapperStyled>{renderServerLinks()}</LinksWrapperStyled>
+            </StyledTextGuide3>
+            <StyledLinksWrapper>{renderServerLinks()}</StyledLinksWrapper>
             <StyledTextGuide>
               <Text size="medium">Step 4: Go To Dashboard</Text>
             </StyledTextGuide>
-            <TextStyledGuide4>
+            <StyledTextGuide4>
               To access the dashboard, type your address below.
-            </TextStyledGuide4>
+            </StyledTextGuide4>
             <StyledSearchBarContainer>
               <SearchBar />
             </StyledSearchBarContainer>

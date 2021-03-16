@@ -52,7 +52,9 @@ const BoxEmail: FC<IProps> = ({ title, email, children }) => (
       <Text size="very-large">{title}</Text>
     </StyledTextTitle>
     <StyledTextContent>
-      <Text size="medium">{children}</Text>
+      <Text size="medium" fontFamily="secondary">
+        {children}
+      </Text>
     </StyledTextContent>
     <StyledEmailBoxWrapper>
       <EmailContainer>{email}</EmailContainer>

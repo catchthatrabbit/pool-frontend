@@ -7,7 +7,7 @@ import { PaymentsIcon } from 'atoms/icons'
 import styled from 'styled-components'
 import Background from 'atoms/Background'
 
-const BoxesWrapperStyled = styled.ul`
+const StyledBoxesWrapper = styled.ul`
   display: flex;
   align-self: center;
   flex-direction: column;
@@ -47,13 +47,13 @@ const PaymentPage: FC = () => (
     <Background />
     <StyledContainer>
       <ContentTitle Image={<PaymentsIcon />}>PAYMETNS</ContentTitle>
-      <BoxesWrapperStyled>
+      <StyledBoxesWrapper>
         {PaymentsInfoBoxData.map(({ title, value, type }) => (
           <li key={title}>
             <InfoBox title={title} value={value} type={type} />
           </li>
         ))}
-      </BoxesWrapperStyled>
+      </StyledBoxesWrapper>
       <Table data={TableData.data} columns={TableData.columns} />
     </StyledContainer>
   </>

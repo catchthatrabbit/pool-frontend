@@ -9,7 +9,7 @@ import { TableData, BlocksInfoBoxData } from 'mockData/homePageData'
 import styled from 'styled-components'
 import Background from 'atoms/Background'
 
-const BoxesWrapperStyled = styled.ul`
+const StyledBoxesWrapper = styled.ul`
   display: flex;
   align-self: center;
   flex-direction: column;
@@ -58,13 +58,13 @@ const BlocksPage: FC = () => {
       <Background />
       <StyledContainer>
         <ContentTitle Image={<BlockerLogoIcon />}>POOL BLOCKS</ContentTitle>
-        <BoxesWrapperStyled>
+        <StyledBoxesWrapper>
           {BlocksInfoBoxData.map(({ title, value, type }) => (
             <li key={title}>
               <InfoBox title={title} value={value} type={type} />
             </li>
           ))}
-        </BoxesWrapperStyled>
+        </StyledBoxesWrapper>
         <StyledSearchBarContainer>
           <SearchBar onChange={handleSearchValueChange} value={searchValue} />
         </StyledSearchBarContainer>
