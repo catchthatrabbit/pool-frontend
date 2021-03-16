@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     margin: 164px 0 0;
     overflow: visible;
+    width: 100%;
     
     @media screen and (min-width: ${({ theme }) =>
       theme.responsive.tablet.medium}) {

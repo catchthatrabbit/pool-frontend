@@ -9,7 +9,7 @@ import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
 import { RecentBlocksIcon } from 'atoms/icons'
 
 const StyledContainer = styled.div`
-  width: 1920px;
+  width: 100%;
 `
 const StyledSearchBarContainer = styled.div`
   margin: 83px 278px;
