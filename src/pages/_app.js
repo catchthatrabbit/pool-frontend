@@ -1,7 +1,7 @@
+import React from 'react'
 import { useRouter } from 'next/router'
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer'
-
 import RootProvider from '../providers'
 
 function MyApp({ Component, pageProps }) {

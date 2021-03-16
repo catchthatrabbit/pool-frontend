@@ -1,14 +1,12 @@
 import React, { FC, useState } from 'react'
-import Head from 'next/head'
-
 import styled from 'styled-components'
-import Jumbotron from '../components/Jumbotron'
-import SearchBar from '../atoms/SearchBar'
-import Stats from '../components/Stats'
-import BaseTable from '../components/Table'
-import ContentTitle from '../atoms/ContentTitle'
-import { StatsData, JumbotronData, TableData } from '../mockData/homePageData'
-import { RecentBlocksIcon } from '../atoms/icons'
+import Jumbotron from 'components/Jumbotron'
+import SearchBar from 'atoms/SearchBar'
+import Stats from 'components/Stats'
+import BaseTable from 'components/Table'
+import ContentTitle from 'atoms/ContentTitle'
+import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
+import { RecentBlocksIcon } from 'atoms/icons'
 
 const StyledContainer = styled.div`
   width: 1920px;
@@ -34,11 +32,10 @@ const Home: FC = () => {
     console.log(`Searching for: ${searchValue}`)
   }
 
+  console.log('rendered home')
+
   return (
     <StyledContainer>
-      <Head>
-        <title>Catch that rabbit</title>
-      </Head>
       <Jumbotron data={JumbotronData} />
       <StyledSearchBarContainer>
         <SearchBar

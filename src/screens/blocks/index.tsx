@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
 import { BoxesWrapperStyled } from './style'
-import CommonContentTitle from '../../../components/ContentTitle'
-import CommonInfoBox from '../../../components/InfoBox'
-import SearchBar from '../../atoms/SearchBar'
-import Pagination from '../../components/Pagination'
-import BaseTable from '../../components/Table'
+import CommonContentTitle from 'atoms/ContentTitle'
+import CommonInfoBox from 'atoms/InfoBox/InfoBox'
+import SearchBar from 'atoms/SearchBar'
+import Pagination from 'components/Pagination'
+import BaseTable from 'components/Table'
 
 const boxesInfo = [
   { title: 'Pool hashrate', value: '69.9 GH/S' },
@@ -42,7 +42,7 @@ const BlocksPageUi = () => {
       </BoxesWrapperStyled>
       <SearchBar onChange={handleSearchValueChange} value={seaarchValue} />
 
-      <BaseTable footer={renderTableFooter()} />
+      {/*<BaseTable footer={renderTableFooter()} />*/}
     </>
   )
 }

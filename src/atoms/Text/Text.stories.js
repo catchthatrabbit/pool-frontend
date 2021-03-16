@@ -35,6 +35,11 @@ export default {
         type: 'boolean',
       },
     },
+    active: {
+      control: {
+        type: 'boolean',
+      },
+    },
     fontWeight: {
       control: {
         type: 'select',
@@ -55,5 +60,6 @@ TextStory.args = {
   fontFamily: 'primary',
   color: 'white',
   italic: false,
+  active: false,
   fontWeight: 'normal',
 }

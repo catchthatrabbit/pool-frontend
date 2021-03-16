@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import GlobalResponsiveStyless from './style'
 import ResponsiveContext from './context'
@@ -27,12 +27,10 @@ const ResponsiveProvider = ({ children }) => {
   }, [])
 
   return (
-    <>
-      <ResponsiveContext.Provider value={deviceType}>
-        <GlobalResponsiveStyless />
-        {children}
-      </ResponsiveContext.Provider>
-    </>
+    <ResponsiveContext.Provider value={deviceType}>
+      <GlobalResponsiveStyless />
+      {children}
+    </ResponsiveContext.Provider>
   )
 }
 

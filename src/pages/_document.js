@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import Document from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
@@ -27,5 +26,24 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal()
     }
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link
+            href="https://use.typekit.net/rbr1pzd.css"
+            rel="stylesheet"
+            type="text/css"
+          />
+          <title>Catch that Rabbit</title>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
 }

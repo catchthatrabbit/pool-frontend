@@ -11,6 +11,7 @@ interface IProps {
   color?: TextColor
   italic?: boolean
   fontWeight?: 'bold' | 'normal' | 'light'
+  active?: boolean
 }
 
 const StyledText = styled.text<IProps>`
@@ -35,6 +36,12 @@ const StyledText = styled.text<IProps>`
     (props.fontWeight === 'bold' && 'bold') ||
     (props.fontWeight === 'light' && '100') ||
     '600'};
+  ${(props) =>
+    props.active &&
+    `
+      border-bottom: 3px solid ${colorVariables.white};
+      padding-bottom: 8px;
+    `};
 `
 
 const Text: FC<IProps> = ({
@@ -44,6 +51,7 @@ const Text: FC<IProps> = ({
   color = 'white',
   italic = false,
   fontWeight = 'normal',
+  active = false,
 }) => (
   <StyledText
     size={size}
@@ -51,6 +59,7 @@ const Text: FC<IProps> = ({
     color={color}
     italic={italic}
     fontWeight={fontWeight}
+    active={active}
   >
     {children}
   </StyledText>
