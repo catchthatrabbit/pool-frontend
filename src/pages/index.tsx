@@ -32,8 +32,6 @@ const Home: FC = () => {
     console.log(`Searching for: ${searchValue}`)
   }
 
-  console.log('rendered home')
-
   return (
     <StyledContainer>
       <Jumbotron data={JumbotronData} />

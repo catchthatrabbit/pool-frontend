@@ -42,8 +42,6 @@ const Header: FC<Props> = ({}) => {
     setMenuOpened(false)
   }
 
-  console.log('rendered')
-
   return (
     <HeaderStyled hidden={!visible} fullHeight={menuOpened}>
       <HeaderBodyStyled>

@@ -21,8 +21,6 @@ class ScrollProvider extends PureComponent<null, ScrollState> {
 
     const { currentScrollPos } = this.state
 
-    console.log('called')
-
     this.setState({
       prevScrollPos: currentScrollPos,
       currentScrollPos: scrollPos,

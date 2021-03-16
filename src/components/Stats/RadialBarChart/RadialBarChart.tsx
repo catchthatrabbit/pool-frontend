@@ -210,8 +210,6 @@ const RadialBarChart: FC<IProps> = ({ data = null }) => {
     /* eslint-enable */
   }
 
-  console.log('rendered bar')
-
   return data ? (
     <Chart>
       <svg>

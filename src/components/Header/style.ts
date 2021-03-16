@@ -20,6 +20,7 @@ const HeaderStyled = styled.header<IHeader>`
   z-index: 100;
   background: ${colorVariables.woodsmoke};
   transition: 0.3s;
+  box-shadow: 0 4px 18px 6px ${colorVariables.woodsmoke};
   @media screen and (min-width: ${({ theme }) =>
       theme.responsive.tablet.medium}) {
     height: 120px;
