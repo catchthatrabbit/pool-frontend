@@ -1,4 +1,13 @@
-const deviceSize = {
+export type ResponsiveDeviceName =
+  | 'mobileS'
+  | 'mobileM'
+  | 'mobileL'
+  | 'tablet'
+  | 'laptop'
+  | 'laptopL'
+  | 'desktop'
+
+const deviceSize: { [key in ResponsiveDeviceName]: number } = {
   mobileS: 320,
   mobileM: 375,
   mobileL: 425,
@@ -8,7 +17,7 @@ const deviceSize = {
   desktop: 2560,
 }
 
-const deviceNames = {
+const deviceNames: { [key in ResponsiveDeviceName]: ResponsiveDeviceName } = {
   mobileS: 'mobileS',
   mobileM: 'mobileM',
   mobileL: 'mobileL',
@@ -20,19 +29,17 @@ const deviceNames = {
 
 const responsive = {
   largeScreens: {
-    lg: '1600px',
-    md: '1200px',
-    sm: '1000px',
+    lg: deviceSize.desktop,
+    md: deviceSize.laptopL,
+    sm: deviceSize.laptop,
   },
   tablet: {
-    large: '1100px',
-    medium: '900px',
-    small: '720px',
+    medium: deviceSize.tablet,
   },
   mobileDevice: {
-    large: '720px',
-    medium: '500px',
-    small: '330px',
+    large: deviceSize.mobileL,
+    medium: deviceSize.mobileM,
+    small: deviceSize.mobileS,
   },
 }
 
@@ -68,7 +75,7 @@ export const getDeviceDimensions = () => {
   }
 }
 
-export const getDeviceNameBasedOnSize = (device) => {
+export const getDeviceNameBasedOnSize = (device): ResponsiveDeviceName => {
   const { deviceWidth } = device
   switch (true) {
     case deviceWidth <= deviceSize.mobileS:
@@ -86,7 +93,7 @@ export const getDeviceNameBasedOnSize = (device) => {
     case deviceWidth <= deviceSize.desktop:
       return deviceNames.desktop
     default:
-      break
+      return deviceNames.desktop
   }
 }
 

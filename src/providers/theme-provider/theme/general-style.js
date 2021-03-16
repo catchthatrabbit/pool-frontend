@@ -20,15 +20,16 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px 0 0;
-    width: 90%;
-    max-width: 1640px;
+    margin: 164px 0 0;
+    overflow: visible;
+    
     @media screen and (min-width: ${({ theme }) =>
       theme.responsive.tablet.medium}) {
       margin-top: 120px;
     }
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
-      margin-top: 140px;
+    @media screen and ${({ theme }) => theme.mediaQueriesMaxWidth.laptopL} {
+      width: 90%;
+      max-width: 1640px;
     }
   }
 `
