@@ -1,11 +1,8 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-const StyledBackground = styled.div<IProps>`
-  background: url(${(props: IProps) => props.image}) no-repeat;
-  background-size: 1920px 934px;
-  width: 1920px;
-  height: 934px;
+const StyledBackground = styled.img<IProps>`
+  width: 100%;
   position: absolute;
   top: 10%;
 `
@@ -14,7 +11,7 @@ interface IProps {
 }
 
 const Background: FC<IProps> = ({ image = 'images/statistics_bg.png' }) => (
-  <StyledBackground image={image} />
+  <StyledBackground src={image} alt="background image" />
 )
 
 export default Background
