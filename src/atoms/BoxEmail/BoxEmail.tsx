@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text'
 import applyTransparence from 'helpers/transparentize'
+import Button from '../Button/Button'
 
 const StyledBox = styled.div`
   display: flex;
@@ -59,9 +60,7 @@ const BoxEmail: FC<IProps> = ({ title, email, children }) => (
       </Text>
     </StyledTextContent>
     <StyledEmailBoxWrapper>
-      <EmailContainer>
-        <Text italic>{email}</Text>
-      </EmailContainer>
+      <Button theme="email">{email}</Button>
     </StyledEmailBoxWrapper>
   </StyledBox>
 )

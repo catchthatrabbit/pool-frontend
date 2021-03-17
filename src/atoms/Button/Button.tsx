@@ -33,6 +33,15 @@ const StyledButton = styled.button`
       }
     `}
   ${(props: { theme: string }) =>
+    props.theme === 'email' &&
+    css`
+      background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
+      padding: 30px 74px;
+      &:hover {
+        background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
+      }
+    `}
+  ${(props: { theme: string }) =>
     props.theme === 'transparent' &&
     css`
       backdrop-filter: blur(6px);
@@ -53,12 +62,15 @@ interface IProps {
 const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline' }) => {
   const renderedButton = (
     <StyledButton type="button" theme={theme} onClick={onClick}>
-      <Text size="small" italic>
+      <Text size={theme !== 'email' ? 'small' : 'large'} italic>
         {' '}
         {children}{' '}
       </Text>
     </StyledButton>
   )
+  if (theme === 'email') {
+    return <Link href={'mailto:' + children}>{renderedButton}</Link>
+  }
   if (href) {
     return <Link href={href}>{renderedButton}</Link>
   }
