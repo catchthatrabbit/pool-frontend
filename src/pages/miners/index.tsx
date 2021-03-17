@@ -19,13 +19,7 @@ const MinersPage: FC = () => (
     <Background />
     <StyledContainer>
       <ContentTitle Image={<MinersIcon />}>MINERS</ContentTitle>
-      <BoxesWrapper>
-        {PaymentsInfoBoxData.map(({ title, value, type }) => (
-          <li key={title}>
-            <InfoBox title={title} value={value} type={type} />
-          </li>
-        ))}
-      </BoxesWrapper>
+      <BoxesWrapper data={PaymentsInfoBoxData} />
       <Table data={TableData.data} columns={TableData.columns} />
     </StyledContainer>
   </>

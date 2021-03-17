@@ -94,36 +94,23 @@ const StyledTextGuide4 = styled(StyledText)`
 `
 
 const StartMiningPage: FC = () => {
-  const renderServerLinks = () => {
-    const onClickHandler = () => setTimeout(() => window.scrollBy(0, -140), 0)
-
-    return LinksData.map(({ href, text }) => (
-      <a onClick={onClickHandler} href={href}>
-        {text}
-      </a>
-    ))
-  }
-
   return (
     <>
       <Background />
       <StyledContainer>
         <ContentTitle Image={<StartMiningIcon />}>START MINING</ContentTitle>
         <StyledMiningInfoContainer>
-          <StyledMiningInfo>
+          <StyledMiningInfo id="europe">
             <MiningInfo data={MinerDataInfoData} title="Connect Europe Pool" />
           </StyledMiningInfo>
-          <StyledMiningInfo>
+          <StyledMiningInfo id="united_states">
             <MiningInfo
               data={MinerDataInfoData}
               title="Connect United States Pool"
             />
           </StyledMiningInfo>
-          <StyledMiningInfo>
+          <StyledMiningInfo id="asia">
             <MiningInfo data={MinerDataInfoData} title="Connect Asia Pool" />
-          </StyledMiningInfo>
-          <StyledMiningInfo>
-            <MiningInfo data={MinerDataInfoData} title="Connect Europe Pool" />
           </StyledMiningInfo>
         </StyledMiningInfoContainer>
         <StyledTitleContainer>
@@ -176,7 +163,11 @@ const StartMiningPage: FC = () => {
             <StyledTextGuide3>
               We have 3 servers for you to choose from:
             </StyledTextGuide3>
-            <StyledLinksWrapper>{renderServerLinks()}</StyledLinksWrapper>
+            <StyledLinksWrapper>
+              {LinksData.map(({ href, text }) => (
+                <a href={href}>{text}</a>
+              ))}
+            </StyledLinksWrapper>
             <StyledTextGuide>
               <Text size="medium">Step 4: Go To Dashboard</Text>
             </StyledTextGuide>

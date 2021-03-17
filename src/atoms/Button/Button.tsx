@@ -47,7 +47,7 @@ const StyledButton = styled.button`
 interface IProps {
   onClick?: () => void
   href?: string
-  theme?: 'outline' | 'transparent'
+  theme?: 'outline' | 'transparent' | 'email'
 }
 
 const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline' }) => {

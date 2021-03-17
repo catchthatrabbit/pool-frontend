@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import InfoBox, { InfoBoxItem } from 'atoms/InfoBox'
 
 const StyledBoxesWrapper = styled.ul`
   display: flex;
@@ -32,9 +33,18 @@ const StyledBoxesWrapper = styled.ul`
     justify-content: space-between;
   }
 `
+interface IProps {
+  data: InfoBoxItem[]
+}
 
-const BoxesWrapper: FC = ({ children }) => (
-  <StyledBoxesWrapper>{children}</StyledBoxesWrapper>
+const BoxesWrapper: FC<IProps> = ({ data }) => (
+  <StyledBoxesWrapper>
+    {data.map(({ title, value, type }) => (
+      <li key={title}>
+        <InfoBox title={title} value={value} type={type} />
+      </li>
+    ))}
+  </StyledBoxesWrapper>
 )
 
 export default BoxesWrapper
