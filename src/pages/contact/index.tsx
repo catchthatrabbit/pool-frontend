@@ -7,6 +7,7 @@ import BoxEmail from 'atoms/BoxEmail'
 
 const StyledContainer = styled.div`
   margin: 60px 140px 35px;
+  z-index: 1;
 `
 const StyledBoxContent = styled.div`
   margin-top: 62px;

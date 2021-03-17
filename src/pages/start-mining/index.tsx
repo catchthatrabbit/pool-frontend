@@ -50,10 +50,11 @@ const StyledLinksWrapper = styled.div`
 `
 const StyledContainer = styled.div`
   margin: 60px 140px 73px;
+  z-index: 1;
 `
 const StyledSearchBarContainer = styled.div`
-  margin: 83px 140px;
-  width: 1363px;
+  margin: 83px 93px;
+  max-width: 1363px;
 `
 const StyledMiningInfoContainer = styled.div`
   margin-top: 41px;

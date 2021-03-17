@@ -49,7 +49,9 @@ interface IProps {
 const BoxEmail: FC<IProps> = ({ title, email, children }) => (
   <StyledBox>
     <StyledTextTitle>
-      <Text size="very-large">{title}</Text>
+      <Text size="very-large" italic>
+        {title}
+      </Text>
     </StyledTextTitle>
     <StyledTextContent>
       <Text size="medium" fontFamily="secondary">
@@ -57,7 +59,9 @@ const BoxEmail: FC<IProps> = ({ title, email, children }) => (
       </Text>
     </StyledTextContent>
     <StyledEmailBoxWrapper>
-      <EmailContainer>{email}</EmailContainer>
+      <EmailContainer>
+        <Text italic>{email}</Text>
+      </EmailContainer>
     </StyledEmailBoxWrapper>
   </StyledBox>
 )
