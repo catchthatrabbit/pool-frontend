@@ -62,7 +62,7 @@ interface IProps {
 const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline' }) => {
   const renderedButton = (
     <StyledButton type="button" theme={theme} onClick={onClick}>
-      <Text size={theme !== 'email' ? 'small' : 'large'} italic>
+      <Text size={theme === 'email' ? 'large' : 'small'} italic>
         {' '}
         {children}{' '}
       </Text>

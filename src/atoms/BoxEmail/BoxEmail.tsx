@@ -20,20 +20,6 @@ const StyledEmailBoxWrapper = styled.div`
     align-self: flex-start;
   }
 `
-
-const EmailContainer = styled.div`
-  display: inline-block;
-  padding: 30px 74px;
-  border: 1px solid ${colorVariables.gunPowder};
-  border-radius: 10px;
-  background-color: ${applyTransparence(0.2, colorVariables.gunPowder)};
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
-    padding: 30px 74px;
-  }
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
-    padding: 30px 74px;
-  }
-`
 const StyledTextTitle = styled.div`
   border-bottom: 1px solid ${colorVariables.gunPowder};
   padding-bottom: 25px;
