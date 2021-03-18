@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text'
-import Button from '../Button/Button'
+import Button from 'atoms/Button'
 
 const BoxStyled = styled.div`
   display: flex;
@@ -14,7 +14,6 @@ const BoxStyled = styled.div`
 `
 const EmailBoxWrapperStyled = styled.div`
   margin: 50px 0 0 0;
-  align-self: center;
   align-self: flex-start;
 `
 const TextTitleStyled = styled.div`
