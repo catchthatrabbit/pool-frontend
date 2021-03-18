@@ -92,6 +92,7 @@ const StyledTextGuide3 = styled(StyledText)`
 const StyledTextGuide4 = styled(StyledText)`
   margin-bottom: 75px;
 `
+const onClickHandler = () => setTimeout(() => window.scrollBy(0, -164), 0)
 
 const StartMiningPage: FC = () => {
   return (
@@ -165,7 +166,9 @@ const StartMiningPage: FC = () => {
             </StyledTextGuide3>
             <StyledLinksWrapper>
               {LinksData.map(({ href, text }) => (
-                <a href={href}>{text}</a>
+                <a key={text} href={href} onClick={onClickHandler}>
+                  {text}
+                </a>
               ))}
             </StyledLinksWrapper>
             <StyledTextGuide>
