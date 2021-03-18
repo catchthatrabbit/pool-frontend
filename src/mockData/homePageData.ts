@@ -3,7 +3,7 @@ export const JumbotronData = [
   { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' },
   { title: 'Network difficulty', value: 6600, type: 'hash' },
   { title: 'Active miners', value: 10000, type: 'number' },
-];
+]
 
 export const StatsData = {
   chartData: [
@@ -39,7 +39,8 @@ export const StatsData = {
     { title: 'Blockchain Height', value: 99000000, type: 'number' },
     { title: 'Last XCB Payout', value: 330000, type: 'euro' },
   ],
-};
+}
+
 export const TableData = {
   data: [
     {
@@ -143,4 +144,59 @@ export const TableData = {
       id: 'round time',
     },
   ],
-};
+}
+
+export const BlocksInfoBoxData = [
+  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' as const },
+  { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' as const },
+  { title: 'Network difficulty', value: 6600, type: 'hash' as const },
+  { title: 'Active miners', value: 10000, type: 'number' as const },
+  { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' as const },
+  { title: '24H Hashrate Low', value: 192900000, type: 'hashSpeed' as const },
+  { title: 'Round Variance', value: 200, type: 'percent' as const },
+  { title: 'Blockchain Height', value: 99000000, type: 'number' as const },
+  { title: 'Last XCB Payout', value: 330000, type: 'euro' as const },
+]
+
+export const PaymentsInfoBoxData = [
+  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' as const },
+  { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' as const },
+  { title: 'Active miners', value: 10000, type: 'number' as const },
+  { title: 'Last XCB Payout', value: 330000, type: 'euro' as const },
+]
+
+export const MinerDataCardData = {
+  title: 'Sentinel',
+  description: 'Fast miner with 0% fees',
+  info: ['OS: Windows, Linux', 'CPUs: AMD, NVIDIA', 'Fee: 0%'],
+  configLink: 'https://mega.nz/folder/O4YA2JgD#n2b4iSHQDruEsYUvTQP5_w',
+  minerLink: 'https://mega.nz/folder/O4YA2JgD#n2b4iSHQDruEsYUvTQP5_w',
+}
+
+export const PoolDetailsData = [
+  { key: '1', title: 'Reward scheme', value: 'PPLNS (Pay Per Last N Shares)' },
+  { key: '2', title: 'We pay regularly', value: '3 times per day' },
+  { key: '3', title: 'Pool fee', value: '2%' },
+  { key: '4', title: 'Payout round', value: '6 Hours' },
+  { key: '5', title: 'Payout threshhold', value: 'Minimum 20 XCB' },
+  { key: '6', title: 'Share difficulty', value: '4 GH' },
+  { key: '7', title: 'Mining algorithm', value: 'CryptOre' },
+]
+
+export const MinerDataInfoData = [
+  { key: '1', title: 'server', value: 'eu.ctrpool.io' },
+  { key: '2', title: 'port', value: '4444' },
+  { key: '3', title: 'secure (ssl) port', value: '5555' },
+  {
+    key: '4',
+    title: 'Username',
+    value: '<your Core Coin Address>.<Worker Name>',
+  },
+  { key: '5', title: 'Password', value: '<empty>' },
+]
+
+export const LinksData = [
+  { href: '#europe', text: 'Europe' },
+  { href: '#united_states', text: 'United States' },
+  { href: '#asia', text: 'Asia' },
+]
