@@ -10,7 +10,7 @@ import {
   MinerDataCardData,
   PoolDetailsData,
   LinksData,
-} from '../../mockData/homePageData'
+} from 'mockData/homePageData'
 import Text from 'atoms/Text/Text'
 import Background from 'atoms/Background'
 import { colorVariables, fonts } from 'styles/variables'
