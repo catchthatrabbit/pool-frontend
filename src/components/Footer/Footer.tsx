@@ -33,14 +33,8 @@ const FooterSection = styled.div`
 `
 const LogoStyled = styled.div`
   svg {
-    width: 140px;
+    width: 240px;
     height: auto;
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptop} {
-      width: 200px;
-    }
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
-      width: 240px;
-    }
   }
 `
 const LogoTextStyle = styled.div`
@@ -56,9 +50,7 @@ const MainSection = styled.div`
   max-width: 1200px;
   height: 282px;
   margin: 50px 442px 28px 278px;
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
-    flex-flow: row;
-  }
+  flex-flow: row;
 `
 const HeaderSection = styled.div`
   box-sizing: border-box;

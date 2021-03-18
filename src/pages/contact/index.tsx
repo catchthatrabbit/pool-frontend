@@ -5,20 +5,20 @@ import { ContactUsIcon } from 'atoms/icons'
 import Background from 'atoms/Background'
 import BoxEmail from 'atoms/BoxEmail'
 
-const StyledContainer = styled.div`
+const ContainerStyled = styled.div`
   margin: 60px 140px 35px;
   z-index: 1;
 `
-const StyledBoxContent = styled.div`
+const BoxContentStyled = styled.div`
   margin-top: 62px;
 `
 
 const ContactsPage: FC = () => (
   <>
     <Background />
-    <StyledContainer>
+    <ContainerStyled>
       <ContentTitle Image={<ContactUsIcon />}>CONTACT US</ContentTitle>
-      <StyledBoxContent>
+      <BoxContentStyled>
         <BoxEmail title="Support" email="support@catchthatrabbit.com">
           If you have any questions about our pool, you can contact us freely
           through this email.
@@ -36,8 +36,8 @@ const ContactsPage: FC = () => (
         >
           For legal and commercial questions please feel free to email us.
         </BoxEmail>
-      </StyledBoxContent>
-    </StyledContainer>
+      </BoxContentStyled>
+    </ContainerStyled>
   </>
 )
 

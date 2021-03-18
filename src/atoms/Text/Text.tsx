@@ -14,7 +14,7 @@ interface IProps {
   active?: boolean
 }
 
-const StyledText = styled.text<IProps>`
+const TextStyled = styled.text<IProps>`
   white-space: nowrap;
   font-size: ${(props: IProps) =>
     (props.size === 'tiny' && '10px') ||
@@ -53,7 +53,7 @@ const Text: FC<IProps> = ({
   fontWeight = 'normal',
   active = false,
 }) => (
-  <StyledText
+  <TextStyled
     size={size}
     fontFamily={fontFamily}
     color={color}
@@ -62,7 +62,7 @@ const Text: FC<IProps> = ({
     active={active}
   >
     {children}
-  </StyledText>
+  </TextStyled>
 )
 
 export default Text

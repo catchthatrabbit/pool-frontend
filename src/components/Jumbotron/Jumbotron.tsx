@@ -101,7 +101,7 @@ const JumbotronStyle = styled.div`
     }
   }
 `
-const StyledTitleTex = styled.div`
+const TitleTexStyled = styled.div`
   bottom: 60%;
   margin: 20px 0 0;
   order: -1;
@@ -111,7 +111,7 @@ const StyledTitleTex = styled.div`
   }
 `
 
-const StyledButtonContent = styled.div`
+const ButtonContentStyled = styled.div`
   width: 100%;
   margin-top: 87px;
   button {
@@ -119,7 +119,7 @@ const StyledButtonContent = styled.div`
   }
 `
 
-const StyledInfoComponent = styled.div`
+const InfoComponentStyled = styled.div`
   margin-left: 140px;
   top: 20%;
   position: absolute;
@@ -165,8 +165,8 @@ const Jumbotron: FC<IProps> = ({ data }) => (
         <Arrow />
       </MouseContainerStyle>
     </MapStyle>
-    <StyledInfoComponent>
-      <StyledTitleTex>
+    <InfoComponentStyled>
+      <TitleTexStyled>
         <Text size="ultra-large" italic>
           Dedicated
         </Text>
@@ -176,7 +176,7 @@ const Jumbotron: FC<IProps> = ({ data }) => (
         <Text size="ultra-large" color="apple" italic>
           CORE COIN
         </Text>
-      </StyledTitleTex>
+      </TitleTexStyled>
       <p>
         We have several locations for you to select from.
         <br />
@@ -192,10 +192,10 @@ const Jumbotron: FC<IProps> = ({ data }) => (
         Payout 3 times per day
         <br />
       </p>
-      <StyledButtonContent>
+      <ButtonContentStyled>
         <Button>Start Mining</Button>
-      </StyledButtonContent>
-    </StyledInfoComponent>
+      </ButtonContentStyled>
+    </InfoComponentStyled>
   </JumbotronStyle>
 )
 export default Jumbotron

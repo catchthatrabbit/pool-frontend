@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 import Text from 'atoms/Text/Text'
 import applyTransparence from 'helpers/transparentize'
 
-const StyledButton = styled.button`
+const ButtonStyled = styled.button`
   box-sizing: border-box;
   display: inline-block;
   background: none;
@@ -61,11 +61,11 @@ interface IProps {
 
 const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline' }) => {
   const renderedButton = (
-    <StyledButton type="button" theme={theme} onClick={onClick}>
+    <ButtonStyled type="button" theme={theme} onClick={onClick}>
       <Text size={theme === 'email' ? 'large' : 'small'} italic>
         {children}
       </Text>
-    </StyledButton>
+    </ButtonStyled>
   )
   if (theme === 'email') {
     return <Link href={'mailto:' + children}>{renderedButton}</Link>

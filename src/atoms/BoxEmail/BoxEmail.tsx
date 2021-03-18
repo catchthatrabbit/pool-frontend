@@ -4,7 +4,7 @@ import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text'
 import Button from 'atoms/Button'
 
-const StyledBox = styled.div`
+const BoxStyled = styled.div`
   display: flex;
   flex-direction: column;
   padding: 42px 39px;
@@ -12,18 +12,15 @@ const StyledBox = styled.div`
   border-radius: 10px;
   margin-bottom: 56px;
 `
-const StyledEmailBoxWrapper = styled.div`
+const EmailBoxWrapperStyled = styled.div`
   margin: 50px 0 0 0;
-  align-self: center;
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileM} {
-    align-self: flex-start;
-  }
+  align-self: flex-start;
 `
-const StyledTextTitle = styled.div`
+const TextTitleStyled = styled.div`
   border-bottom: 1px solid ${colorVariables.gunPowder};
   padding-bottom: 25px;
 `
-const StyledTextContent = styled.div`
+const TextContentStyled = styled.div`
   margin-top: 37px;
 `
 
@@ -33,21 +30,21 @@ interface IProps {
 }
 
 const BoxEmail: FC<IProps> = ({ title, email, children }) => (
-  <StyledBox>
-    <StyledTextTitle>
+  <BoxStyled>
+    <TextTitleStyled>
       <Text size="very-large" italic>
         {title}
       </Text>
-    </StyledTextTitle>
-    <StyledTextContent>
+    </TextTitleStyled>
+    <TextContentStyled>
       <Text size="medium" fontFamily="secondary">
         {children}
       </Text>
-    </StyledTextContent>
-    <StyledEmailBoxWrapper>
+    </TextContentStyled>
+    <EmailBoxWrapperStyled>
       <Button theme="email">{email}</Button>
-    </StyledEmailBoxWrapper>
-  </StyledBox>
+    </EmailBoxWrapperStyled>
+  </BoxStyled>
 )
 
 export default BoxEmail

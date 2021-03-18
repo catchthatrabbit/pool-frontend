@@ -4,17 +4,12 @@ import Text from 'atoms/Text/Text'
 
 const WrapperStyled = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
-    flex-direction: row;
-  }
+  flex-direction: row;
 `
 const ImageStyled = styled.div`
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
-    margin-right: 25px;
-  }
+  margin-right: 25px;
 `
 
 interface IProps {

@@ -6,7 +6,7 @@ import applyTransparence from 'helpers/transparentize'
 import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text/Text'
 
-const StyledBox = styled.div`
+const BoxStyled = styled.div`
   width: 746px;
   box-sizing: border-box;
   max-width: 746px;
@@ -15,44 +15,41 @@ const StyledBox = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gunPowder};
   border-radius: 10px;
   background: ${applyTransparence(0.2, colorVariables.gunPowder)};
-
-  @media only screen and (min-width: 768px) {
-    flex-basis: 48%;
-  }
+  flex-basis: 48%;
 `
 
-const StyledTitle = styled.div`
+const TitleStyled = styled.div`
   padding: 0 0 27px 5px;
   margin: 0 0 35px 21px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gunPowder};
 `
-const StyledInfoContent = styled.div`
+const InfoContentStyled = styled.div`
   margin: 0 17px 41px 17px;
 `
 
-const StyledParagraph = styled.p`
+const ParagraphStyled = styled.p`
   margin: 0;
   font-family: Verdana, sans-serif;
   font-size: 0.58rem;
 `
 
-const StyledDescription = styled(StyledParagraph)`
+const DescriptionStyled = styled(ParagraphStyled)`
   margin-bottom: 65px;
 `
 
-const StyledInfo = styled(StyledParagraph)`
+const InfoStyled = styled(ParagraphStyled)`
   margin-bottom: 30px;
 `
 
-const StyledLink = styled(StyledParagraph)`
+const LinkStyled = styled(ParagraphStyled)`
   color: ${({ theme }) => theme.colors.apple};
   margin-bottom: 43px;
 `
 
-const StyledButton = styled(Button)`
+const ButtonStyled = styled(Button)`
   padding: 38px 17px 37px 18px;
 `
-const StyledButtonContent = styled.div`
+const ButtonContentStyled = styled.div`
   display: flex;
   justify-content: center;
 `
@@ -65,28 +62,28 @@ const MinerCard: FC<IProps> = ({ data }) => {
   const { title, description, info, configLink, minerLink } = data
 
   return (
-    <StyledBox>
-      <StyledTitle>
+    <BoxStyled>
+      <TitleStyled>
         <Text size="very-large" italic>
           {title}
         </Text>
-      </StyledTitle>
-      <StyledInfoContent>
-        <StyledDescription>{description}</StyledDescription>
+      </TitleStyled>
+      <InfoContentStyled>
+        <DescriptionStyled>{description}</DescriptionStyled>
         {info.map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <StyledInfo key={index}>{item}</StyledInfo>
+          <InfoStyled key={index}>{item}</InfoStyled>
         ))}
-        <StyledLink>
+        <LinkStyled>
           <a href={configLink} target="_blank" rel="noreferrer noopener">
             Download config file
           </a>
-        </StyledLink>
-      </StyledInfoContent>
-      <StyledButtonContent>
-        <StyledButton href={minerLink}>DOWNLOAD MINER</StyledButton>
-      </StyledButtonContent>
-    </StyledBox>
+        </LinkStyled>
+      </InfoContentStyled>
+      <ButtonContentStyled>
+        <ButtonStyled href={minerLink}>DOWNLOAD MINER</ButtonStyled>
+      </ButtonContentStyled>
+    </BoxStyled>
   )
 }
 

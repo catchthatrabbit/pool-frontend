@@ -8,17 +8,17 @@ import ContentTitle from 'atoms/ContentTitle'
 import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
 import { RecentBlocksIcon } from 'atoms/icons'
 
-const StyledContainer = styled.div`
+const ContainerStyled = styled.div`
   width: 100%;
 `
-const StyledSearchBarContainer = styled.div`
+const SearchBarContainerStyled = styled.div`
   margin: 83px 278px;
   width: 1363px;
 `
-const StyledTableContainer = styled.div`
+const TableContainerStyled = styled.div`
   margin: 17px 140px 75px;
 `
-const StyledTitle = styled.div`
+const TitleStyled = styled.div`
   margin-bottom: 60px;
 `
 
@@ -33,32 +33,32 @@ const Home: FC = () => {
   }
 
   return (
-    <StyledContainer>
+    <ContainerStyled>
       <Jumbotron data={JumbotronData} />
-      <StyledSearchBarContainer>
+      <SearchBarContainerStyled>
         <SearchBar
           value={searchValue}
           onChange={handleSearchValueChange}
           onSearch={handleSearch}
         />
-      </StyledSearchBarContainer>
+      </SearchBarContainerStyled>
       <Stats
         chartData={StatsData.chartData}
         infoBoxData={StatsData.infoBoxData}
       />
-      <StyledTableContainer>
-        <StyledTitle>
+      <TableContainerStyled>
+        <TitleStyled>
           <ContentTitle Image={<RecentBlocksIcon />}>
             RECENT BLOCKS
           </ContentTitle>
-        </StyledTitle>
+        </TitleStyled>
         <BaseTable
           data={TableData.data}
           columns={TableData.columns}
           moreLink={{ href: '/blocks', text: 'View More Blocks' }}
         />
-      </StyledTableContainer>
-    </StyledContainer>
+      </TableContainerStyled>
+    </ContainerStyled>
   )
 }
 export default Home
