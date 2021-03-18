@@ -92,7 +92,7 @@ const StyledTextGuide3 = styled(StyledText)`
 const StyledTextGuide4 = styled(StyledText)`
   margin-bottom: 75px;
 `
-const onClickHandler = () => setTimeout(() => window.scrollBy(0, -164), 0)
+const onClickHandler = () => setTimeout(() => window.scrollBy(0, -184), 0)
 
 const StartMiningPage: FC = () => {
   return (
