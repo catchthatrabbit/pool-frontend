@@ -2,8 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text'
-import applyTransparence from 'helpers/transparentize'
-import Button from '../Button/Button'
+import Button from 'atoms/Button'
 
 const StyledBox = styled.div`
   display: flex;

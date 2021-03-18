@@ -27,7 +27,7 @@ const StyledButton = styled.button`
   ${(props: { theme: string }) =>
     props.theme === 'outline' &&
     css`
-      background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
+      background-color: ${applyTransparence(0.2, colorVariables.gunPowder)};
       &:hover {
         background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
       }
@@ -35,7 +35,7 @@ const StyledButton = styled.button`
   ${(props: { theme: string }) =>
     props.theme === 'email' &&
     css`
-      background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
+      background-color: ${applyTransparence(0.2, colorVariables.gunPowder)};
       padding: 30px 74px;
       &:hover {
         background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
@@ -63,8 +63,7 @@ const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline' }) => {
   const renderedButton = (
     <StyledButton type="button" theme={theme} onClick={onClick}>
       <Text size={theme === 'email' ? 'large' : 'small'} italic>
-        {' '}
-        {children}{' '}
+        {children}
       </Text>
     </StyledButton>
   )

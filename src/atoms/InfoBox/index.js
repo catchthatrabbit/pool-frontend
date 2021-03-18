@@ -1,1 +1,1 @@
-export { default, InfoBoxItem } from './InfoBox'
+export { default } from './InfoBox.tsx'
