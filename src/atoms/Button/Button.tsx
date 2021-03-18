@@ -27,7 +27,7 @@ const StyledButton = styled.button`
   ${(props: { theme: string }) =>
     props.theme === 'outline' &&
     css`
-      background-color: ${applyTransparence(0.2, colorVariables.gunPowder)};
+      background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
       &:hover {
         background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
       }
