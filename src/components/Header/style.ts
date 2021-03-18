@@ -21,22 +21,6 @@ const HeaderStyled = styled.header<IHeader>`
   background: ${colorVariables.woodsmoke};
   transition: 0.3s;
   box-shadow: 0 4px 18px 6px ${colorVariables.woodsmoke};
-  @media screen and (min-width: ${({ theme }) =>
-      theme.responsive.tablet.medium}) {
-    height: 120px;
-  }
-
-  ${({ fullHeight }) =>
-    fullHeight &&
-    css`
-      @media screen and ${({ theme }) => theme.mediaQueriesMaxWidth.laptopL} {
-        body {
-          overflow: visible;
-        }
-        height: unset;
-      }
-    `}
-
   ${({ hidden }) => hidden && `top: -200px;`}
 `
 
@@ -54,22 +38,12 @@ const NavHeaderStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
-    width: auto;
-  }
+  width: auto;
 `
 
 const LogoStyled = styled(LogoIcon)`
-  width: 140px;
+  width: 240px;
   height: auto;
-  @media screen and (min-width: ${({ theme }) =>
-      theme.responsive.tablet.medium}) {
-    width: 200px;
-  }
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
-    width: 240px;
-  }
 `
 
 const NavBarStyled = styled.nav`
@@ -79,27 +53,14 @@ const NavBarStyled = styled.nav`
   align-items: center;
   height: 50px;
   justify-content: space-between;
-
-  @media screen and ${({ theme }) => theme.mediaQueriesMaxWidth.laptopL} {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    overflow: auto;
-    display: flex;
-    margin-top: 40px;
-  }
 `
 
 const HeaderLinkStyled = styled.div`
-  @media screen and ${({ theme }) => theme.mediaQueriesMaxWidth.laptopL} {
-    margin: 15px 0;
-  }
+  margin: 15px 0;
 `
 
 const HamburgerButtonStyled = styled(HamburgerButton)`
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
-    display: none;
-  }
+  display: none;
 `
 
 export {

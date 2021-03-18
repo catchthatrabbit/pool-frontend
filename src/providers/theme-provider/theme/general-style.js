@@ -25,15 +25,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 164px 0 0;
     overflow: visible;
     width: 100%;
-    
-    @media screen and (min-width: ${({ theme }) =>
-      theme.responsive.tablet.medium}) {
-      margin-top: 120px;
-    }
-    @media screen and ${({ theme }) => theme.mediaQueriesMaxWidth.laptopL} {
-      width: 90%;
-      max-width: 1640px;
-    }
+
   }
   
   ::-webkit-scrollbar {

@@ -15,7 +15,7 @@ import Text from 'atoms/Text/Text'
 import Background from 'atoms/Background'
 import { colorVariables, fonts } from 'styles/variables'
 
-const StyledText = styled.p`
+const TextStyled = styled.p`
   width: 807px;
   margin: 34px 0 0;
   font-family: ${fonts.secondary};
@@ -25,7 +25,7 @@ const StyledText = styled.p`
   }
 `
 
-const StyledMinerCardsWrapper = styled.div`
+const MinerCardsWrapperStyled = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -33,63 +33,59 @@ const StyledMinerCardsWrapper = styled.div`
   margin: 54px 0 87px;
 `
 
-const StyledLinksWrapper = styled.div`
+const LinksWrapperStyled = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
   margin: 70px 0 100px;
   a {
     white-space: nowrap;
     color: ${colorVariables.apple};
   }
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 70px 0 100px;
-  }
 `
-const StyledContainer = styled.div`
+const ContainerStyled = styled.div`
   margin: 60px 140px 73px;
   z-index: 1;
 `
-const StyledSearchBarContainer = styled.div`
+const SearchBarContainerStyled = styled.div`
   margin: 83px 93px;
   max-width: 1363px;
 `
-const StyledMiningInfoContainer = styled.div`
+const MiningInfoContainerStyled = styled.div`
   margin-top: 41px;
 `
-const StyledMiningInfo = styled.div`
+const MiningInfoStyled = styled.div`
   margin-bottom: 57px;
 `
-const StyledMiningCard = styled.div`
+const MiningCardStyled = styled.div`
   margin-bottom: 20px;
 `
-const StyledTitleContainer = styled.div`
+const TitleContainerStyled = styled.div`
   margin: 57px 0 73px;
 `
-const StyledBoxContent = styled.div`
+const BoxContentStyled = styled.div`
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
   margin-bottom: 31px;
 `
-const StyledBoxGuide = styled.div`
+const BoxGuideStyled = styled.div`
   margin: 55px 47px 0;
 `
-const StyledTextGuide = styled.div`
+const TextGuideStyled = styled.div`
   border-bottom: 1px solid ${colorVariables.gunPowder};
   padding-bottom: 25px;
 `
-const StyledTextGuide1 = styled(StyledText)`
+const TextGuide1Styled = styled(TextStyled)`
   margin-bottom: 111px;
 `
-const StyledTextGuide2 = styled(StyledText)`
+const TextGuide2Styled = styled(TextStyled)`
   margin-bottom: 54px;
 `
-const StyledTextGuide3 = styled(StyledText)`
+const TextGuide3Styled = styled(TextStyled)`
   margin-bottom: 70px;
 `
-const StyledTextGuide4 = styled(StyledText)`
+const TextGuide4Styled = styled(TextStyled)`
   margin-bottom: 75px;
 `
 const onClickHandler = () => setTimeout(() => window.scrollBy(0, -184), 0)
@@ -98,31 +94,31 @@ const StartMiningPage: FC = () => {
   return (
     <>
       <Background />
-      <StyledContainer>
+      <ContainerStyled>
         <ContentTitle Image={<StartMiningIcon />}>START MINING</ContentTitle>
-        <StyledMiningInfoContainer>
-          <StyledMiningInfo id="europe">
+        <MiningInfoContainerStyled>
+          <MiningInfoStyled id="europe">
             <MiningInfo data={MinerDataInfoData} title="Connect Europe Pool" />
-          </StyledMiningInfo>
-          <StyledMiningInfo id="united_states">
+          </MiningInfoStyled>
+          <MiningInfoStyled id="united_states">
             <MiningInfo
               data={MinerDataInfoData}
               title="Connect United States Pool"
             />
-          </StyledMiningInfo>
-          <StyledMiningInfo id="asia">
+          </MiningInfoStyled>
+          <MiningInfoStyled id="asia">
             <MiningInfo data={MinerDataInfoData} title="Connect Asia Pool" />
-          </StyledMiningInfo>
-        </StyledMiningInfoContainer>
-        <StyledTitleContainer>
+          </MiningInfoStyled>
+        </MiningInfoContainerStyled>
+        <TitleContainerStyled>
           <ContentTitle Image={<RecentBlocksIcon />}>START GUIDE</ContentTitle>
-        </StyledTitleContainer>
-        <StyledBoxContent>
-          <StyledBoxGuide>
-            <StyledTextGuide>
+        </TitleContainerStyled>
+        <BoxContentStyled>
+          <BoxGuideStyled>
+            <TextGuideStyled>
               <Text size="medium">Step 1: Get a Wallet</Text>
-            </StyledTextGuide>
-            <StyledTextGuide1>
+            </TextGuideStyled>
+            <TextGuide1Styled>
               The easiest way to get a wallet is to register on{' '}
               <a href="https://pingexchange.com/">Ping Exchange</a> or download
               the mobile application{' '}
@@ -132,58 +128,58 @@ const StartMiningPage: FC = () => {
               Alternatively should you want a hardware wallet you are welcome to
               purchase a <a href="">Ledger wallet</a> where you can generate you
               Core Coin wallet.
-            </StyledTextGuide1>
-            <StyledTextGuide>
+            </TextGuide1Styled>
+            <TextGuideStyled>
               <Text size="medium">Step 2: Download mining software</Text>
-            </StyledTextGuide>
-            <StyledTextGuide2>
+            </TextGuideStyled>
+            <TextGuide2Styled>
               You need to download the mining software, install and configure to
               start the mining application.
               <br />
               <br />
               <br />
               We recommend the following miners:
-            </StyledTextGuide2>
-            <StyledMinerCardsWrapper>
-              <StyledMiningCard>
+            </TextGuide2Styled>
+            <MinerCardsWrapperStyled>
+              <MiningCardStyled>
                 <MinerCard data={MinerDataCardData} />
-              </StyledMiningCard>
-              <StyledMiningCard>
+              </MiningCardStyled>
+              <MiningCardStyled>
                 <MinerCard data={MinerDataCardData} />
-              </StyledMiningCard>
-              <StyledMiningCard>
+              </MiningCardStyled>
+              <MiningCardStyled>
                 <MinerCard data={MinerDataCardData} />
-              </StyledMiningCard>
-              <StyledMiningCard>
+              </MiningCardStyled>
+              <MiningCardStyled>
                 <MinerCard data={MinerDataCardData} />
-              </StyledMiningCard>
-            </StyledMinerCardsWrapper>
-            <StyledTextGuide>
+              </MiningCardStyled>
+            </MinerCardsWrapperStyled>
+            <TextGuideStyled>
               <Text size="medium">Step 3: Choose your server</Text>
-            </StyledTextGuide>
-            <StyledTextGuide3>
+            </TextGuideStyled>
+            <TextGuide3Styled>
               We have 3 servers for you to choose from:
-            </StyledTextGuide3>
-            <StyledLinksWrapper>
+            </TextGuide3Styled>
+            <LinksWrapperStyled>
               {LinksData.map(({ href, text }) => (
                 <a key={text} href={href} onClick={onClickHandler}>
                   {text}
                 </a>
               ))}
-            </StyledLinksWrapper>
-            <StyledTextGuide>
+            </LinksWrapperStyled>
+            <TextGuideStyled>
               <Text size="medium">Step 4: Go To Dashboard</Text>
-            </StyledTextGuide>
-            <StyledTextGuide4>
+            </TextGuideStyled>
+            <TextGuide4Styled>
               To access the dashboard, type your address below.
-            </StyledTextGuide4>
-            <StyledSearchBarContainer>
+            </TextGuide4Styled>
+            <SearchBarContainerStyled>
               <SearchBar />
-            </StyledSearchBarContainer>
-          </StyledBoxGuide>
-        </StyledBoxContent>
+            </SearchBarContainerStyled>
+          </BoxGuideStyled>
+        </BoxContentStyled>
         <MiningInfo data={PoolDetailsData} title="Pool details" color="white" />
-      </StyledContainer>
+      </ContainerStyled>
     </>
   )
 }

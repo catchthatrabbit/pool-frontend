@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import InfoBox, { InfoBoxItem } from 'atoms/InfoBox'
 
-const StyledBoxesWrapper = styled.ul`
+const BoxesWrapperStyled = styled.ul`
   display: flex;
   align-self: center;
   flex-direction: column;
@@ -19,32 +19,19 @@ const StyledBoxesWrapper = styled.ul`
   li:not(:nth-child(4n)) {
     margin-right: 198px;
   }
-  @media screen and (min-width: ${({ theme }) =>
-      theme.responsive.mobileDevice.medium}) {
-    width: 100%;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    li {
-      margin-top: 50px;
-    }
-  }
-  @media screen and (min-width: ${({ theme }) =>
-      theme.responsive.mobileDevice.large}) {
-    justify-content: space-between;
-  }
 `
 interface IProps {
   data: InfoBoxItem[]
 }
 
 const BoxesWrapper: FC<IProps> = ({ data }) => (
-  <StyledBoxesWrapper>
+  <BoxesWrapperStyled>
     {data.map(({ title, value, type }) => (
       <li key={title}>
         <InfoBox title={title} value={value} type={type} />
       </li>
     ))}
-  </StyledBoxesWrapper>
+  </BoxesWrapperStyled>
 )
 
 export default BoxesWrapper

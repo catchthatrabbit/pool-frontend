@@ -35,14 +35,6 @@ const TableRowStyled = styled.tr`
   th,
   td {
     box-sizing: border-box;
-    min-width: 80vw;
-
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileS} {
-      min-width: 40vw;
-    }
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
-      min-width: 0;
-    }
 
     &:first-child {
       padding-left: 78px;
@@ -66,7 +58,7 @@ const FooterStyled = styled.div`
   justify-content: center;
   margin-top: 36px;
 `
-const StyledPaginationContainer = styled.div`
+const PaginationContainerStyled = styled.div`
   margin-top: 36px;
 `
 
@@ -132,9 +124,9 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
       <FooterStyled>
         {moreLink && <Button href={moreLink.href}>{moreLink.text}</Button>}
         {!moreLink && (
-          <StyledPaginationContainer>
+          <PaginationContainerStyled>
             <Pagination onPageChange={() => null} pageCount={4} />
-          </StyledPaginationContainer>
+          </PaginationContainerStyled>
         )}
       </FooterStyled>
     </WrapperStyled>
