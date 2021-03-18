@@ -12,7 +12,7 @@ export default {
 }
 
 const Container = styled.div`
-  width: 500px;
+  width: 650px;
   height: 1500px;
 `
 
