@@ -1,1 +1,1 @@
-export { default } from './InfoBox'
+export { default, InfoBoxItem } from './InfoBox'
