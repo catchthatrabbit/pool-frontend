@@ -1,25 +1,25 @@
 import styled from 'styled-components'
-import { colorVariables } from 'styles/variables'
+import { colorVariables, fonts } from 'styles/variables'
 import applyTransparence from 'helpers/transparentize'
 
 const PaginationContainer = styled.div`
   ul.pagination {
     display: flex;
     align-items: center;
-    height: 2rem;
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 0.35rem;
     color: ${colorVariables.kimberly};
     li {
+      margin: 0 20px;
       &.active {
         a {
-          color: ${colorVariables.white}; 
+          padding: 10px 12px;
+          color: ${colorVariables.white};
           background-color: ${applyTransparence(
             0.25,
             colorVariables.gunPowder,
-          )} 
+          )};
           border: 1px solid ${colorVariables.gunPowder};
           border-radius: 10px;
         }
@@ -30,16 +30,22 @@ const PaginationContainer = styled.div`
           padding: 0;
         }
       }
+      &.previous {
+        margin: 0 50px;
+      }
       &.next {
-        margin-left: 0.2rem;
-        padding: 0.75rem 0;
+        margin-left: 37px;
+        padding: 14px 50px;
+        line-height: 19px;
         border-left: 1px solid ${colorVariables.gunPowder};
       }
-      &.previous.disabled, &.next.disabled {
+      &.previous.disabled,
+      &.next.disabled {
         display: none;
       }
       a {
-        padding: 0.3rem;
+        font-family: ${fonts.primary};
+        font-size: 14px;
         cursor: pointer;
         user-select: none;
         &:hover {
@@ -47,33 +53,7 @@ const PaginationContainer = styled.div`
           transition: color 0.3s;
         }
         &:focus {
-          border: none;
           outline: none;
-        }
-      }
-    }
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileS} {
-      font-size: 0.5rem;
-    }
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
-      font-size: 0.583rem;
-    }
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.tablet} {
-      li {
-        a {
-          padding: 0.5rem;
-        }
-        &.break-me {
-          a {
-            padding: 0.5rem;
-          }
-        }
-        &.previous {
-          margin-right: 1.5rem;
-        }
-        &.next {
-          margin-left: 0.75rem;
-          padding: 0.75rem;
         }
       }
     }
