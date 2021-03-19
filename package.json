@@ -17,6 +17,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-paginate": "^6.5.0",
+    "recharts": "^2.0.8",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
     "styled-components": "^5.2.1",
