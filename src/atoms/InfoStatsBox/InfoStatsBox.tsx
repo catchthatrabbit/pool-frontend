@@ -23,7 +23,7 @@ const SubtitleStyled = styled.div`
 interface IProps {
   title: string
   subtitle: string
-  value: number
+  value: string
   suffix: string
 }
 const InfoStatsBox: FC<IProps> = ({ title, subtitle, value, suffix }) => {
