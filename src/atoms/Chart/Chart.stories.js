@@ -18,11 +18,17 @@ export default {
         { name: '03:00', uv: 3490, pv: 4300, amt: 2100 },
       ],
     },
+    type: {
+      control: {
+        type: 'select',
+        options: ['line', 'bar-spaced', 'bar-slime'],
+      },
+    },
   },
 }
 const Container = styled.div`
   width: 1640px;
-  height: 1500px;
+  height: 445px;
 `
 
 export const ChartBasic = (args) => (
