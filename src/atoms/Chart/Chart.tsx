@@ -10,8 +10,7 @@ import {
   Bar,
   ResponsiveContainer,
 } from 'recharts'
-import { colorVariables } from 'styles/variables'
-import Text from '../Text/Text'
+import { colorVariables, fonts } from 'styles/variables'
 
 type ChartType = 'line' | 'bar-spaced' | 'bar-slime'
 
@@ -24,7 +23,17 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
   if (type === 'line') {
     return (
       <ResponsiveContainer width="70%" height="100%">
-        <LineChart width={1600} height={300} data={data}>
+        <LineChart
+          width={1600}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 50,
+            bottom: 25,
+          }}
+        >
           <Line
             type="monotone"
             dataKey="uv"
@@ -42,18 +51,28 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               offset={0}
               position="bottom"
               stroke={colorVariables.apple}
+              style={{
+                fontSize: '14px',
+                fontFamily: fonts.primary,
+              }}
             />
           </XAxis>
           <YAxis
             dataKey="pv"
             stroke={colorVariables.white}
             tick={{ fontSize: '9px', fontWeight: '600px' }}
+            axisLine={false}
           >
             <Label
               value="Share"
               offset={0}
               position="left"
+              angle={-90}
               stroke={colorVariables.apple}
+              style={{
+                fontSize: '14px',
+                fontFamily: fonts.primary,
+              }}
             />
           </YAxis>
         </LineChart>
@@ -66,8 +85,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
           width={1600}
           height={300}
           data={data}
-          barGap="2"
-          barSize="5px"
+          barSize="1"
           margin={{
             top: 5,
             right: 30,
@@ -86,12 +104,17 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               offset={0}
               position="bottom"
               stroke={colorVariables.apple}
+              style={{
+                fontSize: '14px',
+                fontFamily: fonts.primary,
+              }}
             />
           </XAxis>
           <YAxis
             dataKey="pv"
             stroke={colorVariables.white}
             tick={{ fontSize: '9px', fontWeight: '600px' }}
+            axisLine={false}
           >
             <Label
               value="Share"
@@ -99,6 +122,10 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               position="left"
               angle={-90}
               stroke={colorVariables.apple}
+              style={{
+                fontSize: '14px',
+                fontFamily: fonts.primary,
+              }}
             />
           </YAxis>
           <Bar dataKey="pv" fill={colorVariables.apple} />
@@ -113,7 +140,12 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
           height={300}
           data={data}
           barGap="1"
-          barSize="5px"
+          margin={{
+            top: 5,
+            right: 30,
+            left: 50,
+            bottom: 25,
+          }}
         >
           <CartesianGrid vertical={false} stroke={colorVariables.spindle} />
           <XAxis
@@ -126,18 +158,28 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               offset={0}
               position="bottom"
               stroke={colorVariables.apple}
+              style={{
+                fontSize: '14px',
+                fontFamily: fonts.primary,
+              }}
             />
           </XAxis>
           <YAxis
             dataKey="pv"
             stroke={colorVariables.white}
             tick={{ fontSize: '9px', fontWeight: '600px' }}
+            axisLine={false}
           >
             <Label
               value="Share"
               offset={0}
               position="left"
+              angle={-90}
               stroke={colorVariables.apple}
+              style={{
+                fontSize: '14px',
+                fontFamily: fonts.primary,
+              }}
             />
           </YAxis>
           <Bar dataKey="pv" fill={colorVariables.sky} />
