@@ -129,7 +129,7 @@ const Footer = () => {
               Let&apos;s jump into it
             </Text>
           </HeaderTextStyle>
-          <Button>Start mining</Button>
+          <Button href="/start-mining">Start mining</Button>
         </HeaderDiv>
       </HeaderSection>
       <MainSection>

@@ -150,13 +150,15 @@ const Jumbotron: FC<IProps> = ({ data }) => (
     </ul>
     <MapStyle>
       <USStyle>
-        <MapButton href="/">Connect US location</MapButton>
+        <MapButton href="/start-mining#united_states">
+          Connect US location
+        </MapButton>
       </USStyle>
       <EUStyle>
-        <MapButton href="/">Connect EU location</MapButton>
+        <MapButton href="/start-mining#europe">Connect EU location</MapButton>
       </EUStyle>
       <APStyle>
-        <MapButton href="/">Connect AP location</MapButton>
+        <MapButton href="/start-mining#asia">Connect AP location</MapButton>
       </APStyle>
       <MouseContainerStyle>
         <MouseStyle>
@@ -193,7 +195,7 @@ const Jumbotron: FC<IProps> = ({ data }) => (
         <br />
       </p>
       <ButtonContentStyled>
-        <Button>Start Mining</Button>
+        <Button href="/start-mining">Start Mining</Button>
       </ButtonContentStyled>
     </InfoComponentStyled>
   </JumbotronStyle>
