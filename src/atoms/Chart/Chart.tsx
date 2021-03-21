@@ -129,6 +129,8 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
             />
           </YAxis>
           <Bar dataKey="pv" fill={colorVariables.apple} />
+          <Bar dataKey="uv" fill={colorVariables.apple} />
+          <Bar dataKey="amt" fill={colorVariables.apple} />
         </BarChart>
       </ResponsiveContainer>
     )
@@ -183,6 +185,8 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
             />
           </YAxis>
           <Bar dataKey="pv" fill={colorVariables.sky} />
+          <Bar dataKey="uv" fill={colorVariables.sky} />
+          <Bar dataKey="amt" fill={colorVariables.sky} />
         </BarChart>
       </ResponsiveContainer>
     )
