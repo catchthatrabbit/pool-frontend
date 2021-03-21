@@ -85,7 +85,8 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
           width={1600}
           height={300}
           data={data}
-          barSize="1"
+          barSize={5}
+          barGap={25}
           margin={{
             top: 5,
             right: 30,
@@ -141,7 +142,8 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
           width={1600}
           height={300}
           data={data}
-          barGap="1"
+          barSize={5}
+          barGap={1}
           margin={{
             top: 5,
             right: 30,
