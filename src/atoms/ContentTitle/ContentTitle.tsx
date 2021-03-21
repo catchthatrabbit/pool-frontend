@@ -7,6 +7,7 @@ const WrapperStyled = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  height: 96px;
 `
 const ImageStyled = styled.div`
   margin-right: 25px;
