@@ -44,6 +44,7 @@ const PaginationContainer = styled.div`
       &.previous.disabled,
       &.next.disabled {
         opacity: 0;
+        pointer-events: none;
       }
       a {
         font-family: ${fonts.primary};
