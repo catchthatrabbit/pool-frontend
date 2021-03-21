@@ -87,6 +87,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
           data={data}
           barSize={5}
           barGap={25}
+          barCategoryGap={50}
           margin={{
             top: 5,
             right: 30,
