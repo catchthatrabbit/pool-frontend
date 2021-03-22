@@ -7,6 +7,12 @@ import Text from 'atoms/Text/Text'
 import MapButton from 'atoms/MapButton/MapButton'
 import { Arrow } from 'atoms/icons'
 import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox'
+import {
+  startMining,
+  connectToUS,
+  connectToEurope,
+  connectToAsia,
+} from 'constants/paths'
 
 const scrollTranslate = keyframes`
   0% {
@@ -150,15 +156,13 @@ const Jumbotron: FC<IProps> = ({ data }) => (
     </ul>
     <MapStyle>
       <USStyle>
-        <MapButton href="/start-mining#united_states">
-          Connect US location
-        </MapButton>
+        <MapButton href={connectToUS}>Connect US location</MapButton>
       </USStyle>
       <EUStyle>
-        <MapButton href="/start-mining#europe">Connect EU location</MapButton>
+        <MapButton href={connectToEurope}>Connect EU location</MapButton>
       </EUStyle>
       <APStyle>
-        <MapButton href="/start-mining#asia">Connect AP location</MapButton>
+        <MapButton href={connectToAsia}>Connect AP location</MapButton>
       </APStyle>
       <MouseContainerStyle>
         <MouseStyle>
@@ -195,7 +199,7 @@ const Jumbotron: FC<IProps> = ({ data }) => (
         <br />
       </p>
       <ButtonContentStyled>
-        <Button href="/start-mining">Start Mining</Button>
+        <Button href={startMining}>Start Mining</Button>
       </ButtonContentStyled>
     </InfoComponentStyled>
   </JumbotronStyle>

@@ -8,6 +8,7 @@ import Button from 'atoms/Button/Button'
 import Text from 'atoms/Text/Text'
 import ContentTitle from 'atoms/ContentTitle/ContentTitle'
 import { LogoIcon, StartMiningIcon } from 'atoms/icons'
+import { startMining } from 'constants/paths'
 
 const InfoStyled = styled.div`
   font-family: ${fonts.secondary};
@@ -129,7 +130,7 @@ const Footer = () => {
               Let&apos;s jump into it
             </Text>
           </HeaderTextStyle>
-          <Button href="/start-mining">Start mining</Button>
+          <Button href={startMining}>Start mining</Button>
         </HeaderDiv>
       </HeaderSection>
       <MainSection>
