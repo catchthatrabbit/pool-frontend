@@ -39,6 +39,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
             dataKey="uv"
             stroke={colorVariables.apple}
             dot={false}
+            strokeWidth={2}
           />
           <CartesianGrid vertical={false} stroke={colorVariables.spindle} />
           <XAxis
