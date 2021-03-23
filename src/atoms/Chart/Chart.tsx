@@ -51,6 +51,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               offset={0}
               position="bottom"
               stroke={colorVariables.apple}
+              fill={colorVariables.apple}
               style={{
                 fontSize: '14px',
                 fontFamily: fonts.primary,
@@ -69,6 +70,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               position="left"
               angle={-90}
               stroke={colorVariables.apple}
+              fill={colorVariables.apple}
               style={{
                 fontSize: '14px',
                 fontFamily: fonts.primary,
@@ -106,6 +108,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               offset={0}
               position="bottom"
               stroke={colorVariables.apple}
+              fill={colorVariables.apple}
               style={{
                 fontSize: '14px',
                 fontFamily: fonts.primary,
@@ -124,6 +127,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               position="left"
               angle={-90}
               stroke={colorVariables.apple}
+              fill={colorVariables.apple}
               style={{
                 fontSize: '14px',
                 fontFamily: fonts.primary,
@@ -163,6 +167,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               offset={0}
               position="bottom"
               stroke={colorVariables.apple}
+              fill={colorVariables.apple}
               style={{
                 fontSize: '14px',
                 fontFamily: fonts.primary,
@@ -181,6 +186,7 @@ const Chart: FC<IProps> = ({ data, type = 'bar-spaced' }) => {
               position="left"
               angle={-90}
               stroke={colorVariables.apple}
+              fill={colorVariables.apple}
               style={{
                 fontSize: '14px',
                 fontFamily: fonts.primary,

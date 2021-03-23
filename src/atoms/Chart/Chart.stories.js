@@ -16,6 +16,8 @@ export default {
         { name: '21:00', uv: 1890, pv: 4800, amt: 2181 },
         { name: '3.nov', uv: 2390, pv: 3800, amt: 2500 },
         { name: '03:00', uv: 3490, pv: 4300, amt: 2100 },
+        { name: '08:00', uv: 3490, pv: 4300, amt: 2100 },
+        { name: '13:00', uv: 3490, pv: 4300, amt: 2100 },
       ],
     },
     type: {
