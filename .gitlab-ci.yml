@@ -1,0 +1,64 @@
+image: 'docker:stable'
+
+stages:
+- build
+- deploy
+
+services:
+  - docker:stable-dind
+
+variables:
+  IMAGE_NAME: $REGISTRY_ADDRESS/$CI_PROJECT_ROOT_NAMESPACE/$CONTAINER_NAME
+
+before_script:
+  - docker -v
+  - echo $REGISTRY_USER
+  - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY_ADDRESS
+
+after_script:
+  - rm -f /root/.docker/config.json
+  - rm -rf $SSH_KEY
+
+.docker_build: &docker_build |
+  docker build -f Dockerfile -t $IMAGE_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_NAME:latest --build-arg NPM_TOKEN=$NPM_TOKEN .
+  docker push $IMAGE_NAME:latest
+  docker push $IMAGE_NAME:$CI_COMMIT_SHORT_SHA
+
+Build project:
+  stage: build
+  only:
+    - stage
+    - production
+
+  variables:
+    CONTAINER_NAME: pool-frontend
+
+  script:
+    - *docker_build
+
+Live logs (stage):
+  stage: build
+  only:
+    - stage
+  when: manual
+  before_script:
+    - chmod 600 $SSH_KEY
+
+  variables:
+    CONTAINER_NAME: pool-frontend
+
+  script:
+    - ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $SSH_KEY root@$SERVER_ADDR_STAGE "cd /data/pool-frontend && docker-compose logs -f --tail 100"
+
+Deploy project (stage):
+  stage: deploy
+  only:
+    - stage
+  before_script:
+    - chmod 600 $SSH_KEY
+
+  variables:
+    CONTAINER_NAME: pool-frontend
+
+  script:
+    - ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $SSH_KEY root@$SERVER_ADDR_STAGE "cd /data/pool-frontend && ls && sed 's/{IMAGE_TAG}/$CI_COMMIT_SHORT_SHA/g' docker-compose.yaml.template > docker-compose.yaml && docker-compose up -d && sleep 20 && docker-compose logs --tail 100 && docker-compose down"
