@@ -7,6 +7,7 @@ import BaseTable from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
 import { RecentBlocksIcon } from 'atoms/icons'
+import { InferGetServerSidePropsType } from 'next'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -22,7 +23,22 @@ const TitleStyled = styled.div`
   margin-bottom: 60px;
 `
 
-const Home: FC = () => {
+type Data = {
+  time: string
+  value: number
+}
+export const getServerSideProps = async () => {
+  const res = await fetch('https://.../data')
+  const data: Data = await res.json()
+
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
+const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
   const [searchValue, setSearchValue] = useState('')
 
   const handleSearchValueChange = (event) => {
