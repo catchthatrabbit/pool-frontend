@@ -6,7 +6,6 @@ import Stats from 'components/Stats'
 import BaseTable from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { RecentBlocksIcon } from 'atoms/icons'
-import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
 import { InferGetServerSidePropsType } from 'next'
 import getData from '../helpers/getData'
 
@@ -51,7 +50,7 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
   }
   return (
     <ContainerStyled>
-      <Jumbotron data={props.jumbotronData.data} />
+      <Jumbotron data={props.jumbotronData} />
       <SearchBarContainerStyled>
         <SearchBar
           value={searchValue}
@@ -60,8 +59,8 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
         />
       </SearchBarContainerStyled>
       <Stats
-        chartData={props.statsData.data.chartData}
-        infoBoxData={props.statsData.data.infoBoxData}
+        chartData={props.statsData.chartData}
+        infoBoxData={props.statsData.infoBoxData}
       />
       <TableContainerStyled>
         <TitleStyled>
@@ -70,8 +69,8 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
           </ContentTitle>
         </TitleStyled>
         <BaseTable
-          data={props.tableData.data.data}
-          columns={props.tableData.data.columns}
+          data={props.tableData.data}
+          columns={props.tableData.columns}
           moreLink={{ href: '/blocks', text: 'View More Blocks' }}
         />
       </TableContainerStyled>
