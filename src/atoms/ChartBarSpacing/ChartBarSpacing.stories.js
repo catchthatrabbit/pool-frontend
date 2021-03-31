@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import Chart from './Chart'
+import ChartBarSpacing from './ChartBarSpacing'
 
 export default {
-  title: 'Chart',
-  component: Chart,
+  title: 'ChartBarSpacing',
+  component: ChartBarSpacing,
   argTypes: {
     data: {
       type: { name: 'object', required: true },
@@ -20,12 +20,6 @@ export default {
         { name: '13:00', uv: 3490, pv: 4300, amt: 2100 },
       ],
     },
-    type: {
-      control: {
-        type: 'select',
-        options: ['line', 'bar-spaced', 'bar-slime'],
-      },
-    },
   },
 }
 const Container = styled.div`
@@ -33,8 +27,8 @@ const Container = styled.div`
   height: 445px;
 `
 
-export const ChartBasic = (args) => (
+export const ChartBarSpacingBasic = (args) => (
   <Container>
-    <Chart {...args} />
+    <ChartBarSpacing {...args} />
   </Container>
 )
