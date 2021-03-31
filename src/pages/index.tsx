@@ -5,9 +5,10 @@ import SearchBar from 'atoms/SearchBar'
 import Stats from 'components/Stats'
 import BaseTable from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
-import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
 import { RecentBlocksIcon } from 'atoms/icons'
+import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
 import { InferGetServerSidePropsType } from 'next'
+import getData from '../helpers/getData'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -23,22 +24,23 @@ const TitleStyled = styled.div`
   margin-bottom: 60px;
 `
 
-type Data = {
-  time: string
-  value: number
-}
 export const getServerSideProps = async () => {
-  const res = await fetch('https://.../data')
-  const data: Data = await res.json()
+  const statsData = JSON.parse(JSON.stringify(await getData('/stats')))
+  const jumbotronData = JSON.parse(JSON.stringify(await getData('/jumbotron')))
+  const tableData = JSON.parse(JSON.stringify(await getData('/table')))
 
   return {
     props: {
-      data,
+      statsData,
+      jumbotronData,
+      tableData,
     },
   }
 }
 
-const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
+const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
+  props,
+) => {
   const [searchValue, setSearchValue] = useState('')
 
   const handleSearchValueChange = (event) => {
@@ -47,10 +49,9 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
   const handleSearch = () => {
     console.log(`Searching for: ${searchValue}`)
   }
-
   return (
     <ContainerStyled>
-      <Jumbotron data={JumbotronData} />
+      <Jumbotron data={props.jumbotronData.data} />
       <SearchBarContainerStyled>
         <SearchBar
           value={searchValue}
@@ -59,8 +60,8 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
         />
       </SearchBarContainerStyled>
       <Stats
-        chartData={StatsData.chartData}
-        infoBoxData={StatsData.infoBoxData}
+        chartData={props.statsData.data.chartData}
+        infoBoxData={props.statsData.data.infoBoxData}
       />
       <TableContainerStyled>
         <TitleStyled>
@@ -69,8 +70,8 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
           </ContentTitle>
         </TitleStyled>
         <BaseTable
-          data={TableData.data}
-          columns={TableData.columns}
+          data={props.tableData.data.data}
+          columns={props.tableData.data.columns}
           moreLink={{ href: '/blocks', text: 'View More Blocks' }}
         />
       </TableContainerStyled>
