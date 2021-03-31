@@ -9,18 +9,20 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
+import transformData from '../../helpers/chartDataTransform'
 
 interface IProps {
   data: []
 }
 
 const ChartBarSpacing: FC<IProps> = ({ data }) => {
+  const chartData = transformData(data)
   return (
-    <ResponsiveContainer width="70%" height="100%">
+    <ResponsiveContainer width="100%" height="100%">
       <BarChart
         width={1600}
         height={300}
-        data={data}
+        data={chartData}
         barSize={5}
         barGap={25}
         barCategoryGap={50}
@@ -50,13 +52,13 @@ const ChartBarSpacing: FC<IProps> = ({ data }) => {
           />
         </XAxis>
         <YAxis
-          dataKey="pv"
+          dataKey="data"
           stroke={colorVariables.white}
           tick={{ fontSize: '9px', fontWeight: '600px' }}
           axisLine={false}
         >
           <Label
-            value="Share"
+            value="Core Coin"
             offset={0}
             position="left"
             angle={-90}
@@ -68,9 +70,9 @@ const ChartBarSpacing: FC<IProps> = ({ data }) => {
             }}
           />
         </YAxis>
-        <Bar dataKey="pv" fill={colorVariables.apple} />
-        <Bar dataKey="uv" fill={colorVariables.apple} />
-        <Bar dataKey="amt" fill={colorVariables.apple} />
+        <Bar dataKey="prev" fill={colorVariables.apple} />
+        <Bar dataKey="data" fill={colorVariables.apple} />
+        <Bar dataKey="next" fill={colorVariables.apple} />
       </BarChart>
     </ResponsiveContainer>
   )
