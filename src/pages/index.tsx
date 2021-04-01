@@ -7,6 +7,7 @@ import BaseTable from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
 import { RecentBlocksIcon } from 'atoms/icons'
+import { blocks } from 'constants/paths'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -55,7 +56,7 @@ const Home: FC = () => {
         <BaseTable
           data={TableData.data}
           columns={TableData.columns}
-          moreLink={{ href: '/blocks', text: 'View More Blocks' }}
+          moreLink={{ href: blocks, text: 'View More Blocks' }}
         />
       </TableContainerStyled>
     </ContainerStyled>
