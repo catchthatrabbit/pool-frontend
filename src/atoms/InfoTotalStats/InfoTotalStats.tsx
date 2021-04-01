@@ -7,7 +7,7 @@ const WrapperStyled = styled.div`
   width: 812px;
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
-  padding: 42px 55px;
+  padding: 43px 65px;
 `
 const TitleContainerStyled = styled.div`
   margin-bottom: 18px;
