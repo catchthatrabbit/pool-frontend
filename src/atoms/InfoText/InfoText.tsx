@@ -25,8 +25,7 @@ const InfoText: FC<InfoBoxItem> = ({ title, value, type }) => {
           <>
             {value / unit}
             <Text size="large" fontWeight="bold" italic>
-              {' '}
-              {metric}
+              {` ${metric}`}
               {type === 'hashSpeed' && '/'}
             </Text>
             {type === 'hashSpeed' && (

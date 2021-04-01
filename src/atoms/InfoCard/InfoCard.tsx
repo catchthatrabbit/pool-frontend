@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import React, { FC } from 'react'
 import Text from 'atoms/Text/Text'
 import InfoText, { InfoBoxItem } from 'atoms/InfoText'
+import { colorVariables } from 'styles/variables'
 
 const WrapperStyled = styled.div`
   width: 812px;
-  border: 1px solid ${({ theme }) => theme.colors.spindle};
+  border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
 `
 const TitleStyled = styled.div`
