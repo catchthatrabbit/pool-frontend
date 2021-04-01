@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import Text from 'atoms/Text/Text'
-import { colorVariables } from '../../styles/variables'
+import { colorVariables } from 'styles/variables'
 
 const WrapperStyled = styled.div`
   width: 812px;
