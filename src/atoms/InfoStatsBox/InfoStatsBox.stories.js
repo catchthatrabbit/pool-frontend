@@ -22,7 +22,7 @@ export default {
 }
 
 const Container = styled.div`
-  width: 812px;
+  width: 500px;
   height: 186px;
 `
 
