@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import Text from 'atoms/Text/Text'
-import InfoText, { InfoBoxItem } from 'atoms/InfoText'
+import { colorVariables } from 'styles/variables'
+import getText, { TextType, InfoBoxItem } from 'helpers/text'
 
 const WrapperStyled = styled.div`
   width: 812px;
-  border: 1px solid ${({ theme }) => theme.colors.spindle};
+  border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
 `
 const TitleStyled = styled.div`
@@ -36,6 +37,12 @@ interface IProps {
   data: InfoBoxItem[]
 }
 const InfoCard: FC<IProps> = ({ title, data }) => {
+  let text: TextType = {
+    value: 0,
+    metric: '',
+    prefix: '',
+    suffix: '',
+  }
   return (
     <WrapperStyled>
       <TitleStyled>
@@ -44,11 +51,28 @@ const InfoCard: FC<IProps> = ({ title, data }) => {
         </Text>
       </TitleStyled>
       <ContentTextStyled>
-        {data.map(({ title, value, type }) => (
-          <TextStyled>
-            <InfoText title={title} value={value} type={type} />
-          </TextStyled>
-        ))}
+        {data.map(({ title, value, type }) => {
+          text = getText(type, value)
+          return (
+            <TextStyled>
+              <Text size="very-large" fontWeight="bold" italic>
+                {text.value}
+                <Text size="large" fontWeight="bold" italic>
+                  {text.metric !== '' && ' ' + text.metric}
+                  {type === 'hashSpeed' && '/'}
+                </Text>
+                {type === 'hashSpeed' && (
+                  <Text size="small" fontWeight="bold" italic>
+                    s
+                  </Text>
+                )}
+              </Text>
+              <Text size="small" fontWeight="light">
+                {title}
+              </Text>
+            </TextStyled>
+          )
+        })}
       </ContentTextStyled>
     </WrapperStyled>
   )

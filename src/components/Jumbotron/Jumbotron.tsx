@@ -7,7 +7,7 @@ import Text from 'atoms/Text/Text'
 import MapButton from 'atoms/MapButton/MapButton'
 import { Arrow } from 'atoms/icons'
 import InfoBox from 'atoms/InfoBox/InfoBox'
-import { InfoBoxItem } from 'atoms/InfoText'
+import { InfoBoxItem } from 'helpers/text'
 
 const scrollTranslate = keyframes`
   0% {
