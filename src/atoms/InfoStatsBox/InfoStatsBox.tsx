@@ -35,8 +35,7 @@ const InfoStatsBox: FC<IProps> = ({ title, subtitle, value, suffix }) => {
         </Text>
       </TextContainerStyled>
       <Text size="very-large" fontWeight="bold" italic>
-        {value}
-        {' ' + suffix}
+        {`${value} ${suffix}`}
       </Text>
       <SubtitleStyled>
         <Text size="small" italic>
