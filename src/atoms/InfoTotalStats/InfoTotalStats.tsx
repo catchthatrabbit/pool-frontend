@@ -39,8 +39,7 @@ const InfoTotalStats: FC<IProps> = ({ title, subtitle, value, suffix }) => {
       </TitleContainerStyled>
       <TextContainerStyled>
         <Text size="very-large" fontWeight="bold" italic>
-          {value}
-          {' ' + suffix}
+          {`${value} ${suffix}`}
         </Text>
         <SubtitleStyled>
           <Text size="small" italic>
