@@ -40,19 +40,8 @@ const ChartLine: FC<IProps> = ({ data }) => {
           dataKey="name"
           stroke={colorVariables.white}
           tick={{ fontSize: '9px', fontWeight: '600px' }}
-        >
-          <Label
-            value="Date"
-            offset={0}
-            position="bottom"
-            stroke={colorVariables.apple}
-            fill={colorVariables.apple}
-            style={{
-              fontSize: '14px',
-              fontFamily: fonts.primary,
-            }}
-          />
-        </XAxis>
+          padding={{ left: 38, right: 38 }}
+        />
         <YAxis
           dataKey="pv"
           stroke={colorVariables.white}

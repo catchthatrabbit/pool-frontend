@@ -1,8 +1,6 @@
 type chartDataType = {
-  name: string
-  prev: number
+  label: string
   data: number
-  next: number
 }
 const monthShortNames = [
   'Jan',
@@ -26,31 +24,35 @@ function transformDate(date) {
   return day + '.' + monthShortNames[month]
 }
 
-export default function transformData(data) {
+function refillData(data, maxData) {
+  let lastDate = new Date(data[data.length - 1].label)
+  let length = data.length
+  for (let i = 0; i < maxData - length; i++) {
+    lastDate.setDate(lastDate.getDate() + 3)
+    data.push({
+      label: transformDate(lastDate),
+      data: 0,
+    })
+  }
+  return data
+}
+function transformDataDate(data) {
   let dataConverted: chartDataType[] = []
-  for (let i = 0; i < data.length; i += 3) {
-    if (data.length - i > 3) {
-      dataConverted.push({
-        name: transformDate(data[i + 1].name),
-        prev: data[i].data,
-        data: data[i + 1].data,
-        next: data[i + 2].data,
-      })
-    } else if (data.length - i === 2) {
-      dataConverted.push({
-        name: transformDate(data[i + 1].name),
-        prev: data[i].data,
-        data: data[i + 1].data,
-        next: 0,
-      })
-    } else if (data.length - i === 1) {
-      dataConverted.push({
-        name: transformDate(data[i].name),
-        prev: data[i].data,
-        data: 0,
-        next: 0,
-      })
-    }
+  for (let i = 0; i < data.length; i++) {
+    dataConverted.push({
+      label: transformDate(data[i].label),
+      data: data[i].data,
+    })
   }
   return dataConverted
+}
+export default function checkData(data, maxData) {
+  const transformData = transformDataDate(data)
+  if (transformData.length < maxData) {
+    return refillData(transformData, maxData)
+  } else if (transformData.length > maxData) {
+    return transformData.splice(0, maxData)
+  } else {
+    return transformData
+  }
 }
