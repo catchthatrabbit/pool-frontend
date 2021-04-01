@@ -14,10 +14,11 @@ RUN yarn
 
 # Copy app source code
 COPY . .
-
+RUN ls -la
 # Build a production ready bundle
 RUN yarn build
 
+RUN ls -la
 
 # Stage 2 - the production environment
 FROM nginx:1.12-alpine
