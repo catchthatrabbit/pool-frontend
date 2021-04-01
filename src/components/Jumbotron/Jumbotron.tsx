@@ -7,6 +7,12 @@ import Text from 'atoms/Text/Text'
 import MapButton from 'atoms/MapButton/MapButton'
 import { Arrow } from 'atoms/icons'
 import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox'
+import {
+  startMining,
+  connectToUS,
+  connectToEurope,
+  connectToAsia,
+} from 'constants/paths'
 
 const scrollTranslate = keyframes`
   0% {
@@ -101,7 +107,7 @@ const JumbotronStyle = styled.div`
     }
   }
 `
-const StyledTitleTex = styled.div`
+const TitleTexStyled = styled.div`
   bottom: 60%;
   margin: 20px 0 0;
   order: -1;
@@ -111,7 +117,7 @@ const StyledTitleTex = styled.div`
   }
 `
 
-const StyledButtonContent = styled.div`
+const ButtonContentStyled = styled.div`
   width: 100%;
   margin-top: 87px;
   button {
@@ -119,7 +125,7 @@ const StyledButtonContent = styled.div`
   }
 `
 
-const StyledInfoComponent = styled.div`
+const InfoComponentStyled = styled.div`
   margin-left: 140px;
   top: 20%;
   position: absolute;
@@ -150,13 +156,13 @@ const Jumbotron: FC<IProps> = ({ data }) => (
     </ul>
     <MapStyle>
       <USStyle>
-        <MapButton href="/">Connect US location</MapButton>
+        <MapButton href={connectToUS}>Connect US location</MapButton>
       </USStyle>
       <EUStyle>
-        <MapButton href="/">Connect EU location</MapButton>
+        <MapButton href={connectToEurope}>Connect EU location</MapButton>
       </EUStyle>
       <APStyle>
-        <MapButton href="/">Connect AP location</MapButton>
+        <MapButton href={connectToAsia}>Connect AP location</MapButton>
       </APStyle>
       <MouseContainerStyle>
         <MouseStyle>
@@ -165,8 +171,8 @@ const Jumbotron: FC<IProps> = ({ data }) => (
         <Arrow />
       </MouseContainerStyle>
     </MapStyle>
-    <StyledInfoComponent>
-      <StyledTitleTex>
+    <InfoComponentStyled>
+      <TitleTexStyled>
         <Text size="ultra-large" italic>
           Dedicated
         </Text>
@@ -176,7 +182,7 @@ const Jumbotron: FC<IProps> = ({ data }) => (
         <Text size="ultra-large" color="apple" italic>
           CORE COIN
         </Text>
-      </StyledTitleTex>
+      </TitleTexStyled>
       <p>
         We have several locations for you to select from.
         <br />
@@ -192,10 +198,10 @@ const Jumbotron: FC<IProps> = ({ data }) => (
         Payout 3 times per day
         <br />
       </p>
-      <StyledButtonContent>
-        <Button>Start Mining</Button>
-      </StyledButtonContent>
-    </StyledInfoComponent>
+      <ButtonContentStyled>
+        <Button href={startMining}>Start Mining</Button>
+      </ButtonContentStyled>
+    </InfoComponentStyled>
   </JumbotronStyle>
 )
 export default Jumbotron

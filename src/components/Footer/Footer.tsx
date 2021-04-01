@@ -8,6 +8,7 @@ import Button from 'atoms/Button/Button'
 import Text from 'atoms/Text/Text'
 import ContentTitle from 'atoms/ContentTitle/ContentTitle'
 import { LogoIcon, StartMiningIcon } from 'atoms/icons'
+import { startMining } from 'constants/paths'
 
 const InfoStyled = styled.div`
   font-family: ${fonts.secondary};
@@ -33,14 +34,8 @@ const FooterSection = styled.div`
 `
 const LogoStyled = styled.div`
   svg {
-    width: 140px;
+    width: 240px;
     height: auto;
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptop} {
-      width: 200px;
-    }
-    @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.laptopL} {
-      width: 240px;
-    }
   }
 `
 const LogoTextStyle = styled.div`
@@ -56,9 +51,7 @@ const MainSection = styled.div`
   max-width: 1200px;
   height: 282px;
   margin: 50px 442px 28px 278px;
-  @media screen and ${({ theme }) => theme.mediaQueriesMinWidth.mobileL} {
-    flex-flow: row;
-  }
+  flex-flow: row;
 `
 const HeaderSection = styled.div`
   box-sizing: border-box;
@@ -137,7 +130,7 @@ const Footer = () => {
               Let&apos;s jump into it
             </Text>
           </HeaderTextStyle>
-          <Button>Start mining</Button>
+          <Button href={startMining}>Start mining</Button>
         </HeaderDiv>
       </HeaderSection>
       <MainSection>

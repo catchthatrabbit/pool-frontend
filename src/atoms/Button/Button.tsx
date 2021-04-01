@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 import Text from 'atoms/Text/Text'
 import applyTransparence from 'helpers/transparentize'
 
-const StyledButton = styled.button`
+const ButtonStyled = styled.button`
   box-sizing: border-box;
   display: inline-block;
   background: none;
@@ -33,6 +33,15 @@ const StyledButton = styled.button`
       }
     `}
   ${(props: { theme: string }) =>
+    props.theme === 'email' &&
+    css`
+      background-color: ${applyTransparence(0.2, colorVariables.gunPowder)};
+      padding: 30px 74px;
+      &:hover {
+        background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
+      }
+    `}
+  ${(props: { theme: string }) =>
     props.theme === 'transparent' &&
     css`
       backdrop-filter: blur(6px);
@@ -47,18 +56,20 @@ const StyledButton = styled.button`
 interface IProps {
   onClick?: () => void
   href?: string
-  theme?: 'outline' | 'transparent'
+  theme?: 'outline' | 'transparent' | 'email'
 }
 
 const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline' }) => {
   const renderedButton = (
-    <StyledButton type="button" theme={theme} onClick={onClick}>
-      <Text size="small" italic>
-        {' '}
-        {children}{' '}
+    <ButtonStyled type="button" theme={theme} onClick={onClick}>
+      <Text size={theme === 'email' ? 'large' : 'small'} italic>
+        {children}
       </Text>
-    </StyledButton>
+    </ButtonStyled>
   )
+  if (theme === 'email') {
+    return <Link href={'mailto:' + children}>{renderedButton}</Link>
+  }
   if (href) {
     return <Link href={href}>{renderedButton}</Link>
   }

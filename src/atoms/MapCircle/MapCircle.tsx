@@ -8,10 +8,6 @@ const Circle = styled.div`
   width: 24px;
   background: ${colorVariables.white};
   border-radius: 50%;
-  @media screen and (min-width: 1320px) {
-    height: 24px;
-    width: 24px;
-  }
 `
 const pulse = keyframes`
   0% {
