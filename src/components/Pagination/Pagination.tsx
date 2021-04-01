@@ -43,7 +43,7 @@ const PaginationContainer = styled.div`
       }
       &.previous.disabled,
       &.next.disabled {
-        display: none;
+        visibility: hidden;
       }
       a {
         font-family: ${fonts.primary};
