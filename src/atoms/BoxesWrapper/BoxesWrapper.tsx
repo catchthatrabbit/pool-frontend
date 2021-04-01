@@ -6,7 +6,7 @@ const BoxesWrapperStyled = styled.ul`
   display: flex;
   align-self: center;
   flex-direction: column;
-  margin: 68px 0 97px;
+  margin: 41px 0 97px;
   padding: 0;
   list-style-type: none;
   flex-flow: row wrap;

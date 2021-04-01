@@ -9,7 +9,7 @@ import { MinersIcon } from 'atoms/icons'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
 
 const ContainerStyled = styled.div`
-  margin: 60px 140px 73px;
+  margin: 36px 140px 73px;
   z-index: 1;
 `
 
