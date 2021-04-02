@@ -18,7 +18,7 @@ interface IProps {
 
 const ChartBarSpacing: FC<IProps> = ({ data }) => {
   const chartData = checkData(data, 57)
-  console.log(chartData)
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart

@@ -8,7 +8,6 @@ import {
   Label,
   ResponsiveContainer,
   Tooltip,
-  BarChart,
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
 

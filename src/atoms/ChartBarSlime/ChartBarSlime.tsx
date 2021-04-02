@@ -18,6 +18,7 @@ interface IProps {
 
 const ChartBarSlime: FC<IProps> = ({ data }) => {
   const chartData = checkData(data, 250)
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
