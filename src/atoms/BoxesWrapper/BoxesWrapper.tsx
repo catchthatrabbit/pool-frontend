@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import InfoBox from 'atoms/InfoBox'
-import { InfoBoxItem } from 'atoms/InfoText'
+import InfoBox from 'components/InfoBox'
+import { InfoBoxItem } from 'helpers/text'
 
 const BoxesWrapperStyled = styled.ul`
   display: flex;
