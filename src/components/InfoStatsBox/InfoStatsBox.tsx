@@ -11,12 +11,12 @@ interface IProps {
   size?: 'small' | 'large'
 }
 
-const WrapperStyled = styled.div<IProps>`
-  width: ${(props: IProps) =>
+const WrapperStyled = styled.div`
+  width: ${(props: { size: string }) =>
     (props.size === 'small' && '500px') || (props.size === 'large' && '812px')};
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
-  padding: ${(props: IProps) =>
+  padding: ${(props: { size: string }) =>
     (props.size === 'small' && '50px 55px 38px') ||
     (props.size === 'large' && '43px 65px')};
   ${(props) =>
@@ -28,17 +28,21 @@ const WrapperStyled = styled.div<IProps>`
     justify-content: space-between;
     `};
 `
-const TitleContainerStyled = styled.div<IProps>`
-  margin-bottom: ${(props: IProps) =>
+const TitleContainerStyled = styled.div`
+  margin-bottom: ${(props: { size: string }) =>
     (props.size === 'small' && '15px') || (props.size === 'large' && '18px')};
 `
 const SubtitleStyled = styled.div`
   line-height: 12px;
   margin-top: 10px;
-  height: 14px;
+  height: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 `
-const TextContainerStyled = styled.div<IProps>`
-  ${(props) =>
+const TextContainerStyled = styled.div`
+  ${(props: { size: string }) =>
     props.size === 'large' &&
     `
     display: flex;
