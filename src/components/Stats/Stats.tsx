@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { StatisticsIcon } from 'atoms/icons'
 import { ChartData } from 'types/app'
 import ContentTitle from 'atoms/ContentTitle/ContentTitle'
-import InfoBox, { InfoBoxItem } from 'atoms/InfoBox/InfoBox'
+import { InfoBoxItem } from 'helpers/text'
+import InfoBox from 'components/InfoBox/InfoBox'
 import RadialBarChart from './RadialBarChart/index'
 
 const ChartContainer = styled.div`

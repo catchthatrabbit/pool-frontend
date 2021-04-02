@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import GlobalResponsiveStyless from './style'
 import ResponsiveContext from './context'
 import { getDeviceNameBasedOnSize, getDeviceDimensions } from './utils'
 
@@ -28,7 +27,6 @@ const ResponsiveProvider = ({ children }) => {
 
   return (
     <ResponsiveContext.Provider value={deviceType}>
-      <GlobalResponsiveStyless />
       {children}
     </ResponsiveContext.Provider>
   )

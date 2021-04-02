@@ -8,6 +8,7 @@ import ContentTitle from 'atoms/ContentTitle'
 import { RecentBlocksIcon } from 'atoms/icons'
 import { InferGetStaticPropsType } from 'next'
 import defaultGetStaticProps from 'helpers/getData'
+import { blocks } from 'constants/paths'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -34,9 +35,10 @@ const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   const handleSearch = () => {
     console.log(`Searching for: ${searchValue}`)
   }
+
   return (
     <ContainerStyled>
-      <Jumbotron data={props.jumbotronData} />
+      <Jumbotron data={JumbotronData} />
       <SearchBarContainerStyled>
         <SearchBar
           value={searchValue}
@@ -45,8 +47,8 @@ const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
         />
       </SearchBarContainerStyled>
       <Stats
-        chartData={props.statsData.chartData}
-        infoBoxData={props.statsData.infoBoxData}
+        chartData={StatsData.chartData}
+        infoBoxData={StatsData.infoBoxData}
       />
       <TableContainerStyled>
         <TitleStyled>
@@ -55,8 +57,8 @@ const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
           </ContentTitle>
         </TitleStyled>
         <BaseTable
-          data={props.tableData.data}
-          columns={props.tableData.columns}
+          data={TableData.data}
+          columns={TableData.columns}
           moreLink={{ href: '/blocks', text: 'View More Blocks' }}
         />
       </TableContainerStyled>
