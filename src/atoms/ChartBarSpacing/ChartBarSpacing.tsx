@@ -44,13 +44,16 @@ const ChartBarSpacing: FC<IProps> = ({ data }) => {
           stroke={colorVariables.white}
           tick={{ fontSize: '10px', fontWeight: '600' }}
           axisLine={false}
-          interval={0}
-          domain={[0, (dataMax) => dataMax + dataMax * 0.25]}
+          tickCount={5}
+          minTickGap={1}
+          domain={['auto', (dataMax) => dataMax + dataMax * 0.25]}
+          type="number"
         >
           <Label
             value="Core Coin"
             offset={0}
-            position="left"
+            dx={-30}
+            position="center"
             angle={-90}
             stroke={colorVariables.apple}
             fill={colorVariables.apple}
@@ -60,7 +63,16 @@ const ChartBarSpacing: FC<IProps> = ({ data }) => {
             }}
           />
         </YAxis>
-        <Tooltip />
+        <Tooltip
+          contentStyle={{
+            borderColor: colorVariables.gunPowder,
+            backgroundColor: colorVariables.woodsmoke,
+          }}
+          cursor={{
+            stroke: colorVariables.gunPowder,
+            fill: colorVariables.gunPowder,
+          }}
+        />
         <Bar dataKey="data" fill={colorVariables.apple} />
       </BarChart>
     </ResponsiveContainer>

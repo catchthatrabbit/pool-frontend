@@ -8,6 +8,7 @@ import {
   Label,
   ResponsiveContainer,
   Tooltip,
+  BarChart,
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
 
@@ -46,11 +47,16 @@ const ChartLine: FC<IProps> = ({ data }) => {
           stroke={colorVariables.white}
           tick={{ fontSize: '9px', fontWeight: '600' }}
           axisLine={false}
+          tickCount={5}
+          minTickGap={1}
+          domain={['auto', (dataMax) => dataMax + dataMax * 0.25]}
+          type="number"
         >
           <Label
             value="Share"
             offset={0}
-            position="left"
+            dx={-30}
+            position="center"
             angle={-90}
             stroke={colorVariables.apple}
             fill={colorVariables.apple}
@@ -60,7 +66,16 @@ const ChartLine: FC<IProps> = ({ data }) => {
             }}
           />
         </YAxis>
-        <Tooltip />
+        <Tooltip
+          contentStyle={{
+            borderColor: colorVariables.gunPowder,
+            backgroundColor: colorVariables.woodsmoke,
+          }}
+          cursor={{
+            stroke: colorVariables.gunPowder,
+            fill: colorVariables.gunPowder,
+          }}
+        />
       </LineChart>
     </ResponsiveContainer>
   )
