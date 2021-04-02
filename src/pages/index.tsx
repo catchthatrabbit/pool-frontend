@@ -7,7 +7,7 @@ import BaseTable from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { RecentBlocksIcon } from 'atoms/icons'
 import { InferGetStaticPropsType } from 'next'
-import getData from 'helpers/getData'
+import defaultGetStaticProps from 'helpers/getData'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -23,20 +23,7 @@ const TitleStyled = styled.div`
   margin-bottom: 60px;
 `
 
-export const getStaticProps = async () => {
-  const statsData = await getData('/stats')
-  const jumbotronData = await getData('/jumbotron')
-  const tableData = await getData('/table')
-
-  return {
-    props: {
-      statsData,
-      jumbotronData,
-      tableData,
-    },
-    revalidate: 10,
-  }
-}
+export const getStaticProps = defaultGetStaticProps
 
 const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   const [searchValue, setSearchValue] = useState('')
