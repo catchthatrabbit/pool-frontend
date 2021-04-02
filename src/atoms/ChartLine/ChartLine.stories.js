@@ -24,7 +24,7 @@ export default {
 }
 const Container = styled.div`
   width: 1640px;
-  height: 445px;
+  height: 224px;
 `
 
 export const ChartLineBasic = (args) => (

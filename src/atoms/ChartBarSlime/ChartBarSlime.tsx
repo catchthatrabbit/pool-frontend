@@ -7,6 +7,7 @@ import {
   BarChart,
   Bar,
   ResponsiveContainer,
+  Tooltip,
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
 import checkData from 'helpers/chartDataTransform'
@@ -16,12 +17,10 @@ interface IProps {
 }
 
 const ChartBarSlime: FC<IProps> = ({ data }) => {
-  const chartData = checkData(data, 140)
+  const chartData = checkData(data, 250)
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        width={1600}
-        height={214}
         data={chartData}
         barGap={1}
         margin={{
@@ -36,15 +35,14 @@ const ChartBarSlime: FC<IProps> = ({ data }) => {
         <XAxis
           dataKey="label"
           stroke={colorVariables.white}
-          tick={{ fontSize: '9px', fontWeight: '600px' }}
+          tick={{ fontSize: '9px', fontWeight: '600' }}
           padding={{ left: 38, right: 38 }}
           tickCount={14}
           interval={'preserveStartEnd'}
         />
         <YAxis
-          dataKey="data"
           stroke={colorVariables.white}
-          tick={{ fontSize: '9px', fontWeight: '600px' }}
+          tick={{ fontSize: '10px', fontWeight: '600' }}
           axisLine={false}
           domain={[0, (dataMax) => dataMax + dataMax * 0.25]}
         >
@@ -61,6 +59,7 @@ const ChartBarSlime: FC<IProps> = ({ data }) => {
             }}
           />
         </YAxis>
+        <Tooltip />
         <Bar dataKey="data" fill={colorVariables.sky} />
       </BarChart>
     </ResponsiveContainer>

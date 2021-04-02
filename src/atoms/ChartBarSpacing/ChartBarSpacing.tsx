@@ -7,21 +7,21 @@ import {
   BarChart,
   Bar,
   ResponsiveContainer,
+  Tooltip,
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
-import checkData from '../../helpers/chartDataTransform'
+import checkData from 'helpers/chartDataTransform'
 
 interface IProps {
   data: []
 }
 
 const ChartBarSpacing: FC<IProps> = ({ data }) => {
-  const chartData = checkData(data, 40)
+  const chartData = checkData(data, 57)
+  console.log(chartData)
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        width={1600}
-        height={214}
         data={chartData}
         barSize={5}
         barCategoryGap={25}
@@ -36,17 +36,15 @@ const ChartBarSpacing: FC<IProps> = ({ data }) => {
         <XAxis
           dataKey="label"
           stroke={colorVariables.white}
-          tick={{ fontSize: '9px', fontWeight: '600px' }}
-          padding={{ left: 38, right: 38 }}
-          interval={'preserveStartEnd'}
+          tick={{ fontSize: '9px', fontWeight: '600' }}
+          padding={{ left: 38, right: 27 }}
+          interval={'preserveStart'}
         />
         <YAxis
-          dataKey="data"
           stroke={colorVariables.white}
-          tick={{ fontSize: '9px', fontWeight: '600px' }}
+          tick={{ fontSize: '10px', fontWeight: '600' }}
           axisLine={false}
-          interval={'preserveStartEnd'}
-          // padding={{ top: 38 }}
+          interval={0}
           domain={[0, (dataMax) => dataMax + dataMax * 0.25]}
         >
           <Label
@@ -62,6 +60,7 @@ const ChartBarSpacing: FC<IProps> = ({ data }) => {
             }}
           />
         </YAxis>
+        <Tooltip />
         <Bar dataKey="data" fill={colorVariables.apple} />
       </BarChart>
     </ResponsiveContainer>

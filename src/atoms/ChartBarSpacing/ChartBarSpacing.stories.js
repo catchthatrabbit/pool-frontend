@@ -39,12 +39,22 @@ export default {
         { label: '2020-12-8', data: 3490 },
         { label: '2020-12-9', data: 3490 },
         { label: '2020-12-10', data: 4000 },
+        { label: '2020-12-11', data: 4000 },
+        { label: '2020-12-12', data: 3000 },
+        { label: '2020-12-13', data: 2000 },
+        { label: '2020-12-14', data: 2780 },
+        { label: '2020-12-15', data: 1890 },
+        { label: '2020-12-16', data: 2390 },
+        { label: '2020-12-17', data: 3490 },
+        { label: '2020-12-18', data: 3490 },
+        { label: '2020-12-19', data: 3490 },
+        { label: '2020-12-20', data: 4000 },
       ],
     },
   },
 }
 const Container = styled.div`
-  width: 1640px;
+  width: 1630px;
   height: 224px;
 `
 

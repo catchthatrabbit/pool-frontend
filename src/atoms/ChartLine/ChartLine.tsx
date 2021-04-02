@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Label,
   ResponsiveContainer,
+  Tooltip,
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
 
@@ -16,10 +17,8 @@ interface IProps {
 
 const ChartLine: FC<IProps> = ({ data }) => {
   return (
-    <ResponsiveContainer width="70%" height="100%">
+    <ResponsiveContainer width="100%" height="100%">
       <LineChart
-        width={1600}
-        height={300}
         data={data}
         margin={{
           top: 5,
@@ -39,13 +38,13 @@ const ChartLine: FC<IProps> = ({ data }) => {
         <XAxis
           dataKey="name"
           stroke={colorVariables.white}
-          tick={{ fontSize: '9px', fontWeight: '600px' }}
+          tick={{ fontSize: '9px', fontWeight: '600' }}
           padding={{ left: 38, right: 38 }}
         />
         <YAxis
           dataKey="pv"
           stroke={colorVariables.white}
-          tick={{ fontSize: '9px', fontWeight: '600px' }}
+          tick={{ fontSize: '9px', fontWeight: '600' }}
           axisLine={false}
         >
           <Label
@@ -61,6 +60,7 @@ const ChartLine: FC<IProps> = ({ data }) => {
             }}
           />
         </YAxis>
+        <Tooltip />
       </LineChart>
     </ResponsiveContainer>
   )

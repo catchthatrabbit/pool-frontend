@@ -30,9 +30,9 @@ function transformDate(date) {
 
 function refillData(data, maxData) {
   let lastDate = new Date(data[data.length - 1].label)
-  let length = data.length
+  const length = data.length
   for (let i = 0; i < maxData - length; i++) {
-    lastDate.setDate(lastDate.getDate() + 3)
+    lastDate.setDate(lastDate.getDate() + 1)
     data.push({
       label: transformDate(lastDate),
       data: 0,
