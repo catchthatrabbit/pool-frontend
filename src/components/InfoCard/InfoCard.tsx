@@ -56,8 +56,7 @@ const InfoCard: FC<IProps> = ({ title, data }) => {
           return (
             <TextStyled>
               <Text size="very-large" fontWeight="bold" italic>
-                {text.prefix}
-                {text.value}
+                {`${text.prefix} ${text.value}`}
                 {text.suffix}
                 <Text size="large" fontWeight="bold" italic>
                   {text.metric !== '' && ' ' + text.metric}
