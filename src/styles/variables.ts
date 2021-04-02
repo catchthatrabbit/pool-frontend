@@ -20,4 +20,5 @@ export const colorVariables = {
   white: '#ffffff',
   woodsmoke: '#181a1f',
   red: '#ff0000',
+  sky: '#62C9D8',
 }
