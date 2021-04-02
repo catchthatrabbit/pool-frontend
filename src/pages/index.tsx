@@ -6,8 +6,8 @@ import Stats from 'components/Stats'
 import BaseTable from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { RecentBlocksIcon } from 'atoms/icons'
-import { InferGetServerSidePropsType } from 'next'
-import getData from '../helpers/getData'
+import { InferGetStaticPropsType } from 'next'
+import getData from 'helpers/getData'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -23,10 +23,10 @@ const TitleStyled = styled.div`
   margin-bottom: 60px;
 `
 
-export const getServerSideProps = async () => {
-  const statsData = JSON.parse(JSON.stringify(await getData('/stats')))
-  const jumbotronData = JSON.parse(JSON.stringify(await getData('/jumbotron')))
-  const tableData = JSON.parse(JSON.stringify(await getData('/table')))
+export const getStaticProps = async () => {
+  const statsData = await getData('/stats')
+  const jumbotronData = await getData('/jumbotron')
+  const tableData = await getData('/table')
 
   return {
     props: {
@@ -34,12 +34,11 @@ export const getServerSideProps = async () => {
       jumbotronData,
       tableData,
     },
+    revalidate: 10,
   }
 }
 
-const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
-  props,
-) => {
+const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   const [searchValue, setSearchValue] = useState('')
 
   const handleSearchValueChange = (event) => {
