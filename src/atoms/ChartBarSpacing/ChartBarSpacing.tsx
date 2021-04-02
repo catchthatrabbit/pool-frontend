@@ -45,6 +45,8 @@ const ChartBarSpacing: FC<IProps> = ({ data }) => {
           stroke={colorVariables.white}
           tick={{ fontSize: '9px', fontWeight: '600px' }}
           axisLine={false}
+          interval={'preserveStartEnd'}
+          // padding={{ top: 38 }}
           domain={[0, (dataMax) => dataMax + dataMax * 0.25]}
         >
           <Label

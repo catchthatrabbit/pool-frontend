@@ -21,7 +21,11 @@ function transformDate(date) {
   const time = new Date(date)
   const day = time.getDate()
   const month = time.getMonth()
-  return day + '.' + monthShortNames[month]
+  if (day < 10) {
+    return '0' + day + '.' + monthShortNames[month]
+  } else {
+    return day + '.' + monthShortNames[month]
+  }
 }
 
 function refillData(data, maxData) {
