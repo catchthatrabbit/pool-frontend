@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { FC } from 'react'
-import Text from '../Text/Text'
-import getText, { TextType, InfoBoxItem } from '../../helpers/text'
+import Text from 'atoms/Text/Text'
+import getText, { TextType, InfoBoxItem } from 'helpers/text'
 
 const WrapperStyled = styled.div`
   padding: 15px 0 20px;
@@ -22,7 +22,9 @@ const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
   return (
     <WrapperStyled>
       <Text size="very-large" fontWeight="bold" italic>
+        {text.prefix}
         {text.value}
+        {text.suffix}
         <Text size="large" fontWeight="bold" italic>
           {text.metric !== '' && ' ' + text.metric}
           {type === 'hashSpeed' && '/'}
