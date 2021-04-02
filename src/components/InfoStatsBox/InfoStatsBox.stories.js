@@ -18,11 +18,17 @@ export default {
     value: {
       control: 'number',
     },
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'large'],
+      },
+    },
   },
 }
 
 const Container = styled.div`
-  width: 500px;
+  width: 812px;
   height: 186px;
 `
 
