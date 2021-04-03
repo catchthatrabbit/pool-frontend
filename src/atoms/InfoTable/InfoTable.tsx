@@ -41,16 +41,16 @@ const TableRowStyled = styled.tr<IPropsWidth>`
   th {
     ${cellStyling};
     padding: ${(props: IPropsWidth) =>
-      (props.width === 'large' && '16px 239px 16px 47px') ||
-      (props.width === 'small' && '16px 43px 16px 47px')};
+      (props.width === 'large' && '16px 0 16px 47px') ||
+      (props.width === 'small' && '16px 0 16px 47px')};
     border-right: 1px solid ${({ theme }) => theme.colors.gunPowder};
   }
 
   td {
     ${cellStyling};
     padding: ${(props: IPropsWidth) =>
-      (props.width === 'large' && '16px 697px 16px 64px') ||
-      (props.width === 'small' && '16px 251px 16px 45px')};
+      (props.width === 'large' && '16px 0 16px 64px') ||
+      (props.width === 'small' && '16px 0 16px 45px')};
   }
 `
 

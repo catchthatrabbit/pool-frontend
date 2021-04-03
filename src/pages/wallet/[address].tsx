@@ -26,6 +26,7 @@ import ChartBarSlime from 'atoms/ChartBarSlime'
 import InfoStatsBox from 'components/InfoStatsBox'
 import ChartBarSpacing from 'atoms/ChartBarSpacing'
 import { InfoBoxItem } from 'helpers/text'
+import CopyButton from 'atoms/CopyButton'
 import useGoToWallet from 'hooks/useGoToWallet'
 import { useRouter } from 'next/router'
 import Loading from '@components/Loading/Loading'
@@ -67,6 +68,7 @@ const ChartLineContainer = styled.div`
   height: 443px;
 `
 const TabStyled = styled.div`
+  cursor: pointer;
   ${(props: { margin: boolean }) =>
     props.margin &&
     `
@@ -89,19 +91,20 @@ const TabContainer = styled(ColumnContainer)`
 const MiningInfoContainer = styled.div`
   display: flex;
   align-self: center;
-  flex-direction: column;
   margin: 18px 0 97px;
   padding: 0;
   list-style-type: none;
   flex-flow: row wrap;
   width: 100%;
-`
-const MiningInfoStyled = styled.div`
-  ${(props: { margin: boolean }) =>
-    props.margin &&
-    `
-  margin-right: 16px;
-  `}
+
+  & > * {
+    flex-grow: 1;
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `
 const ButtonStyled = styled.div`
   margin-left: 50px;
@@ -168,24 +171,18 @@ const Wallet: FC<any> = (props) => {
             <text ref={textRef}>{props.address}</text>
           </Text>
           <ButtonStyled>
-            {/*<CopyToClipboard text={props.address}>*/}
-            {/*  <Button>copy</Button>*/}
-            {/*</CopyToClipboard>*/}
+            <CopyButton value={props.address} />
           </ButtonStyled>
         </ColumnContainer>
         <MiningInfoContainer>
-          {MiningInfoData.map(({ title, data }) => {
-            return (
-              <MiningInfoStyled margin={true}>
-                <MiningInfo
-                  data={data as any}
-                  title={title}
-                  width="small"
-                  color="white"
-                />
-              </MiningInfoStyled>
-            )
-          })}
+          {MiningInfoData.map(({ title, data }, index) => (
+            <MiningInfo
+              data={data as any}
+              title={title}
+              width="small"
+              color="white"
+            />
+          ))}
         </MiningInfoContainer>
         <TabContainer>
           <TabStyled margin={false} onClick={handleChangeView}>
