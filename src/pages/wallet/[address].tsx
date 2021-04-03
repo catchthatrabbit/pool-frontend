@@ -45,14 +45,7 @@ const TableContainerStyled = styled.div`
 const TitleStyled = styled.div`
   margin: 124px 0 68px;
 `
-const StatisticContent = styled.div`
-  ${(props: { active: boolean }) =>
-    props.active &&
-    `
-    display: none;
-  `}
-`
-const PayoutContent = styled.div`
+const TabContent = styled.div`
   ${(props: { active: boolean }) =>
     props.active &&
     `
@@ -67,14 +60,7 @@ const ChartLineContainer = styled.div`
   width: 1640px;
   height: 443px;
 `
-const TabStyled = styled.div`
-  cursor: pointer;
-  ${(props: { margin: boolean }) =>
-    props.margin &&
-    `
-  margin-left: 61px;
-  `}
-`
+
 const ColumnContainer = styled.div`
   margin: 66px 0 81px;
   display: flex;
@@ -85,8 +71,17 @@ const ColumnContainer = styled.div`
     margin-left: 16px;
   }
 `
-const TabContainer = styled(ColumnContainer)`
+const TabSelector = styled(ColumnContainer)`
   margin-bottom: 90px;
+
+  & > * {
+    cursor: pointer;
+    margin-right: 61px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `
 const MiningInfoContainer = styled.div`
   display: flex;
@@ -140,10 +135,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     revalidate: 1,
   }
 }
+
+type TabType = 'statistics' | 'payout'
+
 const Wallet: FC<any> = (props) => {
   const [searchValue, setSearchValue] = useState('')
-  const [changeView, setChangeView] = useState(true)
-  const textRef = useRef(null)
+  const [changeView, setChangeView] = useState<TabType>('statistics')
   const router = useRouter()
 
   const goToWallet = useGoToWallet()
@@ -153,9 +150,6 @@ const Wallet: FC<any> = (props) => {
   }
   const handleSearch = () => {
     goToWallet(searchValue)
-  }
-  const handleChangeView = () => {
-    setChangeView(!changeView)
   }
 
   if (router.isFallback) {
@@ -168,7 +162,7 @@ const Wallet: FC<any> = (props) => {
         <ContentTitle Image={<SearchResultsIcon />}>Search result</ContentTitle>
         <ColumnContainer>
           <Text size="very-large" color="apple" italic>
-            <text ref={textRef}>{props.address}</text>
+            {props.address}
           </Text>
           <ButtonStyled>
             <CopyButton value={props.address} />
@@ -184,19 +178,23 @@ const Wallet: FC<any> = (props) => {
             />
           ))}
         </MiningInfoContainer>
-        <TabContainer>
-          <TabStyled margin={false} onClick={handleChangeView}>
-            <Text active={changeView} italic>
-              Statistics
-            </Text>
-          </TabStyled>
-          <TabStyled margin={true} onClick={handleChangeView}>
-            <Text active={!changeView} italic>
-              Payout
-            </Text>
-          </TabStyled>
-        </TabContainer>
-        <StatisticContent active={!changeView}>
+        <TabSelector>
+          <Text
+            active={changeView === 'statistics'}
+            italic
+            onClick={() => setChangeView('statistics')}
+          >
+            Statistics
+          </Text>
+          <Text
+            active={changeView === 'payout'}
+            italic
+            onClick={() => setChangeView('payout')}
+          >
+            Payout
+          </Text>
+        </TabSelector>
+        <TabContent active={changeView === 'statistics'}>
           <ColumnContainer>
             {InfoCardData.map(({ title, data }) => (
               <InfoCard title={title} data={data as InfoBoxItem[]} />
@@ -230,8 +228,8 @@ const Wallet: FC<any> = (props) => {
               columns={props.tableData.columns}
             />
           </TableContainerStyled>
-        </StatisticContent>
-        <PayoutContent active={changeView}>
+        </TabContent>
+        <TabContent active={changeView === 'payout'}>
           <ColumnContainer>
             {InfoStatsBoxData.map(({ title, subtitle, suffix, value }) => (
               <InfoStatsBox
@@ -267,7 +265,7 @@ const Wallet: FC<any> = (props) => {
               columns={props.tableData.columns}
             />
           </TableContainerStyled>
-        </PayoutContent>
+        </TabContent>
       </ContainerStyled>
     </>
   )
