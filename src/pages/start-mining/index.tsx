@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import ContentTitle from 'atoms/ContentTitle'
 import MinerCard from 'components/MinerCard'
 import SearchBar from 'atoms/SearchBar'
@@ -14,6 +14,7 @@ import {
 import Text from 'atoms/Text/Text'
 import Background from 'atoms/Background'
 import { colorVariables, fonts } from 'styles/variables'
+import { useRouter } from 'next/router'
 
 const TextStyled = styled.p`
   width: 807px;
@@ -91,6 +92,17 @@ const TextGuide4Styled = styled(TextStyled)`
 const onClickHandler = () => setTimeout(() => window.scrollBy(0, -184), 0)
 
 const StartMiningPage: FC = () => {
+  const [searchValue, setSearchValue] = useState('')
+  const router = useRouter()
+  const handleSearchValueChange = (event) => {
+    setSearchValue(event.target.value)
+  }
+  const handleSearch = () => {
+    router.push({
+      pathname: `/wallet/${searchValue}`,
+    })
+    console.log(`Searching for: ${searchValue}`)
+  }
   return (
     <>
       <Background />
@@ -174,7 +186,11 @@ const StartMiningPage: FC = () => {
               To access the dashboard, type your address below.
             </TextGuide4Styled>
             <SearchBarContainerStyled>
-              <SearchBar />
+              <SearchBar
+                value={searchValue}
+                onChange={handleSearchValueChange}
+                onSearch={handleSearch}
+              />
             </SearchBarContainerStyled>
           </BoxGuideStyled>
         </BoxContentStyled>
