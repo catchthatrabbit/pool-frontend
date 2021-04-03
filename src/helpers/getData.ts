@@ -46,10 +46,5 @@ export async function getStaticPropsAddress(context) {
   }
 }
 export async function defaultGetStaticPaths() {
-  const paths = TableData.data.map(({ miner }) => {
-    return {
-      params: { address: miner.slice(2, miner.length) },
-    }
-  })
-  return { paths, fallback: true }
+  return { paths: [], fallback: true }
 }

@@ -5,6 +5,7 @@ import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text/Text'
 import Button from 'atoms/Button/Button'
 import Pagination from 'components/Pagination/Pagination'
+import useGoToWallet from 'hooks/useGoToWallet'
 
 const WrapperStyled = styled.div`
   box-sizing: border-box;
@@ -53,6 +54,9 @@ const TableRowStyled = styled.tr`
   }
 `
 
+const TextStyled = styled(Text)<{ column: Column }>`
+  ${({ column: { type } }) => type === 'address' && `cursor: pointer`}
+`
 const FooterStyled = styled.div`
   display: flex;
   justify-content: center;
@@ -65,8 +69,7 @@ const PaginationContainerStyled = styled.div`
 type Column = {
   name: string
   id: string
-  color: 'white' | 'apple'
-  hideMiddle: boolean
+  type: 'address' | 'string'
 }
 
 type DataItem = { [key: string]: string }
@@ -85,6 +88,12 @@ function hideMiddleContent(value) {
 }
 
 const Table: FC<IProps> = ({ data, columns, moreLink }) => {
+  const goToWallet = useGoToWallet()
+
+  const handleDataClick = (value: string, column: Column) => {
+    if (column.type === 'address') goToWallet(value)
+  }
+
   return (
     <WrapperStyled>
       <TableWrapperStyled>
@@ -103,19 +112,25 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
           <tbody>
             {data.map((dataItem, index) => (
               <TableRowStyled key={index}>
-                {columns.map(({ id, color = 'white', hideMiddle = false }) => (
-                  <td key={id}>
-                    <Text
-                      fontFamily="secondary"
-                      size="medium"
-                      fontWeight="bold"
-                      color={color}
-                    >
-                      {hideMiddle && hideMiddleContent(dataItem[id])}
-                      {!hideMiddle && dataItem[id]}
-                    </Text>
-                  </td>
-                ))}
+                {columns.map((column) => {
+                  const { id, type = 'string' } = column
+
+                  return (
+                    <td key={id}>
+                      <TextStyled
+                        fontFamily="secondary"
+                        size="medium"
+                        fontWeight="bold"
+                        color={type === 'address' ? 'apple' : 'white'}
+                        column={column}
+                        onClick={() => handleDataClick(dataItem[id], column)}
+                      >
+                        {type === 'address' && hideMiddleContent(dataItem[id])}
+                        {type === 'string' && dataItem[id]}
+                      </TextStyled>
+                    </td>
+                  )
+                })}
               </TableRowStyled>
             ))}
           </tbody>

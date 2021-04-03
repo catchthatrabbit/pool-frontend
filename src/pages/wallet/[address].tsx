@@ -1,14 +1,13 @@
 import React, { FC, useRef, useState } from 'react'
 import styled from 'styled-components'
 import SearchBar from 'atoms/SearchBar'
-import BaseTable from 'components/Table'
+import Table from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { MinersIcon, SearchResultsIcon, PaymentsIcon } from 'atoms/icons'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { defaultGetStaticPaths, getStaticPropsAddress } from 'helpers/getData'
+import { defaultGetStaticPaths } from 'helpers/getData'
 import MiningInfo from 'components/MiningInfo/MiningInfo'
 import Text from 'atoms/Text/Text'
-import Button from 'atoms/Button/Button'
 import Background from 'atoms/Background/Background'
 import { ParsedUrlQuery } from 'querystring'
 import {
@@ -27,7 +26,9 @@ import ChartBarSlime from 'atoms/ChartBarSlime'
 import InfoStatsBox from 'components/InfoStatsBox'
 import ChartBarSpacing from 'atoms/ChartBarSpacing'
 import { InfoBoxItem } from 'helpers/text'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
+import useGoToWallet from 'hooks/useGoToWallet'
+import { useRouter } from 'next/router'
+import Loading from '@components/Loading/Loading'
 
 const ContainerStyled = styled.div`
   margin: 60px 140px 73px;
@@ -117,12 +118,14 @@ interface IParams extends ParsedUrlQuery {
 
 export const getStaticPaths: GetStaticPaths = defaultGetStaticPaths
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { address } = context.params as IParams
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   // const props = fetch(`/api/${address}`)
+
+  console.log(params)
+
   return {
     props: {
-      address,
+      address: params?.address,
       tableData: TableData as any,
       miningInfoData: MiningInfoData as any,
       infoCardData: InfoCardData as any,
@@ -131,23 +134,30 @@ export const getStaticProps: GetStaticProps = async (context) => {
       chartBarSlimeData: ChartBarSlimeData as any,
       infoStatsBoxData: InfoStatsBoxData as any,
     },
+    revalidate: 1,
   }
 }
-const Wallet: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
+const Wallet: FC<any> = (props) => {
   const [searchValue, setSearchValue] = useState('')
   const [changeView, setChangeView] = useState(true)
   const textRef = useRef(null)
+  const router = useRouter()
+
+  const goToWallet = useGoToWallet()
 
   const handleSearchValueChange = (event) => {
     setSearchValue(event.target.value)
   }
   const handleSearch = () => {
-    console.log(`Searching for: ${searchValue}`)
+    goToWallet(searchValue)
   }
   const handleChangeView = () => {
     setChangeView(!changeView)
   }
 
+  if (router.isFallback) {
+    return <Loading />
+  }
   return (
     <>
       <Background />
@@ -218,7 +228,7 @@ const Wallet: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
             />
           </SearchBarContainerStyled>
           <TableContainerStyled>
-            <BaseTable
+            <Table
               data={props.tableData.data}
               columns={props.tableData.columns}
             />
@@ -255,7 +265,7 @@ const Wallet: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
             <ContentTitle Image={<PaymentsIcon />}>Payment List</ContentTitle>
           </TitleStyled>
           <TableContainerStyled>
-            <BaseTable
+            <Table
               data={props.tableData.data}
               columns={props.tableData.columns}
             />

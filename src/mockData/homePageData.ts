@@ -1,5 +1,3 @@
-import { InfoTableItem } from '../atoms/InfoTable/InfoTable'
-
 export const JumbotronData = [
   { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' },
   { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' },
@@ -134,8 +132,7 @@ export const TableData = {
     {
       name: 'miner',
       id: 'miner',
-      color: 'apple',
-      hideMiddle: true,
+      type: 'address',
     },
     {
       name: 'reward',

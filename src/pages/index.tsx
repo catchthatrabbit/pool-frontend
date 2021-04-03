@@ -9,6 +9,7 @@ import { RecentBlocksIcon } from 'atoms/icons'
 import { InferGetStaticPropsType } from 'next'
 import defaultGetStaticProps from 'helpers/getData'
 import { useRouter } from 'next/router'
+import useGoToWallet from '../hooks/useGoToWallet'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -28,15 +29,12 @@ export const getStaticProps = defaultGetStaticProps
 
 const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   const [searchValue, setSearchValue] = useState('')
-  const router = useRouter()
+  const goToWallet = useGoToWallet()
   const handleSearchValueChange = (event) => {
     setSearchValue(event.target.value)
   }
   const handleSearch = () => {
-    router.push({
-      pathname: `/wallet/${searchValue}`,
-    })
-    console.log(`Searching for: ${searchValue}`)
+    goToWallet(searchValue)
   }
 
   return (

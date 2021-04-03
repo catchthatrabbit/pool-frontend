@@ -8,7 +8,7 @@ import { TableData, BlocksInfoBoxData } from 'mockData/homePageData'
 import styled from 'styled-components'
 import Background from 'atoms/Background'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
-import { useRouter } from 'next/router'
+import useGoToWallet from 'hooks/useGoToWallet'
 
 const ContainerStyled = styled.div`
   margin: 60px 140px 73px;
@@ -23,12 +23,9 @@ const BlocksPage: FC = () => {
   const [searchValue, setValue] = useState('')
 
   const handleSearchValueChange = (event) => setValue(event.target.value)
-  const router = useRouter()
+  const goToWallet = useGoToWallet()
   const handleSearch = () => {
-    router.push({
-      pathname: `/wallet/${searchValue}`,
-    })
-    console.log(`Searching for: ${searchValue}`)
+    goToWallet(searchValue)
   }
 
   return (
