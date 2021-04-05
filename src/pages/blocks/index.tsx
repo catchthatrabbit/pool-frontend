@@ -8,11 +8,12 @@ import { TableData, BlocksInfoBoxData } from 'mockData/homePageData'
 import styled from 'styled-components'
 import Background from 'atoms/Background'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
+import useGoToWallet from 'hooks/useGoToWallet'
 
 const ContainerStyled = styled.div`
-  margin: 36px 140px 73px;
-  z-index: 0;
-`
+  margin: 60px 140px 73px;
+  z-index: 1;
+
 const SearchBarContainerStyled = styled.div`
   margin: 83px 140px;
   width: 1363px;
@@ -25,6 +26,10 @@ const BlocksPage: FC = () => {
   const [searchValue, setValue] = useState('')
 
   const handleSearchValueChange = (event) => setValue(event.target.value)
+  const goToWallet = useGoToWallet()
+  const handleSearch = () => {
+    goToWallet(searchValue)
+  }
 
   return (
     <>
@@ -35,7 +40,11 @@ const BlocksPage: FC = () => {
           <BoxesWrapper data={BlocksInfoBoxData} />
         </BoxesWrapperStyled>
         <SearchBarContainerStyled>
-          <SearchBar onChange={handleSearchValueChange} value={searchValue} />
+          <SearchBar
+            onChange={handleSearchValueChange}
+            value={searchValue}
+            onSearch={handleSearch}
+          />
         </SearchBarContainerStyled>
 
         <Table data={TableData.data} columns={TableData.columns} />

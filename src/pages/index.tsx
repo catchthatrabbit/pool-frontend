@@ -5,9 +5,11 @@ import SearchBar from 'atoms/SearchBar'
 import Stats from 'components/Stats'
 import BaseTable from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
-import { StatsData, JumbotronData, TableData } from 'mockData/homePageData'
 import { RecentBlocksIcon } from 'atoms/icons'
-import { blocks } from 'constants/paths'
+import { InferGetStaticPropsType } from 'next'
+import defaultGetStaticProps from 'helpers/getData'
+import { useRouter } from 'next/router'
+import useGoToWallet from '../hooks/useGoToWallet'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -23,19 +25,21 @@ const TitleStyled = styled.div`
   margin-bottom: 60px;
 `
 
-const Home: FC = () => {
-  const [searchValue, setSearchValue] = useState('')
+export const getStaticProps = defaultGetStaticProps
 
+const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
+  const [searchValue, setSearchValue] = useState('')
+  const goToWallet = useGoToWallet()
   const handleSearchValueChange = (event) => {
     setSearchValue(event.target.value)
   }
   const handleSearch = () => {
-    console.log(`Searching for: ${searchValue}`)
+    goToWallet(searchValue)
   }
 
   return (
     <ContainerStyled>
-      <Jumbotron data={JumbotronData} />
+      <Jumbotron data={props.jumbotronData} />
       <SearchBarContainerStyled>
         <SearchBar
           value={searchValue}
@@ -44,8 +48,8 @@ const Home: FC = () => {
         />
       </SearchBarContainerStyled>
       <Stats
-        chartData={StatsData.chartData}
-        infoBoxData={StatsData.infoBoxData}
+        chartData={props.statsData.chartData}
+        infoBoxData={props.statsData.infoBoxData}
       />
       <TableContainerStyled>
         <TitleStyled>
@@ -54,9 +58,9 @@ const Home: FC = () => {
           </ContentTitle>
         </TitleStyled>
         <BaseTable
-          data={TableData.data}
-          columns={TableData.columns}
-          moreLink={{ href: blocks, text: 'View More Blocks' }}
+          data={props.tableData.data}
+          columns={props.tableData.columns}
+          moreLink={{ href: '/blocks', text: 'View More Blocks' }}
         />
       </TableContainerStyled>
     </ContainerStyled>

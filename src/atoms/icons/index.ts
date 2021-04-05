@@ -11,6 +11,7 @@ import SearchResultsIcon from './icons/search-results.svg'
 import StartMiningIcon from './icons/start-mining.svg'
 import StatisticsIcon from './icons/statistics.svg'
 import SearchIcon from './icons/search.svg'
+import CopyIcon from './icons/copy.svg'
 
 export {
   Arrow,
@@ -25,4 +26,5 @@ export {
   StartMiningIcon,
   StatisticsIcon,
   SearchIcon,
+  CopyIcon,
 }

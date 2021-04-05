@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, MouseEventHandler } from 'react'
 import { colorVariables, fonts } from 'styles/variables'
 
 import styled from 'styled-components'
@@ -12,6 +12,8 @@ interface IProps {
   italic?: boolean
   fontWeight?: 'bold' | 'normal' | 'light'
   active?: boolean
+  className?: string
+  onClick?: MouseEventHandler
 }
 
 const TextStyled = styled.text<IProps>`
@@ -52,6 +54,8 @@ const Text: FC<IProps> = ({
   italic = false,
   fontWeight = 'normal',
   active = false,
+  className,
+  onClick,
 }) => (
   <TextStyled
     size={size}
@@ -60,6 +64,8 @@ const Text: FC<IProps> = ({
     italic={italic}
     fontWeight={fontWeight}
     active={active}
+    className={className}
+    onClick={onClick}
   >
     {children}
   </TextStyled>
