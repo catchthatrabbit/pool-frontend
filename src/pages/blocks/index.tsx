@@ -13,7 +13,7 @@ import useGoToWallet from 'hooks/useGoToWallet'
 const ContainerStyled = styled.div`
   margin: 60px 140px 73px;
   z-index: 1;
-
+`
 const SearchBarContainerStyled = styled.div`
   margin: 83px 140px;
   width: 1363px;
