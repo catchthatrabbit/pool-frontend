@@ -6,11 +6,11 @@ import Background from 'atoms/Background'
 import BoxEmail from 'atoms/BoxEmail'
 
 const ContainerStyled = styled.div`
-  margin: 60px 140px 35px;
+  margin: 36px 140px 35px;
   z-index: 1;
 `
 const BoxContentStyled = styled.div`
-  margin-top: 62px;
+  margin-top: 41px;
 `
 
 const ContactsPage: FC = () => (

@@ -10,6 +10,9 @@ const WrapperStyled = styled.div`
 `
 const ImageStyled = styled.div`
   margin-right: 25px;
+  display: flex;
+  align-items: center;
+  height: 96px;
 `
 
 interface IProps {
