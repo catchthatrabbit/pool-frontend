@@ -17,6 +17,9 @@ const SearchBarContainerStyled = styled.div`
   margin: 83px 140px;
   width: 1363px;
 `
+const BoxesWrapperStyled = styled.div`
+  margin: 41px 0 97px;
+`
 
 const BlocksPage: FC = () => {
   const [searchValue, setValue] = useState('')
@@ -28,7 +31,9 @@ const BlocksPage: FC = () => {
       <Background />
       <ContainerStyled>
         <ContentTitle Image={<BlockerLogoIcon />}>POOL BLOCKS</ContentTitle>
-        <BoxesWrapper data={BlocksInfoBoxData} />
+        <BoxesWrapperStyled>
+          <BoxesWrapper data={BlocksInfoBoxData} />
+        </BoxesWrapperStyled>
         <SearchBarContainerStyled>
           <SearchBar onChange={handleSearchValueChange} value={searchValue} />
         </SearchBarContainerStyled>

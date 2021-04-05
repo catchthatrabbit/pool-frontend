@@ -12,13 +12,18 @@ const ContainerStyled = styled.div`
   margin: 36px 140px 73px;
   z-index: 1;
 `
+const BoxesWrapperStyled = styled.div`
+  margin: 41px 0 97px;
+`
 
 const MinersPage: FC = () => (
   <>
     <Background />
     <ContainerStyled>
       <ContentTitle Image={<MinersIcon />}>MINERS</ContentTitle>
-      <BoxesWrapper data={PaymentsInfoBoxData} />
+      <BoxesWrapperStyled>
+        <BoxesWrapper data={PaymentsInfoBoxData} />
+      </BoxesWrapperStyled>
       <Table data={TableData.data} columns={TableData.columns} />
     </ContainerStyled>
   </>
