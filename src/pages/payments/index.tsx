@@ -8,8 +8,11 @@ import Background from 'atoms/Background'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
 
 const ContainerStyled = styled.div`
-  margin: 60px 140px 73px;
+  margin: 36px 140px 73px;
   z-index: 1;
+`
+const BoxesWrapperStyled = styled.div`
+  margin: 41px 0 97px;
 `
 
 const PaymentPage: FC = () => (
@@ -17,7 +20,9 @@ const PaymentPage: FC = () => (
     <Background />
     <ContainerStyled>
       <ContentTitle Image={<PaymentsIcon />}>PAYMETNS</ContentTitle>
-      <BoxesWrapper data={PaymentsInfoBoxData} />
+      <BoxesWrapperStyled>
+        <BoxesWrapper data={PaymentsInfoBoxData} />
+      </BoxesWrapperStyled>
       <Table data={TableData.data} columns={TableData.columns} />
     </ContainerStyled>
   </>
