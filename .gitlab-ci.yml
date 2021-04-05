@@ -61,4 +61,4 @@ Deploy project (stage):
     CONTAINER_NAME: pool-frontend
 
   script:
-    - ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $SSH_KEY root@$SERVER_ADDR_STAGE "cd /data/pool-frontend && ls && sed 's/{IMAGE_TAG}/$CI_COMMIT_SHORT_SHA/g' docker-compose.yaml.template > docker-compose.yaml && docker-compose up -d && sleep 20 && docker-compose logs --tail 100 && docker-compose down"
+    - ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $SSH_KEY root@$SERVER_ADDR_STAGE "cd /data/pool-frontend && ls && sed 's/{IMAGE_TAG}/$CI_COMMIT_SHORT_SHA/g' docker-compose.yaml.template > docker-compose.yaml && docker-compose up -d && sleep 20 && docker-compose logs --tail 100"
