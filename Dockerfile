@@ -12,7 +12,7 @@ WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN yarn build
-
+RUN ls -la /app/
 # Production image, copy all the files and run next
 FROM node:alpine AS runner
 WORKDIR /app
@@ -21,6 +21,7 @@ ENV NODE_ENV production
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 # COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/.storybook ./.storybook
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
