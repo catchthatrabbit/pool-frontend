@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import InfoBox, { InfoBoxItem } from 'atoms/InfoBox'
+import InfoBox from 'components/InfoBox'
+import { InfoBoxItem } from 'helpers/text'
 
 const BoxesWrapperStyled = styled.ul`
   display: flex;
   align-self: center;
   flex-direction: column;
-  margin: 18px 0 97px;
   padding: 0;
   list-style-type: none;
   flex-flow: row wrap;
@@ -14,10 +14,12 @@ const BoxesWrapperStyled = styled.ul`
   li {
     display: flex;
     justify-content: center;
-    margin-top: 60px;
   }
   li:not(:nth-child(4n)) {
     margin-right: 198px;
+  }
+  li:not(:nth-child(-n + 4)) {
+    margin-top: 60px;
   }
 `
 interface IProps {

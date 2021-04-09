@@ -10,7 +10,7 @@ interface IProps {
   image?: string
 }
 
-const Background: FC<IProps> = ({ image = 'images/statistics_bg.png' }) => (
+const Background: FC<IProps> = ({ image = '/images/statistics_bg.png' }) => (
   <BackgroundStyled src={image} alt="background image" />
 )
 

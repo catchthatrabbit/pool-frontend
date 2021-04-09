@@ -1,9 +1,3 @@
-import {
-  responsive,
-  mediaQueriesMaxWidth,
-  mediaQueriesMinWidth,
-} from '../../responsive-provider/utils'
-
 const catchThatRabitTheme = () => {
   const colors = {
     abbey: 'rgb(70, 72, 76)',
@@ -152,9 +146,6 @@ letter-spacing: normal;
   return {
     colors,
     typography,
-    mediaQueriesMaxWidth,
-    mediaQueriesMinWidth,
-    responsive,
   }
 }
 
