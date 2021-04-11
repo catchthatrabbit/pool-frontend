@@ -1,15 +1,29 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { StatisticsIcon } from 'atoms/icons'
 import { ChartData } from 'types/app'
 import ContentTitle from 'atoms/ContentTitle/ContentTitle'
 import { InfoBoxItem } from 'helpers/text'
 import InfoBox from 'components/InfoBox/InfoBox'
 import RadialBarChart from './RadialBarChart/index'
+import { minWidth } from 'helpers/responsive'
 
 const ChartContainer = styled.div`
   width: 100%;
   margin: 50px 0;
+  transform: scale(1);
+  ${minWidth(
+    'tablet',
+    css`
+      transform: translateY(70px) translateX(40px) scale(1.5);
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      transform: scale(1);
+    `,
+  )}
 `
 const StatsStyled = styled.div`
   position: relative;
@@ -22,22 +36,62 @@ const StatsStyled = styled.div`
 const ContentContainer = styled.div`
   display: flex;
   width: 100%;
-  padding: 0 160px;
   box-sizing: border-box;
   background: url('images/statistics_bg.png') no-repeat;
-  background-position: -1%;
-
+  flex-flow: column;
+  background-position: -30px 0px;
+  background-size: cover;
+  padding: 0 40px;
   ul {
-    list-style-type: none;
-    margin-left: 180px;
+    width: 100%;
+    align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
     padding: 0;
+    li {
+      width: 50%;
+    }
     li:not(:last-child) {
-      margin-bottom: 50px;
+      margin-bottom: 25px;
     }
   }
+  ${minWidth(
+    'tablet',
+    css`
+      flex-flow: row;
+      background-position: -30px 0px;
+      background-size: cover;
+      padding: 0 40px;
+      ul {
+        margin-left: 180px;
+      }
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      background-position: 65px -30px;
+      padding: 0 160px;
+      ul {
+        li {
+          width: auto;
+        }
+      }
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      background-position: 25%;
+      background-size: auto;
+      ul {
+        li:not(:last-child) {
+          margin-bottom: 50px;
+        }
+      }
+    `,
+  )}
 `
 
 interface IProps {

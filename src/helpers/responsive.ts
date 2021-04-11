@@ -6,9 +6,9 @@ import { FlattenSimpleInterpolation } from 'styled-components'
 
 export const minWidth = (
   deviceName: ResponsiveDeviceName,
-  styles: FlattenSimpleInterpolation,
+  styles: FlattenSimpleInterpolation | string | false,
 ) => `
   @media screen and (min-width: ${deviceSize[deviceName]}px) {
-    ${styles}
+    ${styles ? styles : ''}
   }
 `

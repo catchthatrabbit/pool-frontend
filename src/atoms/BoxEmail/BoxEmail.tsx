@@ -37,7 +37,7 @@ const BoxEmail: FC<IProps> = ({ title, email, children }) => (
       </Text>
     </TextTitleStyled>
     <TextContentStyled>
-      <Text size="medium" fontFamily="secondary">
+      <Text size="medium" fontFamily="secondary" space={'initial'}>
         {children}
       </Text>
     </TextContentStyled>

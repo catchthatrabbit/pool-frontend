@@ -1,13 +1,13 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Button from 'atoms/Button'
 import { MiningInfo } from 'types/app'
 import React, { FC } from 'react'
 import applyTransparence from 'helpers/transparentize'
 import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text/Text'
+import { minWidth } from 'helpers/responsive'
 
 const BoxStyled = styled.div`
-  width: 746px;
   box-sizing: border-box;
   max-width: 746px;
   max-height: 518px;
@@ -16,6 +16,18 @@ const BoxStyled = styled.div`
   border-radius: 10px;
   background: ${applyTransparence(0.2, colorVariables.gunPowder)};
   flex-basis: 48%;
+  ${minWidth(
+    'tablet',
+    css`
+      width: 500px;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      width: 746px;
+    `,
+  )}
 `
 
 const TitleStyled = styled.div`

@@ -13,7 +13,7 @@ import {
 import { WithRouterProps } from 'next/dist/client/with-router'
 import Text from 'atoms/Text/Text'
 import { useScroll } from 'providers/scroll-provider'
-import Link from '../../atoms/Link/Link'
+import Link from 'atoms/Link/Link'
 
 type Props = WithRouterProps
 
@@ -27,12 +27,14 @@ const links = [
 ]
 
 const Header: FC<Props> = ({}) => {
-  const [menuOpened, setMenuOpened] = useState(true)
+  const [menuOpened, setMenuOpened] = useState(false)
 
   const { pathname } = useRouter()
 
   const { prevScrollPos, currentScrollPos } = useScroll()
   const visible = prevScrollPos > currentScrollPos || currentScrollPos < 50
+
+  const headerHiddenState = menuOpened ? false : !visible
 
   const handleMenuClick = () => {
     setMenuOpened(!menuOpened)
@@ -43,19 +45,22 @@ const Header: FC<Props> = ({}) => {
   }
 
   return (
-    <HeaderStyled hidden={!visible} fullHeight={menuOpened}>
+    <HeaderStyled hidden={headerHiddenState} fullHeight={menuOpened}>
       <HeaderBodyStyled>
         <NavHeaderStyled>
           <Link to="/">
             <LogoStyled />
           </Link>
+          <HamburgerButtonStyled
+            opened={menuOpened}
+            onClick={handleMenuClick}
+          />
         </NavHeaderStyled>
-        <HamburgerButtonStyled opened={menuOpened} onClick={handleMenuClick} />
-        <NavBarStyled>
+        <NavBarStyled isOpen={menuOpened}>
           {links.map(({ text, href }) => (
             <HeaderLinkStyled key={href} onClick={handleLinkClick}>
               <Link to={href}>
-                <Text active={href === pathname} italic>
+                <Text active={href === pathname} size={'large'} italic>
                   {text}
                 </Text>
               </Link>

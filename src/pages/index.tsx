@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Jumbotron from 'components/Jumbotron'
 import SearchBar from 'atoms/SearchBar'
 import Stats from 'components/Stats'
@@ -8,18 +8,55 @@ import ContentTitle from 'atoms/ContentTitle'
 import { RecentBlocksIcon } from 'atoms/icons'
 import { InferGetStaticPropsType } from 'next'
 import defaultGetStaticProps from 'helpers/getData'
-import { useRouter } from 'next/router'
-import useGoToWallet from '../hooks/useGoToWallet'
+import useGoToWallet from 'hooks/useGoToWallet'
+import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
   width: 100%;
 `
 const SearchBarContainerStyled = styled.div`
-  margin: 83px 278px;
-  width: 1363px;
+  margin: 63px auto;
+  width: 373px;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 83px auto;
+      width: 573px;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      width: 90%;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      width: 80%;
+    `,
+  )}
 `
 const TableContainerStyled = styled.div`
-  margin: 17px 140px 75px;
+  margin: 17px 50px 75px;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 17px 50px 75px;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      margin: 17px 70px 75px;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 17px 140px 75px;
+    `,
+  )}
 `
 const TitleStyled = styled.div`
   margin-bottom: 60px;

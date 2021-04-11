@@ -4,7 +4,7 @@ import MinerCard from 'components/MinerCard'
 import SearchBar from 'atoms/SearchBar'
 import MiningInfo from 'components/MiningInfo'
 import { StartMiningIcon, RecentBlocksIcon } from 'atoms/icons'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   MinerDataInfoData,
   MinerDataCardData,
@@ -15,15 +15,21 @@ import Text from 'atoms/Text/Text'
 import Background from 'atoms/Background'
 import { colorVariables, fonts } from 'styles/variables'
 import useGoToWallet from 'hooks/useGoToWallet'
+import { minWidth } from 'helpers/responsive'
 
 const TextStyled = styled.p`
-  width: 807px;
   margin: 34px 0 0;
   font-family: ${fonts.secondary};
   font-size: 14px;
   a {
     color: ${colorVariables.apple};
   }
+  ${minWidth(
+    'desktop',
+    css`
+      width: 807px;
+    `,
+  )}
 `
 
 const MinerCardsWrapperStyled = styled.div`
@@ -36,31 +42,77 @@ const MinerCardsWrapperStyled = styled.div`
 
 const LinksWrapperStyled = styled.div`
   display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-evenly;
   margin: 70px 0 100px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
   a {
     white-space: nowrap;
     color: ${colorVariables.apple};
+    margin-top: 25px;
   }
+  ${minWidth(
+    'tablet',
+    css`
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      a {
+        margin-top: 0;
+      }
+    `,
+  )}
 `
 const ContainerStyled = styled.div`
-  margin: 36px 140px 73px;
   z-index: 1;
+  margin: 36px 10px 73px;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 36px 70px 73px;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 36px 140px 73px;
+    `,
+  )}
 `
 const SearchBarContainerStyled = styled.div`
-  margin: 83px 93px;
-  max-width: 1363px;
+  margin: 83px auto;
+  max-width: 100%;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 83px auto;
+      max-width: 100%;
+    `,
+  )}
 `
 const MiningInfoContainerStyled = styled.div`
   margin-top: 41px;
 `
 const MiningInfoStyled = styled.div`
   margin-bottom: 57px;
+  overflow: scroll;
+  overflow-y: hidden;
+  ${minWidth(
+    'tablet',
+    css`
+      overflow: hidden;
+    `,
+  )}
 `
 const MiningCardStyled = styled.div`
   margin-bottom: 20px;
+  width: 100%;
+  ${minWidth(
+    'tablet',
+    css`
+      width: auto;
+    `,
+  )}
 `
 const TitleContainerStyled = styled.div`
   margin: 57px 0 73px;

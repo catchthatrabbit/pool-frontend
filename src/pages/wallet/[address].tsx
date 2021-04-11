@@ -1,15 +1,14 @@
-import React, { FC, useRef, useState } from 'react'
-import styled from 'styled-components'
+import React, { FC, useState } from 'react'
+import styled, { css } from 'styled-components'
 import SearchBar from 'atoms/SearchBar'
 import Table from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { MinersIcon, SearchResultsIcon, PaymentsIcon } from 'atoms/icons'
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { defaultGetStaticPaths } from 'helpers/getData'
 import MiningInfo from 'components/MiningInfo/MiningInfo'
 import Text from 'atoms/Text/Text'
 import Background from 'atoms/Background/Background'
-import { ParsedUrlQuery } from 'querystring'
 import {
   ChartBarSlimeData,
   ChartLineData,
@@ -30,14 +29,34 @@ import CopyButton from 'atoms/CopyButton'
 import useGoToWallet from 'hooks/useGoToWallet'
 import { useRouter } from 'next/router'
 import Loading from '@components/Loading/Loading'
+import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
-  margin: 60px 140px 73px;
   z-index: 1;
+  margin: 36px 10px 73px;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 36px 70px 73px;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 36px 140px 73px;
+    `,
+  )}
 `
 const SearchBarContainerStyled = styled.div`
-  margin: 69px 136px;
-  width: 1363px;
+  margin: 39px auto;
+  width: 85%;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 69px auto;
+      width: 85%;
+    `,
+  )}
 `
 const TableContainerStyled = styled.div`
   margin: 17px 0 75px;
@@ -52,28 +71,63 @@ const TabContent = styled.div`
     display: none;
   `}
 `
+const ChartsWrapper = styled.div`
+  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
+`
 const ChartBarContainer = styled.div`
-  width: 1640px;
   height: 224px;
+  width: 1640px;
 `
 const ChartLineContainer = styled.div`
-  width: 1640px;
   height: 443px;
+  width: 1640px;
 `
 
 const ColumnContainer = styled.div`
   margin: 66px 0 81px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: row;
-  div:not(:nth-child(1)) {
-    margin-left: 16px;
-  }
+  flex-wrap: wrap;
 `
+const InfoContainer = styled(ColumnContainer)`
+  justify-content: center;
+  > div:not(:nth-child(1)) {
+    margin-top: 5%;
+  }
+  ${minWidth(
+    'tablet',
+    css`
+      justify-content: center;
+      > div:not(:nth-child(1)) {
+        margin-top: 5%;
+      }
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      justify-content: space-between;
+      > div:not(:nth-child(1)) {
+        margin-top: 0;
+      }
+    `,
+  )}
+`
+const InfoBoxContainer = styled(InfoContainer)`
+  ${minWidth(
+    'laptop',
+    css`
+      div:last-child {
+        margin-top: 15px;
+      }
+    `,
+  )}
+`
+
 const TabSelector = styled(ColumnContainer)`
   margin-bottom: 90px;
-
   & > * {
     cursor: pointer;
     margin-right: 61px;
@@ -88,21 +142,56 @@ const MiningInfoContainer = styled.div`
   align-self: center;
   margin: 18px 0 97px;
   padding: 0;
-  list-style-type: none;
   flex-flow: row wrap;
   width: 100%;
-
   & > * {
     flex-grow: 1;
-    margin-right: 16px;
+    margin-right: 0;
 
     &:last-child {
       margin-right: 0;
+      margin-top: 24px;
     }
   }
+  ${minWidth(
+    'tablet',
+    css`
+      display: flex;
+      & > * {
+        flex-grow: 1;
+        margin-right: 0;
+
+        &:last-child {
+          margin-right: 0;
+          margin-top: 24px;
+        }
+      }
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      & > * {
+        margin-right: 16px;
+
+        &:last-child {
+          margin-right: 0;
+          margin-top: 0;
+        }
+      }
+    `,
+  )}
 `
 const ButtonStyled = styled.div`
-  margin-left: 50px;
+  margin-left: 0;
+  margin-top: 25px;
+  ${minWidth(
+    'tablet',
+    css`
+      margin-left: 50px;
+      margin-top: 0;
+    `,
+  )}
 `
 const TitleCharLineContainer = styled.div`
   margin-bottom: 57px;
@@ -110,9 +199,6 @@ const TitleCharLineContainer = styled.div`
 const TitleCharBarContainer = styled.div`
   margin: 87px 0 38px;
 `
-interface IParams extends ParsedUrlQuery {
-  address: string
-}
 
 export const getStaticPaths: GetStaticPaths = defaultGetStaticPaths
 
@@ -169,7 +255,7 @@ const Wallet: FC<any> = (props) => {
           </ButtonStyled>
         </ColumnContainer>
         <MiningInfoContainer>
-          {MiningInfoData.map(({ title, data }, index) => (
+          {MiningInfoData.map(({ title, data }) => (
             <MiningInfo
               data={data as any}
               title={title}
@@ -195,23 +281,27 @@ const Wallet: FC<any> = (props) => {
           </Text>
         </TabSelector>
         <TabContent active={changeView === 'statistics'}>
-          <ColumnContainer>
+          <InfoBoxContainer>
             {InfoCardData.map(({ title, data }) => (
               <InfoCard title={title} data={data as InfoBoxItem[]} />
             ))}
-          </ColumnContainer>
+          </InfoBoxContainer>
           <TitleCharLineContainer>
             <ContentTitle>Hash rate</ContentTitle>
           </TitleCharLineContainer>
-          <ChartLineContainer>
-            <ChartLine data={ChartLineData as []} />
-          </ChartLineContainer>
+          <ChartsWrapper>
+            <ChartLineContainer>
+              <ChartLine data={ChartLineData as []} />
+            </ChartLineContainer>
+          </ChartsWrapper>
           <TitleCharBarContainer>
             <ContentTitle>Shares</ContentTitle>
           </TitleCharBarContainer>
-          <ChartBarContainer>
-            <ChartBarSlime data={ChartBarSlimeData as []} />
-          </ChartBarContainer>
+          <ChartsWrapper>
+            <ChartBarContainer>
+              <ChartBarSlime data={ChartBarSlimeData as []} />
+            </ChartBarContainer>
+          </ChartsWrapper>
           <TitleStyled>
             <ContentTitle Image={<MinersIcon />}>Workers</ContentTitle>
           </TitleStyled>
@@ -230,7 +320,7 @@ const Wallet: FC<any> = (props) => {
           </TableContainerStyled>
         </TabContent>
         <TabContent active={changeView === 'payout'}>
-          <ColumnContainer>
+          <InfoContainer>
             {InfoStatsBoxData.map(({ title, subtitle, suffix, value }) => (
               <InfoStatsBox
                 title={title}
@@ -240,12 +330,14 @@ const Wallet: FC<any> = (props) => {
                 size="small"
               />
             ))}
-          </ColumnContainer>
+          </InfoContainer>
           <ContentTitle>Payments</ContentTitle>
-          <ChartBarContainer>
-            <ChartBarSpacing data={ChartSpacedData as []} />
-          </ChartBarContainer>
-          <ColumnContainer>
+          <ChartsWrapper>
+            <ChartBarContainer>
+              <ChartBarSpacing data={ChartSpacedData as []} />
+            </ChartBarContainer>
+          </ChartsWrapper>
+          <InfoContainer>
             {InfoStatsBoxLargeData.map(({ title, subtitle, suffix, value }) => (
               <InfoStatsBox
                 title={title}
@@ -255,7 +347,7 @@ const Wallet: FC<any> = (props) => {
                 size="large"
               />
             ))}
-          </ColumnContainer>
+          </InfoContainer>
           <TitleStyled>
             <ContentTitle Image={<PaymentsIcon />}>Payment List</ContentTitle>
           </TitleStyled>

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
 
 import Button from 'atoms/Button/Button'
@@ -14,6 +14,7 @@ import {
   connectToEurope,
   connectToAsia,
 } from 'constants/paths'
+import { minWidth } from 'helpers/responsive'
 
 const scrollTranslate = keyframes`
   0% {
@@ -53,9 +54,21 @@ const MouseContainerStyle = styled.div`
   align-items: center;
   width: 24px;
   height: 64px;
-  left: calc(50% + 40px);
-  bottom: 5%;
   display: flex;
+  ${minWidth(
+    'tablet',
+    css`
+      left: calc(50% + 150px);
+      bottom: 0;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      left: calc(50% + 40px);
+      bottom: 5%;
+    `,
+  )}
 `
 
 const LocationStyle = styled.div`
@@ -66,27 +79,110 @@ const LocationStyle = styled.div`
   min-width: min(12vw, 215px);
 `
 const USStyle = styled(LocationStyle)`
-  top: 25%;
-  left: 35%;
+  transform: scale(0.5);
+  top: -5%;
+  left: 8%;
+  ${minWidth(
+    'tablet',
+    css`
+      transform: scale(1);
+      top: 14%;
+      left: 23%;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      top: 18%;
+      left: 25%;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      top: 25%;
+      left: 35%;
+    `,
+  )}
 `
 const EUStyle = styled(LocationStyle)`
-  top: 25%;
-  left: 58%;
+  transform: scale(0.5);
+  top: -8%;
+  left: 40%;
+  ${minWidth(
+    'tablet',
+    css`
+      transform: scale(1);
+      top: 11%;
+      left: 55%;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      top: 15%;
+      left: 57%;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      top: 25%;
+      left: 58%;
+    `,
+  )}
 `
 const APStyle = styled(LocationStyle)`
-  top: 35%;
-  left: 77%;
+  transform: scale(0.5);
+  top: 6%;
+  left: 68%;
+  ${minWidth(
+    'tablet',
+    css`
+      transform: scale(1);
+      top: 20%;
+      left: 85%;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      top: 25%;
+      left: 85%;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      top: 35%;
+      left: 77%;
+    `,
+  )}
 `
 const MapStyle = styled.div`
-  position: absolute;
-  left: -80px;
-  top: 50px;
-  height: 934px;
+  height: 100%;
   width: 100%;
-  background: url('/images/map_bg.png');
+  order: 0;
+  transform: translateX(-90px);
+  top: 90px;
+  ${minWidth(
+    'tablet',
+    css`
+      transform: translateX(-150px);
+      top: 90px;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      transform: translateX(0);
+      position: absolute;
+      left: -80px;
+      top: 50px;
+    `,
+  )}
 `
 const JumbotronStyle = styled.div`
-  height: 934px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -95,53 +191,131 @@ const JumbotronStyle = styled.div`
   ul {
     z-index: 1;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     margin: 20px 0 0;
     padding: 0;
-    list-style-type: none;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    width: 100%;
-    li:not(:last-child) {
-      margin-right: 65px;
-      margin-bottom: 50px;
+    justify-content: space-around;
+    order: 2;
+    width: 90%;
+    li {
+      margin-top: 20px;
     }
   }
+
+  ${minWidth(
+    'tablet',
+    css`
+      ul {
+        width: 85%;
+      }
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      ul {
+        justify-content: space-between;
+        order: -2;
+        li {
+          margin-top: 0;
+        }
+      }
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      height: 934px;
+    `,
+  )}
 `
 const TitleTexStyled = styled.div`
   bottom: 60%;
   margin: 20px 0 0;
   order: -1;
   word-break: break-all;
-  span {
-    white-space: nowrap;
+  text {
+    margin-right: 10px;
   }
 `
 
 const ButtonContentStyled = styled.div`
   width: 100%;
-  margin-top: 87px;
   button {
     margin-left: 20px;
   }
+  ${minWidth(
+    'laptop',
+    css`
+      margin-top: 25px;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin-top: 87px;
+    `,
+  )}
 `
 
 const InfoComponentStyled = styled.div`
-  margin-left: 140px;
-  top: 20%;
-  position: absolute;
+  z-index: 1;
   align-self: start;
-  text-align: start;
-  width: 355px;
+  text-align: center;
+  width: 100%;
+
   p {
     bottom: 25%;
     margin: 30px 0;
     line-height: 29px;
     font-family: ${fonts.secondary};
-    font-size: 24px;
     color: ${colorVariables.santasGray};
   }
+
+  ${minWidth(
+    'tablet',
+    css`
+      text-align: center;
+      width: 100%;
+      p {
+        font-size: 16px;
+      }
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      text-align: start;
+      margin-left: 140px;
+      width: 20%;
+      top: 20%;
+      position: absolute;
+      p {
+        font-size: 24px;
+      }
+    `,
+  )}
 `
+const ImageStyled = styled.img`
+  height: 100%;
+  width: 100%;
+  transform: scale(1.4);
+  ${minWidth(
+    'laptop',
+    css`
+      height: 100%;
+      width: 100%;
+      transform: scale(1.4);
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      transform: scale(1);
+    `,
+  )}
+`
+
 interface IProps {
   data: InfoBoxItem[]
 }
@@ -156,6 +330,7 @@ const Jumbotron: FC<IProps> = ({ data }) => (
       ))}
     </ul>
     <MapStyle>
+      <ImageStyled src={'/images/map_bg.png'} alt={''} />
       <USStyle>
         <MapButton href={connectToUS}>Connect US location</MapButton>
       </USStyle>

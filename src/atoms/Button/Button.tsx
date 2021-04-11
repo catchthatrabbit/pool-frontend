@@ -4,6 +4,7 @@ import { colorVariables } from 'styles/variables'
 import styled, { css } from 'styled-components'
 import Text from 'atoms/Text/Text'
 import applyTransparence from 'helpers/transparentize'
+import { minWidth } from 'helpers/responsive'
 
 const ButtonStyled = styled.button`
   box-sizing: border-box;
@@ -33,15 +34,6 @@ const ButtonStyled = styled.button`
       }
     `}
   ${(props: { theme: string }) =>
-    props.theme === 'email' &&
-    css`
-      background-color: ${applyTransparence(0.2, colorVariables.gunPowder)};
-      padding: 30px 74px;
-      &:hover {
-        background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
-      }
-    `}
-  ${(props: { theme: string }) =>
     props.theme === 'transparent' &&
     css`
       backdrop-filter: blur(6px);
@@ -50,6 +42,21 @@ const ButtonStyled = styled.button`
         transform: scale(1.05);
         backdrop-filter: blur(18px);
       }
+    `}
+      ${(props: { theme: string }) =>
+    props.theme === 'email' &&
+    css`
+      background-color: ${applyTransparence(0.2, colorVariables.gunPowder)};
+      &:hover {
+        background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
+      }
+      padding: 30px 34px;
+      ${minWidth(
+        'tablet',
+        css`
+          padding: 30px 74px;
+        `,
+      )}
     `}
 `
 

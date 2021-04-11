@@ -1,7 +1,8 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import React, { FC } from 'react'
 import Text from 'atoms/Text/Text'
 import { colorVariables } from 'styles/variables'
+import { minWidth } from 'helpers/responsive'
 
 interface IProps {
   title: string
@@ -12,8 +13,6 @@ interface IProps {
 }
 
 const WrapperStyled = styled.div`
-  width: ${(props: { size: string }) =>
-    (props.size === 'small' && '500px') || (props.size === 'large' && '812px')};
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
   padding: ${(props: { size: string }) =>
@@ -27,6 +26,33 @@ const WrapperStyled = styled.div`
     align-items: center;
     justify-content: space-between;
     `};
+  ${(props: { size: string }) =>
+    minWidth(
+      'tablet',
+      `
+        width: ${
+          (props.size === 'small' && '50%') || (props.size === 'large' && '50%')
+        };
+      `,
+    )};
+  ${(props: { size: string }) =>
+    minWidth(
+      'laptop',
+      `
+        width: ${
+          (props.size === 'small' && '45%') || (props.size === 'large' && '50%')
+        };
+      `,
+    )};
+  ${(props: { size: string }) =>
+    minWidth(
+      'desktop',
+      `
+        width: ${
+          (props.size === 'small' && '25%') || (props.size === 'large' && '40%')
+        };
+      `,
+    )};
 `
 const TitleContainerStyled = styled.div`
   margin-bottom: ${(props: { size: string }) =>

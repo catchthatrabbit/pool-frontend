@@ -1,18 +1,37 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import applyTransparence from 'helpers/transparentize'
 import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text/Text'
 import Button from 'atoms/Button/Button'
 import Pagination from 'components/Pagination/Pagination'
 import useGoToWallet from 'hooks/useGoToWallet'
+import { minWidth } from 'helpers/responsive'
 
 const WrapperStyled = styled.div`
   box-sizing: border-box;
   width: 100%;
-  padding: 84px 0;
   border: 1px solid ${applyTransparence(0.5, colorVariables.gunPowder)};
   border-radius: 10px;
+  padding: 24px 0;
+  ${minWidth(
+    'tablet',
+    css`
+      padding: 34px 0;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      padding: 54px 0;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      padding: 84px 0;
+    `,
+  )}
 `
 
 const TableWrapperStyled = styled.div`
@@ -32,26 +51,51 @@ const TableRowStyled = styled.tr`
   &:not(:only-child):hover {
     background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
   }
-
   th,
   td {
     box-sizing: border-box;
-
     &:first-child {
-      padding-left: 78px;
+      padding-left: 10px;
     }
-
     &:last-child {
-      padding-right: 78px;
+      padding-right: 10px;
     }
   }
   th {
-    padding: 0 0 1.6rem 1rem;
+    padding: 0 0 8px 8px;
     text-align: left;
   }
   td {
     padding: 26px 16px 21px;
   }
+  ${minWidth(
+    'laptop',
+    css`
+      th,
+      td {
+        &:first-child {
+          padding-left: 38px;
+        }
+        &:last-child {
+          padding-right: 38px;
+        }
+      }
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      th,
+      td {
+        &:first-child {
+          padding-left: 78px;
+        }
+        &:last-child {
+          padding-right: 78px;
+        }
+      }
+    `,
+  )}
 `
 
 const TextStyled = styled(Text)<{ column: Column }>`
