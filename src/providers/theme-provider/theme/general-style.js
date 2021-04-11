@@ -28,6 +28,10 @@ const GlobalStyle = createGlobalStyle`
 
   }
   
+  ul {
+    list-style-type: none;
+  }
+  
   ::-webkit-scrollbar {
     width: 5px;
     height: 5px;

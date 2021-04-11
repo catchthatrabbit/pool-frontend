@@ -1,8 +1,9 @@
 import ReactPaginate from 'react-paginate'
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
 import applyTransparence from 'helpers/transparentize'
+import { minWidth } from 'helpers/responsive'
 
 const PaginationContainer = styled.div`
   ul.pagination {
@@ -13,7 +14,7 @@ const PaginationContainer = styled.div`
     list-style: none;
     color: ${colorVariables.kimberly};
     li {
-      margin: 0 20px;
+      margin: 0 10px;
       &.active {
         a {
           padding: 10px 12px;
@@ -33,11 +34,11 @@ const PaginationContainer = styled.div`
         }
       }
       &.previous {
-        margin: 0 50px;
+        margin: 0 25px;
       }
       &.next {
-        margin-left: 37px;
-        padding: 14px 50px;
+        margin-left: 17px;
+        padding: 7px 25px;
         line-height: 19px;
         border-left: 1px solid ${colorVariables.gunPowder};
       }
@@ -60,6 +61,22 @@ const PaginationContainer = styled.div`
       }
     }
   }
+  ${minWidth(
+    'tablet',
+    css`
+      ul.pagination {
+        li {
+          &.previous {
+            margin: 0 50px;
+          }
+          &.next {
+            margin-left: 37px;
+            padding: 14px 50px;
+          }
+        }
+      }
+    `,
+  )}
 `
 
 interface IProps {

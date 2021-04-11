@@ -1,12 +1,27 @@
 import React, { FC } from 'react'
 import ContentTitle from 'atoms/ContentTitle'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ContactUsIcon } from 'atoms/icons'
 import Background from 'atoms/Background'
 import BoxEmail from 'atoms/BoxEmail'
+import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
-  margin: 36px 140px 35px;
+  margin: 63px auto;
+  width: 373px;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 36px 70px 73px;
+      width: auto;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 36px 140px 73px;
+    `,
+  )}
   z-index: 1;
 `
 const BoxContentStyled = styled.div`

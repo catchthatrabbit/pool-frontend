@@ -1,26 +1,27 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import InfoBox from 'components/InfoBox'
 import { InfoBoxItem } from 'helpers/text'
+import { minWidth } from 'helpers/responsive'
 
 const BoxesWrapperStyled = styled.ul`
   display: flex;
-  align-self: center;
-  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding: 0;
-  list-style-type: none;
-  flex-flow: row wrap;
   width: 100%;
   li {
     display: flex;
-    justify-content: center;
+    margin-bottom: 60px;
   }
-  li:not(:nth-child(4n)) {
-    margin-right: 198px;
-  }
-  li:not(:nth-child(-n + 4)) {
-    margin-top: 60px;
-  }
+  ${minWidth(
+    'desktop',
+    css`
+      li:not(:nth-child(4n)) {
+        margin-right: 95px;
+      }
+    `,
+  )}
 `
 interface IProps {
   data: InfoBoxItem[]

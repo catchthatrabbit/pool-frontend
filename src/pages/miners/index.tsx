@@ -1,15 +1,30 @@
 import React, { FC } from 'react'
 import ContentTitle from 'atoms/ContentTitle'
 import Table from 'components/Table'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Background from 'atoms/Background'
 
 import { PaymentsInfoBoxData, TableData } from 'mockData/homePageData'
 import { MinersIcon } from 'atoms/icons'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
+import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
-  margin: 36px 140px 73px;
+  margin: 63px auto;
+  width: 373px;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 36px 70px 73px;
+      width: auto;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 36px 140px 73px;
+    `,
+  )}
   z-index: 1;
 `
 const BoxesWrapperStyled = styled.div`

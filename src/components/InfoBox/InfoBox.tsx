@@ -1,12 +1,13 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import React, { FC } from 'react'
 import Text from 'atoms/Text/Text'
 import getText, { TextType, InfoBoxItem } from 'helpers/text'
+import { minWidth } from 'helpers/responsive'
 
 const WrapperStyled = styled.div`
+  height: 60px;
+  width: 180px;
   padding: 15px 0 20px;
-  height: 88px;
-  width: 260px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -14,11 +15,18 @@ const WrapperStyled = styled.div`
   justify-content: space-between;
   border: 1px solid ${({ theme }) => theme.colors.spindle};
   border-radius: 10px;
+  ${minWidth(
+    'desktop',
+    css`
+      height: 88px;
+      width: 260px;
+    `,
+  )}
 `
 
 const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
   const text: TextType = getText(type, value)
-  console.log(text)
+
   return (
     <WrapperStyled>
       <Text size="very-large" fontWeight="bold" italic>
