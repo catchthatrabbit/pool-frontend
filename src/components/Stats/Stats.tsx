@@ -43,7 +43,7 @@ const ContentContainer = styled.div`
   background-size: cover;
   padding: 0 40px;
   ul {
-    width: 100%;
+    width: auto;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -83,7 +83,7 @@ const ContentContainer = styled.div`
   ${minWidth(
     'desktop',
     css`
-      background-position: 25%;
+      background-position: 0;
       background-size: auto;
       ul {
         li:not(:last-child) {
