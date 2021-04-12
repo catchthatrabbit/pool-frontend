@@ -183,6 +183,7 @@ const MapStyle = styled.div`
   )}
 `
 const JumbotronStyle = styled.div`
+  overflow-x: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
