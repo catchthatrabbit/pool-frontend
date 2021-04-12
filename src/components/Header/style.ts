@@ -10,8 +10,8 @@ interface IHeader {
 }
 
 const HeaderStyled = styled.header<IHeader>`
-  padding: 40px 0 34px;
-  height: 164px;
+  padding: 10px 0 0;
+  height: auto;
   top: 0;
   width: 100%;
   box-sizing: border-box;
@@ -28,6 +28,13 @@ const HeaderStyled = styled.header<IHeader>`
     `
       height: 100%;
     `}
+  ${minWidth(
+    'desktop',
+    css`
+      padding: 40px 0 34px;
+      height: 164px;
+    `,
+  )}
 `
 
 const HeaderBodyStyled = styled.div`

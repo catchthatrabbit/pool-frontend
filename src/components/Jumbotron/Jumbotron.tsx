@@ -58,7 +58,7 @@ const MouseContainerStyle = styled.div`
   ${minWidth(
     'tablet',
     css`
-      left: calc(50% + 150px);
+      left: calc(50% + 190px);
       bottom: 0;
     `,
   )}
@@ -168,7 +168,7 @@ const MapStyle = styled.div`
   ${minWidth(
     'tablet',
     css`
-      transform: translateX(-150px);
+      transform: translateX(-190px);
       top: 90px;
     `,
   )}
@@ -216,6 +216,7 @@ const JumbotronStyle = styled.div`
       ul {
         justify-content: space-between;
         order: -2;
+        width: 90%;
         li {
           margin-top: 0;
         }
@@ -225,6 +226,9 @@ const JumbotronStyle = styled.div`
   ${minWidth(
     'desktop',
     css`
+      ul {
+        width: 85%;
+      }
       height: 934px;
     `,
   )}

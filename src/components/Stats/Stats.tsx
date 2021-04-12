@@ -19,9 +19,18 @@ const ChartContainer = styled.div`
     `,
   )}
   ${minWidth(
+    'laptop',
+    css`
+      width: 100%;
+      margin-right: 290px;
+      transform: scale(1);
+    `,
+  )}
+  ${minWidth(
     'desktop',
     css`
-      transform: scale(1);
+      width: 100%;
+      margin-right: 0;
     `,
   )}
 `
@@ -71,9 +80,15 @@ const ContentContainer = styled.div`
   ${minWidth(
     'laptop',
     css`
-      background-position: 65px -30px;
-      padding: 0 160px;
+      background-position: -15px -10px;
+      padding: 0 50px;
       ul {
+        position: absolute;
+        right: 5%;
+        height: 63%;
+        width: auto;
+        justify-content: space-between;
+        margin-top: 50px;
         li {
           width: auto;
         }
@@ -85,7 +100,12 @@ const ContentContainer = styled.div`
     css`
       background-position: 25%;
       background-size: auto;
+      padding: 0 160px;
       ul {
+        position: relative;
+        right: 0;
+        height: auto;
+        justify-content: center;
         li:not(:last-child) {
           margin-bottom: 50px;
         }

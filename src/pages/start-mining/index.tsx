@@ -85,7 +85,12 @@ const SearchBarContainerStyled = styled.div`
   ${minWidth(
     'tablet',
     css`
-      margin: 83px auto;
+      max-width: 83%;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
       max-width: 100%;
     `,
   )}

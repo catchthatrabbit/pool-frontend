@@ -27,7 +27,7 @@ const SearchBarContainerStyled = styled.div`
   ${minWidth(
     'laptop',
     css`
-      width: 90%;
+      width: 74%;
     `,
   )}
   ${minWidth(
