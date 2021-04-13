@@ -12,7 +12,7 @@ const ContainerStyled = styled.div`
   ${minWidth(
     'tablet',
     css`
-      margin: 36px 70px 73px;
+      margin: 36px 50px 73px;
       width: auto;
     `,
   )}

@@ -17,7 +17,7 @@ const ContainerStyled = styled.div`
   ${minWidth(
     'tablet',
     css`
-      margin: 36px 70px 73px;
+      margin: 36px 50px 73px;
     `,
   )}
   ${minWidth(
@@ -28,29 +28,36 @@ const ContainerStyled = styled.div`
   )}
 `
 const SearchBarContainerStyled = styled.div`
-  ${minWidth(
-    'mobileL',
-    css`
-      margin: 53px auto;
-      width: 253px;
-    `,
-  )}
-  ${minWidth(
-    'tablet',
-    css`
-      margin: 83px auto;
-      width: 553px;
-    `,
-  )}
+  margin: 23px auto 45px;
+  width: 85%;
+  ${minWidth('tablet', css``)}
   ${minWidth(
     'laptop',
     css`
-      width: 85%;
+      margin: 43px auto 90px;
+    `,
+  )}
+    ${minWidth(
+    'desktop',
+    css`
+      margin: 83px auto;
     `,
   )}
 `
 const BoxesWrapperStyled = styled.div`
-  margin: 41px 0 97px;
+  margin: 41px 0 41px;
+  ${minWidth(
+    'laptop',
+    css`
+      margin: 41px 10px 41px;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 41px 0 90px;
+    `,
+  )}
 `
 
 const BlocksPage: FC = () => {

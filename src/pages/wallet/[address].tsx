@@ -37,7 +37,7 @@ const ContainerStyled = styled.div`
   ${minWidth(
     'tablet',
     css`
-      margin: 36px 70px 73px;
+      margin: 36px 50px 73px;
     `,
   )}
   ${minWidth(
@@ -62,7 +62,13 @@ const TableContainerStyled = styled.div`
   margin: 17px 0 75px;
 `
 const TitleStyled = styled.div`
-  margin: 124px 0 68px;
+  margin: 50px 0 68px;
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 124px 0 68px;
+    `,
+  )}
 `
 const TabContent = styled.div`
   ${(props: { active: boolean }) =>

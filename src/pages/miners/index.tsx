@@ -15,7 +15,7 @@ const ContainerStyled = styled.div`
   ${minWidth(
     'tablet',
     css`
-      margin: 36px 70px 73px;
+      margin: 36px 50px 73px;
       width: auto;
     `,
   )}
@@ -28,7 +28,7 @@ const ContainerStyled = styled.div`
   z-index: 1;
 `
 const BoxesWrapperStyled = styled.div`
-  margin: 41px 0 97px;
+  margin: 41px 0 41px;
 `
 
 const MinersPage: FC = () => (
