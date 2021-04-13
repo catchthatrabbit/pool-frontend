@@ -29,6 +29,13 @@ const HeaderStyled = styled.header<IHeader>`
       height: 100%;
     `}
   ${minWidth(
+    'laptopL',
+    css`
+      padding: 20px 0 20px;
+      height: 160px;
+    `,
+  )}
+    ${minWidth(
     'desktop',
     css`
       padding: 40px 0 34px;
@@ -50,11 +57,19 @@ const HeaderBodyStyled = styled.div`
     flex-direction: column;
   `}
   ${minWidth(
+    'laptopL',
+    css`
+      max-width: 95%;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 140px;
+    `,
+  )}
+   ${minWidth(
     'desktop',
     css`
       max-width: 86%;
-      flex-direction: row;
-      justify-content: space-between;
+      height: 100px;
     `,
   )}
 `
@@ -64,6 +79,18 @@ const NavHeaderStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 90%;
+  ${minWidth(
+    'laptopL',
+    css`
+      width: 40%;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      width: 90%;
+    `,
+  )}
 `
 
 const LogoStyled = styled(LogoIcon)`
@@ -71,7 +98,7 @@ const LogoStyled = styled(LogoIcon)`
   height: auto;
   transform: scale(0.8);
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       transform: scale(1);
     `,
@@ -93,7 +120,7 @@ const NavBarStyled = styled.nav`
       }
     `}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       display: flex;
       flex-direction: row;
@@ -110,7 +137,7 @@ const HeaderLinkStyled = styled.div`
 
 const HamburgerButtonStyled = styled(HamburgerButton)`
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       display: none;
     `,

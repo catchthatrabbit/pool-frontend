@@ -28,6 +28,18 @@ const BoxStyled = styled.div`
       width: 746px;
     `,
   )}
+    ${minWidth(
+    'laptopL',
+    css`
+      width: 100%;
+    `,
+  )}
+    ${minWidth(
+    'desktop',
+    css`
+      width: 746px;
+    `,
+  )}
 `
 
 const TitleStyled = styled.div`

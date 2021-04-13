@@ -46,6 +46,15 @@ const WrapperStyled = styled.div`
     )};
   ${(props: { size: string }) =>
     minWidth(
+      'laptopL',
+      `
+        width: ${
+          (props.size === 'small' && '40%') || (props.size === 'large' && '35%')
+        };
+      `,
+    )};
+  ${(props: { size: string }) =>
+    minWidth(
       'desktop',
       `
         width: ${

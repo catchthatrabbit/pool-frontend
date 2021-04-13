@@ -63,7 +63,7 @@ const MouseContainerStyle = styled.div`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       left: calc(50% + 40px);
       bottom: 5%;
@@ -98,7 +98,7 @@ const USStyle = styled(LocationStyle)`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       top: 25%;
       left: 35%;
@@ -125,7 +125,7 @@ const EUStyle = styled(LocationStyle)`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       top: 25%;
       left: 58%;
@@ -152,7 +152,7 @@ const APStyle = styled(LocationStyle)`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       top: 35%;
       left: 77%;
@@ -173,12 +173,18 @@ const MapStyle = styled.div`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       transform: translateX(0);
       position: absolute;
-      left: -80px;
+      left: -10px;
       top: 50px;
+    `,
+  )}
+    ${minWidth(
+    'desktop',
+    css`
+      left: -80px;
     `,
   )}
 `
@@ -225,12 +231,13 @@ const JumbotronStyle = styled.div`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       ul {
         width: 85%;
       }
       height: 934px;
+      overflow-x: unset;
     `,
   )}
 `
@@ -256,7 +263,7 @@ const ButtonContentStyled = styled.div`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       margin-top: 87px;
     `,
@@ -288,6 +295,19 @@ const InfoComponentStyled = styled.div`
     `,
   )}
   ${minWidth(
+    'laptopL',
+    css`
+      text-align: start;
+      margin-left: 100px;
+      width: 20%;
+      top: 20%;
+      position: absolute;
+      p {
+        font-size: 24px;
+      }
+    `,
+  )}
+   ${minWidth(
     'desktop',
     css`
       text-align: start;
@@ -314,7 +334,7 @@ const ImageStyled = styled.img`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       transform: scale(1);
     `,

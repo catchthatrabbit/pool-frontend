@@ -41,6 +41,12 @@ const ContainerStyled = styled.div`
     `,
   )}
   ${minWidth(
+    'laptopL',
+    css`
+      margin: 36px 100px 73px;
+    `,
+  )}
+  ${minWidth(
     'desktop',
     css`
       margin: 36px 140px 73px;
@@ -112,10 +118,25 @@ const InfoContainer = styled(ColumnContainer)`
     `,
   )}
   ${minWidth(
+    'laptopL',
+    css`
+      justify-content: space-between;
+      > div:not(:nth-child(1)) {
+        margin-top: 10px;
+      }
+      > div {
+        margin-top: 10px;
+      }
+    `,
+  )}
+  ${minWidth(
     'desktop',
     css`
       justify-content: space-between;
       > div:not(:nth-child(1)) {
+        margin-top: 0;
+      }
+      > div {
         margin-top: 0;
       }
     `,
@@ -127,6 +148,24 @@ const InfoBoxContainer = styled(InfoContainer)`
     css`
       div:last-child {
         margin-top: 15px;
+      }
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      justify-content: center;
+    `,
+  )}
+   ${minWidth(
+    'desktop',
+    css`
+      justify-content: space-between;
+      div {
+        margin-top: 0;
+      }
+      div:last-child {
+        margin-top: 0;
       }
     `,
   )}
@@ -175,7 +214,7 @@ const MiningInfoContainer = styled.div`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       & > * {
         margin-right: 16px;

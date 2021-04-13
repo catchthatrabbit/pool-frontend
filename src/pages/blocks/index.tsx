@@ -21,6 +21,12 @@ const ContainerStyled = styled.div`
     `,
   )}
   ${minWidth(
+    'laptopL',
+    css`
+      margin: 36px 100px 73px;
+    `,
+  )}
+  ${minWidth(
     'desktop',
     css`
       margin: 36px 140px 73px;

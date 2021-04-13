@@ -9,8 +9,15 @@ const MainContentStyled = styled.div`
   overflow: visible;
   width: 100%;
   margin: 114px 0 0;
+  overflow-x: hidden;
   ${minWidth(
     'laptopL',
+    css`
+      margin: 170px 0 0;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
     css`
       margin: 164px 0 0;
     `,

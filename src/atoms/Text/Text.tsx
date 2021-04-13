@@ -83,7 +83,7 @@ const TextStyled = styled.text<IProps>`
     )};
   ${(props: IProps) =>
     minWidth(
-      'desktop',
+      'laptopL',
       `
         font-size: ${
           (props.size === 'tiny' && '10px') ||

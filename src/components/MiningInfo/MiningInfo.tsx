@@ -29,6 +29,8 @@ const TitleContainer = styled.div`
       padding: 50px 0 25px 0;
     `,
   )}
+  ${minWidth('laptopL', css``)}
+    ${minWidth('desktop', css``)}
 `
 
 const TableContainer = styled.div`

@@ -62,6 +62,18 @@ const LinksWrapperStyled = styled.div`
       }
     `,
   )}
+  ${minWidth(
+    'laptopL',
+    css`
+      justify-content: space-evenly;
+    `,
+  )}
+    ${minWidth(
+    'desktop',
+    css`
+      justify-content: space-evenly;
+    `,
+  )}
 `
 const ContainerStyled = styled.div`
   z-index: 1;
@@ -70,6 +82,12 @@ const ContainerStyled = styled.div`
     'tablet',
     css`
       margin: 36px 50px 73px;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      margin: 36px 100px 73px;
     `,
   )}
   ${minWidth(
@@ -91,7 +109,7 @@ const SearchBarContainerStyled = styled.div`
   ${minWidth(
     'laptopL',
     css`
-      max-width: 100%;
+      max-width: 88%;
     `,
   )}
 `
@@ -114,6 +132,18 @@ const MiningCardStyled = styled.div`
   width: 100%;
   ${minWidth(
     'tablet',
+    css`
+      width: auto;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      width: 48%;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
     css`
       width: auto;
     `,

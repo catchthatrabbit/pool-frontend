@@ -16,7 +16,7 @@ const WrapperStyled = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.spindle};
   border-radius: 10px;
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       height: 88px;
       width: 260px;

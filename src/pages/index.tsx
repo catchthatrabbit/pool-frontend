@@ -40,6 +40,12 @@ const SearchBarContainerStyled = styled.div`
 const TableContainerStyled = styled.div`
   margin: 17px 50px 75px;
   ${minWidth(
+    'laptopL',
+    css`
+      margin: 17px 100px 75px;
+    `,
+  )}
+  ${minWidth(
     'desktop',
     css`
       margin: 17px 140px 75px;

@@ -95,6 +95,12 @@ const ContentContainer = styled.div`
       }
     `,
   )}
+    ${minWidth(
+    'laptopL',
+    css`
+      background-position: -25px -10px;
+    `,
+  )}
   ${minWidth(
     'desktop',
     css`
