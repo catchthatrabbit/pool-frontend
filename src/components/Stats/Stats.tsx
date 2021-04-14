@@ -52,9 +52,9 @@ const ContentContainer = styled.div`
   display: flex;
   width: 100%;
   box-sizing: border-box;
-  background: url('images/statistics_bg.png') no-repeat;
   flex-flow: column;
-  background-position: -30px 0px;
+  background: url('images/statistics_bg.png') no-repeat -30px 0;
+  align-items: center;
   background-size: cover;
   padding: 0 40px;
   ul {

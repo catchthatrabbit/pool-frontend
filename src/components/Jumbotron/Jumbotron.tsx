@@ -351,23 +351,24 @@ const ImageStyled = styled.img`
     `,
   )}
 `
-const MapContainer = styled.div`
-  width: 100%;
-  position: absolute;
-  top: 40%;
-  transform: translate(90px);
-  display: flex;
-  justify-content: space-around;
-  ${minWidth(
-    'tablet',
-    css`
-      transform: translate(190px);
-    `,
-  )}
-`
 
 interface IProps {
   data: InfoBoxItem[]
+}
+
+const MapButtonWrapper = ({ href, children }) => {
+  const displayType = useContext(ResponsiveContext)
+  const showGlowingCircle = !(
+    displayType === 'tablet' || displayType === 'mobileL'
+  )
+
+  if (showGlowingCircle) return <MapButton href={href}>{children}</MapButton>
+
+  return (
+    <Button theme="transparent" href={href}>
+      {children}
+    </Button>
+  )
 }
 
 const Jumbotron: FC<IProps> = ({ data }) => {
@@ -387,32 +388,6 @@ const Jumbotron: FC<IProps> = ({ data }) => {
       </Text>
     </TitleTexStyled>
   )
-  const MapButtons = !displayTitleTop ? (
-    <>
-      <USStyle>
-        <MapButton href={connectToUS}>Connect US location</MapButton>
-      </USStyle>
-      <EUStyle>
-        <MapButton href={connectToEurope}>Connect EU location</MapButton>
-      </EUStyle>
-      <APStyle>
-        <MapButton href={connectToAsia}>Connect AP location</MapButton>
-      </APStyle>
-    </>
-  ) : (
-    <MapContainer>
-      <Button theme="transparent" href={connectToUS}>
-        Connect US
-      </Button>
-      <Button theme="transparent" href={connectToEurope}>
-        Connect EU
-      </Button>
-      <Button theme="transparent" href={connectToAsia}>
-        Connect AP
-      </Button>
-    </MapContainer>
-  )
-  console.log(displayType)
   return (
     <JumbotronStyle>
       <ul>
@@ -425,7 +400,21 @@ const Jumbotron: FC<IProps> = ({ data }) => {
       {displayTitleTop && title}
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={''} />
-        {MapButtons}
+        <USStyle>
+          <MapButtonWrapper href={connectToUS}>
+            Connect US location
+          </MapButtonWrapper>
+        </USStyle>
+        <EUStyle>
+          <MapButtonWrapper href={connectToEurope}>
+            Connect EU location
+          </MapButtonWrapper>
+        </EUStyle>
+        <APStyle>
+          <MapButtonWrapper href={connectToAsia}>
+            Connect AP location
+          </MapButtonWrapper>
+        </APStyle>
         <MouseContainerStyle>
           <MouseStyle>
             <ScrollStyle />
