@@ -81,6 +81,9 @@ const ContentContainer = styled.div`
         margin-top: 50px;
         flex-flow: row wrap;
         justify-content: space-evenly;
+        li {
+          margin-bottom: 25px;
+        }
       }
     `,
   )}

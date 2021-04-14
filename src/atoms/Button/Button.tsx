@@ -51,7 +51,6 @@ const ButtonStyled = styled.button`
       &:hover {
         background-color: ${applyTransparence(0.5, colorVariables.gunPowder)};
       }
-      padding: 30px 34px;
       ${minWidth(
         'tablet',
         css`

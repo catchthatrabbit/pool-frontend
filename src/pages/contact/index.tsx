@@ -8,12 +8,11 @@ import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
   margin: 36px 20px 73px;
-  width: 373px;
+  width: auto;
   ${minWidth(
     'tablet',
     css`
       margin: 36px 50px 73px;
-      width: auto;
     `,
   )}
   ${minWidth(

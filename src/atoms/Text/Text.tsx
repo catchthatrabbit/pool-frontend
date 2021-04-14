@@ -48,9 +48,9 @@ const TextStyled = styled.text<IProps>`
     `font-size: ${
       (props.size === 'tiny' && '11px') ||
       (props.size === 'small' && '12px') ||
-      (props.size === 'medium' && '13px') ||
-      (props.size === 'large' && '13px') ||
-      (props.size === 'very-large' && '14px') ||
+      (props.size === 'medium' && '12px') ||
+      (props.size === 'large' && '12px') ||
+      (props.size === 'very-large' && '12px') ||
       (props.size === 'ultra-large' && '27px')
     };`};
   ${(props: IProps) =>

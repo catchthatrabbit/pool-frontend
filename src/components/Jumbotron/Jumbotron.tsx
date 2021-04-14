@@ -81,7 +81,7 @@ const LocationStyle = styled.div`
 `
 const USStyle = styled(LocationStyle)`
   transform: scale(0.5);
-  top: -5%;
+  top: 1%;
   left: 8%;
   ${minWidth(
     'tablet',
@@ -108,7 +108,7 @@ const USStyle = styled(LocationStyle)`
 `
 const EUStyle = styled(LocationStyle)`
   transform: scale(0.5);
-  top: -8%;
+  top: 1%;
   left: 40%;
   ${minWidth(
     'tablet',
