@@ -351,20 +351,6 @@ const ImageStyled = styled.img`
     `,
   )}
 `
-const MapContainer = styled.div`
-  width: 100%;
-  position: absolute;
-  top: 40%;
-  transform: translate(90px);
-  display: flex;
-  justify-content: space-around;
-  ${minWidth(
-    'tablet',
-    css`
-      transform: translate(190px);
-    `,
-  )}
-`
 
 interface IProps {
   data: InfoBoxItem[]
