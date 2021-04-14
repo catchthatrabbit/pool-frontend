@@ -14,6 +14,14 @@ const BoxesWrapperStyled = styled.ul`
     display: flex;
     margin-bottom: 60px;
   }
+  flex-direction: column;
+  align-items: center;
+  ${minWidth(
+    'tablet',
+    css`
+      flex-direction: row;
+    `,
+  )}
   ${minWidth(
     'desktop',
     css`

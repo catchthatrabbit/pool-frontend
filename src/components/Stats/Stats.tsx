@@ -10,20 +10,26 @@ import { minWidth } from 'helpers/responsive'
 
 const ChartContainer = styled.div`
   width: 100%;
-  margin: 50px 0;
+  margin: 0;
   transform: scale(1);
   ${minWidth(
     'tablet',
     css`
-      transform: translateY(70px) translateX(40px) scale(1.5);
+      transform: translateY(70px) translateX(10px) scale(1);
     `,
   )}
   ${minWidth(
     'laptop',
     css`
+      margin: 50px 290px 0 0;
       width: 100%;
-      margin-right: 290px;
       transform: scale(1);
+    `,
+  )}
+    ${minWidth(
+    'laptopL',
+    css`
+      margin-right: 360px;
     `,
   )}
   ${minWidth(
@@ -59,7 +65,7 @@ const ContentContainer = styled.div`
     flex-direction: column;
     padding: 0;
     li {
-      width: 50%;
+      width: auto;
     }
     li:not(:last-child) {
       margin-bottom: 25px;
@@ -68,27 +74,30 @@ const ContentContainer = styled.div`
   ${minWidth(
     'tablet',
     css`
-      flex-flow: row;
-      background-position: -30px 0px;
+      background-position: -100px -60px;
       background-size: cover;
       padding: 0 40px;
       ul {
-        margin-left: 180px;
+        margin-top: 50px;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
       }
     `,
   )}
   ${minWidth(
     'laptop',
     css`
-      background-position: -15px -10px;
+      flex-flow: row;
+      background-position: 5px 0;
       padding: 0 50px;
       ul {
+        flex-flow: column;
         position: absolute;
         right: 5%;
         height: 63%;
         width: auto;
         justify-content: space-between;
-        margin-top: 50px;
+        margin-left: 180px;
         li {
           width: auto;
         }
@@ -98,7 +107,7 @@ const ContentContainer = styled.div`
     ${minWidth(
     'laptopL',
     css`
-      background-position: -25px -10px;
+      background-position: 0 5px;
     `,
   )}
   ${minWidth(

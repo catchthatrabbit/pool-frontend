@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
 
@@ -15,6 +15,7 @@ import {
   connectToAsia,
 } from 'constants/paths'
 import { minWidth } from 'helpers/responsive'
+import ResponsiveContext from '../../providers/responsive-provider/context'
 
 const scrollTranslate = keyframes`
   0% {
@@ -168,7 +169,7 @@ const MapStyle = styled.div`
   ${minWidth(
     'tablet',
     css`
-      transform: translateX(-190px);
+      transform: translateX(-190px) translateY(20px);
       top: 90px;
     `,
   )}
@@ -242,13 +243,23 @@ const JumbotronStyle = styled.div`
   )}
 `
 const TitleTexStyled = styled.div`
+  z-index: 1;
   bottom: 60%;
   margin: 20px 0 0;
   order: -1;
   word-break: break-all;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   text {
     margin-right: 10px;
   }
+  ${minWidth(
+    'laptopL',
+    css`
+      justify-content: left;
+    `,
+  )}
 `
 
 const ButtonContentStyled = styled.div`
@@ -340,22 +351,44 @@ const ImageStyled = styled.img`
     `,
   )}
 `
+const MapContainer = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  transform: translate(90px);
+  display: flex;
+  justify-content: space-around;
+  ${minWidth(
+    'tablet',
+    css`
+      transform: translate(190px);
+    `,
+  )}
+`
 
 interface IProps {
   data: InfoBoxItem[]
 }
 
-const Jumbotron: FC<IProps> = ({ data }) => (
-  <JumbotronStyle>
-    <ul>
-      {data.map(({ title, value, type }) => (
-        <li key={title}>
-          <InfoBox title={title} value={value} type={type} />
-        </li>
-      ))}
-    </ul>
-    <MapStyle>
-      <ImageStyled src={'/images/map_bg.png'} alt={''} />
+const Jumbotron: FC<IProps> = ({ data }) => {
+  const displayType = useContext(ResponsiveContext)
+  const displayTitleTop = displayType === 'tablet' || displayType === 'mobileL'
+
+  const title = (
+    <TitleTexStyled>
+      <Text size="ultra-large" italic>
+        Dedicated
+      </Text>
+      <Text size="ultra-large" italic>
+        Pool for
+      </Text>
+      <Text size="ultra-large" color="apple" italic>
+        CORE COIN
+      </Text>
+    </TitleTexStyled>
+  )
+  const MapButtons = !displayTitleTop ? (
+    <>
       <USStyle>
         <MapButton href={connectToUS}>Connect US location</MapButton>
       </USStyle>
@@ -365,44 +398,63 @@ const Jumbotron: FC<IProps> = ({ data }) => (
       <APStyle>
         <MapButton href={connectToAsia}>Connect AP location</MapButton>
       </APStyle>
-      <MouseContainerStyle>
-        <MouseStyle>
-          <ScrollStyle />
-        </MouseStyle>
-        <Arrow />
-      </MouseContainerStyle>
-    </MapStyle>
-    <InfoComponentStyled>
-      <TitleTexStyled>
-        <Text size="ultra-large" italic>
-          Dedicated
-        </Text>
-        <Text size="ultra-large" italic>
-          Pool for
-        </Text>
-        <Text size="ultra-large" color="apple" italic>
-          CORE COIN
-        </Text>
-      </TitleTexStyled>
-      <p>
-        We have several locations for you to select from.
-        <br />
-        Please select one of the locations to start your mines today!
-        <br />
-        <br />
-        PPLNS System
-        <br />
-        2% Pool Fee
-        <br />
-        Payout Threshhold 20 XCB
-        <br />
-        Payout 3 times per day
-        <br />
-      </p>
-      <ButtonContentStyled>
-        <Button href={startMining}>Start Mining</Button>
-      </ButtonContentStyled>
-    </InfoComponentStyled>
-  </JumbotronStyle>
-)
+    </>
+  ) : (
+    <MapContainer>
+      <Button theme="transparent" href={connectToUS}>
+        Connect US
+      </Button>
+      <Button theme="transparent" href={connectToEurope}>
+        Connect EU
+      </Button>
+      <Button theme="transparent" href={connectToAsia}>
+        Connect AP
+      </Button>
+    </MapContainer>
+  )
+  console.log(displayType)
+  return (
+    <JumbotronStyle>
+      <ul>
+        {data.map(({ title, value, type }) => (
+          <li key={title}>
+            <InfoBox title={title} value={value} type={type} />
+          </li>
+        ))}
+      </ul>
+      {displayTitleTop && title}
+      <MapStyle>
+        <ImageStyled src={'/images/map_bg.png'} alt={''} />
+        {MapButtons}
+        <MouseContainerStyle>
+          <MouseStyle>
+            <ScrollStyle />
+          </MouseStyle>
+          <Arrow />
+        </MouseContainerStyle>
+      </MapStyle>
+      <InfoComponentStyled>
+        {!displayTitleTop && title}
+        <p>
+          We have several locations for you to select from.
+          <br />
+          Please select one of the locations to start your mines today!
+          <br />
+          <br />
+          PPLNS System
+          <br />
+          2% Pool Fee
+          <br />
+          Payout Threshhold 20 XCB
+          <br />
+          Payout 3 times per day
+          <br />
+        </p>
+        <ButtonContentStyled>
+          <Button href={startMining}>Start Mining</Button>
+        </ButtonContentStyled>
+      </InfoComponentStyled>
+    </JumbotronStyle>
+  )
+}
 export default Jumbotron

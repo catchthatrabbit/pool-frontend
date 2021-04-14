@@ -7,7 +7,7 @@ import BoxEmail from 'atoms/BoxEmail'
 import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
-  margin: 63px auto;
+  margin: 36px 20px 73px;
   width: 373px;
   ${minWidth(
     'tablet',

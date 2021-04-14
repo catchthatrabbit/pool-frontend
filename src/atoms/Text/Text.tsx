@@ -46,24 +46,24 @@ const TextStyled = styled.text<IProps>`
 
   ${(props: IProps) =>
     `font-size: ${
-      (props.size === 'tiny' && '10px') ||
-      (props.size === 'small' && '10px') ||
-      (props.size === 'medium' && '10px') ||
-      (props.size === 'large' && '10px') ||
-      (props.size === 'very-large' && '12px') ||
-      (props.size === 'ultra-large' && '20px')
+      (props.size === 'tiny' && '11px') ||
+      (props.size === 'small' && '12px') ||
+      (props.size === 'medium' && '13px') ||
+      (props.size === 'large' && '13px') ||
+      (props.size === 'very-large' && '14px') ||
+      (props.size === 'ultra-large' && '27px')
     };`};
   ${(props: IProps) =>
     minWidth(
       'tablet',
       `
         font-size: ${
-          (props.size === 'tiny' && '10px') ||
-          (props.size === 'small' && '10px') ||
-          (props.size === 'medium' && '12px') ||
+          (props.size === 'tiny' && '12px') ||
+          (props.size === 'small' && '12px') ||
+          (props.size === 'medium' && '13px') ||
           (props.size === 'large' && '14px') ||
           (props.size === 'very-large' && '16px') ||
-          (props.size === 'ultra-large' && '20px')
+          (props.size === 'ultra-large' && '27px')
         };
       `,
     )};
@@ -72,8 +72,8 @@ const TextStyled = styled.text<IProps>`
       'laptop',
       `
         font-size: ${
-          (props.size === 'tiny' && '10px') ||
-          (props.size === 'small' && '10px') ||
+          (props.size === 'tiny' && '12px') ||
+          (props.size === 'small' && '12px') ||
           (props.size === 'medium' && '14px') ||
           (props.size === 'large' && '18px') ||
           (props.size === 'very-large' && '18px') ||
