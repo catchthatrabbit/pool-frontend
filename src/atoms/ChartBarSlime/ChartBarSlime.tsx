@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import {
   XAxis,
   YAxis,
@@ -11,6 +11,7 @@ import {
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
 import checkData from 'helpers/chartDataTransform'
+import ResponsiveContext from '../../providers/responsive-provider/context'
 
 interface IProps {
   data: []
@@ -18,6 +19,8 @@ interface IProps {
 
 const ChartBarSlime: FC<IProps> = ({ data }) => {
   const chartData = checkData(data, 250)
+  const displayType = useContext(ResponsiveContext)
+  const fontSize = displayType === 'mobileL' ? 'ultra-large' : 'large'
 
   return (
     <ResponsiveContainer width="100%" height="100%">

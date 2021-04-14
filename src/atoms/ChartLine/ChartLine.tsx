@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import {
   LineChart,
   Line,
@@ -10,12 +10,15 @@ import {
   Tooltip,
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
+import ResponsiveContext from '../../providers/responsive-provider/context'
 
 interface IProps {
   data: []
 }
 
 const ChartLine: FC<IProps> = ({ data }) => {
+  const displayType = useContext(ResponsiveContext)
+  const fontSize = displayType === 'mobileL' ? 'ultra-large' : 'large'
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart

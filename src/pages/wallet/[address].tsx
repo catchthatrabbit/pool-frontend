@@ -127,9 +127,6 @@ const InfoContainer = styled(ColumnContainer)`
     'laptopL',
     css`
       justify-content: space-between;
-      > div:not(:nth-child(1)) {
-        margin-top: 10px;
-      }
       > div {
         margin-top: 10px;
       }
@@ -139,9 +136,6 @@ const InfoContainer = styled(ColumnContainer)`
     'desktop',
     css`
       justify-content: space-between;
-      > div:not(:nth-child(1)) {
-        margin-top: 0;
-      }
       > div {
         margin-top: 0;
       }
