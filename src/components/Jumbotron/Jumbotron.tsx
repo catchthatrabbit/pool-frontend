@@ -264,22 +264,11 @@ const InfoComponentStyled = styled.div`
   text-align: center;
   width: 100%;
 
-  p {
-    bottom: 25%;
-    margin: 30px 0;
-    line-height: 29px;
-    font-family: ${fonts.secondary};
-    color: ${colorVariables.santasGray};
-  }
-
   ${minWidth(
     'tablet',
     css`
       text-align: center;
       width: 100%;
-      p {
-        font-size: 16px;
-      }
     `,
   )}
   ${minWidth(
@@ -290,11 +279,14 @@ const InfoComponentStyled = styled.div`
       width: 20%;
       top: 20%;
       position: absolute;
-      p {
-        font-size: 24px;
-      }
     `,
   )}
+`
+const InfoTextContent = styled.div`
+  bottom: 25%;
+  margin: 30px 0;
+  display: flex;
+  flex-flow: column;
 `
 const ImageStyled = styled.img`
   height: 100%;
@@ -359,21 +351,57 @@ const Jumbotron: FC<IProps> = ({ data }) => (
           CORE COIN
         </Text>
       </TitleTexStyled>
-      <p>
-        We have several locations for you to select from.
+      <InfoTextContent>
+        <Text
+          size="very-large"
+          color="santasGray"
+          fontFamily="secondary"
+          space="initial"
+        >
+          We have several locations for you to select from.
+        </Text>
+        <Text
+          size="very-large"
+          color="santasGray"
+          fontFamily="secondary"
+          space="initial"
+        >
+          Please select one of the locations to start your mines today!
+        </Text>
         <br />
-        Please select one of the locations to start your mines today!
-        <br />
-        <br />
-        PPLNS System
-        <br />
-        2% Pool Fee
-        <br />
-        Payout Threshhold 20 XCB
-        <br />
-        Payout 3 times per day
-        <br />
-      </p>
+        <Text
+          size="very-large"
+          color="santasGray"
+          fontFamily="secondary"
+          space="initial"
+        >
+          PPLNS System
+        </Text>
+        <Text
+          size="very-large"
+          color="santasGray"
+          fontFamily="secondary"
+          space="initial"
+        >
+          2% Pool Fee
+        </Text>
+        <Text
+          size="very-large"
+          color="santasGray"
+          fontFamily="secondary"
+          space="initial"
+        >
+          Payout Threshhold 20 XCB
+        </Text>
+        <Text
+          size="very-large"
+          color="santasGray"
+          fontFamily="secondary"
+          space="initial"
+        >
+          Payout 3 times per day
+        </Text>
+      </InfoTextContent>
       <ButtonContentStyled>
         <Button href={startMining}>Start Mining</Button>
       </ButtonContentStyled>
