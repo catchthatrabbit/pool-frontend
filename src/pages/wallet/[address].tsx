@@ -30,7 +30,7 @@ import useGoToWallet from 'hooks/useGoToWallet'
 import { useRouter } from 'next/router'
 import Loading from '@components/Loading/Loading'
 import { minWidth } from 'helpers/responsive'
-import NotFound from '@components/NotFound/NotFound'
+import NotFound from 'components/NotFound/NotFound'
 
 const ContainerStyled = styled.div`
   z-index: 1;
