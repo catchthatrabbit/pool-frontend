@@ -51,6 +51,19 @@ const LogoStyled = styled.div`
     'tablet',
     css`
       transform: scale(1);
+      margin-right: 20px;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      margin-right: 100px;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      margin-right: 250px;
     `,
   )}
 `
@@ -116,6 +129,13 @@ const HeaderDiv = styled.div`
 const FooterStyled = styled.footer`
   width: 100%;
 `
+const FooterInfoContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+`
+
 const FooterInfo = ({ title, list }) => (
   <InfoStyled>
     <Text size="large" fontFamily="primary">
@@ -194,9 +214,11 @@ const Footer = () => {
             </Text>
           </LogoTextStyle>
         </LogoStyled>
-        {footerData.map(({ title, list }) => (
-          <FooterInfo key={title} title={title} list={list} />
-        ))}
+        <FooterInfoContent>
+          {footerData.map(({ title, list }) => (
+            <FooterInfo key={title} title={title} list={list} />
+          ))}
+        </FooterInfoContent>
       </MainSection>
       <FooterSection>
         <Text size="tiny">© 2020 Catch That Rabbit. All rights reserved.</Text>
