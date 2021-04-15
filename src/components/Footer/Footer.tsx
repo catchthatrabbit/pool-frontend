@@ -84,15 +84,8 @@ const MainSection = styled.div`
     'tablet',
     css`
       margin: 50px 60px 28px;
-      flex-flow: column;
-      height: 282px;
-    `,
-  )}
-  ${minWidth(
-    'tablet',
-    css`
-      margin: 50px 60px 28px;
       flex-flow: row;
+      height: 282px;
     `,
   )}
   ${minWidth(
@@ -114,7 +107,7 @@ const HeaderSection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 494px;
+  height: auto;
   background: ${applyTransparence(0.25, colorVariables.gunPowder)};
   border: 1px solid ${colorVariables.gunPowder};
 `
@@ -124,7 +117,13 @@ const HeaderDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 103px 0 103px 0;
+  padding: 50px 0 50px;
+  ${minWidth(
+    'laptop',
+    css`
+      padding: 103px 0 103px;
+    `,
+  )}
 `
 const FooterStyled = styled.footer`
   width: 100%;
