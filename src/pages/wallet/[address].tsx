@@ -241,6 +241,17 @@ const TitleCharLineContainer = styled.div`
 const TitleCharBarContainer = styled.div`
   margin: 87px 0 38px;
 `
+const AddressContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  ${minWidth(
+    'tablet',
+    css`
+      width: auto;
+    `,
+  )}
+`
 
 export const getStaticPaths: GetStaticPaths = defaultGetStaticPaths
 
@@ -289,9 +300,11 @@ const Wallet: FC<any> = (props) => {
       <ContainerStyled>
         <ContentTitle Image={<SearchResultsIcon />}>Search result</ContentTitle>
         <ColumnContainer>
-          <Text size="very-large" color="apple" italic>
-            {props.address}
-          </Text>
+          <AddressContainer>
+            <Text size="very-large" color="apple" italic>
+              {props.address}
+            </Text>
+          </AddressContainer>
           <ButtonStyled>
             <CopyButton value={props.address} />
           </ButtonStyled>

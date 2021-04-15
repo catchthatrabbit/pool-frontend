@@ -76,7 +76,7 @@ const TextStyled = styled.text<IProps>`
           (props.size === 'small' && '12px') ||
           (props.size === 'medium' && '14px') ||
           (props.size === 'large' && '18px') ||
-          (props.size === 'very-large' && '18px') ||
+          (props.size === 'very-large' && '24px') ||
           (props.size === 'ultra-large' && '27px')
         };
       `,

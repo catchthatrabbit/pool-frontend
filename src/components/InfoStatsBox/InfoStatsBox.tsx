@@ -13,6 +13,7 @@ interface IProps {
 }
 
 const WrapperStyled = styled.div`
+  width: 50%;
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
   padding: ${(props: { size: string }) =>
