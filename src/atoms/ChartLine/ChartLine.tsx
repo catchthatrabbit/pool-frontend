@@ -10,7 +10,7 @@ import {
   Tooltip,
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
-import ResponsiveContext from '../../providers/responsive-provider/context'
+import ResponsiveContext from 'providers/responsive-provider/context'
 
 interface IProps {
   data: []
@@ -18,7 +18,8 @@ interface IProps {
 
 const ChartLine: FC<IProps> = ({ data }) => {
   const displayType = useContext(ResponsiveContext)
-  const fontSize = displayType === 'mobileL' ? 'ultra-large' : 'large'
+  const fontSize =
+    displayType === 'mobileL' || displayType === 'tablet' ? '14px' : '27px'
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
@@ -72,6 +73,7 @@ const ChartLine: FC<IProps> = ({ data }) => {
           contentStyle={{
             borderColor: colorVariables.gunPowder,
             backgroundColor: colorVariables.woodsmoke,
+            fontSize: fontSize,
           }}
           cursor={{
             stroke: colorVariables.gunPowder,
