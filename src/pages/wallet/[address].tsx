@@ -95,12 +95,6 @@ const ChartBarContainer = styled.div`
 const ChartLineContainer = styled.div`
   height: 224px;
   width: 1640px;
-  ${minWidth(
-    'tablet',
-    css`
-      height: 443px;
-    `,
-  )}
 `
 
 const ColumnContainer = styled.div`
