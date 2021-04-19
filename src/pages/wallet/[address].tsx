@@ -211,6 +211,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
+      // errorCode,
       address: params?.address,
       tableData: TableData as any,
       miningInfoData: MiningInfoData as any,
