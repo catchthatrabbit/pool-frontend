@@ -30,6 +30,7 @@ import useGoToWallet from 'hooks/useGoToWallet'
 import { useRouter } from 'next/router'
 import Loading from '@components/Loading/Loading'
 import { minWidth } from 'helpers/responsive'
+import NotFound from 'components/NotFound/NotFound'
 
 const ContainerStyled = styled.div`
   z-index: 1;
@@ -257,8 +258,15 @@ export const getStaticPaths: GetStaticPaths = defaultGetStaticPaths
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // const props = fetch(`/api/${address}`)
+  // const errorCode = props.ok ? false : props.statusCode
 
   console.log(params)
+
+  // if(errorCode) {
+  //   return {
+  //     props: { errorCode }
+  //   }
+  // }
 
   return {
     props: {
@@ -294,6 +302,9 @@ const Wallet: FC<any> = (props) => {
   if (router.isFallback) {
     return <Loading />
   }
+  // if (props.errorCode) {
+  //   return <NotFound />
+  // }
   return (
     <>
       <Background />
