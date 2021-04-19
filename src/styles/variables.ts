@@ -1,6 +1,6 @@
 export const fonts = {
   primary: 'good-times, sans-serif',
-  secondary: 'Verdana, Geneva, Tahoma, sans-serif',
+  secondary: 'PT Sans, sans-serif',
 }
 
 export const colorVariables = {
