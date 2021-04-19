@@ -71,7 +71,13 @@ const LogoTextStyle = styled.div`
   margin: 30px 0 0 0;
 `
 const HeaderTextStyle = styled.div`
-  margin: 60px 0;
+  margin: 30px 0;
+  ${minWidth(
+    'laptop',
+    css`
+      margin: 60px 0;
+    `,
+  )}
 `
 const MainSection = styled.div`
   display: flex;
