@@ -5,6 +5,7 @@ import Header from 'components/Header/Header'
 import Footer from 'components/Footer'
 import RootProvider from '../providers'
 import 'styles/fonts.css'
+import MainContent from 'atoms/MainContent/MainContent'
 
 function MyApp({ Component, pageProps }) {
   const { pathname } = useRouter()
@@ -16,9 +17,9 @@ function MyApp({ Component, pageProps }) {
         <title>Catch that Rabbit</title>
       </Head>
       {!isErrorPage && <Header />}
-      <main>
+      <MainContent>
         <Component {...pageProps} />
-      </main>
+      </MainContent>
       {!isErrorPage && <Footer />}
     </RootProvider>
   )

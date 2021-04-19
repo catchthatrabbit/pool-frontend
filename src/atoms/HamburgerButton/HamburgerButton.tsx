@@ -23,7 +23,7 @@ const ButtonStyled = styled.button<IProps>`
     height: 2px;
     border-radius: 2px;
     background: ${colorVariables.white};
-    transition: 2s;
+    transition: 1s;
   }
   &:focus {
     outline: none;

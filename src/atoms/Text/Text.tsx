@@ -2,6 +2,7 @@ import React, { FC, MouseEventHandler } from 'react'
 import { colorVariables, fonts } from 'styles/variables'
 
 import styled from 'styled-components'
+import { minWidth } from 'helpers/responsive'
 
 export type TextColor = 'white' | 'apple' | 'santasGray' | 'red'
 
@@ -14,18 +15,10 @@ interface IProps {
   active?: boolean
   className?: string
   onClick?: MouseEventHandler
+  space?: 'nowrap' | 'initial'
 }
 
 const TextStyled = styled.text<IProps>`
-  white-space: nowrap;
-  font-size: ${(props: IProps) =>
-    (props.size === 'tiny' && '10px') ||
-    (props.size === 'small' && '12px') ||
-    (props.size === 'medium' && '14px') ||
-    (props.size === 'large' && '18px') ||
-    (props.size === 'very-large' && '24px') ||
-    (props.size === 'ultra-large' && '42px') ||
-    '18px'};
   font-family: ${(props: IProps) =>
     props.fontFamily === 'primary' ? fonts.primary : fonts.secondary};
   color: ${(props: IProps) =>
@@ -44,6 +37,64 @@ const TextStyled = styled.text<IProps>`
       border-bottom: 3px solid ${colorVariables.white};
       padding-bottom: 8px;
     `};
+  ${(props) =>
+    (props.space === 'nowrap' &&
+      `
+      white-space: nowrap;
+    `) ||
+    `white-space: initial;`};
+
+  ${(props: IProps) =>
+    `font-size: ${
+      (props.size === 'tiny' && '11px') ||
+      (props.size === 'small' && '12px') ||
+      (props.size === 'medium' && '12px') ||
+      (props.size === 'large' && '12px') ||
+      (props.size === 'very-large' && '12px') ||
+      (props.size === 'ultra-large' && '27px')
+    };`};
+  ${(props: IProps) =>
+    minWidth(
+      'tablet',
+      `
+        font-size: ${
+          (props.size === 'tiny' && '12px') ||
+          (props.size === 'small' && '12px') ||
+          (props.size === 'medium' && '13px') ||
+          (props.size === 'large' && '14px') ||
+          (props.size === 'very-large' && '16px') ||
+          (props.size === 'ultra-large' && '27px')
+        };
+      `,
+    )};
+  ${(props: IProps) =>
+    minWidth(
+      'laptop',
+      `
+        font-size: ${
+          (props.size === 'tiny' && '12px') ||
+          (props.size === 'small' && '12px') ||
+          (props.size === 'medium' && '14px') ||
+          (props.size === 'large' && '18px') ||
+          (props.size === 'very-large' && '24px') ||
+          (props.size === 'ultra-large' && '27px')
+        };
+      `,
+    )};
+  ${(props: IProps) =>
+    minWidth(
+      'laptopL',
+      `
+        font-size: ${
+          (props.size === 'tiny' && '10px') ||
+          (props.size === 'small' && '12px') ||
+          (props.size === 'medium' && '14px') ||
+          (props.size === 'large' && '18px') ||
+          (props.size === 'very-large' && '24px') ||
+          (props.size === 'ultra-large' && '42px')
+        };
+      `,
+    )};
 `
 
 const Text: FC<IProps> = ({
@@ -56,6 +107,7 @@ const Text: FC<IProps> = ({
   active = false,
   className,
   onClick,
+  space = 'nowrap',
 }) => (
   <TextStyled
     size={size}
@@ -66,6 +118,7 @@ const Text: FC<IProps> = ({
     active={active}
     className={className}
     onClick={onClick}
+    space={space}
   >
     {children}
   </TextStyled>

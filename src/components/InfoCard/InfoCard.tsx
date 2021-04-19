@@ -1,16 +1,35 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import React, { FC } from 'react'
 import Text from 'atoms/Text/Text'
 import { colorVariables } from 'styles/variables'
 import getText, { TextType, InfoBoxItem } from 'helpers/text'
+import { minWidth } from 'helpers/responsive'
 
 const WrapperStyled = styled.div`
-  width: 812px;
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
+  width: 100%;
+  ${minWidth(
+    'laptop',
+    css`
+      width: 78%;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      width: 48%;
+    `,
+  )}
 `
 const TitleStyled = styled.div`
-  padding: 43px 65px 18px;
+  padding: 35px 35px 18px;
+  ${minWidth(
+    'tablet',
+    css`
+      padding: 43px 65px 18px;
+    `,
+  )}
 `
 const ContentTextStyled = styled.div`
   display: flex;
@@ -28,8 +47,16 @@ const TextStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   :not(:nth-child(3)) {
-    margin-right: 126px;
+    margin-right: 50px;
   }
+  ${minWidth(
+    'tablet',
+    css`
+      :not(:nth-child(3)) {
+        margin-right: 126px;
+      }
+    `,
+  )}
 `
 
 interface IProps {
@@ -56,17 +83,17 @@ const InfoCard: FC<IProps> = ({ title, data }) => {
           return (
             <TextStyled>
               <Text size="very-large" fontWeight="bold" italic>
-                {`${text.prefix} ${text.value}`}
-                {text.suffix}
-                <Text size="large" fontWeight="bold" italic>
-                  {text.metric !== '' && ' ' + text.metric}
-                  {type === 'hashSpeed' && '/'}
-                </Text>
-                {type === 'hashSpeed' && (
-                  <Text size="small" fontWeight="bold" italic>
-                    s
+                {`${text.prefix} ${text.value} ${text.suffix}`}
+                {text.metric !== '' &&
+                  <Text size="large" fontWeight="bold" italic>
+                    {` ${text.metric}`}
                   </Text>
-                )}
+                }
+                {type === 'hashSpeed' &&
+                  <Text size="small" fontWeight="bold" italic>
+                    /s
+                  </Text>
+                }
               </Text>
               <Text size="small" fontWeight="light">
                 {title}

@@ -5,7 +5,9 @@ import {
   ResponsiveDeviceName,
 } from './utils'
 
-const deviceNameBasedOnSize = getDeviceNameBasedOnSize(getDeviceDimensions())
+export const deviceNameBasedOnSize = getDeviceNameBasedOnSize(
+  getDeviceDimensions(),
+)
 const ResponsiveContext = React.createContext<ResponsiveDeviceName>(
   deviceNameBasedOnSize,
 )

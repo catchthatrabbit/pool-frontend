@@ -5,21 +5,65 @@ import SearchBar from 'atoms/SearchBar'
 import Table from 'components/Table'
 import { BlockerLogoIcon } from 'atoms/icons'
 import { TableData, BlocksInfoBoxData } from 'mockData/homePageData'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Background from 'atoms/Background'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
 import useGoToWallet from 'hooks/useGoToWallet'
+import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
-  margin: 36px 140px 73px;
   z-index: 1;
+  margin: 36px 20px 73px;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 36px 50px 73px;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      margin: 36px 100px 73px;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 36px 140px 73px;
+    `,
+  )}
 `
 const SearchBarContainerStyled = styled.div`
-  margin: 83px 140px;
-  width: 1363px;
+  margin: 23px auto 45px;
+  width: 85%;
+  ${minWidth('tablet', css``)}
+  ${minWidth(
+    'laptop',
+    css`
+      margin: 43px auto 90px;
+    `,
+  )}
+    ${minWidth(
+    'desktop',
+    css`
+      margin: 83px auto;
+    `,
+  )}
 `
 const BoxesWrapperStyled = styled.div`
-  margin: 41px 0 97px;
+  margin: 41px 0 41px;
+  ${minWidth(
+    'laptop',
+    css`
+      margin: 41px 10px 41px;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 41px 0 90px;
+    `,
+  )}
 `
 
 const BlocksPage: FC = () => {

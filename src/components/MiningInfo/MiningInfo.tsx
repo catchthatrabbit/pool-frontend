@@ -1,18 +1,41 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import InfoTable, { InfoTableItem, WidthStyle } from 'atoms/InfoTable/InfoTable'
 import { colorVariables } from 'styles/variables'
 import Text, { TextColor } from 'atoms/Text/Text'
+import { minWidth } from 'helpers/responsive'
 
 const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gunPowder};
   border-radius: 10px;
+  overflow: scroll;
+  overflow-y: hidden;
+  width: 100%;
+  ${minWidth(
+    'tablet',
+    css`
+      overflow: hidden;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      width: auto;
+    `,
+  )}
 `
 
 const TitleContainer = styled.div`
-  margin: 0 47px;
-  padding: 50px 0 25px 0;
   border-bottom: 1px solid ${colorVariables.gunPowder};
+  margin: 0 27px;
+  padding: 30px 0 15px 0;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 0 47px;
+      padding: 50px 0 25px 0;
+    `,
+  )}
 `
 
 const TableContainer = styled.div`
