@@ -83,17 +83,17 @@ const InfoCard: FC<IProps> = ({ title, data }) => {
           return (
             <TextStyled>
               <Text size="very-large" fontWeight="bold" italic>
-                {`${text.prefix} ${text.value}`}
-                {text.suffix}
-                <Text size="large" fontWeight="bold" italic>
-                  {text.metric !== '' && ' ' + text.metric}
-                  {type === 'hashSpeed' && '/'}
-                </Text>
-                {type === 'hashSpeed' && (
-                  <Text size="small" fontWeight="bold" italic>
-                    s
+                {`${text.prefix} ${text.value} ${text.suffix}`}
+                {text.metric !== '' &&
+                  <Text size="large" fontWeight="bold" italic>
+                    {` ${text.metric}`}
                   </Text>
-                )}
+                }
+                {type === 'hashSpeed' &&
+                  <Text size="small" fontWeight="bold" italic>
+                    /s
+                  </Text>
+                }
               </Text>
               <Text size="small" fontWeight="light">
                 {title}
