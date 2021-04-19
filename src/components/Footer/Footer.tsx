@@ -51,6 +51,19 @@ const LogoStyled = styled.div`
     'tablet',
     css`
       transform: scale(1);
+      margin-right: 20px;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      margin-right: 100px;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      margin-right: 250px;
     `,
   )}
 `
@@ -58,7 +71,13 @@ const LogoTextStyle = styled.div`
   margin: 30px 0 0 0;
 `
 const HeaderTextStyle = styled.div`
-  margin: 60px 0;
+  margin: 30px 0;
+  ${minWidth(
+    'laptop',
+    css`
+      margin: 60px 0;
+    `,
+  )}
 `
 const MainSection = styled.div`
   display: flex;
@@ -71,15 +90,8 @@ const MainSection = styled.div`
     'tablet',
     css`
       margin: 50px 60px 28px;
-      flex-flow: column;
-      height: 282px;
-    `,
-  )}
-  ${minWidth(
-    'tablet',
-    css`
-      margin: 50px 60px 28px;
       flex-flow: row;
+      height: 282px;
     `,
   )}
   ${minWidth(
@@ -101,7 +113,7 @@ const HeaderSection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 494px;
+  height: auto;
   background: ${applyTransparence(0.25, colorVariables.gunPowder)};
   border: 1px solid ${colorVariables.gunPowder};
 `
@@ -111,11 +123,24 @@ const HeaderDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 103px 0 103px 0;
+  padding: 50px 0 50px;
+  ${minWidth(
+    'laptop',
+    css`
+      padding: 103px 0 103px;
+    `,
+  )}
 `
 const FooterStyled = styled.footer`
   width: 100%;
 `
+const FooterInfoContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+`
+
 const FooterInfo = ({ title, list }) => (
   <InfoStyled>
     <Text size="large" fontFamily="primary">
@@ -194,9 +219,11 @@ const Footer = () => {
             </Text>
           </LogoTextStyle>
         </LogoStyled>
-        {footerData.map(({ title, list }) => (
-          <FooterInfo key={title} title={title} list={list} />
-        ))}
+        <FooterInfoContent>
+          {footerData.map(({ title, list }) => (
+            <FooterInfo key={title} title={title} list={list} />
+          ))}
+        </FooterInfoContent>
       </MainSection>
       <FooterSection>
         <Text size="tiny">© 2020 Catch That Rabbit. All rights reserved.</Text>

@@ -33,11 +33,17 @@ import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
   z-index: 1;
-  margin: 36px 10px 73px;
+  margin: 36px 20px 73px;
   ${minWidth(
     'tablet',
     css`
-      margin: 36px 70px 73px;
+      margin: 36px 50px 73px;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      margin: 36px 100px 73px;
     `,
   )}
   ${minWidth(
@@ -62,7 +68,13 @@ const TableContainerStyled = styled.div`
   margin: 17px 0 75px;
 `
 const TitleStyled = styled.div`
-  margin: 124px 0 68px;
+  margin: 50px 0 68px;
+  ${minWidth(
+    'desktop',
+    css`
+      margin: 124px 0 68px;
+    `,
+  )}
 `
 const TabContent = styled.div`
   ${(props: { active: boolean }) =>
@@ -81,7 +93,7 @@ const ChartBarContainer = styled.div`
   width: 1640px;
 `
 const ChartLineContainer = styled.div`
-  height: 443px;
+  height: 224px;
   width: 1640px;
 `
 
@@ -106,10 +118,22 @@ const InfoContainer = styled(ColumnContainer)`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       justify-content: space-between;
       > div:not(:nth-child(1)) {
+        margin-top: 10px;
+      }
+      > div {
+        margin-top: 10px;
+      }
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      justify-content: space-between;
+      > div {
         margin-top: 0;
       }
     `,
@@ -121,6 +145,24 @@ const InfoBoxContainer = styled(InfoContainer)`
     css`
       div:last-child {
         margin-top: 15px;
+      }
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      justify-content: center;
+    `,
+  )}
+   ${minWidth(
+    'desktop',
+    css`
+      justify-content: space-between;
+      div {
+        margin-top: 0;
+      }
+      div:last-child {
+        margin-top: 0;
       }
     `,
   )}
@@ -169,7 +211,7 @@ const MiningInfoContainer = styled.div`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       & > * {
         margin-right: 16px;
@@ -198,6 +240,17 @@ const TitleCharLineContainer = styled.div`
 `
 const TitleCharBarContainer = styled.div`
   margin: 87px 0 38px;
+`
+const AddressContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  ${minWidth(
+    'tablet',
+    css`
+      width: auto;
+    `,
+  )}
 `
 
 export const getStaticPaths: GetStaticPaths = defaultGetStaticPaths
@@ -247,9 +300,11 @@ const Wallet: FC<any> = (props) => {
       <ContainerStyled>
         <ContentTitle Image={<SearchResultsIcon />}>Search result</ContentTitle>
         <ColumnContainer>
-          <Text size="very-large" color="apple" italic>
-            {props.address}
-          </Text>
+          <AddressContainer>
+            <Text size="very-large" color="apple" italic>
+              {props.address}
+            </Text>
+          </AddressContainer>
           <ButtonStyled>
             <CopyButton value={props.address} />
           </ButtonStyled>

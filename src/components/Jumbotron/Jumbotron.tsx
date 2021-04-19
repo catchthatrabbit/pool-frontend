@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
 
@@ -15,6 +15,7 @@ import {
   connectToAsia,
 } from 'constants/paths'
 import { minWidth } from 'helpers/responsive'
+import ResponsiveContext from 'providers/responsive-provider/context'
 
 const scrollTranslate = keyframes`
   0% {
@@ -58,12 +59,12 @@ const MouseContainerStyle = styled.div`
   ${minWidth(
     'tablet',
     css`
-      left: calc(50% + 150px);
+      left: calc(50% + 190px);
       bottom: 0;
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       left: calc(50% + 40px);
       bottom: 5%;
@@ -80,7 +81,7 @@ const LocationStyle = styled.div`
 `
 const USStyle = styled(LocationStyle)`
   transform: scale(0.5);
-  top: -5%;
+  top: 1%;
   left: 8%;
   ${minWidth(
     'tablet',
@@ -98,7 +99,7 @@ const USStyle = styled(LocationStyle)`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       top: 25%;
       left: 35%;
@@ -107,7 +108,7 @@ const USStyle = styled(LocationStyle)`
 `
 const EUStyle = styled(LocationStyle)`
   transform: scale(0.5);
-  top: -8%;
+  top: 1%;
   left: 40%;
   ${minWidth(
     'tablet',
@@ -125,7 +126,7 @@ const EUStyle = styled(LocationStyle)`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       top: 25%;
       left: 58%;
@@ -152,7 +153,7 @@ const APStyle = styled(LocationStyle)`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       top: 35%;
       left: 77%;
@@ -168,21 +169,28 @@ const MapStyle = styled.div`
   ${minWidth(
     'tablet',
     css`
-      transform: translateX(-150px);
+      transform: translateX(-190px) translateY(20px);
       top: 90px;
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       transform: translateX(0);
       position: absolute;
-      left: -80px;
+      left: -10px;
       top: 50px;
+    `,
+  )}
+    ${minWidth(
+    'desktop',
+    css`
+      left: -80px;
     `,
   )}
 `
 const JumbotronStyle = styled.div`
+  overflow-x: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -216,6 +224,7 @@ const JumbotronStyle = styled.div`
       ul {
         justify-content: space-between;
         order: -2;
+        width: 90%;
         li {
           margin-top: 0;
         }
@@ -223,20 +232,34 @@ const JumbotronStyle = styled.div`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
+      ul {
+        width: 85%;
+      }
       height: 934px;
+      overflow-x: unset;
     `,
   )}
 `
 const TitleTexStyled = styled.div`
+  z-index: 1;
   bottom: 60%;
   margin: 20px 0 0;
   order: -1;
   word-break: break-all;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   text {
     margin-right: 10px;
   }
+  ${minWidth(
+    'laptopL',
+    css`
+      justify-content: left;
+    `,
+  )}
 `
 
 const ButtonContentStyled = styled.div`
@@ -251,7 +274,7 @@ const ButtonContentStyled = styled.div`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       margin-top: 87px;
     `,
@@ -272,6 +295,19 @@ const InfoComponentStyled = styled.div`
     `,
   )}
   ${minWidth(
+    'laptopL',
+    css`
+      text-align: start;
+      margin-left: 100px;
+      width: 20%;
+      top: 20%;
+      position: absolute;
+      p {
+        font-size: 24px;
+      }
+    `,
+  )}
+   ${minWidth(
     'desktop',
     css`
       text-align: start;
@@ -301,7 +337,7 @@ const ImageStyled = styled.img`
     `,
   )}
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       transform: scale(1);
     `,
@@ -312,100 +348,130 @@ interface IProps {
   data: InfoBoxItem[]
 }
 
-const Jumbotron: FC<IProps> = ({ data }) => (
-  <JumbotronStyle>
-    <ul>
-      {data.map(({ title, value, type }) => (
-        <li key={title}>
-          <InfoBox title={title} value={value} type={type} />
-        </li>
-      ))}
-    </ul>
-    <MapStyle>
-      <ImageStyled src={'/images/map_bg.png'} alt={''} />
-      <USStyle>
-        <MapButton href={connectToUS}>Connect US location</MapButton>
-      </USStyle>
-      <EUStyle>
-        <MapButton href={connectToEurope}>Connect EU location</MapButton>
-      </EUStyle>
-      <APStyle>
-        <MapButton href={connectToAsia}>Connect AP location</MapButton>
-      </APStyle>
-      <MouseContainerStyle>
-        <MouseStyle>
-          <ScrollStyle />
-        </MouseStyle>
-        <Arrow />
-      </MouseContainerStyle>
-    </MapStyle>
-    <InfoComponentStyled>
-      <TitleTexStyled>
-        <Text size="ultra-large" italic>
-          Dedicated
-        </Text>
-        <Text size="ultra-large" italic>
-          Pool for
-        </Text>
-        <Text size="ultra-large" color="apple" italic>
-          CORE COIN
-        </Text>
-      </TitleTexStyled>
-      <InfoTextContent>
-        <Text
-          size="very-large"
-          color="santasGray"
-          fontFamily="secondary"
-          space="initial"
-        >
-          We have several locations for you to select from.
-        </Text>
-        <Text
-          size="very-large"
-          color="santasGray"
-          fontFamily="secondary"
-          space="initial"
-        >
-          Please select one of the locations to start your mines today!
-        </Text>
-        <br />
-        <Text
-          size="very-large"
-          color="santasGray"
-          fontFamily="secondary"
-          space="initial"
-        >
-          PPLNS System
-        </Text>
-        <Text
-          size="very-large"
-          color="santasGray"
-          fontFamily="secondary"
-          space="initial"
-        >
-          2% Pool Fee
-        </Text>
-        <Text
-          size="very-large"
-          color="santasGray"
-          fontFamily="secondary"
-          space="initial"
-        >
-          Payout Threshhold 20 XCB
-        </Text>
-        <Text
-          size="very-large"
-          color="santasGray"
-          fontFamily="secondary"
-          space="initial"
-        >
-          Payout 3 times per day
-        </Text>
-      </InfoTextContent>
-      <ButtonContentStyled>
-        <Button href={startMining}>Start Mining</Button>
-      </ButtonContentStyled>
-    </InfoComponentStyled>
-  </JumbotronStyle>
-)
+const MapButtonWrapper = ({ href, children }) => {
+  const displayType = useContext(ResponsiveContext)
+  const showGlowingCircle = !(
+    displayType === 'tablet' || displayType === 'mobileL'
+  )
+
+  if (showGlowingCircle) return <MapButton href={href}>{children}</MapButton>
+
+  return (
+    <Button theme="transparent" href={href}>
+      {children}
+    </Button>
+  )
+}
+
+const Jumbotron: FC<IProps> = ({ data }) => {
+  const displayType = useContext(ResponsiveContext)
+  const displayTitleTop = displayType === 'tablet' || displayType === 'mobileL'
+
+  const title = (
+    <TitleTexStyled>
+      <Text size="ultra-large" italic>
+        Dedicated
+      </Text>
+      <Text size="ultra-large" italic>
+        Pool for
+      </Text>
+      <Text size="ultra-large" color="apple" italic>
+        CORE COIN
+      </Text>
+    </TitleTexStyled>
+  )
+  return (
+    <JumbotronStyle>
+      <ul>
+        {data.map(({ title, value, type }) => (
+          <li key={title}>
+            <InfoBox title={title} value={value} type={type} />
+          </li>
+        ))}
+      </ul>
+      {displayTitleTop && title}
+      <MapStyle>
+        <ImageStyled src={'/images/map_bg.png'} alt={''} />
+        <USStyle>
+          <MapButtonWrapper href={connectToUS}>
+            Connect US location
+          </MapButtonWrapper>
+        </USStyle>
+        <EUStyle>
+          <MapButtonWrapper href={connectToEurope}>
+            Connect EU location
+          </MapButtonWrapper>
+        </EUStyle>
+        <APStyle>
+          <MapButtonWrapper href={connectToAsia}>
+            Connect AP location
+          </MapButtonWrapper>
+        </APStyle>
+        <MouseContainerStyle>
+          <MouseStyle>
+            <ScrollStyle />
+          </MouseStyle>
+          <Arrow />
+        </MouseContainerStyle>
+      </MapStyle>
+      <InfoComponentStyled>
+        {!displayTitleTop && title}
+        <InfoTextContent>
+          <Text
+            size="very-large"
+            color="santasGray"
+            fontFamily="secondary"
+            space="initial"
+          >
+            We have several locations for you to select from.
+          </Text>
+          <Text
+            size="very-large"
+            color="santasGray"
+            fontFamily="secondary"
+            space="initial"
+          >
+            Please select one of the locations to start your mines today!
+          </Text>
+          <br />
+          <Text
+            size="very-large"
+            color="santasGray"
+            fontFamily="secondary"
+            space="initial"
+          >
+            PPLNS System
+          </Text>
+          <Text
+            size="very-large"
+            color="santasGray"
+            fontFamily="secondary"
+            space="initial"
+          >
+            2% Pool Fee
+          </Text>
+          <Text
+            size="very-large"
+            color="santasGray"
+            fontFamily="secondary"
+            space="initial"
+          >
+            Payout Threshhold 20 XCB
+          </Text>
+          <Text
+            size="very-large"
+            color="santasGray"
+            fontFamily="secondary"
+            space="initial"
+          >
+            Payout 3 times per day
+          </Text>
+        </InfoTextContent>
+        <ButtonContentStyled>
+          <Button href={startMining}>Start Mining</Button>
+        </ButtonContentStyled>
+      </InfoComponentStyled>
+    </JumbotronStyle>
+  )
+}
 export default Jumbotron

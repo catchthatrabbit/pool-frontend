@@ -5,8 +5,8 @@ import getText, { TextType, InfoBoxItem } from 'helpers/text'
 import { minWidth } from 'helpers/responsive'
 
 const WrapperStyled = styled.div`
-  height: 60px;
-  width: 180px;
+  height: 70px;
+  width: 200px;
   padding: 15px 0 20px;
   box-sizing: border-box;
   display: flex;
@@ -16,7 +16,7 @@ const WrapperStyled = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.spindle};
   border-radius: 10px;
   ${minWidth(
-    'desktop',
+    'laptopL',
     css`
       height: 88px;
       width: 260px;

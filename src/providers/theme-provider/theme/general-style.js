@@ -22,10 +22,9 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 164px 0 0;
     overflow: visible;
     width: 100%;
-
+    margin: 164px 0 0;
   }
   
   ul {

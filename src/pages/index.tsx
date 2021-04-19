@@ -27,7 +27,7 @@ const SearchBarContainerStyled = styled.div`
   ${minWidth(
     'laptop',
     css`
-      width: 90%;
+      width: 74%;
     `,
   )}
   ${minWidth(
@@ -40,15 +40,9 @@ const SearchBarContainerStyled = styled.div`
 const TableContainerStyled = styled.div`
   margin: 17px 50px 75px;
   ${minWidth(
-    'tablet',
+    'laptopL',
     css`
-      margin: 17px 50px 75px;
-    `,
-  )}
-  ${minWidth(
-    'laptop',
-    css`
-      margin: 17px 70px 75px;
+      margin: 17px 100px 75px;
     `,
   )}
   ${minWidth(

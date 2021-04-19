@@ -10,13 +10,18 @@ import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
 import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
-  margin: 63px auto;
-  width: 373px;
+  margin: 36px 20px 73px;
+  width: auto;
   ${minWidth(
     'tablet',
     css`
-      margin: 36px 70px 73px;
-      width: auto;
+      margin: 36px 50px 73px;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      margin: 36px 100px 73px;
     `,
   )}
   ${minWidth(
@@ -28,7 +33,7 @@ const ContainerStyled = styled.div`
   z-index: 1;
 `
 const BoxesWrapperStyled = styled.div`
-  margin: 41px 0 97px;
+  margin: 41px 0 41px;
 `
 
 const MinersPage: FC = () => (

@@ -10,10 +10,17 @@ const Container = styled.div`
   border-radius: 10px;
   overflow: scroll;
   overflow-y: hidden;
+  width: 100%;
   ${minWidth(
     'tablet',
     css`
       overflow: hidden;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      width: auto;
     `,
   )}
 `

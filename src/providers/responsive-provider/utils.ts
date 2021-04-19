@@ -37,16 +37,14 @@ export const getDeviceDimensions = () => {
 export const getDeviceNameBasedOnSize = (device): ResponsiveDeviceName => {
   const { deviceWidth } = device
   switch (true) {
-    case deviceWidth <= deviceSize.mobileL:
+    case deviceWidth < deviceSize.tablet:
       return deviceNames.mobileL
-    case deviceWidth <= deviceSize.tablet:
+    case deviceWidth < deviceSize.laptop:
       return deviceNames.tablet
-    case deviceWidth <= deviceSize.laptop:
+    case deviceWidth < deviceSize.laptopL:
       return deviceNames.laptop
-    case deviceWidth <= deviceSize.laptopL:
-      return deviceNames.laptopL
-    case deviceWidth <= deviceSize.desktop:
-      return deviceNames.desktop
+    case deviceWidth < deviceSize.desktop:
+      return deviceNames.laptop
     default:
       return deviceNames.desktop
   }

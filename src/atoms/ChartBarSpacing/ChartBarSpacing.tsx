@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import {
   XAxis,
   YAxis,
@@ -11,6 +11,7 @@ import {
 } from 'recharts'
 import { colorVariables, fonts } from 'styles/variables'
 import checkData from 'helpers/chartDataTransform'
+import ResponsiveContext from 'providers/responsive-provider/context'
 
 interface IProps {
   data: []
@@ -18,6 +19,9 @@ interface IProps {
 
 const ChartBarSpacing: FC<IProps> = ({ data }) => {
   const chartData = checkData(data, 57)
+  const displayType = useContext(ResponsiveContext)
+  const fontSize =
+    displayType === 'mobileL' || displayType === 'tablet' ? '14px' : '27px'
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -67,6 +71,7 @@ const ChartBarSpacing: FC<IProps> = ({ data }) => {
           contentStyle={{
             borderColor: colorVariables.gunPowder,
             backgroundColor: colorVariables.woodsmoke,
+            fontSize: fontSize,
           }}
           cursor={{
             stroke: colorVariables.gunPowder,

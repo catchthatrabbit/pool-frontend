@@ -13,6 +13,7 @@ interface IProps {
 }
 
 const WrapperStyled = styled.div`
+  width: 50%;
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
   padding: ${(props: { size: string }) =>
@@ -41,6 +42,15 @@ const WrapperStyled = styled.div`
       `
         width: ${
           (props.size === 'small' && '45%') || (props.size === 'large' && '50%')
+        };
+      `,
+    )};
+  ${(props: { size: string }) =>
+    minWidth(
+      'laptopL',
+      `
+        width: ${
+          (props.size === 'small' && '40%') || (props.size === 'large' && '35%')
         };
       `,
     )};
