@@ -209,9 +209,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   console.log(params)
 
+  // if(errorCode) {
+  //   return {
+  //     props: { errorCode }
+  //   }
+  // }
+
   return {
     props: {
-      // errorCode,
       address: params?.address,
       tableData: TableData as any,
       miningInfoData: MiningInfoData as any,
@@ -244,7 +249,7 @@ const Wallet: FC<any> = (props) => {
   if (router.isFallback) {
     return <Loading />
   }
-  // if (errorCode) {
+  // if (props.errorCode) {
   //   return <NotFound />
   // }
   return (
