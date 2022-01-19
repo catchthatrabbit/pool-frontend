@@ -22,7 +22,7 @@ const HeaderStyled = styled.header<IHeader>`
   background: ${colorVariables.woodsmoke};
   transition: 0.3s;
   box-shadow: 0 4px 18px 6px ${colorVariables.woodsmoke};
-  ${({ hidden }) => hidden && `top: -200px;`}
+  ${({ hidden }) => hidden && `top: -120px;`}
   ${({ fullHeight }) =>
     fullHeight &&
     `
@@ -31,15 +31,15 @@ const HeaderStyled = styled.header<IHeader>`
   ${minWidth(
     'laptopL',
     css`
-      padding: 20px 0 20px;
-      height: 160px;
+      padding: 10px 0 10px;
+      height: 80px;
     `,
   )}
     ${minWidth(
     'desktop',
     css`
-      padding: 40px 0 34px;
-      height: 164px;
+      padding: 20px 0 17px;
+      height: 82px;
     `,
   )}
 `
@@ -62,14 +62,14 @@ const HeaderBodyStyled = styled.div`
       max-width: 95%;
       flex-direction: row;
       justify-content: space-between;
-      height: 140px;
+      height: 70px;
     `,
   )}
    ${minWidth(
     'desktop',
     css`
       max-width: 86%;
-      height: 100px;
+      height: 50px;
     `,
   )}
 `
@@ -94,7 +94,7 @@ const NavHeaderStyled = styled.div`
 `
 
 const LogoStyled = styled(LogoIcon)`
-  width: 240px;
+  width: 120px;
   height: auto;
   transform: scale(0.8);
   ${minWidth(
@@ -109,7 +109,6 @@ const NavBarStyled = styled.nav`
   display: none;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   ${(props: { isOpen: boolean }) =>
     props.isOpen &&
     css`
@@ -132,7 +131,7 @@ const NavBarStyled = styled.nav`
 `
 
 const HeaderLinkStyled = styled.div`
-  margin: 15px 0;
+  margin: 15px 20px;
 `
 
 const HamburgerButtonStyled = styled(HamburgerButton)`

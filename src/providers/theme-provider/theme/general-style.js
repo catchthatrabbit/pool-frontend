@@ -10,27 +10,27 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.typography.primary};
     background: ${({ theme }) => theme.colors.woodsmoke};
     color: ${({ theme }) => theme.colors.white};
-    font-size: 24px;
+    font-size: 14px;
   }
-  
+
   a {
     color: inherit;
     text-decoration: none;
   }
-  
+
   main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     overflow: visible;
     width: 100%;
-    margin: 164px 0 0;
+    margin: 140px 0 0;
   }
-  
+
   ul {
     list-style-type: none;
   }
-  
+
   ::-webkit-scrollbar {
     width: 5px;
     height: 5px;

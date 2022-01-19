@@ -37,6 +37,7 @@ const ButtonStyled = styled.button`
     props.theme === 'transparent' &&
     css`
       min-width: 0;
+	  background-color: rgba(0, 0, 0, .75);
       backdrop-filter: blur(6px);
       transition: transform 0.3s;
       &:hover {

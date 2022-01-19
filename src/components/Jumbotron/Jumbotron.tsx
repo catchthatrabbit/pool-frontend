@@ -75,7 +75,6 @@ const MouseContainerStyle = styled.div`
 const LocationStyle = styled.div`
   position: absolute;
   top: 50%;
-  font-weight: 600;
   padding: 20px;
   min-width: min(12vw, 215px);
 `
@@ -370,13 +369,13 @@ const Jumbotron: FC<IProps> = ({ data }) => {
   const title = (
     <TitleTexStyled>
       <Text size="ultra-large" italic>
-        Dedicated
-      </Text>
-      <Text size="ultra-large" italic>
-        Pool for
+        Dedicated Pool for
       </Text>
       <Text size="ultra-large" color="apple" italic>
-        CORE COIN
+        Core Coin
+      </Text>
+      <Text size="ultra-large" italic>
+        & IoT devices
       </Text>
     </TitleTexStyled>
   )
@@ -391,20 +390,20 @@ const Jumbotron: FC<IProps> = ({ data }) => {
       </ul>
       {displayTitleTop && title}
       <MapStyle>
-        <ImageStyled src={'/images/map_bg.png'} alt={''} />
+        <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <USStyle>
           <MapButtonWrapper href={connectToUS}>
-            Connect US location
+            US location
           </MapButtonWrapper>
         </USStyle>
         <EUStyle>
           <MapButtonWrapper href={connectToEurope}>
-            Connect EU location
+            EU location
           </MapButtonWrapper>
         </EUStyle>
         <APStyle>
           <MapButtonWrapper href={connectToAsia}>
-            Connect AP location
+            AP location
           </MapButtonWrapper>
         </APStyle>
         <MouseContainerStyle>
@@ -418,53 +417,27 @@ const Jumbotron: FC<IProps> = ({ data }) => {
         {!displayTitleTop && title}
         <InfoTextContent>
           <Text
-            size="very-large"
             color="santasGray"
             fontFamily="secondary"
             space="initial"
           >
-            We have several locations for you to select from.
+            «Core mining pool in the Lotus land of Ores.»<br />
+			Use waste energy to dig some Ores.
+			<br /><br />
           </Text>
           <Text
-            size="very-large"
             color="santasGray"
             fontFamily="secondary"
             space="initial"
           >
-            Please select one of the locations to start your mines today!
-          </Text>
-          <br />
-          <Text
-            size="very-large"
-            color="santasGray"
-            fontFamily="secondary"
-            space="initial"
-          >
-            PPLNS System
+            Pay-per-last-N-shares (PPLNS) system with only 2% fee.
           </Text>
           <Text
-            size="very-large"
             color="santasGray"
             fontFamily="secondary"
             space="initial"
           >
-            2% Pool Fee
-          </Text>
-          <Text
-            size="very-large"
-            color="santasGray"
-            fontFamily="secondary"
-            space="initial"
-          >
-            Payout Threshhold 20 XCB
-          </Text>
-          <Text
-            size="very-large"
-            color="santasGray"
-            fontFamily="secondary"
-            space="initial"
-          >
-            Payout 3 times per day
+            Please, select one of the locations to start your mines today!
           </Text>
         </InfoTextContent>
         <ButtonContentStyled>

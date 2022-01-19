@@ -18,12 +18,11 @@ import Link from 'atoms/Link/Link'
 type Props = WithRouterProps
 
 const links = [
-  { text: 'Home', href: '/' },
-  { text: 'BLOCKS', href: '/blocks' },
+  { text: 'Blocks', href: '/blocks' },
   { text: 'Payments', href: '/payments' },
   { text: 'Miners', href: '/miners' },
-  { text: 'Start Mining', href: '/start-mining' },
   { text: 'Contact', href: '/contact' },
+  { text: 'Start mining', href: '/start-mining' },
 ]
 
 const Header: FC<Props> = ({}) => {
