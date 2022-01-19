@@ -29,29 +29,25 @@ const catchThatRabitTheme = () => {
         font-weight: 300;
         font-stretch: normal;
         font-style: normal;
-        line-height: 1.5;
-       `,
+        line-height: 1.5;`,
         11: `
-       font-size: 11px;
-       font-weight: 300;
-       font-stretch: normal;
-       font-style: normal;
-       line-height: 1.5;
-      `,
+		font-size: 11px;
+		font-weight: 300;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.5;`,
         12: `
-        font-size: 12px;
+		font-size: 12px;
         font-weight: 300;
         font-stretch: normal;
         font-style: normal;
-        line-height: 1.5;
-       `,
+        line-height: 1.5;`,
         14: `
-       font-size: 14;
-       font-weight: 300;
-       font-stretch: normal;
-       font-style: normal;
-       line-height: 1.5;
-      `,
+		font-size: 14;
+		font-weight: 300;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.5;`,
       },
       regular: {
         16: `
@@ -60,85 +56,74 @@ const catchThatRabitTheme = () => {
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
-        letter-spacing: normal;       `,
+        letter-spacing: normal;`,
         14: `
         font-size: 14px;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
-        letter-spacing: normal;       `,
+        letter-spacing: normal;`,
         13: `
         font-size: 13px;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
-        letter-spacing: normal;  `,
+        letter-spacing: normal;`,
         12: `
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;`,
+		font-size: 12px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: normal;`,
         10: `
-font-family: goodTimes;
-font-size: 10px;
-font-weight: normal;
-font-stretch: normal;
-font-style: normal;
-line-height: normal;
-letter-spacing: normal;
-`,
+		font-family: goodTimes;
+		font-size: 10px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: normal;`,
       },
       normal: {
         24: `
         font-size: 24px;
-        font-weight: 500;
-       `,
+        font-weight: 500;`,
         18: `
-  font-size: 18px;
-  font-weight: 500;
-  `,
+		font-size: 18px;
+		font-weight: 500;`,
         16: `
-  font-size: 16px;
-  font-weight: 500;
-  `,
+		font-size: 16px;
+		font-weight: 500;`,
         15: `
-  font-size: 15px;
-  font-weight: 500;
-  `,
+		font-size: 15px;
+		font-weight: 500;`,
         14: `
-  font-size: 14px;
-  font-weight: 500;
-  `,
+		font-size: 14px;
+		font-weight: 500;`,
         12: `
-  font-size: 12px;
-  font-weight: 500;
-  `,
+		font-size: 12px;
+		font-weight: 500;`,
       },
       bold: {
         24: `
         font-size: 24px;
         font-weight: bold;
-        line-height: 2;
-       `,
+        line-height: 2;`,
         20: `
-       font-size: 20px;
-       font-weight: bold;
-       line-height: 2;
-      `,
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 2;`,
         16: `
         font-size: 16px;
         font-weight: bold;
-        line-height: 2;
-       `,
+        line-height: 2;`,
         14: `
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 2;
-  `,
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 2;`,
       },
     },
   }
