@@ -1,6 +1,6 @@
 export const fonts = {
-  primary: 'good-times, sans-serif',
-  secondary: 'PT Sans, sans-serif',
+  primary: 'Orbitron, sans-serif',
+  secondary: 'Arial, Calibri',
 }
 
 export const colorVariables = {

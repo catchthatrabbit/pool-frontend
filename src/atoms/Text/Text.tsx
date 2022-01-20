@@ -28,10 +28,10 @@ const TextStyled = styled.text<IProps>`
     (props.color === 'red' && colorVariables.red)};
   font-style: ${(props: IProps) => (props.italic ? 'italic' : 'normal')};
   font-weight: ${(props: IProps) =>
-    (props.fontWeight === 'bold' && 'bold') ||
-	(props.fontWeight === 'bolder' && '600') ||
+    (props.fontWeight === 'bold' && '600') ||
+	(props.fontWeight === 'normal' && '400') ||
     (props.fontWeight === 'light' && '100') ||
-    'normal'};
+    '400'};
   ${(props) =>
     props.active &&
     `
