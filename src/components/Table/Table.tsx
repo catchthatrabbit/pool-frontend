@@ -146,7 +146,7 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
             <TableRowStyled>
               {columns.map(({ id, name }) => (
                 <th key={id}>
-                  <Text size="very-large" fontWeight="bold" italic>
+                  <Text size="very-large" fontWeight="bold">
                     {name}
                   </Text>
                 </th>

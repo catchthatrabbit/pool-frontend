@@ -37,8 +37,7 @@ const ScrollStyle = styled.div`
   height: 8px;
   background: ${colorVariables.white};
   border-radius: 25%;
-  animation: ${scrollTranslate} 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94)
-    infinite;
+  animation: ${scrollTranslate} 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
 `
 const MouseStyle = styled.div`
   width: 3px;
@@ -368,13 +367,13 @@ const Jumbotron: FC<IProps> = ({ data }) => {
 
   const title = (
     <TitleTexStyled>
-      <Text size="ultra-large" italic>
+      <Text size="ultra-large">
         Dedicated Pool for
       </Text>
-      <Text size="ultra-large" color="apple" italic>
+      <Text size="ultra-large" color="apple">
         Core Coin
       </Text>
-      <Text size="ultra-large" italic>
+      <Text size="ultra-large">
         & IoT devices
       </Text>
     </TitleTexStyled>
@@ -437,7 +436,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
             fontFamily="secondary"
             space="initial"
           >
-            Please, select one of the locations to start your mines today!
+            Please, select one of the locations to <a href="/start-mining">start your mines today</a>!
           </Text>
         </InfoTextContent>
         <ButtonContentStyled>

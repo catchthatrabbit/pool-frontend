@@ -88,7 +88,7 @@ const MinerCard: FC<IProps> = ({ data }) => {
   return (
     <BoxStyled>
       <TitleStyled>
-        <Text size="very-large" italic>
+        <Text size="very-large">
           {title}
         </Text>
       </TitleStyled>
