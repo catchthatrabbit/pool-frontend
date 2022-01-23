@@ -9,7 +9,6 @@ module.exports = {
     '@storybook/addon-controls',
   ],
   typescript: {
-	reactDocgen: 'none',
 	check: true, // type-check stories during Storybook build
   },
   webpackFinal: (...args) =>
