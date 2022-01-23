@@ -312,7 +312,7 @@ const Wallet: FC<any> = (props) => {
         <ContentTitle Image={<SearchResultsIcon />}>Search result</ContentTitle>
         <ColumnContainer>
           <AddressContainer>
-            <Text size="very-large" color="apple" italic>
+            <Text size="very-large" color="apple">
               {props.address}
             </Text>
           </AddressContainer>
@@ -333,14 +333,12 @@ const Wallet: FC<any> = (props) => {
         <TabSelector>
           <Text
             active={changeView === 'statistics'}
-            italic
             onClick={() => setChangeView('statistics')}
           >
             Statistics
           </Text>
           <Text
             active={changeView === 'payout'}
-            italic
             onClick={() => setChangeView('payout')}
           >
             Payout

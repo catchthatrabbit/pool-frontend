@@ -98,16 +98,16 @@ const InfoStatsBox: FC<IProps> = ({
   return (
     <WrapperStyled size={size}>
       <TitleContainerStyled size={size}>
-        <Text size="very-large" fontWeight="bold" italic>
+        <Text size="very-large" fontWeight="bold">
           {title}
         </Text>
       </TitleContainerStyled>
       <TextContainerStyled size={size}>
-        <Text size="very-large" fontWeight="bold" italic>
+        <Text size="very-large" fontWeight="bold">
           {`${value} ${suffix}`}
         </Text>
         <SubtitleStyled>
-          <Text size="small" italic>
+          <Text size="small">
             {subtitle}
           </Text>
         </SubtitleStyled>

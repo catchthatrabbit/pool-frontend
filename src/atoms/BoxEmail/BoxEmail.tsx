@@ -32,7 +32,7 @@ interface IProps {
 const BoxEmail: FC<IProps> = ({ title, email, children }) => (
   <BoxStyled>
     <TextTitleStyled>
-      <Text size="very-large" italic>
+      <Text size="very-large">
         {title}
       </Text>
     </TextTitleStyled>

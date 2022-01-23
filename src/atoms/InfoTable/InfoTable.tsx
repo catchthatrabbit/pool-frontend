@@ -60,7 +60,7 @@ const InfoTable: FC<IProps> = ({ data, width = 'small' }) => (
       {data.map(({ key, title, value, color }) => (
         <TableRowStyled key={key} width={width}>
           <th>
-            <Text italic>{title}</Text>
+            <Text>{title}</Text>
           </th>
           <td>
             <Text fontFamily="secondary" color={color}>

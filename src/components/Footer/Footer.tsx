@@ -196,7 +196,7 @@ const Footer = () => {
         <HeaderDiv>
           <ContentTitle Image={<StartMiningIcon />}>Start Mining</ContentTitle>
           <HeaderTextStyle>
-            <Text size="very-large" italic>
+            <Text size="very-large">
               Let&apos;s jump into it
             </Text>
           </HeaderTextStyle>
@@ -207,14 +207,14 @@ const Footer = () => {
         <LogoStyled>
           <LogoIcon />
           <LogoTextStyle>
-            <Text italic size={fontSize}>
+            <Text size={fontSize}>
               Dedicated Pool
             </Text>
             <br />
-            <Text italic size={fontSize}>
+            <Text size={fontSize}>
               for{' '}
             </Text>
-            <Text color="apple" italic size={fontSize}>
+            <Text color="apple" size={fontSize}>
               CORE COIN
             </Text>
           </LogoTextStyle>

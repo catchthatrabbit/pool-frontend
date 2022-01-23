@@ -73,7 +73,7 @@ const InfoCard: FC<IProps> = ({ title, data }) => {
   return (
     <WrapperStyled>
       <TitleStyled>
-        <Text size="very-large" fontWeight="bold" italic>
+        <Text size="very-large" fontWeight="bold">
           {title}
         </Text>
       </TitleStyled>
@@ -82,15 +82,15 @@ const InfoCard: FC<IProps> = ({ title, data }) => {
           text = getText(type, value)
           return (
             <TextStyled>
-              <Text size="very-large" fontWeight="bold" italic>
+              <Text size="very-large" fontWeight="bold">
                 {`${text.prefix} ${text.value} ${text.suffix}`}
                 {text.metric !== '' &&
-                  <Text size="large" fontWeight="bold" italic>
+                  <Text size="large" fontWeight="bold">
                     {` ${text.metric}`}
                   </Text>
                 }
                 {type === 'hashSpeed' &&
-                  <Text size="small" fontWeight="bold" italic>
+                  <Text size="small" fontWeight="bold">
                     /s
                   </Text>
                 }

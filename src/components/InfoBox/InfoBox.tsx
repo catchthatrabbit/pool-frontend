@@ -29,16 +29,16 @@ const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
 
   return (
     <WrapperStyled>
-      <Text size="very-large" fontWeight="bold" italic>
+      <Text size="very-large" fontWeight="bold">
         {text.prefix}
         {text.value}
         {text.suffix}
-        <Text size="large" fontWeight="bold" italic>
+        <Text size="large" fontWeight="bold">
           {text.metric !== '' && ' ' + text.metric}
           {type === 'hashSpeed' && '/'}
         </Text>
         {type === 'hashSpeed' && (
-          <Text size="small" fontWeight="bold" italic>
+          <Text size="small" fontWeight="bold">
             s
           </Text>
         )}

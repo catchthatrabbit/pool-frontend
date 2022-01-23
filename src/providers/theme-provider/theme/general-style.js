@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: ${({ theme }) => theme.typography.primary};
+    font-family: ${({ theme }) => theme.typography.secondary};
     background: ${({ theme }) => theme.colors.woodsmoke};
     color: ${({ theme }) => theme.colors.white};
     font-size: 14px;
@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+	border-bottom: dashed 1px;
+  }
+  a:hover {
+	border-bottom: solid 1px;
   }
 
   main {
