@@ -103,7 +103,7 @@ const Pagination: FC<IProps> = ({ onPageChange, pageCount }) => {
         pageRangeDisplayed={3}
         onPageChange={handlePageChange}
         containerClassName="pagination"
-        subContainerClassName="pages pagination"
+        // subContainerClassName="pages pagination"
         activeClassName="active"
       />
     </PaginationContainer>

@@ -9,7 +9,11 @@ module.exports = {
     '@storybook/addon-controls',
   ],
   typescript: {
-	check: true, // type-check stories during Storybook build
+	  check: true, // type-check stories during Storybook build
+    reactDocgen: false
+  },
+  core: {
+    builder: "webpack5",
   },
   webpackFinal: (...args) =>
     fixStoryBookNotFindingModules(ConfigureWebpack(...args)),
