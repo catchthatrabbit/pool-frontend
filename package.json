@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "prettier": "prettier --write --end-of-line lf .",
-    "storybook": "start-storybook -p 6006 -c .storybook -s ./public"
+    "storybook": "start-storybook -p 6006 -c .storybook -s ./public",
+    "build-static-storybook":"expo build:web"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.0.2",
