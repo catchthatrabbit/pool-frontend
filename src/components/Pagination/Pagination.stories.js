@@ -3,10 +3,13 @@ import styled from 'styled-components'
 import Pagination from './Pagination'
 
 export default {
-  title: 'Pagination',
+  title: 'PaginationBasic',
   component: Pagination,
   argTypes: {
-    pageCount: 5,
+    pageCount: {
+      type: { name: 'number', required: true },
+      defaultValue: 5
+    },
     onPageChange: (page) => null,
   },
 }

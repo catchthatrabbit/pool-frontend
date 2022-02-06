@@ -3,10 +3,14 @@ import ScrollContext, { ScrollState } from './context'
 import { throttle } from '../../helpers/throttle'
 
 class ScrollProvider extends PureComponent<null, ScrollState> {
-  state = {
-    prevScrollPos: 0,
-    currentScrollPos: 0,
+  constructor(props) {
+    super(props);
+    this.state = {
+      prevScrollPos: 0,
+      currentScrollPos: 0,
+    };
   }
+
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
@@ -16,16 +20,18 @@ class ScrollProvider extends PureComponent<null, ScrollState> {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  handleScroll = throttle(() => {
-    const scrollPos = window.pageYOffset
+  handleScroll() {
+    return throttle(() => {
+      const scrollPos = window.pageYOffset
 
-    const { currentScrollPos } = this.state
+      const { currentScrollPos } = this.state
 
-    this.setState({
-      prevScrollPos: currentScrollPos,
-      currentScrollPos: scrollPos,
-    })
-  }, 60)
+      this.setState({
+        prevScrollPos: currentScrollPos,
+        currentScrollPos: scrollPos,
+      })
+    }, 60)
+  }
 
   render() {
     const { children } = this.props

@@ -9,6 +9,7 @@ const SearchBarStyle = styled.div`
   width: 100%;
   border-radius: 10px;
   height: 55px;
+  z-index: 1;
 
   input {
     width: calc(100% - 68px);

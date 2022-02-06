@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import { colorVariables, fonts } from 'styles/variables'
+import { colorVariables } from 'styles/variables'
 
 import Button from 'atoms/Button/Button'
 import Text from 'atoms/Text/Text'
@@ -9,7 +9,6 @@ import { Arrow } from 'atoms/icons'
 import InfoBox from 'components/InfoBox/InfoBox'
 import { InfoBoxItem } from 'helpers/text'
 import {
-  startMining,
   connectToUS,
   connectToEurope,
   connectToAsia,
@@ -56,134 +55,167 @@ const MouseContainerStyle = styled.div`
   height: 64px;
   display: flex;
   ${minWidth(
+    'mobileL',
+    css`
+      display: none;
+    `,
+  )}
+  ${minWidth(
     'tablet',
     css`
-      left: calc(50% + 190px);
-      bottom: 0;
+      display: none;
     `,
   )}
   ${minWidth(
     'laptopL',
     css`
-      left: calc(50% + 40px);
+      display: block;
+      width: 27px;
+      text-align: center;
+      left: 50%;
       bottom: 5%;
+    `,
+  )}
+`
+
+const Locations = styled.div`
+  top: 0;
+  position: absolute;
+  width: auto;
+  ${minWidth(
+    'mobileL',
+    css`
+      top: 120px;
+      width: 100vw;
+    `,
+  )}
+  ${minWidth(
+    'tablet',
+    css`
+      top: 120px;
+      width: 100vw;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      top: 0;
+      width: auto;
     `,
   )}
 `
 
 const LocationStyle = styled.div`
   position: absolute;
-  top: 50%;
-  padding: 20px;
-  min-width: min(12vw, 215px);
 `
 const USStyle = styled(LocationStyle)`
-  transform: scale(0.5);
-  top: 1%;
-  left: 8%;
+  ${minWidth(
+    'mobileL',
+    css`
+      position: relative;
+      padding: 5px 20px;
+    `,
+  )}
   ${minWidth(
     'tablet',
     css`
-      transform: scale(1);
-      top: 14%;
-      left: 23%;
+      position: relative;
+      padding: 5px 20px;
     `,
   )}
   ${minWidth(
     'laptop',
     css`
-      top: 18%;
-      left: 25%;
+      top: 20vw;
+      left: 10vw;
     `,
   )}
   ${minWidth(
     'laptopL',
     css`
-      top: 25%;
-      left: 35%;
+      top: 270px;
+      left: 170px;
     `,
   )}
 `
 const EUStyle = styled(LocationStyle)`
-  transform: scale(0.5);
-  top: 1%;
-  left: 40%;
+  ${minWidth(
+    'mobileL',
+    css`
+      position: relative;
+      padding: 5px 20px;
+    `,
+  )}
   ${minWidth(
     'tablet',
     css`
-      transform: scale(1);
-      top: 11%;
-      left: 55%;
+      position: relative;
+      padding: 5px 20px;
     `,
   )}
   ${minWidth(
     'laptop',
     css`
-      top: 15%;
-      left: 57%;
+      top: 7vw;
+      left: 42vw;
     `,
   )}
   ${minWidth(
     'laptopL',
     css`
-      top: 25%;
-      left: 58%;
+      top: 120px;
+      left: 600px;
     `,
   )}
 `
 const APStyle = styled(LocationStyle)`
-  transform: scale(0.5);
-  top: 6%;
-  left: 68%;
+  ${minWidth(
+    'mobileL',
+    css`
+      position: relative;
+      padding: 5px 20px;
+    `,
+  )}
   ${minWidth(
     'tablet',
     css`
-      transform: scale(1);
-      top: 20%;
-      left: 85%;
+      position: relative;
+      padding: 5px 20px;
     `,
   )}
   ${minWidth(
     'laptop',
     css`
-      top: 25%;
-      left: 85%;
+      top: 8vw;
+      left: 67vw;
     `,
   )}
   ${minWidth(
     'laptopL',
     css`
-      top: 35%;
-      left: 77%;
+      top: 200px;
+      left: 980px;
     `,
   )}
 `
 const MapStyle = styled.div`
-  height: 100%;
-  width: 100%;
+  width: 100vw;
+  position: relative;
   order: 0;
-  transform: translateX(-90px);
-  top: 90px;
+  z-index: 0;
   ${minWidth(
     'tablet',
     css`
-      transform: translateX(-190px) translateY(20px);
-      top: 90px;
+      width: 100vw;
     `,
   )}
   ${minWidth(
     'laptopL',
     css`
-      transform: translateX(0);
-      position: absolute;
-      left: -10px;
-      top: 50px;
-    `,
-  )}
-    ${minWidth(
-    'desktop',
-    css`
-      left: -80px;
+      width: 100vw;
+      max-width: 1400px;
+      left: 150px;
+      overflow: hidden;
     `,
   )}
 `
@@ -198,13 +230,13 @@ const JumbotronStyle = styled.div`
     z-index: 1;
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 0 0;
+    margin: 10px 0 0;
     padding: 0;
-    justify-content: space-around;
+    justify-content: center;
     order: 2;
-    width: 90%;
+    width: auto;
     li {
-      margin-top: 20px;
+      margin: 10px;
     }
   }
 
@@ -212,7 +244,7 @@ const JumbotronStyle = styled.div`
     'tablet',
     css`
       ul {
-        width: 85%;
+        width: 100%;
       }
     `,
   )}
@@ -220,23 +252,11 @@ const JumbotronStyle = styled.div`
     'laptop',
     css`
       ul {
-        justify-content: space-between;
         order: -2;
-        width: 90%;
         li {
-          margin-top: 0;
+          margin: 10px;
         }
       }
-    `,
-  )}
-  ${minWidth(
-    'laptopL',
-    css`
-      ul {
-        width: 85%;
-      }
-      height: 934px;
-      overflow-x: unset;
     `,
   )}
 `
@@ -325,21 +345,6 @@ const InfoTextContent = styled.div`
 const ImageStyled = styled.img`
   height: 100%;
   width: 100%;
-  transform: scale(1.4);
-  ${minWidth(
-    'laptop',
-    css`
-      height: 100%;
-      width: 100%;
-      transform: scale(1.4);
-    `,
-  )}
-  ${minWidth(
-    'laptopL',
-    css`
-      transform: scale(1);
-    `,
-  )}
 `
 
 interface IProps {
@@ -351,14 +356,25 @@ const MapButtonWrapper = ({ href, children }) => {
   const showGlowingCircle = !(
     displayType === 'tablet' || displayType === 'mobileL'
   )
+  const showFullBtn = (
+    displayType === 'tablet' || displayType === 'mobileL'
+  )
 
   if (showGlowingCircle) return <MapButton href={href}>{children}</MapButton>
 
-  return (
-    <Button theme="transparent" href={href}>
-      {children}
-    </Button>
-  )
+  if (showFullBtn) {
+    return (
+      <Button theme="transparent" href={href} full>
+        {children}
+      </Button>
+    )
+  } else {
+    return (
+      <Button theme="transparent" href={href}>
+        {children}
+      </Button>
+    )
+  }
 }
 
 const Jumbotron: FC<IProps> = ({ data }) => {
@@ -374,7 +390,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
         Core Coin
       </Text>
       <Text size="ultra-large">
-        & IoT devices
+        &amp; IoT devices
       </Text>
     </TitleTexStyled>
   )
@@ -390,27 +406,23 @@ const Jumbotron: FC<IProps> = ({ data }) => {
       {displayTitleTop && title}
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
-        <USStyle>
-          <MapButtonWrapper href={connectToUS}>
-            US location
-          </MapButtonWrapper>
-        </USStyle>
-        <EUStyle>
-          <MapButtonWrapper href={connectToEurope}>
-            EU location
-          </MapButtonWrapper>
-        </EUStyle>
-        <APStyle>
-          <MapButtonWrapper href={connectToAsia}>
-            AP location
-          </MapButtonWrapper>
-        </APStyle>
-        <MouseContainerStyle>
-          <MouseStyle>
-            <ScrollStyle />
-          </MouseStyle>
-          <Arrow />
-        </MouseContainerStyle>
+        <Locations>
+          <USStyle>
+            <MapButtonWrapper href={connectToUS}>
+              US location
+            </MapButtonWrapper>
+          </USStyle>
+          <EUStyle>
+            <MapButtonWrapper href={connectToEurope}>
+              EU location
+            </MapButtonWrapper>
+          </EUStyle>
+          <APStyle>
+            <MapButtonWrapper href={connectToAsia}>
+              AP location
+            </MapButtonWrapper>
+          </APStyle>
+        </Locations>
       </MapStyle>
       <InfoComponentStyled>
         {!displayTitleTop && title}
@@ -420,9 +432,9 @@ const Jumbotron: FC<IProps> = ({ data }) => {
             fontFamily="secondary"
             space="initial"
           >
-            «Core mining pool in the Lotus land of Ores.»<br />
-			Use waste energy to dig some Ores.
-			<br /><br />
+          «Core mining pool in the Lotus land of Ores.»<br />
+          Use waste energy to dig some Ores.
+          <br /><br />
           </Text>
           <Text
             color="santasGray"
@@ -439,10 +451,13 @@ const Jumbotron: FC<IProps> = ({ data }) => {
             Please, select one of the locations to <a href="/start-mining">start your mines today</a>!
           </Text>
         </InfoTextContent>
-        <ButtonContentStyled>
-          <Button href={startMining}>Start Mining</Button>
-        </ButtonContentStyled>
       </InfoComponentStyled>
+      <MouseContainerStyle>
+          <MouseStyle>
+            <ScrollStyle />
+          </MouseStyle>
+          <Arrow />
+        </MouseContainerStyle>
     </JumbotronStyle>
   )
 }
