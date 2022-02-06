@@ -21,6 +21,8 @@ interface IProps {
 const TextStyled = styled.text<IProps>`
   font-family: ${(props: IProps) =>
     props.fontFamily === 'primary' ? fonts.primary : fonts.secondary};
+  letter-spacing: ${(props: IProps) =>
+    props.fontFamily === 'primary' ? '0.15em' : '0.05em'};
   color: ${(props: IProps) =>
     (props.color === 'white' && colorVariables.white) ||
     (props.color === 'apple' && colorVariables.apple) ||
@@ -29,7 +31,7 @@ const TextStyled = styled.text<IProps>`
   font-style: ${(props: IProps) => (props.italic ? 'italic' : 'normal')};
   font-weight: ${(props: IProps) =>
     (props.fontWeight === 'bold' && '600') ||
-	(props.fontWeight === 'normal' && '400') ||
+	  (props.fontWeight === 'normal' && '400') ||
     (props.fontWeight === 'light' && '100') ||
     '400'};
   ${(props) =>

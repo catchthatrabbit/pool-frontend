@@ -22,7 +22,7 @@ export const BoxEmailStory = (args) => (
 )
 
 BoxEmailStory.args = {
-  value: 'For legal and commercial questions please feel free to email us.',
-  title: 'Legal &amp; Commercial',
-  email: 'office@catchthatrabbit.com',
+  value: 'In case you have any question, please contact us.',
+  title: 'Contact',
+  email: 'contact@catchthatrabbit.com',
 }

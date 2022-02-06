@@ -6,7 +6,7 @@ import Text from 'atoms/Text/Text'
 import applyTransparence from 'helpers/transparentize'
 import { minWidth } from 'helpers/responsive'
 
-const ButtonStyled = styled.button`
+const ButtonStyled = styled.button<IProps>`
   box-sizing: border-box;
   display: inline-block;
   background: none;
@@ -18,6 +18,7 @@ const ButtonStyled = styled.button`
   min-width: 215px;
   text-align: center;
   white-space: nowrap;
+  ${props => props.full && 'width: 100%;'};
   border: 1px solid ${applyTransparence(0.5, colorVariables.gunPowder)};
   &:focus {
     outline: none;
@@ -37,7 +38,7 @@ const ButtonStyled = styled.button`
     props.theme === 'transparent' &&
     css`
       min-width: 0;
-	  background-color: rgba(0, 0, 0, .75);
+	    background-color: rgba(0, 0, 0, .75);
       backdrop-filter: blur(6px);
       transition: transform 0.3s;
       &:hover {
@@ -45,7 +46,7 @@ const ButtonStyled = styled.button`
         backdrop-filter: blur(18px);
       }
     `}
-      ${(props: { theme: string }) =>
+  ${(props: { theme: string }) =>
     props.theme === 'email' &&
     css`
       background-color: ${applyTransparence(0.2, colorVariables.gunPowder)};
@@ -65,11 +66,12 @@ interface IProps {
   onClick?: () => void
   href?: string
   theme?: 'outline' | 'transparent' | 'email'
+  full?: boolean
 }
 
-const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline' }) => {
+const Button: FC<IProps> = ({ onClick, children, href, theme = 'outline', full = false }) => {
   const renderedButton = (
-    <ButtonStyled type="button" theme={theme} onClick={onClick}>
+    <ButtonStyled type="button" theme={theme} onClick={onClick} full={full}>
       <Text size={theme === 'email' ? 'large' : 'small'}>
         {children}
       </Text>
