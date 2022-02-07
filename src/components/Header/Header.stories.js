@@ -1,12 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from './Header'
-import { withNextRouter } from 'storybook-addon-next-router'
 
 export default {
   title: 'Header',
   component: Header,
-  decorators: [withNextRouter],
 }
 
 const Container = styled.div`

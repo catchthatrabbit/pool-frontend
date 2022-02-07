@@ -7,6 +7,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-links',
     '@storybook/addon-controls',
+    'storybook-addon-next-router',
   ],
   typescript: {
 	  check: true, // type-check stories during Storybook build

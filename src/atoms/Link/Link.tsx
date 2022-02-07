@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Link from 'next/link'
 
 interface LinkProps extends React.ComponentPropsWithoutRef<'button'> {
