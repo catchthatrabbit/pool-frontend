@@ -6,7 +6,9 @@ import MiningInfo from 'components/MiningInfo'
 import { StartMiningIcon, RecentBlocksIcon } from 'atoms/icons'
 import styled, { css } from 'styled-components'
 import {
-  MinerDataInfoData,
+  MinerDataInfoDataEu,
+  MinerDataInfoDataNa,
+  MinerDataInfoDataAs,
   MinerDataCardData,
   PoolDetailsData,
   LinksData,
@@ -194,21 +196,18 @@ const StartMiningPage: FC = () => {
       <ContainerStyled>
         <ContentTitle Image={<StartMiningIcon />}>START MINING</ContentTitle>
         <MiningInfoContainerStyled>
-          <MiningInfoStyled id="europe">
-            <MiningInfo data={MinerDataInfoData} title="Connect Europe Pool" />
+          <MiningInfoStyled id="pool-europe">
+            <MiningInfo data={MinerDataInfoDataEu} title="Connect to European Pool" />
           </MiningInfoStyled>
-          <MiningInfoStyled id="united_states">
-            <MiningInfo
-              data={MinerDataInfoData}
-              title="Connect United States Pool"
-            />
+          <MiningInfoStyled id="pool-na">
+            <MiningInfo data={MinerDataInfoDataNa} title="Connect to Northen American Pool" />
           </MiningInfoStyled>
-          <MiningInfoStyled id="asia">
-            <MiningInfo data={MinerDataInfoData} title="Connect Asia Pool" />
+          <MiningInfoStyled id="pool-asia">
+            <MiningInfo data={MinerDataInfoDataAs} title="Connect to Asian Pool" />
           </MiningInfoStyled>
         </MiningInfoContainerStyled>
         <TitleContainerStyled>
-          <ContentTitle Image={<RecentBlocksIcon />}>START GUIDE</ContentTitle>
+          <ContentTitle Image={<RecentBlocksIcon />}>GET STARTED</ContentTitle>
         </TitleContainerStyled>
         <BoxContentStyled>
           <BoxGuideStyled>
@@ -216,37 +215,18 @@ const StartMiningPage: FC = () => {
               <Text size="medium">Step 1: Get a Wallet</Text>
             </TextGuideStyled>
             <TextGuide1Styled>
-              The easiest way to get a wallet is to register on{' '}
-              <a href="https://pingexchange.com/">Ping Exchange</a> or download
-              the mobile application{' '}
-              <a href="https://corepass.net/">CorePass</a>.
-              <br />
-              <br />
-              Alternatively should you want a hardware wallet you are welcome to
-              purchase a <a href="">Ledger wallet</a> where you can generate you
-              Core Coin wallet.
+              Please, download the Core Wallet, where you can securely store your rewards.
             </TextGuide1Styled>
             <TextGuideStyled>
               <Text size="medium">Step 2: Download mining software</Text>
             </TextGuideStyled>
             <TextGuide2Styled>
-              You need to download the mining software, install and configure to
-              start the mining application.
+              You need to download the mining software, install and configure to start the mining application.
               <br />
               <br />
-              <br />
-              We recommend the following miners:
+              We recommend the following miner/s:
             </TextGuide2Styled>
             <MinerCardsWrapperStyled>
-              <MiningCardStyled>
-                <MinerCard data={MinerDataCardData} />
-              </MiningCardStyled>
-              <MiningCardStyled>
-                <MinerCard data={MinerDataCardData} />
-              </MiningCardStyled>
-              <MiningCardStyled>
-                <MinerCard data={MinerDataCardData} />
-              </MiningCardStyled>
               <MiningCardStyled>
                 <MinerCard data={MinerDataCardData} />
               </MiningCardStyled>
@@ -255,7 +235,7 @@ const StartMiningPage: FC = () => {
               <Text size="medium">Step 3: Choose your server</Text>
             </TextGuideStyled>
             <TextGuide3Styled>
-              We have 3 servers for you to choose from:
+              We have 3 geo-locations to choose from:
             </TextGuide3Styled>
             <LinksWrapperStyled>
               {LinksData.map(({ href, text }) => (

@@ -118,7 +118,7 @@ const RadialBarChart: FC<IProps> = ({ data = null }) => {
             .attr('x', 0)
             .attr('y', -y(y.ticks().pop() || 0))
             .attr('dy', '-2em')
-            .text('POOL HASH RATE'),
+            .text('Pool Hash rate — last 24h'),
         )
         .call((g) =>
           g
@@ -168,7 +168,7 @@ const RadialBarChart: FC<IProps> = ({ data = null }) => {
       .select(`${Chart} svg`)
       .attr(
         'viewBox',
-        `${-size / 2 - 150} ${-size / 2 - 150} 
+        `${-size / 2 - 150} ${-size / 2 - 150}
         ${size + 300} ${size + 300}`,
       )
       .style('width', '100%')

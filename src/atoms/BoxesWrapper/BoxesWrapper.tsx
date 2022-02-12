@@ -6,7 +6,7 @@ import { minWidth } from 'helpers/responsive'
 
 const BoxesWrapperStyled = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 0;
   width: 100%;

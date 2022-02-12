@@ -51,6 +51,7 @@ const PaginationContainer = styled.div`
         font-size: 14px;
         cursor: pointer;
         user-select: none;
+        border-bottom: none;
         &:hover {
           color: ${colorVariables.white};
           transition: color 0.3s;

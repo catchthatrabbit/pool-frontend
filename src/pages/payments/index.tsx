@@ -1,11 +1,13 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import Table from 'components/Table'
+import SearchBar from 'atoms/SearchBar'
 import ContentTitle from 'atoms/ContentTitle'
-import { PaymentsInfoBoxData, TableData } from 'mockData/homePageData'
+import { PaymentsInfoBoxData, TablePaymentsData } from 'mockData/homePageData'
 import { PaymentsIcon } from 'atoms/icons'
 import styled, { css } from 'styled-components'
 import Background from 'atoms/Background'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
+import useGoToWallet from 'hooks/useGoToWallet'
 import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
@@ -31,6 +33,23 @@ const ContainerStyled = styled.div`
   )}
   z-index: 1;
 `
+const SearchBarContainerStyled = styled.div`
+  margin: 23px auto 45px;
+  width: 85%;
+  ${minWidth('tablet', css``)}
+  ${minWidth(
+    'laptop',
+    css`
+      margin: 43px auto 90px;
+    `,
+  )}
+    ${minWidth(
+    'desktop',
+    css`
+      margin: 83px auto;
+    `,
+  )}
+`
 const BoxesWrapperStyled = styled.div`
   margin: 41px 0 41px;
   ${minWidth(
@@ -41,17 +60,34 @@ const BoxesWrapperStyled = styled.div`
   )}
 `
 
-const PaymentPage: FC = () => (
-  <>
-    <Background />
-    <ContainerStyled>
-      <ContentTitle Image={<PaymentsIcon />}>PAYMETNS</ContentTitle>
-      <BoxesWrapperStyled>
-        <BoxesWrapper data={PaymentsInfoBoxData} />
-      </BoxesWrapperStyled>
-      <Table data={TableData.data} columns={TableData.columns} />
-    </ContainerStyled>
-  </>
-)
+const PaymentPage: FC = () => {
+  const [searchValue, setValue] = useState('')
+
+  const handleSearchValueChange = (event) => setValue(event.target.value)
+  const goToWallet = useGoToWallet()
+  const handleSearch = () => {
+    goToWallet(searchValue)
+  }
+
+  return (
+    <>
+      <Background />
+      <ContainerStyled>
+        <ContentTitle Image={<PaymentsIcon />}>PAYMETNS</ContentTitle>
+        <SearchBarContainerStyled>
+          <SearchBar
+            onChange={handleSearchValueChange}
+            value={searchValue}
+            onSearch={handleSearch}
+          />
+        </SearchBarContainerStyled>
+        <BoxesWrapperStyled>
+          <BoxesWrapper data={PaymentsInfoBoxData} />
+        </BoxesWrapperStyled>
+        <Table data={TablePaymentsData.data} columns={TablePaymentsData.columns} />
+      </ContainerStyled>
+    </>
+  )
+}
 
 export default PaymentPage

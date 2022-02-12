@@ -37,7 +37,6 @@ const FooterSection = styled.div`
   width: 100%;
   height: 90px;
   background: ${applyTransparence(0.25, colorVariables.gunPowder)};
-  border: 1px solid ${colorVariables.gunPowder};
   text-align: center;
 `
 const LogoStyled = styled.div`
@@ -115,7 +114,6 @@ const HeaderSection = styled.div`
   align-items: center;
   height: auto;
   background: ${applyTransparence(0.25, colorVariables.gunPowder)};
-  border: 1px solid ${colorVariables.gunPowder};
 `
 const HeaderDiv = styled.div`
   box-sizing: border-box;
@@ -139,6 +137,9 @@ const FooterInfoContent = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  & ul > li > text {
+    cursor: pointer;
+  }
 `
 
 const FooterInfo = ({ title, list }) => (
@@ -166,27 +167,24 @@ const Footer = () => {
 
   const footerData = [
     {
-      title: 'Legal',
+      title: 'Start',
       list: [
-        { text: 'Terms of Operation', href: '/' },
-        { text: 'Privacy Policy', href: '/' },
+        { text: 'Start mining', href: '/start-mining' },
       ],
     },
     {
-      title: 'Resources',
+      title: 'Stats',
       list: [
-        { text: 'Getting Started', href: '/' },
-        { text: 'Help & Support', href: '/' },
-        { text: 'FAQ', href: '/' },
-        { text: 'API', href: '/' },
+        { text: 'Miners', href: '/miners' },
+        { text: 'Latest blocks', href: '/blocks' },
+        { text: 'Payments', href: '/payments' },
       ],
     },
     {
       title: 'About',
       list: [
-        { text: 'Contact', href: '/' },
-        { text: 'Our goal', href: '/' },
-        { text: 'Pool Address', href: '/' },
+        { text: 'Contact', href: '/contact' },
+        { text: 'Support', href: 'mailto:support@catchthatrabbit.com' },
       ],
     },
   ]
@@ -216,6 +214,9 @@ const Footer = () => {
             </Text>
             <Text color="apple" size={fontSize}>
               CORE COIN
+            </Text><br />
+            <Text size={fontSize}>
+              &amp; IoT devices
             </Text>
           </LogoTextStyle>
         </LogoStyled>
@@ -226,7 +227,7 @@ const Footer = () => {
         </FooterInfoContent>
       </MainSection>
       <FooterSection>
-        <Text size="tiny">© 2020 Catch That Rabbit. All rights reserved.</Text>
+        <Text size="tiny">© 2020-{(new Date().getFullYear())} Catch That Rabbit. All rights reserved.</Text>
       </FooterSection>
     </FooterStyled>
   )

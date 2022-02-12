@@ -1,14 +1,12 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 
 import ContentTitle from 'atoms/ContentTitle'
-import SearchBar from 'atoms/SearchBar'
 import Table from 'components/Table'
 import { BlockerLogoIcon } from 'atoms/icons'
 import { TableData, BlocksInfoBoxData } from 'mockData/homePageData'
 import styled, { css } from 'styled-components'
 import Background from 'atoms/Background'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
-import useGoToWallet from 'hooks/useGoToWallet'
 import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
@@ -33,23 +31,6 @@ const ContainerStyled = styled.div`
     `,
   )}
 `
-const SearchBarContainerStyled = styled.div`
-  margin: 23px auto 45px;
-  width: 85%;
-  ${minWidth('tablet', css``)}
-  ${minWidth(
-    'laptop',
-    css`
-      margin: 43px auto 90px;
-    `,
-  )}
-    ${minWidth(
-    'desktop',
-    css`
-      margin: 83px auto;
-    `,
-  )}
-`
 const BoxesWrapperStyled = styled.div`
   margin: 41px 0 41px;
   ${minWidth(
@@ -66,35 +47,17 @@ const BoxesWrapperStyled = styled.div`
   )}
 `
 
-const BlocksPage: FC = () => {
-  const [searchValue, setValue] = useState('')
-
-  const handleSearchValueChange = (event) => setValue(event.target.value)
-  const goToWallet = useGoToWallet()
-  const handleSearch = () => {
-    goToWallet(searchValue)
-  }
-
-  return (
+const BlocksPage: FC = () => (
     <>
-      <Background />
-      <ContainerStyled>
-        <ContentTitle Image={<BlockerLogoIcon />}>POOL BLOCKS</ContentTitle>
-        <BoxesWrapperStyled>
-          <BoxesWrapper data={BlocksInfoBoxData} />
-        </BoxesWrapperStyled>
-        <SearchBarContainerStyled>
-          <SearchBar
-            onChange={handleSearchValueChange}
-            value={searchValue}
-            onSearch={handleSearch}
-          />
-        </SearchBarContainerStyled>
-
-        <Table data={TableData.data} columns={TableData.columns} />
-      </ContainerStyled>
-    </>
-  )
-}
+    <Background />
+    <ContainerStyled>
+      <ContentTitle Image={<BlockerLogoIcon />}>POOL BLOCKS</ContentTitle>
+      <BoxesWrapperStyled>
+        <BoxesWrapper data={BlocksInfoBoxData} />
+      </BoxesWrapperStyled>
+      <Table data={TableData.data} columns={TableData.columns} />
+    </ContainerStyled>
+  </>
+)
 
 export default BlocksPage

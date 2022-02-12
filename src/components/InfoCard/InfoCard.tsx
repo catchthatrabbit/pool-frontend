@@ -66,7 +66,6 @@ interface IProps {
 const InfoCard: FC<IProps> = ({ title, data }) => {
   let text: TextType = {
     value: 0,
-    metric: '',
     prefix: '',
     suffix: '',
   }
@@ -84,11 +83,6 @@ const InfoCard: FC<IProps> = ({ title, data }) => {
             <TextStyled>
               <Text size="very-large" fontWeight="bold">
                 {`${text.prefix} ${text.value} ${text.suffix}`}
-                {text.metric !== '' &&
-                  <Text size="large" fontWeight="bold">
-                    {` ${text.metric}`}
-                  </Text>
-                }
                 {type === 'hashSpeed' &&
                   <Text size="small" fontWeight="bold">
                     /s

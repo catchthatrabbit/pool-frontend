@@ -441,23 +441,23 @@ const Jumbotron: FC<IProps> = ({ data }) => {
             fontFamily="secondary"
             space="initial"
           >
-            Pay-per-last-N-shares (PPLNS) system with only 2% fee.
+            <Text fontFamily = 'secondary' color="apple">Pay-per-last-N-shares</Text> (PPLNS) system with only  <Text fontFamily = 'secondary' color="apple">2% fee</Text>.
           </Text>
           <Text
             color="santasGray"
             fontFamily="secondary"
             space="initial"
           >
-            Please, select one of the locations to <a href="/start-mining">start your mines today</a>!
+            Please, select one of the locations to <a href="/start-mining"><Text fontFamily = 'secondary' color="apple">start your mines today</Text></a>!
           </Text>
         </InfoTextContent>
       </InfoComponentStyled>
       <MouseContainerStyle>
-          <MouseStyle>
-            <ScrollStyle />
-          </MouseStyle>
-          <Arrow />
-        </MouseContainerStyle>
+        <MouseStyle>
+          <ScrollStyle />
+        </MouseStyle>
+        <Arrow />
+      </MouseContainerStyle>
     </JumbotronStyle>
   )
 }

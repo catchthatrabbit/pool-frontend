@@ -1,6 +1,8 @@
 import numberToString from './number'
+import secondsToTime from './seconds'
+import siFormat from './siFormat'
 
-type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro'
+type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro' | 'xcb' | 'time'
 
 export type InfoBoxItem = {
   title: string
@@ -9,7 +11,6 @@ export type InfoBoxItem = {
 }
 export type TextType = {
   value: number
-  metric: string
   prefix: string
   suffix: string
 }
@@ -18,37 +19,38 @@ export default function getText(type, value): TextType {
   switch (type) {
     case 'hashSpeed':
     case 'hash':
-      let metric = 'GH'
-      let unit = 1000
-
-      if (value / unit >= 1000) {
-        metric = 'TH'
-        unit = 1000000
-      }
       return {
-        value: value / unit,
-        metric: metric,
+        value: numberToString(siFormat(value,2)),
         prefix: '',
         suffix: '',
       }
     case 'percent':
       return {
         value: value,
-        metric: '',
         prefix: '',
         suffix: '%',
       }
     case 'euro':
       return {
         value: numberToString(value),
-        metric: '',
         prefix: '€',
         suffix: '',
+      }
+    case 'xcb':
+      return {
+        value: numberToString(value),
+        prefix: '₡',
+        suffix: ' XCB',
+      }
+    case 'time':
+      return {
+        value: numberToString(secondsToTime(value)),
+        prefix: '',
+        suffix: ' ago',
       }
     default:
       return {
         value: numberToString(value),
-        metric: '',
         prefix: '',
         suffix: '',
       }

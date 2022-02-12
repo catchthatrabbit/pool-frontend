@@ -53,16 +53,15 @@ const InfoContentStyled = styled.div`
 
 const ParagraphStyled = styled.p`
   margin: 0;
-  font-family: Verdana, sans-serif;
-  font-size: 0.58rem;
+  font-size: 1em;
 `
 
 const DescriptionStyled = styled(ParagraphStyled)`
-  margin-bottom: 65px;
+  margin-bottom: 1.5em;
 `
 
 const InfoStyled = styled(ParagraphStyled)`
-  margin-bottom: 30px;
+  margin-bottom: 0.6em;
 `
 
 const LinkStyled = styled(ParagraphStyled)`
@@ -105,7 +104,7 @@ const MinerCard: FC<IProps> = ({ data }) => {
         </LinkStyled>
       </InfoContentStyled>
       <ButtonContentStyled>
-        <ButtonStyled href={minerLink}>DOWNLOAD MINER</ButtonStyled>
+        <ButtonStyled href={minerLink}>DOWNLOAD SOFTWARE</ButtonStyled>
       </ButtonContentStyled>
     </BoxStyled>
   )

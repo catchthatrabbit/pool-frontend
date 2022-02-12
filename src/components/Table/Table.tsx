@@ -5,8 +5,11 @@ import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text/Text'
 import Button from 'atoms/Button/Button'
 import Pagination from 'components/Pagination/Pagination'
+import useGoToBlock from 'hooks/useGoToBlock'
+import useGoToTx from 'hooks/useGoToTx'
 import useGoToWallet from 'hooks/useGoToWallet'
 import { minWidth } from 'helpers/responsive'
+import siFormat from 'helpers/siFormat'
 
 const WrapperStyled = styled.div`
   box-sizing: border-box;
@@ -100,6 +103,8 @@ const TableRowStyled = styled.tr`
 
 const TextStyled = styled(Text)<{ column: Column }>`
   ${({ column: { type } }) => type === 'address' && `cursor: pointer`}
+  ${({ column: { type } }) => type === 'block' && `cursor: pointer`}
+  ${({ column: { type } }) => type === 'tx' && `cursor: pointer`}
 `
 const FooterStyled = styled.div`
   display: flex;
@@ -113,7 +118,7 @@ const PaginationContainerStyled = styled.div`
 type Column = {
   name: string
   id: string
-  type: 'address' | 'string'
+  type: 'address' | 'block' | 'tx' | 'xcb' | 'time' | 'percentage' | 'hashrate' | 'string'
 }
 
 type DataItem = { [key: string]: string }
@@ -128,14 +133,43 @@ interface IProps {
 }
 
 function hideMiddleContent(value) {
-  return `${value.slice(0, 10)}.........${value.slice(-6)}`
+  if(value.length > 16) {
+    return `${value.slice(0, 10)}…${value.slice(-6)}`
+  } else {
+    return value
+  }
+}
+
+function formatRewardContent(value) {
+  return `₡${value} XCB`
+}
+
+function formatTimeContent(value) {
+  const d = new Date(value)
+  return d.toLocaleString()
+}
+
+function formatPerctContent(value) {
+  return `${value}%`
+}
+
+function formatHashContent(value) {
+  return siFormat(value,2)
 }
 
 const Table: FC<IProps> = ({ data, columns, moreLink }) => {
   const goToWallet = useGoToWallet()
+  const goToBlock = useGoToBlock()
+  const goToTx = useGoToTx()
 
   const handleDataClick = (value: string, column: Column) => {
-    if (column.type === 'address') goToWallet(value)
+    if (column.type === 'address') {
+      goToWallet(value)
+    } else if(column.type === 'block') {
+      goToBlock(value)
+    } else if(column.type === 'tx') {
+      goToTx(value)
+    }
   }
 
   return (
@@ -165,11 +199,17 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
                         fontFamily="secondary"
                         size="medium"
                         fontWeight="bold"
-                        color={type === 'address' ? 'apple' : 'white'}
+                        color={(type === 'address' || type === 'block' || type === 'tx') ? 'apple' : 'white'}
                         column={column}
                         onClick={() => handleDataClick(dataItem[id], column)}
                       >
                         {type === 'address' && hideMiddleContent(dataItem[id])}
+                        {type === 'block' && hideMiddleContent(dataItem[id])}
+                        {type === 'tx' && hideMiddleContent(dataItem[id])}
+                        {type === 'xcb' && formatRewardContent(dataItem[id])}
+                        {type === 'time' && formatTimeContent(dataItem[id])}
+                        {type === 'percentage' && formatPerctContent(dataItem[id])}
+                        {type === 'hashrate' && formatHashContent(dataItem[id])}
                         {type === 'string' && dataItem[id]}
                       </TextStyled>
                     </td>

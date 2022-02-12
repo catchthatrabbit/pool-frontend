@@ -37,5 +37,5 @@ export const SearchBarStory = (args) => {
 }
 
 SearchBarStory.args = {
-  Text: 'Searching query',
+  Text: 'Search query',
 }

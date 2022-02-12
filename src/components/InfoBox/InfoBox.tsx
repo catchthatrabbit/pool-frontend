@@ -8,6 +8,7 @@ const WrapperStyled = styled.div`
   height: 70px;
   width: 200px;
   padding: 15px 0 20px;
+  margin: 5px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -29,12 +30,11 @@ const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
 
   return (
     <WrapperStyled>
-      <Text size="very-large" fontWeight="bold">
+      <Text size="large" fontWeight="bold">
         {text.prefix}
         {text.value}
         {text.suffix}
-        <Text size="large" fontWeight="bold">
-          {text.metric !== '' && ' ' + text.metric}
+        <Text size="medium" fontWeight="bold">
           {type === 'hashSpeed' && '/'}
         </Text>
         {type === 'hashSpeed' && (

@@ -79,6 +79,12 @@ const NavHeaderStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 90%;
+  & > a {
+    border-bottom: 0;
+  }
+  & > a:hover {
+    text-decoration: none;
+  }
   ${minWidth(
     'laptopL',
     css`
@@ -132,6 +138,12 @@ const NavBarStyled = styled.nav`
 
 const HeaderLinkStyled = styled.div`
   margin: 15px 20px;
+  & > a {
+    border-bottom: 0;
+  }
+  & > a:hover {
+    text-decoration: none;
+  }
 `
 
 const HamburgerButtonStyled = styled(HamburgerButton)`

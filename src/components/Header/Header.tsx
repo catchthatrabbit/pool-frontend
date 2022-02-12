@@ -59,7 +59,7 @@ const Header: FC<Props> = ({}) => {
           {links.map(({ text, href }) => (
             <HeaderLinkStyled key={href} onClick={handleLinkClick}>
               <Link to={href}>
-                <Text active={href === pathname} size={'large'}>
+                <Text active={href === pathname} size={'large'} color={(href === '/start-mining') ? 'apple' : 'white'} >
                   {text}
                 </Text>
               </Link>
