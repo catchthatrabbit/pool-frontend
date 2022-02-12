@@ -15,25 +15,46 @@ const ContainerStyled = styled.div`
   width: 100%;
 `
 const SearchBarContainerStyled = styled.div`
-  margin: 63px auto;
-  width: 373px;
+  margin: 60px auto;
+  width: 90vw;
   ${minWidth(
     'tablet',
     css`
-      margin: 83px auto;
-      width: 573px;
+      margin: 60px auto;
+      width: 90vw;
     `,
   )}
   ${minWidth(
     'laptop',
     css`
-      width: 74%;
+      width: 90vw;
     `,
   )}
   ${minWidth(
     'desktop',
     css`
-      width: 80%;
+      width: 90vw;
+    `,
+  )}
+`
+const StatsContainerStyled = styled.div`
+  width: 90vw;
+  ${minWidth(
+    'tablet',
+    css`
+      width: 90vw;
+    `,
+  )}
+  ${minWidth(
+    'laptop',
+    css`
+      width: 90vw;
+    `,
+  )}
+  ${minWidth(
+    'desktop',
+    css`
+      width: 90vw;
     `,
   )}
 `
@@ -78,10 +99,12 @@ const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
           onSearch={handleSearch}
         />
       </SearchBarContainerStyled>
-      <Stats
-        chartData={props.statsData.chartData}
-        infoBoxData={props.statsData.infoBoxData}
-      />
+      <StatsContainerStyled>
+        <Stats
+          chartData={props.statsData.chartData}
+          infoBoxData={props.statsData.infoBoxData}
+        />
+      </StatsContainerStyled>
       <TableContainerStyled>
         <TitleStyled>
           <ContentTitle Image={<RecentBlocksIcon />}>

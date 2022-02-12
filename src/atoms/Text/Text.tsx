@@ -61,7 +61,7 @@ const TextStyled = styled.text<IProps>`
       'tablet',
       `
         font-size: ${
-		  (props.size === 'tiny' && '11px') ||
+		      (props.size === 'tiny' && '11px') ||
   	      (props.size === 'small' && '14px') ||
   	      (props.size === 'medium' && '16px') ||
   	      (props.size === 'large' && '18px') ||
@@ -75,7 +75,7 @@ const TextStyled = styled.text<IProps>`
       'laptop',
       `
         font-size: ${
-		  (props.size === 'tiny' && '11px') ||
+		      (props.size === 'tiny' && '11px') ||
   	      (props.size === 'small' && '14px') ||
   	      (props.size === 'medium' && '16px') ||
   	      (props.size === 'large' && '18px') ||
@@ -89,7 +89,7 @@ const TextStyled = styled.text<IProps>`
       'laptopL',
       `
         font-size: ${
-		  (props.size === 'tiny' && '11px') ||
+		      (props.size === 'tiny' && '11px') ||
   	      (props.size === 'small' && '14px') ||
   	      (props.size === 'medium' && '16px') ||
   	      (props.size === 'large' && '18px') ||

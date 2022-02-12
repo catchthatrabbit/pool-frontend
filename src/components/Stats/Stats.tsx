@@ -10,6 +10,7 @@ import { minWidth } from 'helpers/responsive'
 
 const ChartContainer = styled.div`
   width: 100%;
+  max-width: 900px;
   margin: 0;
   transform: scale(1);
   ${minWidth(

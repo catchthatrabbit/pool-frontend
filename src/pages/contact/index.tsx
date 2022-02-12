@@ -45,14 +45,14 @@ const ContactsPage: FC = () => (
         </BoxEmail>
         <BoxEmail
           title="Security &amp; Bug reports"
-          email="issues@catchthatrabbit.com"
+          email="security@catchthatrabbit.com"
         >
           Any bug or any other security issues reports are highly and greatly
           appreciated.
         </BoxEmail>
         <BoxEmail
           title="Legal &amp; Commercial"
-          email="office@catchthatrabbit.com"
+          email="contact@catchthatrabbit.com"
         >
           For legal and commercial questions please feel free to email us.
         </BoxEmail>

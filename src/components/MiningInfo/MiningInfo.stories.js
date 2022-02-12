@@ -19,7 +19,7 @@ export default {
         { key: '4', title: 'Worker online', value: '10000', color: 'apple' },
         { key: '5', title: 'Worker offline', value: '210', color: 'red' },
         { key: '6', title: 'Unpaid Balance', value: '6,820 XCB / 68.20 EUR' },
-        { key: '7', title: 'EFFICIENCY', value: '99.2%' },
+        { key: '7', title: 'Efficiency', value: '99.2%' },
       ],
     },
   },

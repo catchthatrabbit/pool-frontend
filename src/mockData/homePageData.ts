@@ -33,11 +33,10 @@ export const StatsData = {
     { time: '2020-10-20 15:00', value: 50542491 },
   ],
   infoBoxData: [
-    { title: '24H Hashrate High', value: 192900000, type: 'hashSpeed' },
-    { title: '24H Hashrate low', value: 19200, type: 'hashSpeed' },
-    { title: 'Round Variance', value: 200, type: 'percentage' },
+    { title: 'Network difficulty', value: 6734000, type: 'hashSpeed' },
+    { title: 'Round Variance', value: 200, type: 'percent' },
     { title: 'Blockchain Height', value: 99000000, type: 'number' },
-    { title: 'Last XCB Payout', value: 330000, type: 'euro' },
+    { title: 'Last block found', value: 3, type: 'time' },
   ],
 }
 
@@ -47,79 +46,80 @@ export const TableData = {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '28',
+      'variance': '39',
     },
     {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '29',
+      'variance': '39',
     },
     {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '2.89',
+      'variance': '39',
     },
     {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '2.89',
+      'variance': '39',
     },
     {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '2.89',
+      'variance': '39',
     },
     {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '2.89',
+      'variance': '39',
     },
     {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '2.89',
+      'variance': '39',
     },
     {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '2.89',
+      'variance': '39',
     },
     {
       height: '10619917',
       type: 'Block',
       'mined on': '8 Aug 2020, 17:08',
-      miner: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
-      reward: '2.89 XCB',
-      'round time': '41.38 Seconds',
+      'block hash': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      reward: '2.89',
+      'variance': '39',
     },
   ],
   columns: [
     {
       name: 'height',
       id: 'height',
+      type: 'block',
     },
     {
       name: 'type',
@@ -128,62 +128,183 @@ export const TableData = {
     {
       name: 'mined on',
       id: 'mined on',
+      type: 'time',
     },
+    {
+      name: 'block hash',
+      id: 'block hash',
+      type: 'block',
+    },
+    {
+      name: 'reward',
+      id: 'reward',
+      type: 'xcb',
+    },
+    {
+      name: 'variance',
+      id: 'variance',
+      type: 'percentage',
+    },
+  ],
+}
+
+export const BlocksInfoBoxData = [
+  { title: 'Blocks', value: 64, type: 'number' as const },
+  { title: 'Shares', value: 95, type: 'percent' as const },
+  { title: 'Uncle rate', value: 8, type: 'percent' as const },
+  { title: 'Orphan rate', value: 0, type: 'percent' as const },
+  { title: 'Blocks', value: 128, type: 'number' as const },
+  { title: 'Shares', value: 95, type: 'percent' as const },
+  { title: 'Uncle rate', value: 8, type: 'percent' as const },
+  { title: 'Orphan rate', value: 0, type: 'percent' as const },
+  { title: 'Blocks', value: 256, type: 'number' as const },
+  { title: 'Shares', value: 95, type: 'percent' as const },
+  { title: 'Uncle rate', value: 8, type: 'percent' as const },
+  { title: 'Orphan rate', value: 0, type: 'percent' as const },
+]
+
+export const PaymentsInfoBoxData = [
+  { title: 'Sent payments', value: 69900, type: 'number' as const },
+  { title: 'XCB Price', value: 200, type: 'euro' as const },
+]
+
+export const TablePaymentsData = {
+  data: [
+    {
+      time: '8 Aug 2020, 17:08',
+      amount: '2.89',
+      address: 'AB1234567890123456789012345678901234567890',
+      'tx id': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+    },
+    {
+      time: '8 Aug 2020, 17:08',
+      amount: '2.89',
+      address: 'AB1234567890123456789012345678901234567890',
+      'tx id': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+    },
+    {
+      time: '8 Aug 2020, 17:08',
+      amount: '2.89',
+      address: 'AB1234567890123456789012345678901234567890',
+      'tx id': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+    },
+    {
+      time: '8 Aug 2020, 17:08',
+      amount: '2.89',
+      address: 'AB1234567890123456789012345678901234567890',
+      'tx id': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+    },
+    {
+      time: '8 Aug 2020, 17:08',
+      amount: '2.89',
+      address: 'AB1234567890123456789012345678901234567890',
+      'tx id': '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+    },
+  ],
+  columns: [
+    {
+      name: 'time',
+      id: 'time',
+      type: 'time',
+    },
+    {
+      name: 'amount',
+      id: 'amount',
+      type: 'xcb',
+    },
+    {
+      name: 'address',
+      id: 'address',
+      type: 'address',
+    },
+    {
+      name: 'tx id',
+      id: 'tx id',
+      type: 'tx',
+    },
+  ],
+}
+
+export const MinersInfoBoxData = [
+  { title: 'Total miners', value: 69900, type: 'number' as const },
+  { title: 'Total hashrate', value: 200000, type: 'hashSpeed' as const },
+]
+
+export const TableMinersData = {
+  data: [
+    {
+      miner: 'AB1234567890123456789012345678901234567890',
+      hashrate: '2.89',
+      'last beat': '8 Aug 2020, 17:08',
+    },
+    {
+      miner: 'AB1234567890123456789012345678901234567890',
+      hashrate: '2.89',
+      'last beat': '8 Aug 2020, 17:08',
+    },
+    {
+      miner: 'AB1234567890123456789012345678901234567890',
+      hashrate: '2.89',
+      'last beat': '8 Aug 2020, 17:08',
+    },
+  ],
+  columns: [
     {
       name: 'miner',
       id: 'miner',
       type: 'address',
     },
     {
-      name: 'reward',
-      id: 'reward',
+      name: 'hashrate',
+      id: 'hashrate',
+      type: 'hashrate',
     },
     {
-      name: 'round time',
-      id: 'round time',
+      name: 'last beat',
+      id: 'last beat',
     },
   ],
 }
 
-export const BlocksInfoBoxData = [
-  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' as const },
-  { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' as const },
-  { title: 'Network difficulty', value: 6600, type: 'hash' as const },
-  { title: 'Active miners', value: 10000, type: 'number' as const },
-  { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' as const },
-  { title: '24H Hashrate Low', value: 192900000, type: 'hashSpeed' as const },
-  { title: 'Round Variance', value: 200, type: 'percent' as const },
-  { title: 'Blockchain Height', value: 99000000, type: 'number' as const },
-  { title: 'Last XCB Payout', value: 330000, type: 'euro' as const },
-]
-
-export const PaymentsInfoBoxData = [
-  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' as const },
-  { title: '24H Hashrate High', value: 192900, type: 'hashSpeed' as const },
-  { title: 'Active miners', value: 10000, type: 'number' as const },
-  { title: 'Last XCB Payout', value: 330000, type: 'euro' as const },
-]
-
 export const MinerDataCardData = {
-  title: 'Sentinel',
-  description: 'Fast miner with 0% fees',
-  info: ['OS: Windows, Linux', 'CPUs: AMD, NVIDIA', 'Fee: 0%'],
-  configLink: 'https://mega.nz/folder/O4YA2JgD#n2b4iSHQDruEsYUvTQP5_w',
-  minerLink: 'https://mega.nz/folder/O4YA2JgD#n2b4iSHQDruEsYUvTQP5_w',
+  title: 'CoreMiner',
+  description: 'Fast & Open-source miner with excellent hardware support & 0% fees.',
+  info: ['OS: Linux', 'CPUs: AMD, Intel, ARM', 'Fee: 0%'],
+  configLink: 'https://github.com/catchthatrabbit/coreminer/tree/config',
+  minerLink: 'https://github.com/catchthatrabbit/coreminer/releases',
 }
 
 export const PoolDetailsData = [
   { key: '1', title: 'Reward scheme', value: 'PPLNS (Pay Per Last N Shares)' },
-  { key: '2', title: 'We pay regularly', value: '3 times per day' },
-  { key: '3', title: 'Pool fee', value: '2%' },
-  { key: '4', title: 'Payout round', value: '6 Hours' },
-  { key: '5', title: 'Payout threshhold', value: 'Minimum 20 XCB' },
-  { key: '6', title: 'Share difficulty', value: '4 GH' },
-  { key: '7', title: 'Mining algorithm', value: 'CryptOre' },
+  { key: '2', title: 'Pool fee', value: '2%' },
+  { key: '3', title: 'Payout threshhold', value: 'Minimum 20 XCB' },
+  { key: '4', title: 'Mining algorithm', value: 'RandomY' },
 ]
 
-export const MinerDataInfoData = [
-  { key: '1', title: 'server', value: 'eu.ctrpool.io' },
+export const MinerDataInfoDataEu = [
+  { key: '1', title: 'server', value: 'eu.catchthatrabbit.com' },
+  { key: '2', title: 'port', value: '4444' },
+  { key: '3', title: 'secure (ssl) port', value: '5555' },
+  {
+    key: '4',
+    title: 'Username',
+    value: '<your Core Coin Address>.<Worker Name>',
+  },
+  { key: '5', title: 'Password', value: '<empty>' },
+]
+export const MinerDataInfoDataNa = [
+  { key: '1', title: 'server', value: 'na.catchthatrabbit.com' },
+  { key: '2', title: 'port', value: '4444' },
+  { key: '3', title: 'secure (ssl) port', value: '5555' },
+  {
+    key: '4',
+    title: 'Username',
+    value: '<your Core Coin Address>.<Worker Name>',
+  },
+  { key: '5', title: 'Password', value: '<empty>' },
+]
+export const MinerDataInfoDataAs = [
+  { key: '1', title: 'server', value: 'as.catchthatrabbit.com' },
   { key: '2', title: 'port', value: '4444' },
   { key: '3', title: 'secure (ssl) port', value: '5555' },
   {
@@ -195,9 +316,9 @@ export const MinerDataInfoData = [
 ]
 
 export const LinksData = [
-  { href: '#europe', text: 'Europe' },
-  { href: '#united_states', text: 'United States' },
-  { href: '#asia', text: 'Asia' },
+  { href: '#pool-europe', text: 'Europe' },
+  { href: '#pool-na', text: 'Northen America' },
+  { href: '#pool-asia', text: 'Asia' },
 ]
 
 export const MiningInfoData = [
@@ -209,7 +330,7 @@ export const MiningInfoData = [
       { key: '4', title: 'Worker online', value: '10000', color: 'apple' },
       { key: '5', title: 'Worker offline', value: '210', color: 'red' },
       { key: '6', title: 'Unpaid Balance', value: '6,820 XCB / 68.20 EUR' },
-      { key: '7', title: 'EFFICIENCY', value: '99.2%' },
+      { key: '7', title: 'Efficiency', value: '99.2%' },
     ],
   },
   {
@@ -220,7 +341,7 @@ export const MiningInfoData = [
       { key: '4', title: 'Worker online', value: '10000' },
       { key: '5', title: 'Worker offline', value: '210' },
       { key: '6', title: 'Unpaid Balance', value: '6,820 XCB / 68.20 EUR' },
-      { key: '7', title: 'EFFICIENCY', value: '99.2%' },
+      { key: '7', title: 'Efficiency', value: '99.2%' },
     ],
   },
 ]
