@@ -2,7 +2,6 @@ import {
   StatsData,
   JumbotronData,
   TableData,
-  MiningInfoData,
   InfoCardData,
   ChartLineData,
   ChartBarSlimeData,
@@ -36,7 +35,6 @@ export async function getStaticPropsAddress(context) {
   return {
     props: {
       address,
-      MiningInfoData,
       InfoCardData,
       ChartLineData,
       ChartBarSlimeData,

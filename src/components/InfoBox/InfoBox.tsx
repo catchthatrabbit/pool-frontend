@@ -34,14 +34,6 @@ const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
         {text.prefix}
         {text.value}
         {text.suffix}
-        <Text size="medium" fontWeight="bold">
-          {type === 'hashSpeed' && '/'}
-        </Text>
-        {type === 'hashSpeed' && (
-          <Text size="small" fontWeight="bold">
-            s
-          </Text>
-        )}
       </Text>
       <Text size="small" fontWeight="light">
         {title}

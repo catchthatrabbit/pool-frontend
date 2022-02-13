@@ -36,7 +36,7 @@ export const StatsData = {
     { title: 'Network difficulty', value: 6734000, type: 'hashSpeed' },
     { title: 'Round Variance', value: 200, type: 'percent' },
     { title: 'Blockchain Height', value: 99000000, type: 'number' },
-    { title: 'Last block found', value: 3, type: 'time' },
+    { title: 'Last block found', value: 3, type: 'ago' },
   ],
 }
 
@@ -148,6 +148,90 @@ export const TableData = {
   ],
 }
 
+export const WorkersTableData = {
+  data: [
+    {
+      id: 'Worker Rabbit 1',
+      hashShort: 20,
+      hashLong: 250,
+      last: 20,
+      status: true,
+    },
+    {
+      id: 'Worker Rabbit 2',
+      hashShort: 30,
+      hashLong: 320,
+      last: 200,
+      status: true,
+    },
+    {
+      id: 'Worker Rabbit 3',
+      hashShort: 0,
+      hashLong: 20,
+      last: 80,
+      status: false,
+    },
+  ],
+  columns: [
+    {
+      name: 'rabbit',
+      id: 'id',
+    },
+    {
+      name: 'hashrate ~30m',
+      id: 'hashShort',
+      type: 'hashrate',
+    },
+    {
+      name: 'hashrate ~3h',
+      id: 'hashLong',
+      type: 'hashrate',
+    },
+    {
+      name: 'last share',
+      id: 'last',
+      type: 'ago',
+    },
+    {
+      name: 'status',
+      id: 'status',
+      type: 'status',
+    },
+  ],
+}
+
+export const PayoutsTableData = {
+  data: [
+    {
+      time: '8 Aug 2020, 17:08',
+      tx: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      amount: 250,
+    },
+    {
+      time: '8 Aug 2020, 17:08',
+      tx: '0xDD5F68E68198520e60FaD24CBf1aDd2C6fcA7538',
+      amount: 250,
+    },
+  ],
+  columns: [
+    {
+      name: 'time',
+      id: 'time',
+      type: 'time',
+    },
+    {
+      name: 'tx id',
+      id: 'tx',
+      type: 'block',
+    },
+    {
+      name: 'amount',
+      id: 'amount',
+      type: 'xcb',
+    },
+  ],
+}
+
 export const BlocksInfoBoxData = [
   { title: 'Blocks', value: 64, type: 'number' as const },
   { title: 'Shares', value: 95, type: 'percent' as const },
@@ -234,17 +318,17 @@ export const TableMinersData = {
   data: [
     {
       miner: 'AB1234567890123456789012345678901234567890',
-      hashrate: '2.89',
+      hashrate: '20000000.89',
       'last beat': '8 Aug 2020, 17:08',
     },
     {
       miner: 'AB1234567890123456789012345678901234567890',
-      hashrate: '2.89',
+      hashrate: '2000.89',
       'last beat': '8 Aug 2020, 17:08',
     },
     {
       miner: 'AB1234567890123456789012345678901234567890',
-      hashrate: '2.89',
+      hashrate: '20.89',
       'last beat': '8 Aug 2020, 17:08',
     },
   ],
@@ -321,27 +405,26 @@ export const LinksData = [
   { href: '#pool-asia', text: 'Asia' },
 ]
 
-export const MiningInfoData = [
+export const MinerInfoData = [
   {
-    title: 'Miner Information',
+    title: 'Computing information',
     data: [
-      { key: '2', title: 'port', value: '4444' },
-      { key: '3', title: 'secure (ssl) port', value: '5555' },
-      { key: '4', title: 'Worker online', value: '10000', color: 'apple' },
-      { key: '5', title: 'Worker offline', value: '210', color: 'red' },
-      { key: '6', title: 'Unpaid Balance', value: '6,820 XCB / 68.20 EUR' },
-      { key: '7', title: 'Efficiency', value: '99.2%' },
+      { key: '1', title: 'Workers online', value: '2', type: 'number' },
+      { key: '2', title: 'Hashrate ~30m', value: '20', type: 'hashrate' },
+      { key: '3', title: 'Hashrate ~3h', value: '200', type: 'hashrate' },
+      { key: '4', title: 'Last share', value: '2', type: 'ago' },
+      { key: '5', title: 'Round share', value: '0.6', type: 'percentage' },
+      { key: '6', title: 'Blocks found', value: '99999', type: 'number' },
     ],
   },
   {
-    title: 'General Information',
+    title: 'General stats',
     data: [
-      { key: '2', title: 'port', value: '4444' },
-      { key: '3', title: 'secure (ssl) port', value: '5555' },
-      { key: '4', title: 'Worker online', value: '10000' },
-      { key: '5', title: 'Worker offline', value: '210' },
-      { key: '6', title: 'Unpaid Balance', value: '6,820 XCB / 68.20 EUR' },
-      { key: '7', title: 'Efficiency', value: '99.2%' },
+      { key: '1', title: 'Immature balance', value: '4.5', type: 'xcb' },
+      { key: '2', title: 'Pending balance', value: '112.54', type: 'xcb' },
+      { key: '3', title: 'Total payments', value: '10000', type: 'number' },
+      { key: '4', title: 'Total paid', value: '210000', type: 'xcb' },
+      { key: '5', title: 'Epoch switch', value: '70', type: 'epoch' },
     ],
   },
 ]
