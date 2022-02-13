@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react'
 import styled, { css } from 'styled-components'
-import SearchBar from 'atoms/SearchBar'
 import Table from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { MinersIcon, SearchResultsIcon, PaymentsIcon } from 'atoms/icons'
@@ -15,22 +14,21 @@ import {
   ChartSpacedData,
   InfoCardData,
   InfoStatsBoxData,
-  InfoStatsBoxLargeData,
-  MiningInfoData,
-  TableData,
+  MinerInfoData,
+  WorkersTableData,
+  PayoutsTableData,
 } from 'mockData/homePageData'
-import InfoCard from 'components/InfoCard'
-import ChartLine from 'atoms/ChartLine'
-import ChartBarSlime from 'atoms/ChartBarSlime'
-import InfoStatsBox from 'components/InfoStatsBox'
-import ChartBarSpacing from 'atoms/ChartBarSpacing'
-import { InfoBoxItem } from 'helpers/text'
 import CopyButton from 'atoms/CopyButton'
-import useGoToWallet from 'hooks/useGoToWallet'
 import { useRouter } from 'next/router'
 import Loading from '@components/Loading/Loading'
 import { minWidth } from 'helpers/responsive'
 import NotFound from 'components/NotFound/NotFound'
+import iban from 'helpers/iban'
+import BoxPanel from 'atoms/BoxPanel/BoxPanel'
+
+function formatAddressContent(address) {
+  return iban(address)
+}
 
 const ContainerStyled = styled.div`
   z-index: 1;
@@ -257,22 +255,23 @@ const AddressContainer = styled.div`
 export const getStaticPaths: GetStaticPaths = defaultGetStaticPaths
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // const props = fetch(`/api/${address}`)
-  // const errorCode = props.ok ? false : props.statusCode
+  /*const props = fetch(`/api/${address}`)
+  const errorCode = props.ok ? false : props.statusCode
 
   console.log(params)
 
-  // if(errorCode) {
-  //   return {
-  //     props: { errorCode }
-  //   }
-  // }
+  if(errorCode) {
+    return {
+      props: { errorCode }
+    }
+  }*/
 
   return {
     props: {
       address: params?.address,
-      tableData: TableData as any,
-      miningInfoData: MiningInfoData as any,
+      workersTableData: WorkersTableData as any,
+      payoutsTableData: PayoutsTableData as any,
+      minerInfoData: MinerInfoData as any,
       infoCardData: InfoCardData as any,
       chartLineData: ChartLineData as any,
       chartSpacedData: ChartSpacedData as any,
@@ -283,37 +282,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-type TabType = 'statistics' | 'payout'
+type TabType = 'workers' | 'payout'
 
 const Wallet: FC<any> = (props) => {
-  const [searchValue, setSearchValue] = useState('')
-  const [changeView, setChangeView] = useState<TabType>('statistics')
+  const [changeView, setChangeView] = useState<TabType>('workers')
   const router = useRouter()
-
-  const goToWallet = useGoToWallet()
-
-  const handleSearchValueChange = (event) => {
-    setSearchValue(event.target.value)
-  }
-  const handleSearch = () => {
-    goToWallet(searchValue)
-  }
 
   if (router.isFallback) {
     return <Loading />
   }
-  // if (props.errorCode) {
-  //   return <NotFound />
-  // }
+  if (props.errorCode) {
+    return <NotFound />
+  }
   return (
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<SearchResultsIcon />}>Search result</ContentTitle>
+        <ContentTitle Image={<SearchResultsIcon />}>Wallet overview</ContentTitle>
         <ColumnContainer>
           <AddressContainer>
             <Text size="very-large" color="apple">
-              {props.address}
+              {formatAddressContent(props.address)}
             </Text>
           </AddressContainer>
           <ButtonStyled>
@@ -321,7 +310,7 @@ const Wallet: FC<any> = (props) => {
           </ButtonStyled>
         </ColumnContainer>
         <MiningInfoContainer>
-          {MiningInfoData.map(({ title, data }) => (
+          {MinerInfoData.map(({ title, data }) => (
             <MiningInfo
               data={data as any}
               title={title}
@@ -332,96 +321,43 @@ const Wallet: FC<any> = (props) => {
         </MiningInfoContainer>
         <TabSelector>
           <Text
-            active={changeView === 'statistics'}
-            onClick={() => setChangeView('statistics')}
+            active={changeView === 'workers'}
+            onClick={() => setChangeView('workers')}
           >
-            Statistics
+            Workers
           </Text>
           <Text
             active={changeView === 'payout'}
             onClick={() => setChangeView('payout')}
           >
-            Payout
+            Payouts
           </Text>
         </TabSelector>
-        <TabContent active={changeView === 'statistics'}>
-          <InfoBoxContainer>
-            {InfoCardData.map(({ title, data }) => (
-              <InfoCard title={title} data={data as InfoBoxItem[]} />
-            ))}
-          </InfoBoxContainer>
-          <TitleCharLineContainer>
-            <ContentTitle>Hash rate</ContentTitle>
-          </TitleCharLineContainer>
-          <ChartsWrapper>
-            <ChartLineContainer>
-              <ChartLine data={ChartLineData as []} />
-            </ChartLineContainer>
-          </ChartsWrapper>
-          <TitleCharBarContainer>
-            <ContentTitle>Shares</ContentTitle>
-          </TitleCharBarContainer>
-          <ChartsWrapper>
-            <ChartBarContainer>
-              <ChartBarSlime data={ChartBarSlimeData as []} />
-            </ChartBarContainer>
-          </ChartsWrapper>
+        <TabContent active={changeView !== 'workers'}>
           <TitleStyled>
             <ContentTitle Image={<MinersIcon />}>Workers</ContentTitle>
           </TitleStyled>
-          <SearchBarContainerStyled>
-            <SearchBar
-              value={searchValue}
-              onChange={handleSearchValueChange}
-              onSearch={handleSearch}
-            />
-          </SearchBarContainerStyled>
           <TableContainerStyled>
             <Table
-              data={props.tableData.data}
-              columns={props.tableData.columns}
+              data={props.workersTableData.data}
+              columns={props.workersTableData.columns}
             />
           </TableContainerStyled>
         </TabContent>
-        <TabContent active={changeView === 'payout'}>
-          <InfoContainer>
-            {InfoStatsBoxData.map(({ title, subtitle, suffix, value }) => (
-              <InfoStatsBox
-                title={title}
-                subtitle={subtitle}
-                value={value}
-                suffix={suffix}
-                size="small"
-              />
-            ))}
-          </InfoContainer>
-          <ContentTitle>Payments</ContentTitle>
-          <ChartsWrapper>
-            <ChartBarContainer>
-              <ChartBarSpacing data={ChartSpacedData as []} />
-            </ChartBarContainer>
-          </ChartsWrapper>
-          <InfoContainer>
-            {InfoStatsBoxLargeData.map(({ title, subtitle, suffix, value }) => (
-              <InfoStatsBox
-                title={title}
-                subtitle={subtitle}
-                suffix={suffix}
-                value={value}
-                size="large"
-              />
-            ))}
-          </InfoContainer>
+        <TabContent active={changeView !== 'payout'}>
           <TitleStyled>
-            <ContentTitle Image={<PaymentsIcon />}>Payment List</ContentTitle>
+            <ContentTitle Image={<PaymentsIcon />}>Payouts list</ContentTitle>
           </TitleStyled>
           <TableContainerStyled>
             <Table
-              data={props.tableData.data}
-              columns={props.tableData.columns}
+              data={props.payoutsTableData.data}
+              columns={props.payoutsTableData.columns}
             />
           </TableContainerStyled>
         </TabContent>
+        <BoxPanel title="Bulk statistics" desc="Your JSON API statistics.">
+          https://{window.location.hostname}/api/accounts/{props.address}
+        </BoxPanel>
       </ContainerStyled>
     </>
   )

@@ -1,8 +1,11 @@
 import numberToString from './number'
 import secondsToTime from './seconds'
 import siFormat from './siFormat'
+import ago from './ago'
+import currency from './currency'
+import numberFormat from 'helpers/numberFormat'
 
-type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro' | 'xcb' | 'time'
+type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro' | 'xcb' | 'time' | 'ago'
 
 export type InfoBoxItem = {
   title: string
@@ -22,7 +25,7 @@ export default function getText(type, value): TextType {
       return {
         value: numberToString(siFormat(value,2)),
         prefix: '',
-        suffix: '',
+        suffix: 'h/s',
       }
     case 'percent':
       return {
@@ -32,21 +35,34 @@ export default function getText(type, value): TextType {
       }
     case 'euro':
       return {
-        value: numberToString(value),
-        prefix: '€',
+        value: numberToString(currency(value,'EUR')),
+        prefix: '',
         suffix: '',
       }
     case 'xcb':
       return {
-        value: numberToString(value),
-        prefix: '₡',
-        suffix: ' XCB',
+        value: numberToString(currency(value)),
+        prefix: '',
+        suffix: '',
       }
     case 'time':
+      const d = new Date(value)
       return {
-        value: numberToString(secondsToTime(value)),
+        value: numberToString(d.toLocaleString()),
         prefix: '',
-        suffix: ' ago',
+        suffix: '',
+      }
+    case 'ago':
+      return {
+        value: numberToString(ago(value, true)),
+        prefix: '',
+        suffix: '',
+      }
+    case 'number':
+      return {
+        value: numberToString(numberFormat(value)),
+        prefix: '',
+        suffix: '',
       }
     default:
       return {

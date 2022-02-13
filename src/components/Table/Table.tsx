@@ -10,6 +10,10 @@ import useGoToTx from 'hooks/useGoToTx'
 import useGoToWallet from 'hooks/useGoToWallet'
 import { minWidth } from 'helpers/responsive'
 import siFormat from 'helpers/siFormat'
+import ago from 'helpers/ago'
+import ok from 'helpers/ok'
+import currency from 'helpers/currency'
+import numberFormat from 'helpers/numberFormat'
 
 const WrapperStyled = styled.div`
   box-sizing: border-box;
@@ -118,7 +122,7 @@ const PaginationContainerStyled = styled.div`
 type Column = {
   name: string
   id: string
-  type: 'address' | 'block' | 'tx' | 'xcb' | 'time' | 'percentage' | 'hashrate' | 'string'
+  type: 'address' | 'block' | 'tx' | 'xcb' | 'number' | 'time' | 'ago' | 'percentage' | 'hashrate' | 'status' | 'string'
 }
 
 type DataItem = { [key: string]: string }
@@ -141,7 +145,11 @@ function hideMiddleContent(value) {
 }
 
 function formatRewardContent(value) {
-  return `₡${value} XCB`
+  return currency(value)
+}
+
+function formatNumberContent(value) {
+  return numberFormat(value)
 }
 
 function formatTimeContent(value) {
@@ -149,12 +157,20 @@ function formatTimeContent(value) {
   return d.toLocaleString()
 }
 
+function formatAgoContent(value) {
+  return ago(value)
+}
+
 function formatPerctContent(value) {
   return `${value}%`
 }
 
 function formatHashContent(value) {
-  return siFormat(value,2)
+  return `${siFormat(value,2)}h/s`
+}
+
+function formatStatusContent(value) {
+  return ok(value)
 }
 
 const Table: FC<IProps> = ({ data, columns, moreLink }) => {
@@ -207,9 +223,12 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
                         {type === 'block' && hideMiddleContent(dataItem[id])}
                         {type === 'tx' && hideMiddleContent(dataItem[id])}
                         {type === 'xcb' && formatRewardContent(dataItem[id])}
+                        {type === 'number' && formatNumberContent(dataItem[id])}
                         {type === 'time' && formatTimeContent(dataItem[id])}
+                        {type === 'ago' && formatAgoContent(dataItem[id])}
                         {type === 'percentage' && formatPerctContent(dataItem[id])}
                         {type === 'hashrate' && formatHashContent(dataItem[id])}
+                        {type === 'status' && formatStatusContent(dataItem[id])}
                         {type === 'string' && dataItem[id]}
                       </TextStyled>
                     </td>
