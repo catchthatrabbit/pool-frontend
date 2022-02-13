@@ -356,7 +356,7 @@ const Wallet: FC<any> = (props) => {
           </TableContainerStyled>
         </TabContent>
         <BoxPanel title="Bulk statistics" desc="Your JSON API statistics.">
-          https://{window.location.hostname}/api/accounts/{props.address}
+          https://catchthatrabbit.com/api/accounts/{props.address}
         </BoxPanel>
       </ContainerStyled>
     </>
