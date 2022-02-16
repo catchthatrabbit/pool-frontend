@@ -117,31 +117,31 @@ export const TableData = {
   ],
   columns: [
     {
-      name: 'height',
+      name: 'Height',
       id: 'height',
       type: 'block',
     },
     {
-      name: 'type',
+      name: 'Type',
       id: 'type',
     },
     {
-      name: 'mined on',
+      name: 'Mined on',
       id: 'mined on',
       type: 'time',
     },
     {
-      name: 'block hash',
+      name: 'Block hash',
       id: 'block hash',
       type: 'block',
     },
     {
-      name: 'reward',
+      name: 'Reward',
       id: 'reward',
       type: 'xcb',
     },
     {
-      name: 'variance',
+      name: 'Variance',
       id: 'variance',
       type: 'percentage',
     },
@@ -174,26 +174,26 @@ export const WorkersTableData = {
   ],
   columns: [
     {
-      name: 'rabbit',
+      name: 'Rabbit',
       id: 'id',
     },
     {
-      name: 'hashrate ~30m',
+      name: 'Hashrate ~30m',
       id: 'hashShort',
       type: 'hashrate',
     },
     {
-      name: 'hashrate ~3h',
+      name: 'Hashrate ~3h',
       id: 'hashLong',
       type: 'hashrate',
     },
     {
-      name: 'last share',
+      name: 'Last share',
       id: 'last',
       type: 'ago',
     },
     {
-      name: 'status',
+      name: 'Status',
       id: 'status',
       type: 'status',
     },
@@ -215,17 +215,17 @@ export const PayoutsTableData = {
   ],
   columns: [
     {
-      name: 'time',
+      name: 'Time',
       id: 'time',
       type: 'time',
     },
     {
-      name: 'tx id',
+      name: 'Tx id',
       id: 'tx',
       type: 'block',
     },
     {
-      name: 'amount',
+      name: 'Amount',
       id: 'amount',
       type: 'xcb',
     },
@@ -287,22 +287,22 @@ export const TablePaymentsData = {
   ],
   columns: [
     {
-      name: 'time',
+      name: 'Time',
       id: 'time',
       type: 'time',
     },
     {
-      name: 'amount',
+      name: 'Amount',
       id: 'amount',
       type: 'xcb',
     },
     {
-      name: 'address',
+      name: 'Address',
       id: 'address',
       type: 'address',
     },
     {
-      name: 'tx id',
+      name: 'Tx id',
       id: 'tx id',
       type: 'tx',
     },
@@ -334,17 +334,17 @@ export const TableMinersData = {
   ],
   columns: [
     {
-      name: 'miner',
+      name: 'Miner',
       id: 'miner',
       type: 'address',
     },
     {
-      name: 'hashrate',
+      name: 'Hashrate',
       id: 'hashrate',
       type: 'hashrate',
     },
     {
-      name: 'last beat',
+      name: 'Last beat',
       id: 'last beat',
     },
   ],
@@ -366,35 +366,35 @@ export const PoolDetailsData = [
 ]
 
 export const MinerDataInfoDataEu = [
-  { key: '1', title: 'server', value: 'eu.catchthatrabbit.com' },
-  { key: '2', title: 'port', value: '4444' },
-  { key: '3', title: 'secure (ssl) port', value: '5555' },
+  { key: '1', title: 'Server', value: 'eu.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '4444' },
+  { key: '3', title: 'Secure (ssl) port', value: '5555' },
   {
     key: '4',
     title: 'Username',
-    value: '<your Core Coin Address>.<Worker Name>',
+    value: '<your wallet address>.<worker name>',
   },
   { key: '5', title: 'Password', value: '<empty>' },
 ]
 export const MinerDataInfoDataNa = [
-  { key: '1', title: 'server', value: 'na.catchthatrabbit.com' },
-  { key: '2', title: 'port', value: '4444' },
-  { key: '3', title: 'secure (ssl) port', value: '5555' },
+  { key: '1', title: 'Server', value: 'na.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '4444' },
+  { key: '3', title: 'Secure (ssl) port', value: '5555' },
   {
     key: '4',
     title: 'Username',
-    value: '<your Core Coin Address>.<Worker Name>',
+    value: '<your wallet address>.<worker name>',
   },
   { key: '5', title: 'Password', value: '<empty>' },
 ]
 export const MinerDataInfoDataAs = [
-  { key: '1', title: 'server', value: 'as.catchthatrabbit.com' },
-  { key: '2', title: 'port', value: '4444' },
-  { key: '3', title: 'secure (ssl) port', value: '5555' },
+  { key: '1', title: 'Server', value: 'as.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '4444' },
+  { key: '3', title: 'Secure (ssl) port', value: '5555' },
   {
     key: '4',
     title: 'Username',
-    value: '<your Core Coin Address>.<Worker Name>',
+    value: '<your wallet address>.<worker name>',
   },
   { key: '5', title: 'Password', value: '<empty>' },
 ]

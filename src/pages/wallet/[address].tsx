@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 import styled, { css } from 'styled-components'
 import Table from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
-import { MinersIcon, SearchResultsIcon, PaymentsIcon } from 'atoms/icons'
+import { SearchResultsIcon } from 'atoms/icons'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { defaultGetStaticPaths } from 'helpers/getData'
 import MiningInfo from 'components/MiningInfo/MiningInfo'
@@ -76,10 +76,11 @@ const TitleStyled = styled.div`
   )}
 `
 const TabContent = styled.div`
-  ${(props: { active: boolean }) =>
+display: none;
+${(props: { active: boolean }) =>
     props.active &&
     `
-    display: none;
+    display: block;
   `}
 `
 const ChartsWrapper = styled.div`
@@ -97,7 +98,7 @@ const ChartLineContainer = styled.div`
 `
 
 const ColumnContainer = styled.div`
-  margin: 66px 0 81px;
+  margin: 66px 0 30px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -168,7 +169,7 @@ const InfoBoxContainer = styled(InfoContainer)`
 `
 
 const TabSelector = styled(ColumnContainer)`
-  margin-bottom: 90px;
+  margin-bottom: 10px;
   & > * {
     cursor: pointer;
     margin-right: 61px;
@@ -333,10 +334,7 @@ const Wallet: FC<any> = (props) => {
             Payouts
           </Text>
         </TabSelector>
-        <TabContent active={changeView !== 'workers'}>
-          <TitleStyled>
-            <ContentTitle Image={<MinersIcon />}>Workers</ContentTitle>
-          </TitleStyled>
+        <TabContent active={changeView === 'workers'}>
           <TableContainerStyled>
             <Table
               data={props.workersTableData.data}
@@ -344,10 +342,7 @@ const Wallet: FC<any> = (props) => {
             />
           </TableContainerStyled>
         </TabContent>
-        <TabContent active={changeView !== 'payout'}>
-          <TitleStyled>
-            <ContentTitle Image={<PaymentsIcon />}>Payouts list</ContentTitle>
-          </TitleStyled>
+        <TabContent active={changeView === 'payout'}>
           <TableContainerStyled>
             <Table
               data={props.payoutsTableData.data}

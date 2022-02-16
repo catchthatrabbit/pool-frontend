@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
 import ContentTitle from 'atoms/ContentTitle'
 import Table from 'components/Table'
@@ -6,7 +6,7 @@ import { BlockerLogoIcon } from 'atoms/icons'
 import { TableData, BlocksInfoBoxData } from 'mockData/homePageData'
 import styled, { css } from 'styled-components'
 import Background from 'atoms/Background'
-import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
+import Text from 'atoms/Text/Text'
 import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
@@ -46,18 +46,92 @@ const BoxesWrapperStyled = styled.div`
     `,
   )}
 `
+const ColumnContainer = styled.div`
+  margin: 66px 0 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`
+const TabSelector = styled(ColumnContainer)`
+  margin-bottom: 10px;
+  & > * {
+    cursor: pointer;
+    margin-right: 61px;
 
-const BlocksPage: FC = () => (
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`
+const TabContent = styled.div`
+display: none;
+${(props: { active: boolean }) =>
+    props.active &&
+    `
+    display: block;
+  `}
+`
+const TableContainerStyled = styled.div`
+  margin: 17px 0 75px;
+`
+
+type TabType = 'blocks' | 'immature' | 'newblocks'
+
+const BlocksPage: FC<any> = (props) => {
+  const [changeView, setChangeView] = useState<TabType>('blocks')
+
+  return (
     <>
-    <Background />
-    <ContainerStyled>
-      <ContentTitle Image={<BlockerLogoIcon />}>POOL BLOCKS</ContentTitle>
-      <BoxesWrapperStyled>
-        <BoxesWrapper data={BlocksInfoBoxData} />
-      </BoxesWrapperStyled>
-      <Table data={TableData.data} columns={TableData.columns} />
-    </ContainerStyled>
-  </>
-)
+      <Background />
+      <ContainerStyled>
+        <ContentTitle Image={<BlockerLogoIcon />}>Pool blocks</ContentTitle>
+        <TabSelector>
+          <Text
+            active={changeView === 'blocks'}
+            onClick={() => setChangeView('blocks')}
+          >
+            Blocks
+          </Text>
+          <Text
+            active={changeView === 'immature'}
+            onClick={() => setChangeView('immature')}
+          >
+            Immature
+          </Text>
+          <Text
+            active={changeView === 'newblocks'}
+            onClick={() => setChangeView('newblocks')}
+          >
+            New blocks
+          </Text>
+        </TabSelector>
+        <TabContent active={changeView === 'blocks'}>
+          <TableContainerStyled>
+            <Table
+              data={TableData.data}
+              columns={TableData.columns}
+            />
+          </TableContainerStyled>
+        </TabContent>
+        <TabContent active={changeView === 'immature'}>
+          <TableContainerStyled>
+            <Table
+              data={TableData.data}
+              columns={TableData.columns}
+            />
+          </TableContainerStyled>
+        </TabContent>
+        <TabContent active={changeView === 'newblocks'}>
+          <TableContainerStyled>
+            <Table
+              data={TableData.data}
+              columns={TableData.columns}
+            />
+          </TableContainerStyled>
+        </TabContent>
+      </ContainerStyled>
+    </>
+  )
+}
 
 export default BlocksPage

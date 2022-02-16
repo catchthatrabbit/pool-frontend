@@ -22,7 +22,7 @@ import { minWidth } from 'helpers/responsive'
 const TextStyled = styled.p`
   margin: 34px 0 0;
   font-family: ${fonts.secondary};
-  font-size: 14px;
+  font-size: 16px;
   a {
     color: ${colorVariables.apple};
   }
@@ -194,7 +194,7 @@ const StartMiningPage: FC = () => {
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<StartMiningIcon />}>START MINING</ContentTitle>
+        <ContentTitle Image={<StartMiningIcon />}>Start mining</ContentTitle>
         <MiningInfoContainerStyled>
           <MiningInfoStyled id="pool-europe">
             <MiningInfo data={MinerDataInfoDataEu} title="Connect to European Pool" />
@@ -207,18 +207,18 @@ const StartMiningPage: FC = () => {
           </MiningInfoStyled>
         </MiningInfoContainerStyled>
         <TitleContainerStyled>
-          <ContentTitle Image={<RecentBlocksIcon />}>GET STARTED</ContentTitle>
+          <ContentTitle Image={<RecentBlocksIcon />}>Get started</ContentTitle>
         </TitleContainerStyled>
         <BoxContentStyled>
           <BoxGuideStyled>
             <TextGuideStyled>
-              <Text size="medium">Step 1: Get a Wallet</Text>
+              <Text size="large">Step 1: Get a Wallet</Text>
             </TextGuideStyled>
             <TextGuide1Styled>
               Please, download the Core Wallet, where you can securely store your rewards.
             </TextGuide1Styled>
             <TextGuideStyled>
-              <Text size="medium">Step 2: Download mining software</Text>
+              <Text size="large">Step 2: Download mining software</Text>
             </TextGuideStyled>
             <TextGuide2Styled>
               You need to download the mining software, install and configure to start the mining application.
@@ -232,7 +232,7 @@ const StartMiningPage: FC = () => {
               </MiningCardStyled>
             </MinerCardsWrapperStyled>
             <TextGuideStyled>
-              <Text size="medium">Step 3: Choose your server</Text>
+              <Text size="large">Step 3: Choose your server</Text>
             </TextGuideStyled>
             <TextGuide3Styled>
               We have 3 geo-locations to choose from:
@@ -240,12 +240,12 @@ const StartMiningPage: FC = () => {
             <LinksWrapperStyled>
               {LinksData.map(({ href, text }) => (
                 <a key={text} href={href} onClick={onClickHandler}>
-                  {text}
+                  <Text fontFamily="primary" fontWeight="bold" size="very-large">{text}</Text>
                 </a>
               ))}
             </LinksWrapperStyled>
             <TextGuideStyled>
-              <Text size="medium">Step 4: Go To Dashboard</Text>
+              <Text size="large">Step 4: Go To Dashboard</Text>
             </TextGuideStyled>
             <TextGuide4Styled>
               To access the dashboard, type your address below.

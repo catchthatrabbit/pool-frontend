@@ -103,7 +103,7 @@ const InfoTable: FC<IProps> = ({ data, width = 'small' }) => (
             <Text>{title}</Text>
           </th>
           <td>
-            <Text fontFamily="secondary" color={color}>
+            <Text fontFamily="secondary" fontWeight="normal" color={color}>
               {type === 'xcb' && formatRewardContent(value)}
               {type === 'number' && formatNumberContent(value)}
               {type === 'time' && formatTimeContent(value)}

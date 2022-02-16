@@ -67,7 +67,7 @@ const MinersPage: FC = () => {
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<MinersIcon />}>MINERS</ContentTitle>
+        <ContentTitle Image={<MinersIcon />}>Miners</ContentTitle>
         <SearchBarContainerStyled>
             <SearchBar
               onChange={handleSearchValueChange}
