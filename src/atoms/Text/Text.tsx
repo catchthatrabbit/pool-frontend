@@ -22,7 +22,7 @@ const TextStyled = styled.text<IProps>`
   font-family: ${(props: IProps) =>
     props.fontFamily === 'primary' ? fonts.primary : fonts.secondary};
   letter-spacing: ${(props: IProps) =>
-    props.fontFamily === 'primary' ? '0.15em' : '0.05em'};
+    props.fontFamily === 'primary' ? '0.05em' : '0.05em'};
   color: ${(props: IProps) =>
     (props.color === 'white' && colorVariables.white) ||
     (props.color === 'apple' && colorVariables.apple) ||
@@ -54,7 +54,7 @@ const TextStyled = styled.text<IProps>`
 	      (props.size === 'medium' && '16px') ||
 	      (props.size === 'large' && '18px') ||
 	      (props.size === 'very-large' && '22px') ||
-	      (props.size === 'ultra-large' && '26px')
+	      (props.size === 'ultra-large' && '38px')
     };`};
   ${(props: IProps) =>
     minWidth(
@@ -66,7 +66,7 @@ const TextStyled = styled.text<IProps>`
   	      (props.size === 'medium' && '16px') ||
   	      (props.size === 'large' && '18px') ||
   	      (props.size === 'very-large' && '22px') ||
-  	      (props.size === 'ultra-large' && '26px')
+  	      (props.size === 'ultra-large' && '38px')
         };
       `,
     )};
@@ -80,7 +80,7 @@ const TextStyled = styled.text<IProps>`
   	      (props.size === 'medium' && '16px') ||
   	      (props.size === 'large' && '18px') ||
   	      (props.size === 'very-large' && '22px') ||
-  	      (props.size === 'ultra-large' && '26px')
+  	      (props.size === 'ultra-large' && '38px')
         };
       `,
     )};
@@ -94,7 +94,7 @@ const TextStyled = styled.text<IProps>`
   	      (props.size === 'medium' && '16px') ||
   	      (props.size === 'large' && '18px') ||
   	      (props.size === 'very-large' && '22px') ||
-  	      (props.size === 'ultra-large' && '26px')
+  	      (props.size === 'ultra-large' && '38px')
         };
       `,
     )};

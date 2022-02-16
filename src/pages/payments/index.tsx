@@ -73,7 +73,7 @@ const PaymentPage: FC = () => {
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<PaymentsIcon />}>PAYMETNS</ContentTitle>
+        <ContentTitle Image={<PaymentsIcon />}>Payments</ContentTitle>
         <SearchBarContainerStyled>
           <SearchBar
             onChange={handleSearchValueChange}

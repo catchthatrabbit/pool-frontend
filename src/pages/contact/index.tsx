@@ -37,7 +37,7 @@ const ContactsPage: FC = () => (
   <>
     <Background />
     <ContainerStyled>
-      <ContentTitle Image={<ContactUsIcon />}>CONTACT US</ContentTitle>
+      <ContentTitle Image={<ContactUsIcon />}>Contact</ContentTitle>
       <BoxContentStyled>
         <BoxEmail title="Support" email="support@catchthatrabbit.com">
           If you have any questions about our pool, you can contact us freely

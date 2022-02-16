@@ -214,7 +214,7 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
                       <TextStyled
                         fontFamily="secondary"
                         size="medium"
-                        fontWeight="bold"
+                        fontWeight="normal"
                         color={(type === 'address' || type === 'block' || type === 'tx') ? 'apple' : 'white'}
                         column={column}
                         onClick={() => handleDataClick(dataItem[id], column)}
