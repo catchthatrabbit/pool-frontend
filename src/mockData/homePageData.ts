@@ -3,6 +3,7 @@ export const JumbotronData = [
   { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' },
   { title: 'Network difficulty', value: 6600, type: 'hash' },
   { title: 'Active miners', value: 10000, type: 'number' },
+  { title: 'Round variance', value: 10, type: 'percent' },
 ]
 
 export const StatsData = {
@@ -34,9 +35,10 @@ export const StatsData = {
   ],
   infoBoxData: [
     { title: 'Network difficulty', value: 6734000, type: 'hashSpeed' },
-    { title: 'Round Variance', value: 200, type: 'percent' },
     { title: 'Blockchain Height', value: 99000000, type: 'number' },
+    { title: 'Round Shares', value: 200, type: 'number' },
     { title: 'Last block found', value: 3, type: 'ago' },
+    { title: 'Block reward', value: 5, type: 'xcb' },
   ],
 }
 
@@ -401,7 +403,6 @@ export const MinerDataInfoDataAs = [
 
 export const LinksData = [
   { href: '#pool-europe', text: 'Europe' },
-  { href: '#pool-na', text: 'Northen America' },
   { href: '#pool-asia', text: 'Asia' },
 ]
 
