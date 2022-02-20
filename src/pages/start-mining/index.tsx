@@ -199,9 +199,9 @@ const StartMiningPage: FC = () => {
           <MiningInfoStyled id="pool-europe">
             <MiningInfo data={MinerDataInfoDataEu} title="Connect to European Pool" />
           </MiningInfoStyled>
-          <MiningInfoStyled id="pool-na">
+          {/*<MiningInfoStyled id="pool-na">
             <MiningInfo data={MinerDataInfoDataNa} title="Connect to Northen American Pool" />
-          </MiningInfoStyled>
+          </MiningInfoStyled>*/}
           <MiningInfoStyled id="pool-asia">
             <MiningInfo data={MinerDataInfoDataAs} title="Connect to Asian Pool" />
           </MiningInfoStyled>
@@ -235,7 +235,7 @@ const StartMiningPage: FC = () => {
               <Text size="large">Step 3: Choose your server</Text>
             </TextGuideStyled>
             <TextGuide3Styled>
-              We have 3 geo-locations to choose from:
+              We have geo-locations to choose from:
             </TextGuide3Styled>
             <LinksWrapperStyled>
               {LinksData.map(({ href, text }) => (

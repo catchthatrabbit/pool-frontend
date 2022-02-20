@@ -156,14 +156,14 @@ const EUStyle = styled(LocationStyle)`
   ${minWidth(
     'laptop',
     css`
-      top: 7vw;
+      top: 18vw;
       left: 42vw;
     `,
   )}
   ${minWidth(
     'laptopL',
     css`
-      top: 120px;
+      top: 270px;
       left: 600px;
     `,
   )}
@@ -186,14 +186,14 @@ const APStyle = styled(LocationStyle)`
   ${minWidth(
     'laptop',
     css`
-      top: 8vw;
+      top: 19vw;
       left: 67vw;
     `,
   )}
   ${minWidth(
     'laptopL',
     css`
-      top: 200px;
+      top: 350px;
       left: 980px;
     `,
   )}
@@ -407,11 +407,11 @@ const Jumbotron: FC<IProps> = ({ data }) => {
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <Locations>
-          <USStyle>
+          {/*<USStyle>
             <MapButtonWrapper href={connectToUS}>
               US location
             </MapButtonWrapper>
-          </USStyle>
+          </USStyle>*/}
           <EUStyle>
             <MapButtonWrapper href={connectToEurope}>
               EU location
@@ -441,7 +441,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
             fontFamily="secondary"
             space="initial"
           >
-            <Text fontFamily = 'secondary' color="apple">Pay-per-last-N-shares</Text> (PPLNS) system with only  <Text fontFamily = 'secondary' color="apple">2% fee</Text>.
+            <Text fontFamily = 'secondary' color="apple">Pay-per-last-N-shares</Text> (PPLNS) system with only  <Text fontFamily = 'secondary' color="apple">{ "X" }% fee</Text>.
           </Text>
           <Text
             color="santasGray"

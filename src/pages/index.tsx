@@ -108,7 +108,7 @@ const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
       <TableContainerStyled>
         <TitleStyled>
           <ContentTitle Image={<RecentBlocksIcon />}>
-            RECENT BLOCKS
+            Recent blocks
           </ContentTitle>
         </TitleStyled>
         <BaseTable
