@@ -448,7 +448,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
             fontFamily="secondary"
             space="initial"
           >
-            Please, select one of the locations to <a href="/start-mining"><Text fontFamily = 'secondary' color="apple">start your mines today</Text></a>!
+            Please, select one of the locations to <a href="/start-mining"><Text fontFamily = 'secondary' color="apple">start your mining today</Text></a>!
           </Text>
         </InfoTextContent>
       </InfoComponentStyled>

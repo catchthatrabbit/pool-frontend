@@ -40,21 +40,19 @@ const ContactsPage: FC = () => (
       <ContentTitle Image={<ContactUsIcon />}>Contact</ContentTitle>
       <BoxContentStyled>
         <BoxEmail title="Support" email="support@catchthatrabbit.com">
-          If you have any questions about our pool, you can contact us freely
-          through this email.
+          If you have any questions about our pool, you can contact us freely through this email.
         </BoxEmail>
         <BoxEmail
           title="Security &amp; Bug reports"
           email="security@catchthatrabbit.com"
         >
-          Any bug or any other security issues reports are highly and greatly
-          appreciated.
+          Any bug or any other security issue reports are highly and greatly appreciated.
         </BoxEmail>
         <BoxEmail
           title="Legal &amp; Commercial"
           email="contact@catchthatrabbit.com"
         >
-          For legal and commercial questions please feel free to email us.
+          Please, feel free to email us with any legal and commercial questions.
         </BoxEmail>
       </BoxContentStyled>
     </ContainerStyled>
