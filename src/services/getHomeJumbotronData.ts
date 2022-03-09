@@ -4,7 +4,7 @@ const hydrateJumbotronData = (data) => {
 
   return [
     { title: 'Pool hashrate', value: data.hashrate, type: 'hashSpeed' },
-    { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' }, // TODO Araad
+    { title: 'Network hashrate', value: (node.difficulty / node.blocktime).toFixed(2), type: 'hashSpeed' },
     { title: 'Network difficulty', value: node.difficulty, type: 'hash' },
     { title: 'Active miners', value: data.minersTotal, type: 'number' },
     {
