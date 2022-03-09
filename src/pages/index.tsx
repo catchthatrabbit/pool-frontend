@@ -1,15 +1,18 @@
-import React, { FC, useState } from 'react'
-import styled, { css } from 'styled-components'
-import Jumbotron from 'components/Jumbotron'
-import SearchBar from 'atoms/SearchBar'
-import Stats from 'components/Stats'
-import BaseTable from 'components/Table'
 import ContentTitle from 'atoms/ContentTitle'
 import { RecentBlocksIcon } from 'atoms/icons'
-import { InferGetStaticPropsType } from 'next'
-import defaultGetStaticProps from 'helpers/getData'
-import useGoToWallet from 'hooks/useGoToWallet'
+import SearchBar from 'atoms/SearchBar'
+import Jumbotron from 'components/Jumbotron'
+import Stats from 'components/Stats'
+import BaseTable from 'components/Table'
 import { minWidth } from 'helpers/responsive'
+import useGoToWallet from 'hooks/useGoToWallet'
+import React, { FC, useState } from 'react'
+import { getHomeBlockTableData } from 'services/getHomeBlockTableData'
+import { getHomeJumbotronData } from 'services/getHomeJumbotronData'
+import { getHomeStatsData } from 'services/getHomeStatsData'
+import styled, { css } from 'styled-components'
+
+import type { InferGetServerSidePropsType } from 'next'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -77,9 +80,25 @@ const TitleStyled = styled.div`
   margin-bottom: 60px;
 `
 
-export const getStaticProps = defaultGetStaticProps
+export const getServerSideProps = async () => {
+  const [jumbotronData, statsData, tableData] = await Promise.all([
+    getHomeJumbotronData(),
+    getHomeStatsData(),
+    getHomeBlockTableData(),
+  ])
 
-const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
+  return {
+    props: {
+      jumbotronData,
+      statsData,
+      tableData,
+    },
+  }
+}
+
+const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
+  props,
+) => {
   const [searchValue, setSearchValue] = useState('')
   const goToWallet = useGoToWallet()
   const handleSearchValueChange = (event) => {
