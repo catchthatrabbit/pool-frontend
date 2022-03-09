@@ -9,9 +9,12 @@ import { INTERVALS, MILLISECOND } from 'constants/time'
 export default function ago(date: string, short = false) {
   const seconds = (Date.now() - Date.parse(date)) / MILLISECOND
 
+  let result = ''
   for (const interval of INTERVALS) {
     if ((seconds / interval.unitInSeconds) > 1) {
-      return `${Math.floor(seconds / interval.unitInSeconds)} ${interval.getUnit(short)} ago`
+      result = `${Math.floor(seconds / interval.unitInSeconds)} ${interval.getUnit(short)} ago`
     }
   }
+
+  return result
 }

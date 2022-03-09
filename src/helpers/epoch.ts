@@ -7,12 +7,14 @@ import { INTERVALS, MILLISECOND } from 'constants/time'
  * @returns a string that contains the number of seconds that have passed since the date passed in.
  */
 export default function epoch(date, short = false) {
-  console.log(Date.parse(date))
   const seconds = Math.floor((Date.parse(date) - Date.now()) / MILLISECOND)
 
+  let result = ''
   for (const interval of INTERVALS) {
     if ((seconds / interval.unitInSeconds) > 1) {
-      return `in ${Math.floor(seconds / interval.unitInSeconds)} ${interval.getUnit(short)}`
+      result = `in ${Math.floor(seconds / interval.unitInSeconds)} ${interval.getUnit(short)}`
     }
   }
+
+  return result
 }
