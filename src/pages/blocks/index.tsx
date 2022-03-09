@@ -1,13 +1,14 @@
-import React, { FC, useState } from 'react'
-
-import ContentTitle from 'atoms/ContentTitle'
-import Table from 'components/Table'
-import { BlockerLogoIcon } from 'atoms/icons'
-import { TableData, BlocksInfoBoxData } from 'mockData/homePageData'
-import styled, { css } from 'styled-components'
 import Background from 'atoms/Background'
+import ContentTitle from 'atoms/ContentTitle'
+import { BlockerLogoIcon } from 'atoms/icons'
 import Text from 'atoms/Text/Text'
+import Table from 'components/Table'
+import { getBlocksTableData } from 'services/getBlocksTableData'
 import { minWidth } from 'helpers/responsive'
+import React, { FC, useState } from 'react'
+import styled, { css } from 'styled-components'
+
+import type { InferGetServerSidePropsType } from 'next'
 
 const ContainerStyled = styled.div`
   z-index: 1;
@@ -64,8 +65,8 @@ const TabSelector = styled(ColumnContainer)`
   }
 `
 const TabContent = styled.div`
-display: none;
-${(props: { active: boolean }) =>
+  display: none;
+  ${(props: { active: boolean }) =>
     props.active &&
     `
     display: block;
@@ -75,9 +76,15 @@ const TableContainerStyled = styled.div`
   margin: 17px 0 75px;
 `
 
+export const getServerSideProps = async () => ({
+  props: await getBlocksTableData(),
+})
+
 type TabType = 'blocks' | 'immature' | 'newblocks'
 
-const BlocksPage: FC<any> = (props) => {
+const BlocksPage: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
+  props,
+) => {
   const [changeView, setChangeView] = useState<TabType>('blocks')
 
   return (
@@ -107,25 +114,22 @@ const BlocksPage: FC<any> = (props) => {
         </TabSelector>
         <TabContent active={changeView === 'blocks'}>
           <TableContainerStyled>
-            <Table
-              data={TableData.data}
-              columns={TableData.columns}
-            />
+            <Table data={props.blocks.data} columns={props.blocks.columns} />
           </TableContainerStyled>
         </TabContent>
         <TabContent active={changeView === 'immature'}>
           <TableContainerStyled>
             <Table
-              data={TableData.data}
-              columns={TableData.columns}
+              data={props.immature.data}
+              columns={props.immature.columns}
             />
           </TableContainerStyled>
         </TabContent>
         <TabContent active={changeView === 'newblocks'}>
           <TableContainerStyled>
             <Table
-              data={TableData.data}
-              columns={TableData.columns}
+              data={props.newBlocks.data}
+              columns={props.newBlocks.columns}
             />
           </TableContainerStyled>
         </TabContent>
