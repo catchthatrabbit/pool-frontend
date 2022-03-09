@@ -13,6 +13,7 @@ export default function epoch(date, short = false) {
   for (const interval of INTERVALS) {
     if ((seconds / interval.unitInSeconds) > 1) {
       result = `in ${Math.floor(seconds / interval.unitInSeconds)} ${interval.getUnit(short)}`
+      break
     }
   }
 

@@ -12,7 +12,8 @@ export default function ago(date: string, short = false) {
   let result = ''
   for (const interval of INTERVALS) {
     if ((seconds / interval.unitInSeconds) > 1) {
-      result = `${Math.floor(seconds / interval.unitInSeconds)} ${interval.getUnit(short)} ago`
+      result = `${ Math.floor(seconds / interval.unitInSeconds) } ${ interval.getUnit(short) } ago`
+      break
     }
   }
 
