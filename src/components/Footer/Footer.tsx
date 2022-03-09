@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import Link from 'next/link'
 
 import styled, { css } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
@@ -11,6 +10,7 @@ import { LogoIcon, StartMiningIcon } from 'atoms/icons'
 import { startMining } from 'constants/paths'
 import { minWidth } from 'helpers/responsive'
 import ResponsiveContext from 'providers/responsive-provider/context'
+import Link from 'atoms/Link/Link'
 
 const InfoStyled = styled.div`
   font-family: ${fonts.secondary};
@@ -150,7 +150,7 @@ const FooterInfo = ({ title, list }) => (
     <ul>
       {list.map((item) => (
         <li key={item.text}>
-          <Link href={item.href}>
+          <Link to={item.href}>
             <Text size="medium" fontFamily="secondary">
               {item.text}
             </Text>
@@ -168,9 +168,7 @@ const Footer = () => {
   const footerData = [
     {
       title: 'Start',
-      list: [
-        { text: 'Start mining', href: '/start-mining' },
-      ],
+      list: [{ text: 'Start mining', href: '/start-mining' }],
     },
     {
       title: 'Stats',
@@ -194,9 +192,7 @@ const Footer = () => {
         <HeaderDiv>
           <ContentTitle Image={<StartMiningIcon />}>Start Mining</ContentTitle>
           <HeaderTextStyle>
-            <Text size="very-large">
-              Let&apos;s jump into it
-            </Text>
+            <Text size="very-large">Let&apos;s jump into it</Text>
           </HeaderTextStyle>
           <Button href={startMining}>Start mining</Button>
         </HeaderDiv>
@@ -205,19 +201,14 @@ const Footer = () => {
         <LogoStyled>
           <LogoIcon />
           <LogoTextStyle>
-            <Text size={fontSize}>
-              Dedicated Pool
-            </Text>
+            <Text size={fontSize}>Dedicated Pool</Text>
             <br />
-            <Text size={fontSize}>
-              for{' '}
-            </Text>
+            <Text size={fontSize}>for </Text>
             <Text color="apple" size={fontSize}>
               CORE COIN
-            </Text><br />
-            <Text size={fontSize}>
-              &amp; IoT devices
             </Text>
+            <br />
+            <Text size={fontSize}>&amp; IoT devices</Text>
           </LogoTextStyle>
         </LogoStyled>
         <FooterInfoContent>
@@ -227,7 +218,10 @@ const Footer = () => {
         </FooterInfoContent>
       </MainSection>
       <FooterSection>
-        <Text size="tiny">© 2020-{(new Date().getFullYear())} Catch That Rabbit. All rights reserved.</Text>
+        <Text size="tiny">
+          © 2020-{new Date().getFullYear()} Catch That Rabbit. All rights
+          reserved.
+        </Text>
       </FooterSection>
     </FooterStyled>
   )
