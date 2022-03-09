@@ -1,24 +1,18 @@
+import { INTERVALS, MILLISECOND } from 'constants/time'
+
+/**
+ * Given a date, return a string that describes how long ago that date was
+ * @param date - The date to be converted to an interval.
+ * @param [short=false] - If true, the unit will be shortened to the abbreviation.
+ * @returns a string that contains the number of seconds that have passed since the date passed in.
+ */
 export default function epoch(date, short = false) {
-  var seconds = Math.floor((Date.parse(date) - (new Date().getTime()/1000)))
-  var interval = seconds / 31536000
-  if (interval > 1) {
-    return "in " + Math.floor(interval) + (short ? " y" : " years")
+  console.log(Date.parse(date))
+  const seconds = Math.floor((Date.parse(date) - Date.now()) / MILLISECOND)
+
+  for (const interval of INTERVALS) {
+    if ((seconds / interval.unitInSeconds) > 1) {
+      return `in ${Math.floor(seconds / interval.unitInSeconds)} ${interval.getUnit(short)}`
+    }
   }
-  interval = seconds / 2592000;
-  if (interval > 1) {
-    return "in " + Math.floor(interval) + (short ? " mth" : " months")
-  }
-  interval = seconds / 86400;
-  if (interval > 1) {
-    return "in " + Math.floor(interval) + (short ? " d" : " days")
-  }
-  interval = seconds / 3600;
-  if (interval > 1) {
-    return "in " + Math.floor(interval) + (short ? " h" : " hours")
-  }
-  interval = seconds / 60;
-  if (interval > 1) {
-    return "in " + Math.floor(interval) + (short ? " min" : " minutes")
-  }
-  return "in " + Math.floor(seconds) + (short ? " s" : " seconds")
 }
