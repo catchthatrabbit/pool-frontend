@@ -1,30 +1,21 @@
-import React, { FC, useState } from 'react'
-import styled, { css } from 'styled-components'
-import Table from 'components/Table'
-import ContentTitle from 'atoms/ContentTitle'
-import { SearchResultsIcon } from 'atoms/icons'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { defaultGetStaticPaths } from 'helpers/getData'
-import MiningInfo from 'components/MiningInfo/MiningInfo'
-import Text from 'atoms/Text/Text'
-import Background from 'atoms/Background/Background'
-import {
-  ChartBarSlimeData,
-  ChartLineData,
-  ChartSpacedData,
-  InfoCardData,
-  InfoStatsBoxData,
-  MinerInfoData,
-  WorkersTableData,
-  PayoutsTableData,
-} from 'mockData/homePageData'
-import CopyButton from 'atoms/CopyButton'
-import { useRouter } from 'next/router'
 import Loading from '@components/Loading/Loading'
-import { minWidth } from 'helpers/responsive'
-import NotFound from 'components/NotFound/NotFound'
-import iban from 'helpers/iban'
+import Background from 'atoms/Background/Background'
 import BoxPanel from 'atoms/BoxPanel/BoxPanel'
+import ContentTitle from 'atoms/ContentTitle'
+import CopyButton from 'atoms/CopyButton'
+import { SearchResultsIcon } from 'atoms/icons'
+import Text from 'atoms/Text/Text'
+import MiningInfo from 'components/MiningInfo/MiningInfo'
+import NotFound from 'components/NotFound/NotFound'
+import Table from 'components/Table'
+import iban from 'helpers/iban'
+import { minWidth } from 'helpers/responsive'
+import { useRouter } from 'next/router'
+import React, { FC, useState } from 'react'
+import { getWalletData } from 'services/getWalletData'
+import styled, { css } from 'styled-components'
+
+import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 
 function formatAddressContent(address) {
   return iban(address)
@@ -76,8 +67,8 @@ const TitleStyled = styled.div`
   )}
 `
 const TabContent = styled.div`
-display: none;
-${(props: { active: boolean }) =>
+  display: none;
+  ${(props: { active: boolean }) =>
     props.active &&
     `
     display: block;
@@ -253,53 +244,32 @@ const AddressContainer = styled.div`
   )}
 `
 
-export const getStaticPaths: GetStaticPaths = defaultGetStaticPaths
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  /*const props = fetch(`/api/${address}`)
-  const errorCode = props.ok ? false : props.statusCode
-
-  console.log(params)
-
-  if(errorCode) {
-    return {
-      props: { errorCode }
-    }
-  }*/
-
-  return {
-    props: {
-      address: params?.address,
-      workersTableData: WorkersTableData as any,
-      payoutsTableData: PayoutsTableData as any,
-      minerInfoData: MinerInfoData as any,
-      infoCardData: InfoCardData as any,
-      chartLineData: ChartLineData as any,
-      chartSpacedData: ChartSpacedData as any,
-      chartBarSlimeData: ChartBarSlimeData as any,
-      infoStatsBoxData: InfoStatsBoxData as any,
-    },
-    revalidate: 1,
-  }
-}
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext) => ({
+  props: {
+    address: params?.address as string,
+    ...await getWalletData(params?.address as string)
+  },
+})
 
 type TabType = 'workers' | 'payout'
 
-const Wallet: FC<any> = (props) => {
+const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
+  props,
+) => {
   const [changeView, setChangeView] = useState<TabType>('workers')
   const router = useRouter()
 
-  if (router.isFallback) {
-    return <Loading />
-  }
-  if (props.errorCode) {
+  if (props.status) {
     return <NotFound />
   }
+
   return (
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<SearchResultsIcon />}>Wallet overview</ContentTitle>
+        <ContentTitle Image={<SearchResultsIcon />}>
+          Wallet overview
+        </ContentTitle>
         <ColumnContainer>
           <AddressContainer>
             <Text size="very-large" color="apple">
@@ -311,8 +281,9 @@ const Wallet: FC<any> = (props) => {
           </ButtonStyled>
         </ColumnContainer>
         <MiningInfoContainer>
-          {MinerInfoData.map(({ title, data }) => (
+          {props.minerInfo.map(({ title, data }) => (
             <MiningInfo
+              key={title}
               data={data as any}
               title={title}
               width="small"
@@ -337,16 +308,16 @@ const Wallet: FC<any> = (props) => {
         <TabContent active={changeView === 'workers'}>
           <TableContainerStyled>
             <Table
-              data={props.workersTableData.data}
-              columns={props.workersTableData.columns}
+              data={props.workersTable.data}
+              columns={props.workersTable.columns}
             />
           </TableContainerStyled>
         </TabContent>
         <TabContent active={changeView === 'payout'}>
           <TableContainerStyled>
             <Table
-              data={props.payoutsTableData.data}
-              columns={props.payoutsTableData.columns}
+              data={props.payoutsTable.data}
+              columns={props.payoutsTable.columns}
             />
           </TableContainerStyled>
         </TabContent>

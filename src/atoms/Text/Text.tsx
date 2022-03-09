@@ -18,7 +18,7 @@ interface IProps {
   space?: 'nowrap' | 'initial'
 }
 
-const TextStyled = styled.text<IProps>`
+const TextStyled = styled.span<IProps>`
   font-family: ${(props: IProps) =>
     props.fontFamily === 'primary' ? fonts.primary : fonts.secondary};
   letter-spacing: ${(props: IProps) =>
@@ -31,7 +31,7 @@ const TextStyled = styled.text<IProps>`
   font-style: ${(props: IProps) => (props.italic ? 'italic' : 'normal')};
   font-weight: ${(props: IProps) =>
     (props.fontWeight === 'bold' && '600') ||
-	  (props.fontWeight === 'normal' && '400') ||
+    (props.fontWeight === 'normal' && '400') ||
     (props.fontWeight === 'light' && '100') ||
     '400'};
   ${(props) =>
@@ -49,24 +49,24 @@ const TextStyled = styled.text<IProps>`
 
   ${(props: IProps) =>
     `font-size: ${
-	      (props.size === 'tiny' && '11px') ||
-	      (props.size === 'small' && '14px') ||
-	      (props.size === 'medium' && '16px') ||
-	      (props.size === 'large' && '18px') ||
-	      (props.size === 'very-large' && '22px') ||
-	      (props.size === 'ultra-large' && '38px')
+      (props.size === 'tiny' && '11px') ||
+      (props.size === 'small' && '14px') ||
+      (props.size === 'medium' && '16px') ||
+      (props.size === 'large' && '18px') ||
+      (props.size === 'very-large' && '22px') ||
+      (props.size === 'ultra-large' && '38px')
     };`};
   ${(props: IProps) =>
     minWidth(
       'tablet',
       `
         font-size: ${
-		      (props.size === 'tiny' && '11px') ||
-  	      (props.size === 'small' && '14px') ||
-  	      (props.size === 'medium' && '16px') ||
-  	      (props.size === 'large' && '18px') ||
-  	      (props.size === 'very-large' && '22px') ||
-  	      (props.size === 'ultra-large' && '38px')
+          (props.size === 'tiny' && '11px') ||
+          (props.size === 'small' && '14px') ||
+          (props.size === 'medium' && '16px') ||
+          (props.size === 'large' && '18px') ||
+          (props.size === 'very-large' && '22px') ||
+          (props.size === 'ultra-large' && '38px')
         };
       `,
     )};
@@ -75,12 +75,12 @@ const TextStyled = styled.text<IProps>`
       'laptop',
       `
         font-size: ${
-		      (props.size === 'tiny' && '11px') ||
-  	      (props.size === 'small' && '14px') ||
-  	      (props.size === 'medium' && '16px') ||
-  	      (props.size === 'large' && '18px') ||
-  	      (props.size === 'very-large' && '22px') ||
-  	      (props.size === 'ultra-large' && '38px')
+          (props.size === 'tiny' && '11px') ||
+          (props.size === 'small' && '14px') ||
+          (props.size === 'medium' && '16px') ||
+          (props.size === 'large' && '18px') ||
+          (props.size === 'very-large' && '22px') ||
+          (props.size === 'ultra-large' && '38px')
         };
       `,
     )};
@@ -89,12 +89,12 @@ const TextStyled = styled.text<IProps>`
       'laptopL',
       `
         font-size: ${
-		      (props.size === 'tiny' && '11px') ||
-  	      (props.size === 'small' && '14px') ||
-  	      (props.size === 'medium' && '16px') ||
-  	      (props.size === 'large' && '18px') ||
-  	      (props.size === 'very-large' && '22px') ||
-  	      (props.size === 'ultra-large' && '38px')
+          (props.size === 'tiny' && '11px') ||
+          (props.size === 'small' && '14px') ||
+          (props.size === 'medium' && '16px') ||
+          (props.size === 'large' && '18px') ||
+          (props.size === 'very-large' && '22px') ||
+          (props.size === 'ultra-large' && '38px')
         };
       `,
     )};

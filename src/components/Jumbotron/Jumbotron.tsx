@@ -397,9 +397,9 @@ const Jumbotron: FC<IProps> = ({ data }) => {
   return (
     <JumbotronStyle>
       <ul>
-        {data.map(({ title, value, type }) => (
+        {data.map(({ title, value }) => (
           <li key={title}>
-            <InfoBox title={title} value={value} type={type} />
+            <InfoBox title={title} value={value} />
           </li>
         ))}
       </ul>

@@ -105,7 +105,7 @@ const RadialBarChart: FC<IProps> = ({ data = null }) => {
                     90 - ((x(d.time) + x.bandwidth() / 2) * 180) / Math.PI
                   }) translate(0, 6)`,
               )
-              .text((d) => `${d.time.split(' ')[1].slice(0, 2)}H`),
+              .text((d) => `${d.hour}H`),
           ),
       )
 

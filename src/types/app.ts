@@ -1,6 +1,7 @@
-type ChartItem = {
+export type ChartItem = {
   time: string
   value: number
+  hour: string
 }
 
 export type MiningInfo = {

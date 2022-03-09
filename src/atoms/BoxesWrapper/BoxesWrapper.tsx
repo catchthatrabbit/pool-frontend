@@ -37,9 +37,9 @@ interface IProps {
 
 const BoxesWrapper: FC<IProps> = ({ data }) => (
   <BoxesWrapperStyled>
-    {data.map(({ title, value, type }) => (
+    {data.map(({ title, value }) => (
       <li key={title}>
-        <InfoBox title={title} value={value} type={type} />
+        <InfoBox title={title} value={value} />
       </li>
     ))}
   </BoxesWrapperStyled>

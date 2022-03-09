@@ -147,9 +147,9 @@ const Stats: FC<IProps> = ({ chartData, infoBoxData }) => (
         <RadialBarChart data={chartData} />
       </ChartContainer>
       <ul>
-        {infoBoxData.map(({ title, value, type }) => (
+        {infoBoxData.map(({ title, value }) => (
           <li key={title}>
-            <InfoBox title={title} value={value} type={type} />
+            <InfoBox title={title} value={value} />
           </li>
         ))}
       </ul>

@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components'
-import React, { FC } from 'react'
-import Text from 'atoms/Text/Text'
-import getText, { TextType, InfoBoxItem } from 'helpers/text'
-import { minWidth } from 'helpers/responsive'
+import Text from 'atoms/Text/Text';
+import { minWidth } from 'helpers/responsive';
+import React, { FC } from 'react';
+import styled, { css } from 'styled-components';
+
+import type { InfoBoxItem } from 'helpers/text'
 
 const WrapperStyled = styled.div`
   height: 70px;
@@ -25,21 +26,17 @@ const WrapperStyled = styled.div`
   )}
 `
 
-const InfoBox: FC<InfoBoxItem> = ({ value, title, type = 'hash' }) => {
-  const text: TextType = getText(type, value)
-
-  return (
-    <WrapperStyled>
-      <Text size="large" fontWeight="bold">
-        {text.prefix}
-        {text.value}
-        {text.suffix}
-      </Text>
-      <Text size="small" fontWeight="light">
-        {title}
-      </Text>
-    </WrapperStyled>
-  )
-}
+const InfoBox: FC<InfoBoxItem> = ({ value, title }) => (
+  <WrapperStyled>
+    <Text size="large" fontWeight="bold">
+      {value.prefix}
+      {value.text}
+      {value.suffix}
+    </Text>
+    <Text size="small" fontWeight="light">
+      {title}
+    </Text>
+  </WrapperStyled>
+)
 
 export default InfoBox

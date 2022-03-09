@@ -1,9 +1,10 @@
-import styled, { css } from 'styled-components'
-import React, { FC } from 'react'
-import Text from 'atoms/Text/Text'
-import { colorVariables } from 'styles/variables'
-import getText, { TextType, InfoBoxItem } from 'helpers/text'
-import { minWidth } from 'helpers/responsive'
+import Text from 'atoms/Text/Text';
+import { minWidth } from 'helpers/responsive';
+import React, { FC } from 'react';
+import styled, { css } from 'styled-components';
+import { colorVariables } from 'styles/variables';
+
+import type { InfoBoxItem } from 'helpers/text'
 
 const WrapperStyled = styled.div`
   border: 1px solid ${colorVariables.gunPowder};
@@ -63,41 +64,33 @@ interface IProps {
   title: string
   data: InfoBoxItem[]
 }
-const InfoCard: FC<IProps> = ({ title, data }) => {
-  let text: TextType = {
-    value: 0,
-    prefix: '',
-    suffix: '',
-  }
-  return (
-    <WrapperStyled>
-      <TitleStyled>
-        <Text size="very-large" fontWeight="bold">
-          {title}
-        </Text>
-      </TitleStyled>
-      <ContentTextStyled>
-        {data.map(({ title, value, type }) => {
-          text = getText(type, value)
-          return (
-            <TextStyled>
-              <Text size="very-large" fontWeight="bold">
-                {`${text.prefix} ${text.value} ${text.suffix}`}
-                {type === 'hashSpeed' &&
-                  <Text size="small" fontWeight="bold">
-                    /s
-                  </Text>
-                }
-              </Text>
-              <Text size="small" fontWeight="light">
-                {title}
-              </Text>
-            </TextStyled>
-          )
-        })}
-      </ContentTextStyled>
-    </WrapperStyled>
-  )
-}
+const InfoCard: FC<IProps> = ({ title, data }) => (
+  <WrapperStyled>
+    <TitleStyled>
+      <Text size="very-large" fontWeight="bold">
+        {title}
+      </Text>
+    </TitleStyled>
+    <ContentTextStyled>
+      {data.map(({ title, value }) => {
+        return (
+          <TextStyled>
+            <Text size="very-large" fontWeight="bold">
+              {`${value.prefix} ${value.text} ${value.suffix}`}
+              {/* {type === 'hashSpeed' &&
+                <Text size="small" fontWeight="bold">
+                  /s
+                </Text>
+              } */}
+            </Text>
+            <Text size="small" fontWeight="light">
+              {title}
+            </Text>
+          </TextStyled>
+        )
+      })}
+    </ContentTextStyled>
+  </WrapperStyled>
+)
 
 export default InfoCard

@@ -12,12 +12,6 @@ export default {
     value: {
       control: 'text',
     },
-    type: {
-      control: {
-        type: 'select',
-        options: ['hashSpeed', 'hash', 'percent', 'number', 'euro'],
-      },
-    },
   },
 }
 
@@ -34,5 +28,4 @@ export const InfoBoxGeneral = (args) => (
 InfoBoxGeneral.args = {
   title: 'Pool hashrate',
   value: 69900,
-  type: 'hashSpeed',
 }

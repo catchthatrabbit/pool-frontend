@@ -119,7 +119,7 @@ const PaginationContainerStyled = styled.div`
   margin-top: 36px;
 `
 
-type Column = {
+export type Column = {
   name: string
   id: string
   type: 'address' | 'block' | 'tx' | 'xcb' | 'number' | 'time' | 'ago' | 'percentage' | 'hashrate' | 'status' | 'string'
@@ -161,7 +161,7 @@ function formatAgoContent(value) {
   return ago(value)
 }
 
-function formatPerctContent(value) {
+function formatPercentContent(value) {
   return `${value}%`
 }
 
@@ -226,7 +226,7 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
                         {type === 'number' && formatNumberContent(dataItem[id])}
                         {type === 'time' && formatTimeContent(dataItem[id])}
                         {type === 'ago' && formatAgoContent(dataItem[id])}
-                        {type === 'percentage' && formatPerctContent(dataItem[id])}
+                        {type === 'percentage' && formatPercentContent(dataItem[id])}
                         {type === 'hashrate' && formatHashContent(dataItem[id])}
                         {type === 'status' && formatStatusContent(dataItem[id])}
                         {type === 'string' && dataItem[id]}

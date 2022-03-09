@@ -1,14 +1,16 @@
-import React, { FC, useState } from 'react'
-import SearchBar from 'atoms/SearchBar'
-import ContentTitle from 'atoms/ContentTitle'
-import Table from 'components/Table'
-import styled, { css } from 'styled-components'
 import Background from 'atoms/Background'
-import { MinersInfoBoxData, TableMinersData } from 'mockData/homePageData'
-import { MinersIcon } from 'atoms/icons'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
-import useGoToWallet from 'hooks/useGoToWallet'
+import ContentTitle from 'atoms/ContentTitle'
+import { MinersIcon } from 'atoms/icons'
+import SearchBar from 'atoms/SearchBar'
+import Table from 'components/Table'
 import { minWidth } from 'helpers/responsive'
+import useGoToWallet from 'hooks/useGoToWallet'
+import React, { FC, useState } from 'react'
+import { getMinersData } from 'services/getMinersData'
+import styled, { css } from 'styled-components'
+
+import type { InferGetServerSidePropsType } from 'next'
 
 const ContainerStyled = styled.div`
   margin: 36px 20px 73px;
@@ -54,7 +56,13 @@ const BoxesWrapperStyled = styled.div`
   margin: 41px 0 41px;
 `
 
-const MinersPage: FC = () => {
+export const getServerSideProps = async () => ({
+  props: await getMinersData(),
+})
+
+const MinersPage: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
+  props,
+) => {
   const [searchValue, setValue] = useState('')
 
   const handleSearchValueChange = (event) => setValue(event.target.value)
@@ -69,16 +77,19 @@ const MinersPage: FC = () => {
       <ContainerStyled>
         <ContentTitle Image={<MinersIcon />}>Miners</ContentTitle>
         <SearchBarContainerStyled>
-            <SearchBar
-              onChange={handleSearchValueChange}
-              value={searchValue}
-              onSearch={handleSearch}
-            />
-          </SearchBarContainerStyled>
+          <SearchBar
+            onChange={handleSearchValueChange}
+            value={searchValue}
+            onSearch={handleSearch}
+          />
+        </SearchBarContainerStyled>
         <BoxesWrapperStyled>
-          <BoxesWrapper data={MinersInfoBoxData} />
+          <BoxesWrapper data={props.minersInfoBox} />
         </BoxesWrapperStyled>
-        <Table data={TableMinersData.data} columns={TableMinersData.columns} />
+        <Table
+          data={props.minerTable.data}
+          columns={props.minerTable.columns}
+        />
       </ContainerStyled>
     </>
   )

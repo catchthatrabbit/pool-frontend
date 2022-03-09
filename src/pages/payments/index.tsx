@@ -1,14 +1,16 @@
-import React, { FC, useState } from 'react'
-import Table from 'components/Table'
-import SearchBar from 'atoms/SearchBar'
-import ContentTitle from 'atoms/ContentTitle'
-import { PaymentsInfoBoxData, TablePaymentsData } from 'mockData/homePageData'
-import { PaymentsIcon } from 'atoms/icons'
-import styled, { css } from 'styled-components'
 import Background from 'atoms/Background'
 import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
-import useGoToWallet from 'hooks/useGoToWallet'
+import ContentTitle from 'atoms/ContentTitle'
+import { PaymentsIcon } from 'atoms/icons'
+import SearchBar from 'atoms/SearchBar'
+import Table from 'components/Table'
 import { minWidth } from 'helpers/responsive'
+import useGoToWallet from 'hooks/useGoToWallet'
+import React, { FC, useState } from 'react'
+import { getPaymentsData } from 'services/getPaymentsData'
+import styled, { css } from 'styled-components'
+
+import type { InferGetServerSidePropsType } from 'next'
 
 const ContainerStyled = styled.div`
   margin: 36px 20px 73px;
@@ -60,7 +62,13 @@ const BoxesWrapperStyled = styled.div`
   )}
 `
 
-const PaymentPage: FC = () => {
+export const getServerSideProps = async () => ({
+  props: await getPaymentsData(),
+})
+
+const PaymentPage: FC<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = (props) => {
   const [searchValue, setValue] = useState('')
 
   const handleSearchValueChange = (event) => setValue(event.target.value)
@@ -82,9 +90,12 @@ const PaymentPage: FC = () => {
           />
         </SearchBarContainerStyled>
         <BoxesWrapperStyled>
-          <BoxesWrapper data={PaymentsInfoBoxData} />
+          <BoxesWrapper data={props.paymentsInfoBox} />
         </BoxesWrapperStyled>
-        <Table data={TablePaymentsData.data} columns={TablePaymentsData.columns} />
+        <Table
+          data={props.paymentTable.data}
+          columns={props.paymentTable.columns}
+        />
       </ContainerStyled>
     </>
   )

@@ -49,7 +49,7 @@ function formatAgoContent(value) {
   return ago(value)
 }
 
-function formatPerctContent(value) {
+function formatPercentContent(value) {
   return `${value}%`
 }
 
@@ -109,7 +109,7 @@ const InfoTable: FC<IProps> = ({ data, width = 'small' }) => (
               {type === 'time' && formatTimeContent(value)}
               {type === 'epoch' && formatEpochContent(value)}
               {type === 'ago' && formatAgoContent(value)}
-              {type === 'percentage' && formatPerctContent(value)}
+              {type === 'percentage' && formatPercentContent(value)}
               {type === 'hashrate' && formatHashContent(value)}
               {type === 'status' && formatStatusContent(value)}
               {type === 'string' && value}

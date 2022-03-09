@@ -1,23 +1,18 @@
-import React, { FC, useState } from 'react'
-import ContentTitle from 'atoms/ContentTitle'
-import MinerCard from 'components/MinerCard'
-import SearchBar from 'atoms/SearchBar'
-import MiningInfo from 'components/MiningInfo'
-import { StartMiningIcon, RecentBlocksIcon } from 'atoms/icons'
-import styled, { css } from 'styled-components'
-import {
-  MinerDataInfoDataEu,
-  MinerDataInfoDataNa,
-  MinerDataInfoDataAs,
-  MinerDataCardData,
-  PoolDetailsData,
-  LinksData,
-} from 'mockData/homePageData'
-import Text from 'atoms/Text/Text'
 import Background from 'atoms/Background'
-import { colorVariables, fonts } from 'styles/variables'
-import useGoToWallet from 'hooks/useGoToWallet'
+import ContentTitle from 'atoms/ContentTitle'
+import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons'
+import SearchBar from 'atoms/SearchBar'
+import Text from 'atoms/Text/Text'
+import MinerCard from 'components/MinerCard'
+import MiningInfo from 'components/MiningInfo'
 import { minWidth } from 'helpers/responsive'
+import useGoToWallet from 'hooks/useGoToWallet'
+import React, { FC, useState } from 'react'
+import { getStartMiningData } from 'services/getStartMiningData'
+import styled, { css } from 'styled-components'
+import { colorVariables, fonts } from 'styles/variables'
+
+import type { InferGetServerSidePropsType } from 'next'
 
 const TextStyled = styled.p`
   margin: 34px 0 0;
@@ -178,9 +173,16 @@ const TextGuide3Styled = styled(TextStyled)`
 const TextGuide4Styled = styled(TextStyled)`
   margin-bottom: 75px;
 `
+
+export const getServerSideProps = async () => ({
+  props: await getStartMiningData(),
+})
+
 const onClickHandler = () => setTimeout(() => window.scrollBy(0, -184), 0)
 
-const StartMiningPage: FC = () => {
+const StartMiningPage: FC<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = (props) => {
   const [searchValue, setSearchValue] = useState('')
   const goToWallet = useGoToWallet()
 
@@ -197,13 +199,19 @@ const StartMiningPage: FC = () => {
         <ContentTitle Image={<StartMiningIcon />}>Start mining</ContentTitle>
         <MiningInfoContainerStyled>
           <MiningInfoStyled id="pool-europe">
-            <MiningInfo data={MinerDataInfoDataEu} title="Connect to European Pool" />
+            <MiningInfo
+              data={props.minerDataInfoEu}
+              title="Connect to European Pool"
+            />
           </MiningInfoStyled>
           {/*<MiningInfoStyled id="pool-na">
-            <MiningInfo data={MinerDataInfoDataNa} title="Connect to Northen American Pool" />
+            <MiningInfo data={props.minerDataInfoDataNa} title="Connect to Northen American Pool" />
           </MiningInfoStyled>*/}
           <MiningInfoStyled id="pool-asia">
-            <MiningInfo data={MinerDataInfoDataAs} title="Connect to Asian Pool" />
+            <MiningInfo
+              data={props.minerDataInfoAs}
+              title="Connect to Asian Pool"
+            />
           </MiningInfoStyled>
         </MiningInfoContainerStyled>
         <TitleContainerStyled>
@@ -215,20 +223,22 @@ const StartMiningPage: FC = () => {
               <Text size="large">Step 1: Get a Wallet</Text>
             </TextGuideStyled>
             <TextGuide1Styled>
-              Please, download the Core Wallet, where you can securely store your rewards.
+              Please, download the Core Wallet, where you can securely store
+              your rewards.
             </TextGuide1Styled>
             <TextGuideStyled>
               <Text size="large">Step 2: Download mining software</Text>
             </TextGuideStyled>
             <TextGuide2Styled>
-              You need to download the mining software, install and configure to start the mining application.
+              You need to download the mining software, install and configure to
+              start the mining application.
               <br />
               <br />
               We recommend the following miner/s:
             </TextGuide2Styled>
             <MinerCardsWrapperStyled>
               <MiningCardStyled>
-                <MinerCard data={MinerDataCardData} />
+                <MinerCard data={props.minerDataCard} />
               </MiningCardStyled>
             </MinerCardsWrapperStyled>
             <TextGuideStyled>
@@ -238,9 +248,15 @@ const StartMiningPage: FC = () => {
               We have geo-locations to choose from:
             </TextGuide3Styled>
             <LinksWrapperStyled>
-              {LinksData.map(({ href, text }) => (
+              {props.links.map(({ href, text }) => (
                 <a key={text} href={href} onClick={onClickHandler}>
-                  <Text fontFamily="primary" fontWeight="bold" size="very-large">{text}</Text>
+                  <Text
+                    fontFamily="primary"
+                    fontWeight="bold"
+                    size="very-large"
+                  >
+                    {text}
+                  </Text>
                 </a>
               ))}
             </LinksWrapperStyled>
@@ -259,7 +275,11 @@ const StartMiningPage: FC = () => {
             </SearchBarContainerStyled>
           </BoxGuideStyled>
         </BoxContentStyled>
-        <MiningInfo data={PoolDetailsData} title="Pool details" color="white" />
+        <MiningInfo
+          data={props.poolDetails}
+          title="Pool details"
+          color="white"
+        />
       </ContainerStyled>
     </>
   )
