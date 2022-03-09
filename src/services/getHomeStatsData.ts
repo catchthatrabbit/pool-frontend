@@ -1,21 +1,19 @@
-import { toStringDateTime } from 'helpers/toStringDateTime'
-import { toXCBPrice } from 'helpers/toXCBPrice'
+import { getAgoText, getHashText, getNumberText, getXCBText } from 'helpers/text';
+import { toStringDateTime } from 'helpers/toStringDateTime';
+import { toXCBPrice } from 'helpers/toXCBPrice';
 
+import type { InfoBoxItem } from 'helpers/text';
 import type { ChartItem } from 'types/app'
 
-const hydrateInfoBoxData = (data) => {
+const hydrateInfoBoxData = (data): InfoBoxItem[] => {
   const [node] = data.nodes
 
   return [
-    { title: 'Network difficulty', value: node.difficulty, type: 'hashSpeed' },
-    { title: 'Blockchain Height', value: node.height, type: 'number' },
-    { title: 'Round Shares', value: data.stats.roundShares, type: 'number' },
-    {
-      title: 'Last block found',
-      value: toStringDateTime(data.stats.lastBlockFound),
-      type: 'ago',
-    },
-    { title: 'Block reward', value: toXCBPrice(data.blockReward), type: 'xcb' },
+    { title: 'Network difficulty', value: getHashText(node.difficulty) },
+    { title: 'Blockchain Height', value: getNumberText(node.height) },
+    { title: 'Round Shares', value: getNumberText(data.stats.roundShares) },
+    { title: 'Last block found', value: getAgoText(toStringDateTime(data.stats.lastBlockFound)) },
+    { title: 'Block reward', value: getXCBText(toXCBPrice(data.blockReward)) },
   ]
 }
 

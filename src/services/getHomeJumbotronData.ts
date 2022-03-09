@@ -1,17 +1,17 @@
-const hydrateJumbotronData = (data) => {
-  const [node] = data.nodes
+import { getHashText, getNumberText, getPercentText } from 'helpers/text'
+
+import  type { InfoBoxItem } from 'helpers/text'
+
+const hydrateJumbotronData = (data): InfoBoxItem[] => {
+  const [ node ] = data.nodes
   const { roundShares } = data.stats
 
   return [
-    { title: 'Pool hashrate', value: data.hashrate, type: 'hashSpeed' },
-    { title: 'Network hashrate', value: (node.difficulty / node.blocktime).toFixed(2), type: 'hashSpeed' },
-    { title: 'Network difficulty', value: node.difficulty, type: 'hash' },
-    { title: 'Active miners', value: data.minersTotal, type: 'number' },
-    {
-      title: 'Round variance',
-      value: (roundShares / node.difficulty).toFixed(2),
-      type: 'percent',
-    },
+    { title: 'Pool hashrate', value: getHashText(data.hashrate) },
+    { title: 'Network hashrate', value: getHashText((node.difficulty / node.blocktime).toFixed(2)) },
+    { title: 'Network difficulty', value: getHashText(node.difficulty) },
+    { title: 'Active miners', value: getNumberText(data.minersTotal) },
+    { title: 'Round variance', value: getPercentText((roundShares / node.difficulty).toFixed(2)) },
   ]
 }
 

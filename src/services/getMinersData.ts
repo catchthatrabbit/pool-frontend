@@ -1,12 +1,13 @@
-import { toStringDateTime } from 'helpers/toStringDateTime'
+import { getHashText, getNumberText } from 'helpers/text';
+import { toStringDateTime } from 'helpers/toStringDateTime';
 
 import type { Column } from '@components/Table/Table'
 import type { InfoBoxItem } from 'helpers/text'
 
 const hydrateMinersInfoBox = (data): InfoBoxItem[] => {
   return [
-    { title: 'Total miners', value: data.minersTotal, type: 'number' },
-    { title: 'Total hashrate', value: data.hashrate, type: 'hashSpeed' },
+    { title: 'Total miners', value: getNumberText(data.minersTotal) },
+    { title: 'Total hashrate', value: getHashText(data.hashrate) },
   ]
 }
 

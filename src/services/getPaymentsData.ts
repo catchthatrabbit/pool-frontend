@@ -1,13 +1,14 @@
-import { toStringDateTime } from 'helpers/toStringDateTime'
-import { toXCBPrice } from 'helpers/toXCBPrice'
+import { getEuroText, getNumberText } from 'helpers/text';
+import { toStringDateTime } from 'helpers/toStringDateTime';
+import { toXCBPrice } from 'helpers/toXCBPrice';
 
 import type { Column } from '@components/Table/Table'
 import type { InfoBoxItem } from 'helpers/text'
 
 const hydratePaymentsInfoBox = (data): InfoBoxItem[] => {
   return [
-    { title: 'Sent payments', value: data.paymentsTotal, type: 'number' },
-    { title: 'XCB Price', value: 200, type: 'euro' }, // TODO Araad
+    { title: 'Sent payments', value: getNumberText(data.paymentsTotal) },
+    { title: 'XCB Price', value: getEuroText(200) }, // TODO Araad
   ]
 }
 
