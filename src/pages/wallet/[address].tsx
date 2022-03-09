@@ -15,7 +15,7 @@ import React, { FC, useState } from 'react'
 import { getWalletData } from 'services/getWalletData'
 import styled, { css } from 'styled-components'
 
-import type { InferGetServerSidePropsType } from 'next'
+import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 
 function formatAddressContent(address) {
   return iban(address)
@@ -244,27 +244,12 @@ const AddressContainer = styled.div`
   )}
 `
 
-// export const getStaticPaths: GetStaticPaths = defaultGetStaticPaths
-
-export const getServerSideProps = async ({ params }) => {
-  const address = params?.address as string
-  const { payoutsTable, workersTable, minerInfo } = await getWalletData(address)
-  // console.log({ payoutsTable, workersTable, minerInfo })
-
-  return {
-    props: {
-      address,
-      workersTable,
-      payoutsTable,
-      minerInfo,
-      // infoCardData: InfoCardData as any,
-      // chartLineData: ChartLineData as any,
-      // chartSpacedData: ChartSpacedData as any,
-      // chartBarSlimeData: ChartBarSlimeData as any,
-      // infoStatsBoxData: InfoStatsBoxData as any,
-    },
-  }
-}
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext) => ({
+  props: {
+    address: params?.address as string,
+    ...await getWalletData(params?.address as string)
+  },
+})
 
 type TabType = 'workers' | 'payout'
 
@@ -274,12 +259,10 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
   const [changeView, setChangeView] = useState<TabType>('workers')
   const router = useRouter()
 
-  if (router.isFallback) {
-    return <Loading />
-  }
-  if (props.errorCode) {
+  if (props.status) {
     return <NotFound />
   }
+
   return (
     <>
       <Background />

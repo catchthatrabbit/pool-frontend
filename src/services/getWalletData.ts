@@ -141,9 +141,11 @@ const hydrateMinerInfoData = (data) => {
 export const getWalletData = async (address: string) => {
   // TODO Araad: use "address"
   const result = await fetch(process.env.API_ENDPOINT + 'accounts-ab623f7c365a5da4b3b00bf0a54a1887ac528eeaaa86.json')
+  const status = result.ok ? false : result.status
   const data = await result.json()
 
   return {
+    status,
     minerInfo: hydrateMinerInfoData(data),
     workersTable: {
       data: hydrateWorkersTableData(data.workers),
