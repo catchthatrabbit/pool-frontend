@@ -153,6 +153,12 @@ const BoxContentStyled = styled.div`
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
   margin-bottom: 31px;
+  kbd {
+	  color: green;
+	  border: 1px solid ${colorVariables.gunPowder};
+	  border-radius: 3px;
+	  padding: 0.3em;
+  }
 `
 const BoxGuideStyled = styled.div`
   margin: 55px 47px 0;
@@ -223,18 +229,23 @@ const StartMiningPage: FC<
               <Text size="large">Step 1: Get a Wallet</Text>
             </TextGuideStyled>
             <TextGuide1Styled>
-              Please, download the Core Wallet, where you can securely store
-              your rewards.
+              <Text fontFamily="secondary">Please, download the Core Wallet, where you can securely store your rewards.</Text>
+			  <Text fontFamily="secondary">You can download <a href="https://github.com/core-coin/go-core/releases" target="_blank">go-core client</a> or use <a href="https://github.com/core-coin/address-generator/releases" target="_blank">generator of ICAN addresses</a>.</Text>
+			  <Text fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed.</Text>
+			  <Text fontFamily="secondary">No private key = no coins!</Text><br />
+			  <Text>go-core command</Text>
+			  <Text fontFamily="secondary"><kbd>personal.newAddress</kbd></Text><br />
+			  <Text>address generator commands</Text>
+			  <Text fontFamily="secondary"><kbd>address-generator -n 1</kbd> backup and then <kbd>clear && history -c</kbd></Text>
             </TextGuide1Styled>
             <TextGuideStyled>
               <Text size="large">Step 2: Download mining software</Text>
             </TextGuideStyled>
             <TextGuide2Styled>
-              You need to download the mining software, install and configure to
-              start the mining application.
-              <br />
-              <br />
-              We recommend the following miner/s:
+              <Text fontFamily="secondary">You need to download the mining software, install and configure to start the mining application.</Text>
+			  <Text fontFamily="secondary">To configure mining simply run the script <kbd>sh ./mine.sh</kbd> and follow the instructions.</Text>
+			  <br /><br />
+			  <Text fontFamily="secondary">We recommend the following miner/s:</Text>
             </TextGuide2Styled>
             <MinerCardsWrapperStyled>
               <MiningCardStyled>

@@ -7,7 +7,7 @@ const hydrateJumbotronData = (data): InfoBoxItem[] => {
   const { roundShares } = data.stats
 
   return [
-    { title: 'Pool hashrate', value: getHashText(data.hashrate) },
+    { title: 'Pools hashrate', value: getHashText(data.hashrate) },
     { title: 'Network hashrate', value: getHashText((node.difficulty / node.blocktime).toFixed(2)) },
     { title: 'Network difficulty', value: getHashText(node.difficulty) },
     { title: 'Active miners', value: getNumberText(data.minersTotal) },
