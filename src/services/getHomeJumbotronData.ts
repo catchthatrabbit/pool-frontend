@@ -2,7 +2,6 @@ import { getHashText, getNumberText, getPercentText } from 'helpers/text'
 
 
 const hydrateJumbotronData = (data, settings) => {
-  console.log(data, settings)
   const [ node ] = data.nodes
   const { roundShares } = data.stats
 
