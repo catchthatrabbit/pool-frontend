@@ -348,7 +348,10 @@ const ImageStyled = styled.img`
 `
 
 interface IProps {
-  data: InfoBoxItem[]
+  data: {
+    infoBoxItems: InfoBoxItem[];
+    poolFee: string;
+  }
 }
 
 const MapButtonWrapper = ({ href, children }) => {
@@ -397,7 +400,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
   return (
     <JumbotronStyle>
       <ul>
-        {data.map(({ title, value }) => (
+        {data.infoBoxItems.map(({ title, value }) => (
           <li key={title}>
             <InfoBox title={title} value={value} />
           </li>
@@ -441,7 +444,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
             fontFamily="secondary"
             space="initial"
           >
-            <Text fontFamily = 'secondary' color="apple">Pay-per-last-N-shares</Text> (PPLNS) system with only  <Text fontFamily = 'secondary' color="apple">{ "X" }% fee</Text>.
+            <Text fontFamily = 'secondary' color="apple">Pay-per-last-N-shares</Text> (PPLNS) system with only  <Text fontFamily = 'secondary' color="apple">{ data.poolFee }% fee</Text>.
           </Text>
           <Text
             color="santasGray"
