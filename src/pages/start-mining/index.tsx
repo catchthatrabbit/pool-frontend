@@ -163,7 +163,13 @@ const BoxContentStyled = styled.div`
   }
 `
 const BoxGuideStyled = styled.div`
-  margin: 55px 47px 0;
+  margin: 2rem;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 55px 47px 0;
+    `,
+  )}
 `
 const TextGuideStyled = styled.div`
   border-bottom: 1px solid ${colorVariables.gunPowder};
@@ -175,17 +181,41 @@ const TextGuide1Styled = styled(TextStyled)`
   span {
     display: inline-flex;
     align-items: center;
+    flex-wrap: wrap;
     line-height: 1.6;
     padding: 5px 0;
+
+    &.inline-block {
+      display: inline-block;
+    }
   }
 
   a {
     padding: 0 5px;
     margin: .5rem;
+    white-space: nowrap;
   }
 `
 const TextGuide2Styled = styled(TextStyled)`
   margin-bottom: 54px;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 1.6;
+    padding: 5px 0;
+
+    &.inline-block {
+      display: inline-block;
+    }
+  }
+
+  a {
+    padding: 0 5px;
+    margin: .5rem;
+    white-space: nowrap;
+  }
 `
 const TextGuide3Styled = styled(TextStyled)`
   margin-bottom: 70px;
@@ -243,23 +273,23 @@ const StartMiningPage: FC<
               <Text size="large">Step 1: Get a Wallet</Text>
             </TextGuideStyled>
             <TextGuide1Styled>
-              <Text fontFamily="secondary">Please, download the Core Wallet, where you can securely store your rewards.</Text>&nbsp;
-              <Text fontFamily="secondary">You can download <a href="https://github.com/core-coin/go-core/releases" target="_blank">go-core client</a> or use <a href="https://github.com/core-coin/address-generator/releases" target="_blank">generator of ICAN addresses</a>.</Text>&nbsp;
-              <Text fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed.</Text>&nbsp;
-              <Text fontFamily="secondary">No private key = no coins!</Text><br />
+              <Text space="initial" fontFamily="secondary">Please, download the Core Wallet, where you can securely store your rewards.</Text>
+              <Text space="initial" fontFamily="secondary"><span className="inline-block">You can download</span><a href="https://github.com/core-coin/go-core/releases" target="_blank">go-core client</a><span className="inline-block"> or use </span><a href="https://github.com/core-coin/address-generator/releases" target="_blank">generator of ICAN addresses</a><span>.</span></Text>
+              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed.</Text>
+              <Text space="initial" fontFamily="secondary">No private key = no coins!</Text><br />
               <Text>go-core command</Text>
               <Text fontFamily="secondary"><kbd>personal.newAddress</kbd></Text><br />
-              <Text>address generator commands</Text>&nbsp;
-              <Text fontFamily="secondary"><kbd>address-generator -n 1</kbd> backup and then <kbd>clear && history -c</kbd></Text>
+              <Text space="initial">address generator commands</Text>
+              <Text space="initial" fontFamily="secondary"><kbd>address-generator -n 1</kbd> backup and then <kbd>clear && history -c</kbd></Text>
             </TextGuide1Styled>
             <TextGuideStyled>
-              <Text size="large">Step 2: Download mining software</Text>
+              <Text space="initial" size="large">Step 2: Download mining software</Text>
             </TextGuideStyled>
             <TextGuide2Styled>
-              <Text fontFamily="secondary">You need to download the mining software, install and configure to start the mining application.</Text>
-              <Text fontFamily="secondary">To configure mining simply run the script <kbd>sh ./mine.sh</kbd> and follow the instructions.</Text>
+              <Text space="initial" fontFamily="secondary">You need to download the mining software, install and configure to start the mining application.</Text>
+              <Text space="initial" fontFamily="secondary">To configure mining simply run the script <kbd>sh ./mine.sh</kbd> and follow the instructions.</Text>
               <br /><br />
-              <Text fontFamily="secondary">We recommend the following miner/s:</Text>
+              <Text space="initial" fontFamily="secondary">We recommend the following miner/s:</Text>
             </TextGuide2Styled>
             <MinerCardsWrapperStyled>
               <MiningCardStyled>
@@ -267,7 +297,7 @@ const StartMiningPage: FC<
               </MiningCardStyled>
             </MinerCardsWrapperStyled>
             <TextGuideStyled>
-              <Text size="large">Step 3: Choose your server</Text>
+              <Text space="initial" size="large">Step 3: Choose your server</Text>
             </TextGuideStyled>
             <TextGuide3Styled>
               We have geo-locations to choose from:
@@ -286,7 +316,7 @@ const StartMiningPage: FC<
               )) }
             </LinksWrapperStyled>
             <TextGuideStyled>
-              <Text size="large">Step 4: Go To Dashboard</Text>
+              <Text space="initial" size="large">Step 4: Go To Dashboard</Text>
             </TextGuideStyled>
             <TextGuide4Styled>
               To access the dashboard, type your address below.
