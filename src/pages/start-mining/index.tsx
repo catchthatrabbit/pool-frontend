@@ -153,9 +153,23 @@ const BoxContentStyled = styled.div`
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
   margin-bottom: 31px;
+
+  kbd {
+	  color: green;
+	  border: 1px solid ${colorVariables.gunPowder};
+	  border-radius: 3px;
+	  padding: 0.3em;
+    margin: 0.5rem;
+  }
 `
 const BoxGuideStyled = styled.div`
-  margin: 55px 47px 0;
+  margin: 2rem;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 55px 47px 0;
+    `,
+  )}
 `
 const TextGuideStyled = styled.div`
   border-bottom: 1px solid ${colorVariables.gunPowder};
@@ -163,9 +177,45 @@ const TextGuideStyled = styled.div`
 `
 const TextGuide1Styled = styled(TextStyled)`
   margin-bottom: 111px;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 1.6;
+    padding: 5px 0;
+
+    &.inline-block {
+      display: inline-block;
+    }
+  }
+
+  a {
+    padding: 0 5px;
+    margin: .5rem;
+    white-space: nowrap;
+  }
 `
 const TextGuide2Styled = styled(TextStyled)`
   margin-bottom: 54px;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 1.6;
+    padding: 5px 0;
+
+    &.inline-block {
+      display: inline-block;
+    }
+  }
+
+  a {
+    padding: 0 5px;
+    margin: .5rem;
+    white-space: nowrap;
+  }
 `
 const TextGuide3Styled = styled(TextStyled)`
   margin-bottom: 70px;
@@ -183,7 +233,7 @@ const onClickHandler = () => setTimeout(() => window.scrollBy(0, -184), 0)
 const StartMiningPage: FC<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = (props) => {
-  const [searchValue, setSearchValue] = useState('')
+  const [ searchValue, setSearchValue ] = useState('')
   const goToWallet = useGoToWallet()
 
   const handleSearchValueChange = (event) => {
@@ -196,11 +246,11 @@ const StartMiningPage: FC<
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<StartMiningIcon />}>Start mining</ContentTitle>
+        <ContentTitle Image={ <StartMiningIcon /> }>Start mining</ContentTitle>
         <MiningInfoContainerStyled>
           <MiningInfoStyled id="pool-europe">
             <MiningInfo
-              data={props.minerDataInfoEu}
+              data={ props.minerDataInfoEu }
               title="Connect to European Pool"
             />
           </MiningInfoStyled>
@@ -209,13 +259,13 @@ const StartMiningPage: FC<
           </MiningInfoStyled>*/}
           <MiningInfoStyled id="pool-asia">
             <MiningInfo
-              data={props.minerDataInfoAs}
+              data={ props.minerDataInfoAs }
               title="Connect to Asian Pool"
             />
           </MiningInfoStyled>
         </MiningInfoContainerStyled>
         <TitleContainerStyled>
-          <ContentTitle Image={<RecentBlocksIcon />}>Get started</ContentTitle>
+          <ContentTitle Image={ <RecentBlocksIcon /> }>Get started</ContentTitle>
         </TitleContainerStyled>
         <BoxContentStyled>
           <BoxGuideStyled>
@@ -223,60 +273,65 @@ const StartMiningPage: FC<
               <Text size="large">Step 1: Get a Wallet</Text>
             </TextGuideStyled>
             <TextGuide1Styled>
-              Please, download the Core Wallet, where you can securely store
-              your rewards.
+              <Text space="initial" fontFamily="secondary">Please, download the Core Wallet, where you can securely store your rewards.</Text>
+              <Text space="initial" fontFamily="secondary"><span className="inline-block">You can download</span><a href="https://github.com/core-coin/go-core/releases" target="_blank">go-core client</a><span className="inline-block"> or use </span><a href="https://github.com/core-coin/address-generator/releases" target="_blank">generator of ICAN addresses</a><span>.</span></Text>
+              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed.</Text>
+              <Text space="initial" fontFamily="secondary">No private key = no coins!</Text><br />
+              <Text>go-core command</Text>
+              <Text fontFamily="secondary"><kbd>personal.newAddress</kbd></Text><br />
+              <Text space="initial">address generator commands</Text>
+              <Text space="initial" fontFamily="secondary"><kbd>address-generator -n 1</kbd> backup and then <kbd>clear && history -c</kbd></Text>
             </TextGuide1Styled>
             <TextGuideStyled>
-              <Text size="large">Step 2: Download mining software</Text>
+              <Text space="initial" size="large">Step 2: Download mining software</Text>
             </TextGuideStyled>
             <TextGuide2Styled>
-              You need to download the mining software, install and configure to
-              start the mining application.
-              <br />
-              <br />
-              We recommend the following miner/s:
+              <Text space="initial" fontFamily="secondary">You need to download the mining software, install and configure to start the mining application.</Text>
+              <Text space="initial" fontFamily="secondary">To configure mining simply run the script <kbd>sh ./mine.sh</kbd> and follow the instructions.</Text>
+              <br /><br />
+              <Text space="initial" fontFamily="secondary">We recommend the following miner/s:</Text>
             </TextGuide2Styled>
             <MinerCardsWrapperStyled>
               <MiningCardStyled>
-                <MinerCard data={props.minerDataCard} />
+                <MinerCard data={ props.minerDataCard } />
               </MiningCardStyled>
             </MinerCardsWrapperStyled>
             <TextGuideStyled>
-              <Text size="large">Step 3: Choose your server</Text>
+              <Text space="initial" size="large">Step 3: Choose your server</Text>
             </TextGuideStyled>
             <TextGuide3Styled>
               We have geo-locations to choose from:
             </TextGuide3Styled>
             <LinksWrapperStyled>
-              {props.links.map(({ href, text }) => (
-                <a key={text} href={href} onClick={onClickHandler}>
+              { props.links.map(({ href, text }) => (
+                <a key={ text } href={ href } onClick={ onClickHandler }>
                   <Text
                     fontFamily="primary"
                     fontWeight="bold"
                     size="very-large"
                   >
-                    {text}
+                    { text }
                   </Text>
                 </a>
-              ))}
+              )) }
             </LinksWrapperStyled>
             <TextGuideStyled>
-              <Text size="large">Step 4: Go To Dashboard</Text>
+              <Text space="initial" size="large">Step 4: Go To Dashboard</Text>
             </TextGuideStyled>
             <TextGuide4Styled>
               To access the dashboard, type your address below.
             </TextGuide4Styled>
             <SearchBarContainerStyled>
               <SearchBar
-                value={searchValue}
-                onChange={handleSearchValueChange}
-                onSearch={handleSearch}
+                value={ searchValue }
+                onChange={ handleSearchValueChange }
+                onSearch={ handleSearch }
               />
             </SearchBarContainerStyled>
           </BoxGuideStyled>
         </BoxContentStyled>
         <MiningInfo
-          data={props.poolDetails}
+          data={ props.poolDetails }
           title="Pool details"
           color="white"
         />

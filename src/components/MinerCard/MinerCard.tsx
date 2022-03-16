@@ -99,7 +99,7 @@ const MinerCard: FC<IProps> = ({ data }) => {
         ))}
         <LinkStyled>
           <a href={configLink} target="_blank" rel="noreferrer noopener">
-            Download config file
+            View config file
           </a>
         </LinkStyled>
       </InfoContentStyled>

@@ -1,5 +1,5 @@
 export const JumbotronData = [
-  { title: 'Pool hashrate', value: 69900, type: 'hashSpeed' },
+  { title: 'Pools hashrate', value: 69900, type: 'hashSpeed' },
   { title: 'Network hashrate', value: 192900000, type: 'hashSpeed' },
   { title: 'Network difficulty', value: 6600, type: 'hash' },
   { title: 'Active miners', value: 10000, type: 'number' },
@@ -355,8 +355,8 @@ export const TableMinersData = {
 export const MinerDataCardData = {
   title: 'CoreMiner',
   description: 'Fast & Open-source miner with excellent hardware support & 0% fees.',
-  info: ['OS: Linux', 'CPUs: AMD, Intel, ARM', 'Fee: 0%'],
-  configLink: 'https://github.com/catchthatrabbit/coreminer/tree/config',
+  info: ['OS: Ubuntu, Raspbian', 'CPUs: AMD, Intel, ARM', 'Fee: 0%'],
+  configLink: 'https://github.com/catchthatrabbit/coreminer/blob/master/mine.sh',
   minerLink: 'https://github.com/catchthatrabbit/coreminer/releases',
 }
 
@@ -369,8 +369,7 @@ export const PoolDetailsData = [
 
 export const MinerDataInfoDataEu = [
   { key: '1', title: 'Server', value: 'eu.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '4444' },
-  { key: '3', title: 'Secure (ssl) port', value: '5555' },
+  { key: '2', title: 'Port', value: '8008' },
   {
     key: '4',
     title: 'Username',
@@ -380,8 +379,7 @@ export const MinerDataInfoDataEu = [
 ]
 export const MinerDataInfoDataNa = [
   { key: '1', title: 'Server', value: 'na.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '4444' },
-  { key: '3', title: 'Secure (ssl) port', value: '5555' },
+  { key: '2', title: 'Port', value: '8008' },
   {
     key: '4',
     title: 'Username',
@@ -391,8 +389,7 @@ export const MinerDataInfoDataNa = [
 ]
 export const MinerDataInfoDataAs = [
   { key: '1', title: 'Server', value: 'as.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '4444' },
-  { key: '3', title: 'Secure (ssl) port', value: '5555' },
+  { key: '2', title: 'Port', value: '8008' },
   {
     key: '4',
     title: 'Username',

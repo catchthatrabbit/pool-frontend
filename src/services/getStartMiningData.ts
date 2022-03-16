@@ -1,42 +1,39 @@
 const MinerDataInfoDataEu = [
   { key: '1', title: 'Server', value: 'eu.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '4444' },
-  { key: '3', title: 'Secure (ssl) port', value: '5555' },
+  { key: '2', title: 'Port', value: '8008' },
   {
-    key: '4',
+    key: '3',
     title: 'Username',
     value: '<your wallet address>.<worker name>',
   },
-  { key: '5', title: 'Password', value: '<empty>' },
+  { key: '4', title: 'Password', value: '<empty>' },
 ]
 const MinerDataInfoDataNa = [
   { key: '1', title: 'Server', value: 'na.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '4444' },
-  { key: '3', title: 'Secure (ssl) port', value: '5555' },
+  { key: '2', title: 'Port', value: '8008' },
   {
-    key: '4',
+    key: '3',
     title: 'Username',
     value: '<your wallet address>.<worker name>',
   },
-  { key: '5', title: 'Password', value: '<empty>' },
+  { key: '4', title: 'Password', value: '<empty>' },
 ]
 const MinerDataInfoDataAs = [
   { key: '1', title: 'Server', value: 'as.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '4444' },
-  { key: '3', title: 'Secure (ssl) port', value: '5555' },
+  { key: '2', title: 'Port', value: '8008' },
   {
-    key: '4',
+    key: '3',
     title: 'Username',
     value: '<your wallet address>.<worker name>',
   },
-  { key: '5', title: 'Password', value: '<empty>' },
+  { key: '4', title: 'Password', value: '<empty>' },
 ]
 const MinerDataCardData = {
   title: 'CoreMiner',
   description:
     'Fast & Open-source miner with excellent hardware support & 0% fees.',
-  info: ['OS: Linux', 'CPUs: AMD, Intel, ARM', 'Fee: 0%'],
-  configLink: 'https://github.com/catchthatrabbit/coreminer/tree/config',
+  info: ['OS: Ubuntu, Raspbian', 'CPUs: AMD, Intel, ARM', 'Fee: 0%'],
+  configLink: 'https://github.com/catchthatrabbit/coreminer/blob/master/mine.sh',
   minerLink: 'https://github.com/catchthatrabbit/coreminer/releases',
 }
 const LinksData = [
@@ -51,7 +48,7 @@ const hydratePoolDetailsData = (data) => {
       title: 'Reward scheme',
       value: 'PPLNS (Pay Per Last N Shares)',
     },
-    { key: '2', title: 'Pool fee', value: data.PoolFee },
+    { key: '2', title: 'Pool fee', value: data.PoolFee + ' %' },
     { key: '3', title: 'Payout threshhold', value: data.PayoutThreshold },
     { key: '4', title: 'Mining algorithm', value: 'RandomY' },
   ]

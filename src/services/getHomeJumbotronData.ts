@@ -1,18 +1,20 @@
 import { getHashText, getNumberText, getPercentText } from 'helpers/text'
 
-import  type { InfoBoxItem } from 'helpers/text'
 
-const hydrateJumbotronData = (data): InfoBoxItem[] => {
+const hydrateJumbotronData = (data, settings) => {
   const [ node ] = data.nodes
   const { roundShares } = data.stats
 
-  return [
-    { title: 'Pool hashrate', value: getHashText(data.hashrate) },
-    { title: 'Network hashrate', value: getHashText((node.difficulty / node.blocktime).toFixed(2)) },
-    { title: 'Network difficulty', value: getHashText(node.difficulty) },
-    { title: 'Active miners', value: getNumberText(data.minersTotal) },
-    { title: 'Round variance', value: getPercentText((roundShares / node.difficulty).toFixed(2)) },
-  ]
+  return {
+    poolFee: settings.PoolFee,
+    infoBoxItems: [
+      { title: 'Pools hashrate', value: getHashText(data.hashrate) },
+      { title: 'Network hashrate', value: getHashText((node.difficulty / node.blocktime).toFixed(2)) },
+      { title: 'Network difficulty', value: getHashText(node.difficulty) },
+      { title: 'Active miners', value: getNumberText(data.minersTotal) },
+      { title: 'Round variance', value: getPercentText((roundShares / node.difficulty).toFixed(2)) },
+    ],
+  }
 }
 
 /**
@@ -25,8 +27,10 @@ const hydrateJumbotronData = (data): InfoBoxItem[] => {
  *   - Round variance
  */
 export const getHomeJumbotronData = async () => {
-  const result = await fetch(process.env.API_ENDPOINT + 'stats.json')
-  const data = await result.json()
+  const [stats, settings] = await Promise.all([
+    fetch(process.env.API_ENDPOINT + 'stats.json').then(stats => stats.json()),
+    fetch(process.env.API_ENDPOINT + 'settings.json').then(settings => settings.json()),
+  ])
 
-  return hydrateJumbotronData(data)
+  return hydrateJumbotronData(stats, settings)
 }

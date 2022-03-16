@@ -26,6 +26,6 @@ export const InfoBoxGeneral = (args) => (
   </Container>
 )
 InfoBoxGeneral.args = {
-  title: 'Pool hashrate',
+  title: 'Pools hashrate',
   value: 69900,
 }
