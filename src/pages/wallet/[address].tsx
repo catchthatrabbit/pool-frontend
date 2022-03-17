@@ -236,6 +236,7 @@ const AddressContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  text-transform: uppercase;
   ${minWidth(
     'tablet',
     css`
@@ -321,9 +322,6 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
             />
           </TableContainerStyled>
         </TabContent>
-        <BoxPanel title="Bulk statistics" desc="Your JSON API statistics.">
-          https://catchthatrabbit.com/api/accounts/{props.address}
-        </BoxPanel>
       </ContainerStyled>
     </>
   )

@@ -377,6 +377,16 @@ export const MinerDataInfoDataEu = [
   },
   { key: '5', title: 'Password', value: '<empty>' },
 ]
+export const MinerDataInfoDataEuSec = [
+  { key: '1', title: 'Server', value: 'eu.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '8008' },
+  {
+    key: '4',
+    title: 'Username',
+    value: '<your wallet address>.<worker name>',
+  },
+  { key: '5', title: 'Password', value: '<empty>' },
+]
 export const MinerDataInfoDataNa = [
   { key: '1', title: 'Server', value: 'na.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
@@ -388,6 +398,16 @@ export const MinerDataInfoDataNa = [
   { key: '5', title: 'Password', value: '<empty>' },
 ]
 export const MinerDataInfoDataAs = [
+  { key: '1', title: 'Server', value: 'as.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '8008' },
+  {
+    key: '4',
+    title: 'Username',
+    value: '<your wallet address>.<worker name>',
+  },
+  { key: '5', title: 'Password', value: '<empty>' },
+]
+export const MinerDataInfoDataAsSec = [
   { key: '1', title: 'Server', value: 'as.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
   {
