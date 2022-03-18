@@ -8,7 +8,7 @@ import type { InfoBoxItem } from 'helpers/text'
 const hydratePaymentsInfoBox = (data): InfoBoxItem[] => {
   return [
     { title: 'Sent payments', value: getNumberText(data.paymentsTotal) },
-    //{ title: 'XCB Price', value: getEuroText(200) }, // TODO: raisty activate after listing
+    //{ title: 'XCB Price', value: getEuroText(200) }, // TODO: activate after listing
   ]
 }
 

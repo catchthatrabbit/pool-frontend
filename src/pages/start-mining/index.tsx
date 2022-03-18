@@ -254,6 +254,12 @@ const StartMiningPage: FC<
               title="Connect to European Pool"
             />
           </MiningInfoStyled>
+		  <MiningInfoStyled id="pool-europe-1">
+            <MiningInfo
+              data={ props.minerDataInfoEuSec }
+              title="Connect to backup European Pool"
+            />
+          </MiningInfoStyled>
           {/*<MiningInfoStyled id="pool-na">
             <MiningInfo data={props.minerDataInfoDataNa} title="Connect to Northen American Pool" />
           </MiningInfoStyled>*/}
@@ -261,6 +267,12 @@ const StartMiningPage: FC<
             <MiningInfo
               data={ props.minerDataInfoAs }
               title="Connect to Asian Pool"
+            />
+          </MiningInfoStyled>
+		  <MiningInfoStyled id="pool-asia-1">
+            <MiningInfo
+              data={ props.minerDataInfoAsSec }
+              title="Connect to backup Asian Pool"
             />
           </MiningInfoStyled>
         </MiningInfoContainerStyled>
@@ -275,12 +287,11 @@ const StartMiningPage: FC<
             <TextGuide1Styled>
               <Text space="initial" fontFamily="secondary">Please, download the Core Wallet, where you can securely store your rewards.</Text>
               <Text space="initial" fontFamily="secondary"><span className="inline-block">You can download</span><a href="https://github.com/core-coin/go-core/releases" target="_blank">go-core client</a><span className="inline-block"> or use </span><a href="https://github.com/core-coin/address-generator/releases" target="_blank">generator of ICAN addresses</a><span>.</span></Text>
-              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed.</Text>
-              <Text space="initial" fontFamily="secondary">No private key = no coins!</Text><br />
+              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed. No private key = no coins!</Text><br />
               <Text>go-core command</Text>
               <Text fontFamily="secondary"><kbd>personal.newAddress</kbd></Text><br />
               <Text space="initial">address generator commands</Text>
-              <Text space="initial" fontFamily="secondary"><kbd>address-generator -n 1</kbd> backup and then <kbd>clear && history -c</kbd></Text>
+              <Text space="initial" fontFamily="secondary"><kbd>./address-generator -n 1</kbd> backup and then <kbd>clear && history -c</kbd></Text>
             </TextGuide1Styled>
             <TextGuideStyled>
               <Text space="initial" size="large">Step 2: Download mining software</Text>

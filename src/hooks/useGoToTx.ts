@@ -1,5 +1,5 @@
 const useGoToTx = () => {
-  const uri = 'https://185.48.116.150:9140/tx/'
+  const uri = 'https://blockindex.net/tx/'
 
   const goToTx = (tx) =>
     window.open(uri + tx, '_blank')

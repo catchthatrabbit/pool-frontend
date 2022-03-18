@@ -8,6 +8,16 @@ const MinerDataInfoDataEu = [
   },
   { key: '4', title: 'Password', value: '<empty>' },
 ]
+const MinerDataInfoDataEuSec = [
+  { key: '1', title: 'Server', value: 'eu1.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '8008' },
+  {
+    key: '3',
+    title: 'Username',
+    value: '<your wallet address>.<worker name>',
+  },
+  { key: '4', title: 'Password', value: '<empty>' },
+]
 const MinerDataInfoDataNa = [
   { key: '1', title: 'Server', value: 'na.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
@@ -28,6 +38,16 @@ const MinerDataInfoDataAs = [
   },
   { key: '4', title: 'Password', value: '<empty>' },
 ]
+const MinerDataInfoDataAsSec = [
+  { key: '1', title: 'Server', value: 'as1.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '8008' },
+  {
+    key: '3',
+    title: 'Username',
+    value: '<your wallet address>.<worker name>',
+  },
+  { key: '4', title: 'Password', value: '<empty>' },
+]
 const MinerDataCardData = {
   title: 'CoreMiner',
   description:
@@ -38,7 +58,9 @@ const MinerDataCardData = {
 }
 const LinksData = [
   { href: '#pool-europe', text: 'Europe' },
+  { href: '#pool-europe-1', text: 'Eu1' },
   { href: '#pool-asia', text: 'Asia' },
+  { href: '#pool-asia-1', text: 'As1' },
 ]
 
 const hydratePoolDetailsData = (data) => {
@@ -49,7 +71,7 @@ const hydratePoolDetailsData = (data) => {
       value: 'PPLNS (Pay Per Last N Shares)',
     },
     { key: '2', title: 'Pool fee', value: data.PoolFee + ' %' },
-    { key: '3', title: 'Payout threshhold', value: data.PayoutThreshold },
+    { key: '3', title: 'Payout threshhold', value: data.PayoutThreshold + 'ꞥ (nucles)' },
     { key: '4', title: 'Mining algorithm', value: 'RandomY' },
   ]
 }
@@ -69,8 +91,10 @@ export const getStartMiningData = async () => {
 
   return {
     minerDataInfoEu: MinerDataInfoDataEu,
+	minerDataInfoEuSec: MinerDataInfoDataEuSec,
     minerDataInfoNa: MinerDataInfoDataNa,
     minerDataInfoAs: MinerDataInfoDataAs,
+	minerDataInfoAsSec: MinerDataInfoDataAsSec,
     minerDataCard: MinerDataCardData,
     links: LinksData,
     poolDetails: hydratePoolDetailsData(data),
