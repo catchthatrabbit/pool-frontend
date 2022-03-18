@@ -287,12 +287,12 @@ const StartMiningPage: FC<
             <TextGuide1Styled>
               <Text space="initial" fontFamily="secondary">Please, download the Core Wallet, where you can securely store your rewards.</Text>
               <Text space="initial" fontFamily="secondary"><span className="inline-block">You can download</span><a href="https://github.com/core-coin/go-core/releases" target="_blank">go-core client</a><span className="inline-block"> or use </span><a href="https://github.com/core-coin/address-generator/releases" target="_blank">generator of ICAN addresses</a><span>.</span></Text>
-              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed: <kbd>clear && history -c</kbd></Text><br />
+              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed: <kbd>clear &amp;&amp; history -c</kbd></Text><br />
 			  <Text space="initial" fontFamily="secondary">No private key = no coins!</Text><br />
               <Text>go-core command</Text>
-              <Text fontFamily="secondary"><kbd>chmod -x gocore && ./gocore account new</kbd></Text><br />
+              <Text fontFamily="secondary"><kbd>chmod -x gocore &amp;&amp; ./gocore account new</kbd></Text><br />
               <Text space="initial">address generator command</Text>
-              <Text space="initial" fontFamily="secondary"><kbd>chmod 100 address-generator && ./address-generator -n 1 >> wallet.txt</kbd></Text>
+              <Text space="initial" fontFamily="secondary"><kbd>chmod 100 address-generator &amp;&amp; ./address-generator -n 1 &gt;&gt; wallet.txt</kbd></Text>
             </TextGuide1Styled>
             <TextGuideStyled>
               <Text space="initial" size="large">Step 2: Download mining software</Text>
