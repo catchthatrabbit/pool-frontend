@@ -356,7 +356,7 @@ export const MinerDataCardData = {
   title: 'CoreMiner',
   description: 'Fast & Open-source miner with excellent hardware support & 0% fees.',
   info: ['OS: Ubuntu, Raspbian', 'CPUs: AMD, Intel, ARM', 'Fee: 0%'],
-  configLink: 'https://github.com/catchthatrabbit/coreminer/blob/master/mine.sh',
+  configLink: 'https://gist.github.com/raisty/54a68880cb913da81273edfcb05c2270',
   minerLink: 'https://github.com/catchthatrabbit/coreminer/releases',
 }
 

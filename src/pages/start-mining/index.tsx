@@ -287,18 +287,19 @@ const StartMiningPage: FC<
             <TextGuide1Styled>
               <Text space="initial" fontFamily="secondary">Please, download the Core Wallet, where you can securely store your rewards.</Text>
               <Text space="initial" fontFamily="secondary"><span className="inline-block">You can download</span><a href="https://github.com/core-coin/go-core/releases" target="_blank">go-core client</a><span className="inline-block"> or use </span><a href="https://github.com/core-coin/address-generator/releases" target="_blank">generator of ICAN addresses</a><span>.</span></Text>
-              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed. No private key = no coins!</Text><br />
+              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed: <kbd>clear && history -c</kbd></Text><br />
+			  <Text space="initial" fontFamily="secondary">No private key = no coins!</Text><br />
               <Text>go-core command</Text>
-              <Text fontFamily="secondary"><kbd>personal.newAddress</kbd></Text><br />
-              <Text space="initial">address generator commands</Text>
-              <Text space="initial" fontFamily="secondary"><kbd>./address-generator -n 1</kbd> backup and then <kbd>clear && history -c</kbd></Text>
+              <Text fontFamily="secondary"><kbd>chmod -x gocore && ./gocore account new</kbd></Text><br />
+              <Text space="initial">address generator command</Text>
+              <Text space="initial" fontFamily="secondary"><kbd>chmod 100 address-generator && ./address-generator -n 1 >> wallet.txt</kbd></Text>
             </TextGuide1Styled>
             <TextGuideStyled>
               <Text space="initial" size="large">Step 2: Download mining software</Text>
             </TextGuideStyled>
             <TextGuide2Styled>
               <Text space="initial" fontFamily="secondary">You need to download the mining software, install and configure to start the mining application.</Text>
-              <Text space="initial" fontFamily="secondary">To configure mining simply run the script <kbd>sh ./mine.sh</kbd> and follow the instructions.</Text>
+              <Text space="initial" fontFamily="secondary">To configure mining simply run the script <kbd>bash ./mine.sh</kbd> and follow the instructions.</Text>
               <br /><br />
               <Text space="initial" fontFamily="secondary">We recommend the following miner/s:</Text>
             </TextGuide2Styled>
