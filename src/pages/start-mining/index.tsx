@@ -257,13 +257,13 @@ const StartMiningPage: FC<
 		  <MiningInfoStyled id="pool-europe-1">
             <MiningInfo
               data={ props.minerDataInfoEuSec }
-              title="Connect to backup European Pool"
+              title="Backup European Pool"
             />
           </MiningInfoStyled>
           {/*<MiningInfoStyled id="pool-na">
             <MiningInfo data={props.minerDataInfoDataNa} title="Connect to Northen American Pool" />
           </MiningInfoStyled>*/}
-          <MiningInfoStyled id="pool-asia">
+          {/*<MiningInfoStyled id="pool-asia">
             <MiningInfo
               data={ props.minerDataInfoAs }
               title="Connect to Asian Pool"
@@ -272,9 +272,9 @@ const StartMiningPage: FC<
 		  <MiningInfoStyled id="pool-asia-1">
             <MiningInfo
               data={ props.minerDataInfoAsSec }
-              title="Connect to backup Asian Pool"
+              title="Backup Asian Pool"
             />
-          </MiningInfoStyled>
+          </MiningInfoStyled>*/}
         </MiningInfoContainerStyled>
         <TitleContainerStyled>
           <ContentTitle Image={ <RecentBlocksIcon /> }>Get started</ContentTitle>
