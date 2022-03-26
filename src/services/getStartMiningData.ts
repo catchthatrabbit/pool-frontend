@@ -57,10 +57,8 @@ const MinerDataCardData = {
   minerLink: 'https://github.com/catchthatrabbit/coreminer/releases',
 }
 const LinksData = [
-  { href: '#pool-europe', text: 'Europe' },
-  { href: '#pool-europe-1', text: 'Eu1' },
-  { href: '#pool-asia', text: 'Asia' },
-  { href: '#pool-asia-1', text: 'As1' },
+  { href: '#pool-europe', text: 'European pool [EU]' },
+  { href: '#pool-europe-1', text: 'European backup [EU1]' },
 ]
 
 const hydratePoolDetailsData = (data) => {

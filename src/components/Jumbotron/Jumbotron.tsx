@@ -420,11 +420,11 @@ const Jumbotron: FC<IProps> = ({ data }) => {
               EU location
             </MapButtonWrapper>
           </EUStyle>
-          <APStyle>
+          {/*<APStyle>
             <MapButtonWrapper href={connectToAsia}>
               AP location
             </MapButtonWrapper>
-          </APStyle>
+          </APStyle>*/}
         </Locations>
       </MapStyle>
       <InfoComponentStyled>
