@@ -322,6 +322,10 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
             />
           </TableContainerStyled>
         </TabContent>
+        <BoxPanel title="Connections" desc="Data sources &amp; direct links.">
+          Direct link to stats: <a href={'https://' + props.address + '.ctr.watch'} target="_blank">{props.address}.ctr.watch</a><br />
+          API access: <a href={'https://catchthatrabbit.com/api/accounts/' + props.address} target="_blank">catchthatrabbit.com/api/accounts/{props.address}</a>
+        </BoxPanel>
       </ContainerStyled>
     </>
   )
