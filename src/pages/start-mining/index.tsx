@@ -155,10 +155,10 @@ const BoxContentStyled = styled.div`
   margin-bottom: 31px;
 
   kbd {
-	  color: green;
-	  border: 1px solid ${colorVariables.gunPowder};
-	  border-radius: 3px;
-	  padding: 0.3em;
+    color: green;
+    border: 1px solid ${colorVariables.gunPowder};
+    border-radius: 3px;
+    padding: 0.3em;
     margin: 0.5rem;
   }
 `
@@ -192,7 +192,7 @@ const TextGuide1Styled = styled(TextStyled)`
 
   a {
     padding: 0 5px;
-    margin: .5rem;
+    margin: 0.5rem;
     white-space: nowrap;
   }
 `
@@ -213,7 +213,7 @@ const TextGuide2Styled = styled(TextStyled)`
 
   a {
     padding: 0 5px;
-    margin: .5rem;
+    margin: 0.5rem;
     white-space: nowrap;
   }
 `
@@ -233,7 +233,7 @@ const onClickHandler = () => setTimeout(() => window.scrollBy(0, -184), 0)
 const StartMiningPage: FC<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = (props) => {
-  const [ searchValue, setSearchValue ] = useState('')
+  const [searchValue, setSearchValue] = useState('')
   const goToWallet = useGoToWallet()
 
   const handleSearchValueChange = (event) => {
@@ -242,21 +242,22 @@ const StartMiningPage: FC<
   const handleSearch = () => {
     goToWallet(searchValue)
   }
+
   return (
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={ <StartMiningIcon /> }>Start mining</ContentTitle>
+        <ContentTitle Image={<StartMiningIcon />}>Start mining</ContentTitle>
         <MiningInfoContainerStyled>
           <MiningInfoStyled id="pool-europe">
             <MiningInfo
-              data={ props.minerDataInfoEu }
+              data={props.minerDataInfoEu}
               title="Connect to European Pool"
             />
           </MiningInfoStyled>
-		  <MiningInfoStyled id="pool-europe-1">
+          <MiningInfoStyled id="pool-europe-1">
             <MiningInfo
-              data={ props.minerDataInfoEuSec }
+              data={props.minerDataInfoEuSec}
               title="Backup European Pool"
             />
           </MiningInfoStyled>
@@ -277,7 +278,7 @@ const StartMiningPage: FC<
           </MiningInfoStyled>*/}
         </MiningInfoContainerStyled>
         <TitleContainerStyled>
-          <ContentTitle Image={ <RecentBlocksIcon /> }>Get started</ContentTitle>
+          <ContentTitle Image={<RecentBlocksIcon />}>Get started</ContentTitle>
         </TitleContainerStyled>
         <BoxContentStyled>
           <BoxGuideStyled>
@@ -285,65 +286,115 @@ const StartMiningPage: FC<
               <Text size="large">Step 1: Get a Wallet</Text>
             </TextGuideStyled>
             <TextGuide1Styled>
-              <Text space="initial" fontFamily="secondary">Please, download the Core Wallet, where you can securely store your rewards.</Text>
-              <Text space="initial" fontFamily="secondary"><span className="inline-block">You can download</span><a href="https://github.com/core-coin/go-core/releases" target="_blank">go-core client</a><span className="inline-block"> or use </span><a href="https://github.com/core-coin/address-generator/releases" target="_blank">generator of ICAN addresses</a><span>.</span></Text>
-              <Text space="initial" fontFamily="secondary">Always remember to backup your private key! Clear your terminal session and history if needed: <kbd>clear &amp;&amp; history -c</kbd></Text><br />
-			  <Text space="initial" fontFamily="secondary">No private key = no coins!</Text><br />
+              <Text space="initial" fontFamily="secondary">
+                Please, download the Core Wallet, where you can securely store
+                your rewards.
+              </Text>
+              <Text space="initial" fontFamily="secondary">
+                <span className="inline-block">You can download</span>
+                <a
+                  href="https://github.com/core-coin/go-core/releases"
+                  target="_blank"
+                >
+                  go-core client
+                </a>
+                <span className="inline-block"> or use </span>
+                <a
+                  href="https://github.com/core-coin/address-generator/releases"
+                  target="_blank"
+                >
+                  generator of ICAN addresses
+                </a>
+                <span>.</span>
+              </Text>
+              <Text space="initial" fontFamily="secondary">
+                Always remember to backup your private key! Clear your terminal
+                session and history if needed:{' '}
+                <kbd>clear &amp;&amp; history -c</kbd>
+              </Text>
+              <br />
+              <Text space="initial" fontFamily="secondary">
+                No private key = no coins!
+              </Text>
+              <br />
               <Text>go-core command</Text>
-              <Text fontFamily="secondary"><kbd>chmod -x gocore &amp;&amp; ./gocore account new</kbd></Text><br />
+              <Text fontFamily="secondary">
+                <kbd>chmod -x gocore &amp;&amp; ./gocore account new</kbd>
+              </Text>
+              <br />
               <Text space="initial">address generator command</Text>
-              <Text space="initial" fontFamily="secondary"><kbd>chmod 100 address-generator &amp;&amp; ./address-generator -n 1 &gt;&gt; wallet.txt</kbd></Text>
+              <Text space="initial" fontFamily="secondary">
+                <kbd>
+                  chmod 100 address-generator &amp;&amp; ./address-generator -n
+                  1 &gt;&gt; wallet.txt
+                </kbd>
+              </Text>
             </TextGuide1Styled>
             <TextGuideStyled>
-              <Text space="initial" size="large">Step 2: Download mining software</Text>
+              <Text space="initial" size="large">
+                Step 2: Download mining software
+              </Text>
             </TextGuideStyled>
             <TextGuide2Styled>
-              <Text space="initial" fontFamily="secondary">You need to download the mining software, install and configure to start the mining application.</Text>
-              <Text space="initial" fontFamily="secondary">To configure mining simply run the script <kbd>bash ./mine.sh</kbd> and follow the instructions.</Text>
-              <br /><br />
-              <Text space="initial" fontFamily="secondary">We recommend the following miner/s:</Text>
+              <Text space="initial" fontFamily="secondary">
+                You need to download the mining software, install and configure
+                to start the mining application.
+              </Text>
+              <Text space="initial" fontFamily="secondary">
+                To configure mining simply run the script{' '}
+                <kbd>bash ./mine.sh</kbd> and follow the instructions.
+              </Text>
+              <br />
+              <br />
+              <Text space="initial" fontFamily="secondary">
+                We recommend the following miner/s:
+              </Text>
             </TextGuide2Styled>
             <MinerCardsWrapperStyled>
               <MiningCardStyled>
-                <MinerCard data={ props.minerDataCard } />
+                <MinerCard data={props.minerDataCard} />
               </MiningCardStyled>
             </MinerCardsWrapperStyled>
             <TextGuideStyled>
-              <Text space="initial" size="large">Step 3: Choose your server</Text>
+              <Text space="initial" size="large">
+                Step 3: Choose your server
+              </Text>
             </TextGuideStyled>
             <TextGuide3Styled>
               We have geo-locations to choose from:
             </TextGuide3Styled>
             <LinksWrapperStyled>
-              { props.links.map(({ href, text }) => (
-                <a key={ text } href={ href } onClick={ onClickHandler }>
+              {props.links.map(({ href, text }) => (
+                <a key={text} href={href} onClick={onClickHandler}>
                   <Text
                     fontFamily="primary"
                     fontWeight="bold"
                     size="very-large"
                   >
-                    { text }
+                    {text}
                   </Text>
                 </a>
-              )) }
+              ))}
             </LinksWrapperStyled>
             <TextGuideStyled>
-              <Text space="initial" size="large">Step 4: Go To Dashboard</Text>
+              <Text space="initial" size="large">
+                Step 4: Go To Dashboard
+              </Text>
             </TextGuideStyled>
             <TextGuide4Styled>
               To access the dashboard, type your address below.
             </TextGuide4Styled>
             <SearchBarContainerStyled>
               <SearchBar
-                value={ searchValue }
-                onChange={ handleSearchValueChange }
-                onSearch={ handleSearch }
+                value={searchValue}
+                onChange={handleSearchValueChange}
+                onSearch={handleSearch}
               />
             </SearchBarContainerStyled>
           </BoxGuideStyled>
         </BoxContentStyled>
         <MiningInfo
-          data={ props.poolDetails }
+          data={props.poolDetails}
           title="Pool details"
           color="white"
         />

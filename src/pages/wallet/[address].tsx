@@ -1,4 +1,3 @@
-import Loading from '@components/Loading/Loading'
 import Background from 'atoms/Background/Background'
 import BoxPanel from 'atoms/BoxPanel/BoxPanel'
 import ContentTitle from 'atoms/ContentTitle'
@@ -10,12 +9,14 @@ import NotFound from 'components/NotFound/NotFound'
 import Table from 'components/Table'
 import iban from 'helpers/iban'
 import { minWidth } from 'helpers/responsive'
-import { useRouter } from 'next/router'
 import React, { FC, useState } from 'react'
 import { getWalletData } from 'services/getWalletData'
 import styled, { css } from 'styled-components'
 
-import type { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
+import type {
+  InferGetServerSidePropsType,
+  GetServerSidePropsContext,
+} from 'next'
 
 function formatAddressContent(address) {
   return iban(address)
@@ -245,10 +246,12 @@ const AddressContainer = styled.div`
   )}
 `
 
-export const getServerSideProps = async ({ params }: GetServerSidePropsContext) => ({
+export const getServerSideProps = async ({
+  params,
+}: GetServerSidePropsContext) => ({
   props: {
     address: params?.address as string,
-    ...await getWalletData(params?.address as string)
+    ...(await getWalletData(params?.address as string)),
   },
 })
 
@@ -258,9 +261,8 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
   props,
 ) => {
   const [changeView, setChangeView] = useState<TabType>('workers')
-  const router = useRouter()
 
-  if (props.status) {
+  if (props.isNotFound) {
     return <NotFound />
   }
 
@@ -323,8 +325,18 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
           </TableContainerStyled>
         </TabContent>
         <BoxPanel title="Connections" desc="Data sources &amp; direct links.">
-          Direct link to stats: <a href={'https://' + props.address + '.ctr.watch'} target="_blank">{props.address}.ctr.watch</a><br />
-          API access: <a href={'https://catchthatrabbit.com/api/accounts/' + props.address} target="_blank">catchthatrabbit.com/api/accounts/{props.address}</a>
+          Direct link to stats:{' '}
+          <a href={'https://' + props.address + '.ctr.watch'} target="_blank">
+            {props.address}.ctr.watch
+          </a>
+          <br />
+          API access:{' '}
+          <a
+            href={'https://catchthatrabbit.com/api/accounts/' + props.address}
+            target="_blank"
+          >
+            catchthatrabbit.com/api/accounts/{props.address}
+          </a>
         </BoxPanel>
       </ContainerStyled>
     </>

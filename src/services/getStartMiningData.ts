@@ -69,7 +69,11 @@ const hydratePoolDetailsData = (data) => {
       value: 'PPLNS (Pay Per Last N Shares)',
     },
     { key: '2', title: 'Pool fee', value: data.PoolFee + ' %' },
-    { key: '3', title: 'Payout threshhold', value: data.PayoutThreshold + 'ꞥ (nucles)' },
+    {
+      key: '3',
+      title: 'Payout threshhold',
+      value: data.PayoutThreshold + 'ꞥ (nucles)',
+    },
     { key: '4', title: 'Mining algorithm', value: 'RandomY' },
   ]
 }
@@ -89,10 +93,10 @@ export const getStartMiningData = async () => {
 
   return {
     minerDataInfoEu: MinerDataInfoDataEu,
-	minerDataInfoEuSec: MinerDataInfoDataEuSec,
+    minerDataInfoEuSec: MinerDataInfoDataEuSec,
     minerDataInfoNa: MinerDataInfoDataNa,
     minerDataInfoAs: MinerDataInfoDataAs,
-	minerDataInfoAsSec: MinerDataInfoDataAsSec,
+    minerDataInfoAsSec: MinerDataInfoDataAsSec,
     minerDataCard: MinerDataCardData,
     links: LinksData,
     poolDetails: hydratePoolDetailsData(data),

@@ -1,5 +1,12 @@
-import { getHashText, getNumberText } from 'helpers/text';
-import { toStringDateTime } from 'helpers/toStringDateTime';
+import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import {
+  aggregateNumbers,
+  fetchAllSettled,
+  mergeArraysAndObjects,
+  reduceList,
+} from 'helpers'
+import { getHashText, getNumberText } from 'helpers/text'
+import { toStringDateTime } from 'helpers/toStringDateTime'
 
 import type { Column } from '@components/Table/Table'
 import type { InfoBoxItem } from 'helpers/text'
@@ -11,14 +18,17 @@ const hydrateMinersInfoBox = (data): InfoBoxItem[] => {
   ]
 }
 
-const hydrateMinerTableData = (miners) => {
+const hydrateMinerTableData = (miners: {}) => {
   const minerMapper = ([miner, detail]) => ({
     miner: miner.toUpperCase(),
     hashrate: detail?.hr,
     'last beat': toStringDateTime(detail?.lastBeat),
+    lastBeat: detail?.lastBeat,
   })
 
-  return Object.entries(miners).map(minerMapper)
+  return Object.entries(miners)
+    .map(minerMapper)
+    .sort((a, b) => (a.lastBeat < b.lastBeat ? 1 : -1))
 }
 
 const hydrateMinerTableColumns = (): Column[] => {
@@ -48,13 +58,18 @@ const hydrateMinerTableColumns = (): Column[] => {
  * - minerTable: a hydrated version for the miner Table component
  */
 export const getMinersData = async () => {
-  const result = await fetch(process.env.API_ENDPOINT + 'miners.json')
-  const data = await result.json()
+  const allMiners = await fetchAllSettled(
+    AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + 'miners'),
+  )
+
+  const aggregator = aggregateNumbers(['hashrate', 'minersTotal'])
+  const info = reduceList(allMiners, aggregator)
+  const { miners } = reduceList(allMiners, mergeArraysAndObjects)
 
   return {
-    minersInfoBox: hydrateMinersInfoBox(data),
+    minersInfoBox: hydrateMinersInfoBox(info),
     minerTable: {
-      data: hydrateMinerTableData(data.miners),
+      data: hydrateMinerTableData(miners),
       columns: hydrateMinerTableColumns(),
     },
   }

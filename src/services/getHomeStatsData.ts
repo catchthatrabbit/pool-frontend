@@ -1,8 +1,15 @@
-import { getAgoText, getHashText, getNumberText, getXCBText } from 'helpers/text';
-import { toStringDateTime } from 'helpers/toStringDateTime';
-import { toXCBPrice } from 'helpers/toXCBPrice';
+import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import { aggregateNumbers, fetchAllSettled, reduceList } from 'helpers'
+import {
+  getAgoText,
+  getHashText,
+  getNumberText,
+  getXCBText,
+} from 'helpers/text'
+import { toStringDateTime } from 'helpers/toStringDateTime'
+import { toXCBPrice } from 'helpers/toXCBPrice'
 
-import type { InfoBoxItem } from 'helpers/text';
+import type { InfoBoxItem } from 'helpers/text'
 import type { ChartItem } from 'types/app'
 
 const hydrateInfoBoxData = (data): InfoBoxItem[] => {
@@ -12,7 +19,10 @@ const hydrateInfoBoxData = (data): InfoBoxItem[] => {
     { title: 'Network difficulty', value: getHashText(node.difficulty) },
     { title: 'Blockchain Height', value: getNumberText(node.height) },
     { title: 'Round Shares', value: getNumberText(data.stats.roundShares) },
-    { title: 'Last block found', value: getAgoText(toStringDateTime(data.stats.lastBlockFound)) },
+    {
+      title: 'Last block found',
+      value: getAgoText(toStringDateTime(data.stats.lastBlockFound)),
+    },
     { title: 'Block reward', value: getXCBText(toXCBPrice(data.blockReward)) },
   ]
 }
@@ -23,7 +33,7 @@ const hydrateChartData = (poolCharts: any[]): ChartItem[] => {
   const chartItemMapper = (item) => ({
     value: item.y,
     time: toStringDateTime(item.x),
-    hour: toStringDateTime(item.x).split(' ')[1].slice(0, 2),
+    hour: toStringDateTime(item.x, { hour: '2-digit', hour12: false }),
   })
 
   //
@@ -60,11 +70,28 @@ const hydrateChartData = (poolCharts: any[]): ChartItem[] => {
  * - chartData
  */
 export const getHomeStatsData = async () => {
-  const result = await fetch(process.env.API_ENDPOINT + 'stats-chart.json')
-  const data = await result.json()
+  const allStats = await fetchAllSettled(
+    AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + 'stats/chart'),
+  )
+
+  const { allPoolChartsData, allLastBlockFound } = allStats.reduce(
+    (acc, item) => {
+      const { poolCharts, stats } = item
+
+      acc.allPoolChartsData = [...acc.allPoolChartsData, { poolCharts }]
+      acc.allLastBlockFound = [...acc.allLastBlockFound, stats.lastBlockFound]
+
+      return acc
+    },
+    { allPoolChartsData: [], allLastBlockFound: [] },
+  )
+
+  const aggregator = aggregateNumbers(['poolCharts', 'y'])
+  const { poolCharts } = reduceList(allPoolChartsData, aggregator)
+  const lastBlockFound = Math.max(...allLastBlockFound)
 
   return {
-    infoBoxData: hydrateInfoBoxData(data),
-    chartData: hydrateChartData(data.poolCharts),
+    infoBoxData: hydrateInfoBoxData({ ...allStats[0], lastBlockFound }),
+    chartData: hydrateChartData(poolCharts),
   }
 }
