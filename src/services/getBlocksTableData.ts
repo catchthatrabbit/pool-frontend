@@ -1,3 +1,5 @@
+import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import { fetchAllSettled, mergeArraysAndObjects, reduceList } from 'helpers'
 import { toStringDateTime } from 'helpers/toStringDateTime'
 import { toXCBPrice } from 'helpers/toXCBPrice'
 
@@ -15,7 +17,9 @@ const hydrateBlockTableData = (blocks: any[]) => {
     variance: (block.difficulty / block.shares).toFixed(2),
   })
 
-  return blocks.map(blockMapper)
+  return blocks
+    .sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1))
+    .map(blockMapper)
 }
 
 const hydrateBlockTableColumns = (): Column[] => {
@@ -62,20 +66,23 @@ const hydrateBlockTableColumns = (): Column[] => {
  * - newBlocks
  */
 export const getBlocksTableData = async () => {
-  const result = await fetch(process.env.API_ENDPOINT + 'blocks.json')
-  const data = await result.json()
+  const allBlocks = await fetchAllSettled(
+    AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + 'blocks'),
+  )
+
+  const blocks = reduceList<any>(allBlocks, mergeArraysAndObjects)
 
   return {
     blocks: {
-      data: hydrateBlockTableData(data.matured),
+      data: hydrateBlockTableData(blocks.matured),
       columns: hydrateBlockTableColumns(),
     },
     immature: {
-      data: hydrateBlockTableData(data.immature),
+      data: hydrateBlockTableData(blocks.immature),
       columns: hydrateBlockTableColumns(),
     },
     newBlocks: {
-      data: hydrateBlockTableData(data.luck),
+      data: hydrateBlockTableData(blocks.candidates),
       columns: hydrateBlockTableColumns(),
     },
   }
