@@ -1,6 +1,13 @@
-import { getEuroText, getNumberText } from 'helpers/text';
-import { toStringDateTime } from 'helpers/toStringDateTime';
-import { toXCBPrice } from 'helpers/toXCBPrice';
+import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import {
+  aggregateNumbers,
+  fetchAllSettled,
+  mergeArraysAndObjects,
+  reduceList,
+} from 'helpers'
+import { getNumberText } from 'helpers/text'
+import { toStringDateTime } from 'helpers/toStringDateTime'
+import { toXCBPrice } from 'helpers/toXCBPrice'
 
 import type { Column } from '@components/Table/Table'
 import type { InfoBoxItem } from 'helpers/text'
@@ -20,7 +27,9 @@ const hydratePaymentTableData = (payments) => {
     time: toStringDateTime(payment.timestamp),
   })
 
-  return payments.map(paymentMapper)
+  return payments
+    .sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1))
+    .map(paymentMapper)
 }
 
 const hydratePaymentTableColumns = (): Column[] => {
@@ -55,13 +64,18 @@ const hydratePaymentTableColumns = (): Column[] => {
  * - payments: a hydrated version for the payment Table component
  */
 export const getPaymentsData = async () => {
-  const result = await fetch(process.env.API_ENDPOINT + 'payments.json')
-  const data = await result.json()
+  const allPayments = await fetchAllSettled(
+    AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + 'payments'),
+  )
+
+  const aggregator = aggregateNumbers(['paymentsAmount', 'paymentsTotal'])
+  const info = reduceList(allPayments, aggregator)
+  const { payments } = reduceList<any>(allPayments, mergeArraysAndObjects)
 
   return {
-    paymentsInfoBox: hydratePaymentsInfoBox(data),
+    paymentsInfoBox: hydratePaymentsInfoBox(info),
     paymentTable: {
-      data: hydratePaymentTableData(data.payments),
+      data: hydratePaymentTableData(payments),
       columns: hydratePaymentTableColumns(),
     },
   }
