@@ -1,18 +1,25 @@
+import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import { aggregateNumbers, fetchAllSettled, reduceList } from 'helpers'
 import { getHashText, getNumberText, getPercentText } from 'helpers/text'
 
-
 const hydrateJumbotronData = (data, settings) => {
-  const [ node ] = data.nodes
+  const [node] = data.nodes
   const { roundShares } = data.stats
 
   return {
     poolFee: settings.PoolFee,
     infoBoxItems: [
       { title: 'Pools hashrate', value: getHashText(data.hashrate) },
-      { title: 'Network hashrate', value: getHashText((node.difficulty / node.blocktime).toFixed(2)) },
+      {
+        title: 'Network hashrate',
+        value: getHashText((node.difficulty / node.blocktime).toFixed(2)),
+      },
       { title: 'Network difficulty', value: getHashText(node.difficulty) },
       { title: 'Active miners', value: getNumberText(data.minersTotal) },
-      { title: 'Round variance', value: getPercentText((roundShares / node.difficulty).toFixed(2)) },
+      {
+        title: 'Round variance',
+        value: getPercentText((roundShares / node.difficulty).toFixed(2)),
+      },
     ],
   }
 }
@@ -27,10 +34,23 @@ const hydrateJumbotronData = (data, settings) => {
  *   - Round variance
  */
 export const getHomeJumbotronData = async () => {
-  const [stats, settings] = await Promise.all([
-    fetch(process.env.API_ENDPOINT + 'stats.json').then(stats => stats.json()),
-    fetch(process.env.API_ENDPOINT + 'settings.json').then(settings => settings.json()),
+  const statsRequests = fetchAllSettled(
+    AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + 'stats'),
+  )
+
+  const results = await Promise.allSettled([
+    statsRequests,
+    fetch(process.env.API_ENDPOINT + 'settings.json').then((settings) =>
+      settings?.json(),
+    ),
   ])
+
+  const [allStats, settings] = results.map(
+    (result) => 'value' in result && result.value,
+  )
+
+  const aggregator = aggregateNumbers(['hashrate', 'minersTotal'])
+  const stats = reduceList(allStats, aggregator)
 
   return hydrateJumbotronData(stats, settings)
 }
