@@ -118,7 +118,7 @@ const RadialBarChart: FC<IProps> = ({ data = null }) => {
             .attr('x', 0)
             .attr('y', -y(y.ticks().pop() || 0))
             .attr('dy', '-2em')
-            .text('Pool Hash rate — last 24h'),
+            .text('Pool Hash Rate — Last 24H'),
         )
         .call((g) =>
           g
@@ -136,7 +136,7 @@ const RadialBarChart: FC<IProps> = ({ data = null }) => {
       tooltip
         .style('display', 'block')
         .html(
-          `Time: ${datum.time}<br/>Hash rate: ${d3.format('0.4s')(
+          `Time: ${datum.time}<br/><br/>Average Hash Rate: ${d3.format('0.4s')(
             datum.value,
           )}`,
         )
