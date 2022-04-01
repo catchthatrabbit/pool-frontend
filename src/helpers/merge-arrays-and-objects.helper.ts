@@ -1,3 +1,9 @@
+const MERGE_MAPPER: Record<string, (x: any, y: any) => any> = {
+  'array:true|object:true': (x: any[], y: any[]) => [ ...(x ?? []), ...(y ?? []) ].sort((a, b) => a.timestamp > b.timestamp ? 1 : -1),
+  'array:false|object:true': (x: {}, y: {}) => ({ ...(x ?? {}), ...(y ?? {}) }),
+  'array:false|object:false': (x: any, _) => x,
+}
+
 /**
  * Merge two arrays/objects together, with the following rules:
  *
@@ -12,18 +18,16 @@ export const mergeArraysAndObjects = <T>(source: T, target: T): T => {
     source === null ||
     target === undefined ||
     target === null
-  )
-    return source
+  ) return source
 
   let result = {} as T
+
   Object.entries(source).forEach(([key, value]) => {
-    if (Array.isArray(value)) {
-      result[key] = [...value, ...(target[key] ?? [])]
-    } else if (typeof value === 'object') {
-      result[key] = { ...value, ...(target[key] ?? {}) }
-    } else {
-      result[key] = value
-    }
+    const isArray = Array.isArray(value)
+    const isObject = typeof value === 'object'
+    const type = `array:${isArray}|object:${isObject}`
+
+    result[key] = MERGE_MAPPER[type](value, target[key])
   })
 
   return result

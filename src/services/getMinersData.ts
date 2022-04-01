@@ -1,4 +1,4 @@
-import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import { AGGREGATE_API_ENDPOINTS, WHITELIST_AGGREGATE_KEYS } from 'config'
 import {
   aggregateNumbers,
   fetchAllSettled,
@@ -62,7 +62,7 @@ export const getMinersData = async () => {
     AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + 'miners'),
   )
 
-  const aggregator = aggregateNumbers(['hashrate', 'minersTotal'])
+  const aggregator = aggregateNumbers(WHITELIST_AGGREGATE_KEYS.miners)
   const info = reduceList(allMiners, aggregator)
   const { miners } = reduceList(allMiners, mergeArraysAndObjects)
 

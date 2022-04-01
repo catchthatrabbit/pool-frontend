@@ -1,5 +1,12 @@
 import { isNumberString } from './is-number-string.helper'
 
+const AGGREGATE_MAPPER: Record<string, (x: any, y: any, whitelist?: string[], blacklist?: string[]) => any> = {
+  'number:true|object:false|array:false': (x: number, y: number) => +x + +y,
+  'number:false|object:true|array:false': (x: {}, y: {}, whitelist, blacklist) => aggregateNumbers(whitelist, blacklist)(x, y),
+  'number:false|object:true|array:true': (x: [], y: [], whitelist, blacklist) => x.map((item, index) => aggregateNumbers(whitelist, blacklist)(item, y[index])),
+  'number:false|object:false|array:false': (x: any, _) => x,
+}
+
 /**
  * It creates a function based on "whitelist" and "blacklist" which takes two objects and returns a new object that is the result of adding the values of the same
  * keys in both objects
@@ -14,23 +21,24 @@ import { isNumberString } from './is-number-string.helper'
  * @returns The result of the aggregation.
  */
 export const aggregateNumbers = (whitelist?: string[], blacklist?: string[]) => <T>(source: T, target: T): T => {
-  if (source === undefined || source === null || target === undefined || target === null) return source
+  if (
+    source === undefined ||
+    source === null ||
+    target === undefined ||
+    target === null
+  ) return source
 
   let result = {} as T
-
   Object.entries(source).forEach(([ key, value ]) => {
+    result[ key ] = value
+
     if (!whitelist?.length || whitelist?.includes(key) || (!!blacklist?.length && !blacklist?.includes(key))) {
-      if (typeof value === 'number' || isNumberString(value)) {
-        result[ key ] = +(value as string | number) + +target[ key ]
-      } else if (Array.isArray(value)) {
-        result[ key ] = value.map((item, index) => aggregateNumbers(whitelist, blacklist)(item, target[ key ][ index ]))
-      } else if (typeof value === 'object') {
-        result[ key ] = aggregateNumbers(whitelist, blacklist)(value, target[ key ])
-      } else {
-        result[ key ] = value
-      }
-    } else {
-      result[ key ] = value
+      const isNumber = typeof value === 'number' || isNumberString(value)
+      const isObject = typeof value === 'object'
+      const isArray = Array.isArray(value)
+      const type = `number:${ isNumber }|object:${ isObject }|array:${ isArray }`
+
+      result[ key ] = AGGREGATE_MAPPER[ type ](value, target[ key ], whitelist, blacklist)
     }
   })
 
