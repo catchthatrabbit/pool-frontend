@@ -1,14 +1,9 @@
-import {
-  aggregateNumbers,
-  fetchAllSettled,
-  mergeArraysAndObjects,
-  reduceList,
-} from 'helpers'
+import { AGGREGATE_API_ENDPOINTS, WHITELIST_AGGREGATE_KEYS } from 'config'
+import { aggregateNumbers, fetchAllSettled, mergeArraysAndObjects, reduceList } from 'helpers'
 import { toStringDateTime } from 'helpers/toStringDateTime'
 import { toXCBPrice } from 'helpers/toXCBPrice'
 
 import type { Column } from '@components/Table/Table'
-import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
 
 const hydrateWorkersTableData = (workers: any) => {
   if (!workers) return []
@@ -200,20 +195,8 @@ export const getWalletData = async (address: string): Promise<any> => {
     { allAccountsStatsData: [], allAccountsTableData: [] },
   )
 
-  const aggregator = aggregateNumbers([
-    'currentHashrate',
-    'hashrate',
-    'balance',
-    'blocksFound',
-    'immature',
-    'paid',
-    'pending',
-    'roundShares',
-    'paymentsTotal',
-    'workersOffline',
-    'workersOnline',
-    'workersTotal',
-  ])
+
+  const aggregator = aggregateNumbers(WHITELIST_AGGREGATE_KEYS.wallet)
   const stats = reduceList<any>(allAccountsStatsData, aggregator)
   const account = reduceList<any>(allAccountsTableData, mergeArraysAndObjects)
 

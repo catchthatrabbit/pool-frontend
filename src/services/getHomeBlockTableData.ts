@@ -1,9 +1,10 @@
-import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import { AGGREGATE_API_ENDPOINTS } from 'config'
 import { fetchAllSettled, mergeArraysAndObjects, reduceList } from 'helpers'
 import { toStringDateTime } from 'helpers/toStringDateTime'
 import { toXCBPrice } from 'helpers/toXCBPrice'
 
 import type { Column } from '@components/Table/Table'
+
 const hydrateBlockTableData = (blocks: any[]) => {
   const blockMapper = (block) => ({
     height: block.height,

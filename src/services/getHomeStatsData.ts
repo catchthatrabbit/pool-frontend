@@ -1,4 +1,4 @@
-import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import { AGGREGATE_API_ENDPOINTS, WHITELIST_AGGREGATE_KEYS } from 'config'
 import { aggregateNumbers, fetchAllSettled, reduceList } from 'helpers'
 import {
   getAgoText,
@@ -86,7 +86,7 @@ export const getHomeStatsData = async () => {
     { allPoolChartsData: [], allLastBlockFound: [] },
   )
 
-  const aggregator = aggregateNumbers(['poolCharts', 'y'])
+  const aggregator = aggregateNumbers(WHITELIST_AGGREGATE_KEYS.home.stats)
   const { poolCharts } = reduceList(allPoolChartsData, aggregator)
   const lastBlockFound = Math.max(...allLastBlockFound)
 

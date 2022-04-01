@@ -1,4 +1,4 @@
-import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import { AGGREGATE_API_ENDPOINTS, WHITELIST_AGGREGATE_KEYS } from 'config'
 import { aggregateNumbers, fetchAllSettled, reduceList } from 'helpers'
 import { getHashText, getNumberText, getPercentText } from 'helpers/text'
 
@@ -49,7 +49,7 @@ export const getHomeJumbotronData = async () => {
     (result) => 'value' in result && result.value,
   )
 
-  const aggregator = aggregateNumbers(['hashrate', 'minersTotal'])
+  const aggregator = aggregateNumbers(WHITELIST_AGGREGATE_KEYS.home.jumbotron)
   const stats = reduceList(allStats, aggregator)
 
   return hydrateJumbotronData(stats, settings)

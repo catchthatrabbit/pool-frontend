@@ -1,4 +1,4 @@
-import { AGGREGATE_API_ENDPOINTS } from 'config/api-endpoints.config'
+import { AGGREGATE_API_ENDPOINTS, WHITELIST_AGGREGATE_KEYS } from 'config'
 import {
   aggregateNumbers,
   fetchAllSettled,
@@ -68,7 +68,7 @@ export const getPaymentsData = async () => {
     AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + 'payments'),
   )
 
-  const aggregator = aggregateNumbers(['paymentsAmount', 'paymentsTotal'])
+  const aggregator = aggregateNumbers(WHITELIST_AGGREGATE_KEYS.payments)
   const info = reduceList(allPayments, aggregator)
   const { payments } = reduceList<any>(allPayments, mergeArraysAndObjects)
 
