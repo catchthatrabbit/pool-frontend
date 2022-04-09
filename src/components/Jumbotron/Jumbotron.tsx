@@ -410,21 +410,16 @@ const Jumbotron: FC<IProps> = ({ data }) => {
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <Locations>
-          {/*<USStyle>
-            <MapButtonWrapper href={connectToUS}>
-              US location
-            </MapButtonWrapper>
-          </USStyle>*/}
           <EUStyle>
             <MapButtonWrapper href={connectToEurope}>
               EU location
             </MapButtonWrapper>
           </EUStyle>
-          {/*<APStyle>
+          <APStyle>
             <MapButtonWrapper href={connectToAsia}>
               AP location
             </MapButtonWrapper>
-          </APStyle>*/}
+          </APStyle>
         </Locations>
       </MapStyle>
       <InfoComponentStyled>
