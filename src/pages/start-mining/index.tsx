@@ -261,21 +261,18 @@ const StartMiningPage: FC<
               title="Backup European Pool"
             />
           </MiningInfoStyled>
-          {/*<MiningInfoStyled id="pool-na">
-            <MiningInfo data={props.minerDataInfoDataNa} title="Connect to Northen American Pool" />
-          </MiningInfoStyled>*/}
-          {/*<MiningInfoStyled id="pool-asia">
+          <MiningInfoStyled id="pool-asia">
             <MiningInfo
               data={ props.minerDataInfoAs }
               title="Connect to Asian Pool"
             />
           </MiningInfoStyled>
-		  <MiningInfoStyled id="pool-asia-1">
+		      <MiningInfoStyled id="pool-asia-1">
             <MiningInfo
               data={ props.minerDataInfoAsSec }
               title="Backup Asian Pool"
             />
-          </MiningInfoStyled>*/}
+          </MiningInfoStyled>
         </MiningInfoContainerStyled>
         <TitleContainerStyled>
           <ContentTitle Image={<RecentBlocksIcon />}>Get started</ContentTitle>
@@ -300,10 +297,10 @@ const StartMiningPage: FC<
                 </a>
                 <span className="inline-block"> or use </span>
                 <a
-                  href="https://github.com/core-coin/address-generator/releases"
+                  href="https://github.com/core-coin/wallet-generator/releases"
                   target="_blank"
                 >
-                  generator of ICAN addresses
+                  generator of ICAN wallets
                 </a>
                 <span>.</span>
               </Text>
@@ -314,34 +311,31 @@ const StartMiningPage: FC<
               </Text>
               <br />
               <Text space="initial" fontFamily="secondary">
-                No private key = no coins!
+                No Private key = No Coins!
               </Text>
               <br />
-              <Text>go-core command</Text>
+              <Text>Go-core command</Text>
               <Text fontFamily="secondary">
                 <kbd>chmod -x gocore &amp;&amp; ./gocore account new</kbd>
               </Text>
               <br />
-              <Text space="initial">address generator command</Text>
+              <Text space="initial">Wallet Generator command</Text>
               <Text space="initial" fontFamily="secondary">
-                <kbd>
-                  chmod 100 address-generator &amp;&amp; ./address-generator -n
-                  1 &gt;&gt; wallet.txt
-                </kbd>
+                <kbd>chmod -x wallet-generator &amp;&amp; ./wallet-generator</kbd>
               </Text>
             </TextGuide1Styled>
             <TextGuideStyled>
               <Text space="initial" size="large">
-                Step 2: Download mining software
+                Step 2: Download Mining software
               </Text>
             </TextGuideStyled>
             <TextGuide2Styled>
               <Text space="initial" fontFamily="secondary">
-                You need to download the mining software, install and configure
-                to start the mining application.
+                You need to download the Mining software, install and configure
+                it to start the mining application.
               </Text>
               <Text space="initial" fontFamily="secondary">
-                To configure mining simply run the script{' '}
+                To configure the Mining client, run the script{' '}
                 <kbd>bash ./mine.sh</kbd> and follow the instructions.
               </Text>
               <br />
@@ -361,7 +355,7 @@ const StartMiningPage: FC<
               </Text>
             </TextGuideStyled>
             <TextGuide3Styled>
-              We have geo-locations to choose from:
+              We have Geo-locations to choose from:
             </TextGuide3Styled>
             <LinksWrapperStyled>
               {props.links.map(({ href, text }) => (
@@ -382,7 +376,7 @@ const StartMiningPage: FC<
               </Text>
             </TextGuideStyled>
             <TextGuide4Styled>
-              To access the dashboard, type your address below.
+              To access the Dashboard, type your address below.
             </TextGuide4Styled>
             <SearchBarContainerStyled>
               <SearchBar

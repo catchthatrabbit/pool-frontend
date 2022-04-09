@@ -59,6 +59,8 @@ const MinerDataCardData = {
 const LinksData = [
   { href: '#pool-europe', text: 'European pool [EU]' },
   { href: '#pool-europe-1', text: 'European backup [EU1]' },
+  { href: '#pool-asia', text: 'Asian pool [AS]' },
+  { href: '#pool-asia-1', text: 'Asian backup [AS1]' },
 ]
 
 const hydratePoolDetailsData = (data) => {
