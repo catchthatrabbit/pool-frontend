@@ -1,2 +1,2 @@
 export { WHITELIST_AGGREGATE_KEYS } from './aggregate-keys.config'
-export { AGGREGATE_API_ENDPOINTS } from './api-endpoints.config'
+export { AGGREGATE_API_ENDPOINTS, EU_PRIMARY_API_ENDPOINT, EU_BACKUP_API_ENDPOINT, AS_PRIMARY_API_ENDPOINT, AS_BACKUP_API_ENDPOINT } from './pool-endpoints.config'
