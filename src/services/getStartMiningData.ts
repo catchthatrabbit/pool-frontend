@@ -90,7 +90,7 @@ const hydratePoolDetailsData = (data) => {
     - poolDetailsData
  */
 export const getStartMiningData = async () => {
-  const result = await fetch(process.env.API_ENDPOINT + 'settings.json')
+  const result = await fetch(process.env.API_ENDPOINT + '/settings.json')
   const data = await result.json()
 
   return {
