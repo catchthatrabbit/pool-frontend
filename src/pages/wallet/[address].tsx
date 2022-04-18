@@ -1,21 +1,28 @@
-import Background from 'atoms/Background/Background'
-import BoxPanel from 'atoms/BoxPanel/BoxPanel'
-import ContentTitle from 'atoms/ContentTitle'
-import CopyButton from 'atoms/CopyButton'
-import { SearchResultsIcon } from 'atoms/icons'
-import Text from 'atoms/Text/Text'
-import MiningInfo from 'components/MiningInfo/MiningInfo'
-import NotFound from 'components/NotFound/NotFound'
-import Table from 'components/Table'
-import iban from 'helpers/iban'
-import { minWidth } from 'helpers/responsive'
-import React, { FC, useState } from 'react'
-import { getWalletData } from 'services/getWalletData'
-import styled, { css } from 'styled-components'
+import NotFound from '@components/NotFound/NotFound';
+import ReactQueryTable from '@components/ReactQueryTable';
+import SelectPool from '@components/SelectPool';
+import Background from 'atoms/Background/Background';
+import BoxPanel from 'atoms/BoxPanel/BoxPanel';
+import ContentTitle from 'atoms/ContentTitle';
+import CopyButton from 'atoms/CopyButton';
+import { SearchResultsIcon } from 'atoms/icons';
+import Text from 'atoms/Text/Text';
+import MiningInfo from 'components/MiningInfo/MiningInfo';
+import { EU_PRIMARY_API_ENDPOINT } from 'config';
+import iban from 'helpers/iban';
+import { minWidth } from 'helpers/responsive';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { dehydrate, QueryClient, useQuery } from 'react-query';
+import { walletsService } from 'services';
+import { PAYOUTS_TABLE_COLUMNS, WORKERS_TABLE_COLUMNS } from 'services/getWalletData';
+import { poolEndpointSelector, resetPoolSelector, usePoolStore } from 'store/pool.store';
+import styled, { css } from 'styled-components';
 
 import type {
   InferGetServerSidePropsType,
   GetServerSidePropsContext,
+  NextPage,
 } from 'next'
 
 function formatAddressContent(address) {
@@ -246,23 +253,37 @@ const AddressContainer = styled.div`
   )}
 `
 
-export const getServerSideProps = async ({
-  params,
-}: GetServerSidePropsContext) => ({
-  props: {
-    address: params?.address as string,
-    ...(await getWalletData(params?.address as string)),
-  },
-})
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const address = context.params?.address as string
+  const queryClient = new QueryClient()
 
-type TabType = 'workers' | 'payout'
+  await Promise.allSettled([
+    queryClient.prefetchQuery([ 'walletInfo', address, EU_PRIMARY_API_ENDPOINT ], walletsService.getWalletInfoQueryFn),
+    queryClient.prefetchQuery([ 'workers', address, EU_PRIMARY_API_ENDPOINT, 1 ], walletsService.getWorkersQueryFn),
+    queryClient.prefetchQuery([ 'payouts', address, EU_PRIMARY_API_ENDPOINT, 1 ], walletsService.getPayoutsQueryFn),
+  ])
 
-const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
-  props,
-) => {
-  const [changeView, setChangeView] = useState<TabType>('workers')
+  const dehydratedState = dehydrate(queryClient)
 
-  if (props.isNotFound) {
+  return {
+    props: {
+      address,
+      dehydratedState,
+      notFound: dehydratedState.queries.some(q => (q.state.data as any)?.status === 404),
+    },
+  }
+}
+
+type TabType = 'workers' | 'payouts'
+
+const Wallet: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
+  const [ changeView, setChangeView ] = useState<TabType>('workers')
+  const router = useRouter()
+
+  const resetPool = usePoolStore(resetPoolSelector)
+  useEffect(resetPool, [])
+
+  if (props.notFound) {
     return <NotFound />
   }
 
@@ -273,6 +294,8 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
         <ContentTitle Image={<SearchResultsIcon />}>
           Wallet overview
         </ContentTitle>
+
+        <SelectPool />
         <ColumnContainer>
           <AddressContainer>
             <Text size="very-large" color="apple">
@@ -283,17 +306,9 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
             <CopyButton value={props.address} />
           </ButtonStyled>
         </ColumnContainer>
-        <MiningInfoContainer>
-          {props.minerInfo.map(({ title, data }) => (
-            <MiningInfo
-              key={title}
-              data={data as any}
-              title={title}
-              width="small"
-              color="white"
-            />
-          ))}
-        </MiningInfoContainer>
+
+        <WalletMiningInfoBoxes address={router.query.address as string} />
+
         <TabSelector>
           <Text
             active={changeView === 'workers'}
@@ -302,28 +317,31 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
             Workers
           </Text>
           <Text
-            active={changeView === 'payout'}
-            onClick={() => setChangeView('payout')}
+            active={changeView === 'payouts'}
+            onClick={() => setChangeView('payouts')}
           >
             Payouts
           </Text>
         </TabSelector>
         <TabContent active={changeView === 'workers'}>
           <TableContainerStyled>
-            <Table
-              data={props.workersTable.data}
-              columns={props.workersTable.columns}
-            />
+          <ReactQueryTable
+            columns={ WORKERS_TABLE_COLUMNS }
+            queryKey={['workers', router.query.address as string ]}
+            queryFn={walletsService.getWorkersQueryFn}
+          />
           </TableContainerStyled>
         </TabContent>
-        <TabContent active={changeView === 'payout'}>
+        <TabContent active={changeView === 'payouts'}>
           <TableContainerStyled>
-            <Table
-              data={props.payoutsTable.data}
-              columns={props.payoutsTable.columns}
-            />
+          <ReactQueryTable
+            columns={ PAYOUTS_TABLE_COLUMNS }
+            queryKey={['payouts', router.query.address as string ]}
+            queryFn={walletsService.getPayoutsQueryFn}
+          />
           </TableContainerStyled>
         </TabContent>
+
         <BoxPanel title="Connections" desc="Data sources &amp; direct links.">
           Direct link to stats:{' '}
           <a href={'https://' + props.address + '.ctr.watch'} target="_blank">
@@ -342,4 +360,24 @@ const Wallet: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
     </>
   )
 }
+
+const WalletMiningInfoBoxes = (props: { address: string }) => {
+  const poolEndpoint = usePoolStore(poolEndpointSelector)
+  const { data: boxes } = useQuery([ 'walletInfo', props.address, poolEndpoint ], walletsService.getWalletInfoQueryFn)
+
+  return (
+    <MiningInfoContainer>
+      { boxes?.map(({ title, data }) => (
+        <MiningInfo
+          key={ title }
+          data={ data as any }
+          title={ title }
+          width="small"
+          color="white"
+        />
+      )) }
+    </MiningInfoContainer>
+  )
+}
+
 export default Wallet

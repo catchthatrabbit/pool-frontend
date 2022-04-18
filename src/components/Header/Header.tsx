@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import {
@@ -10,12 +10,10 @@ import {
   NavBarStyled,
   HeaderLinkStyled,
 } from './style'
-import { WithRouterProps } from 'next/dist/client/with-router'
 import Text from 'atoms/Text/Text'
 import { useScroll } from 'providers/scroll-provider'
 import Link from 'atoms/Link/Link'
 
-type Props = WithRouterProps
 
 const links = [
   { text: 'Blocks', href: '/blocks' },
@@ -25,7 +23,7 @@ const links = [
   { text: 'Start mining', href: '/start-mining' },
 ]
 
-const Header: FC<Props> = ({}) => {
+const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false)
 
   const { pathname } = useRouter()

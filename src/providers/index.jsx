@@ -1,12 +1,16 @@
-import React from 'react'
-import ThemeProvider from './theme-provider'
-import ResponsiveProvider from './responsive-provider'
-import { ScrollProvider } from './scroll-provider'
+import ReactQueryProvider from './react-query-provider';
+import ResponsiveProvider from './responsive-provider';
+import { ScrollProvider } from './scroll-provider';
+import ThemeProvider from './theme-provider';
 
-const RootProvider = ({ children }) => (
+const RootProvider = ({ children, dehydratedState }) => (
   <ScrollProvider>
     <ThemeProvider>
-      <ResponsiveProvider>{children}</ResponsiveProvider>
+      <ResponsiveProvider>
+        <ReactQueryProvider dehydratedState={dehydratedState}>
+          { children }
+        </ReactQueryProvider>
+      </ResponsiveProvider>
     </ThemeProvider>
   </ScrollProvider>
 )

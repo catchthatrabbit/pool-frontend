@@ -1,14 +1,19 @@
-import Background from 'atoms/Background'
-import ContentTitle from 'atoms/ContentTitle'
-import { BlockerLogoIcon } from 'atoms/icons'
-import Text from 'atoms/Text/Text'
-import Table from 'components/Table'
-import { minWidth } from 'helpers/responsive'
-import React, { FC, useState } from 'react'
-import { getBlocksTableData } from 'services/getBlocksTableData'
-import styled, { css } from 'styled-components'
+import SelectPool from '@components/SelectPool';
+import Background from 'atoms/Background';
+import ContentTitle from 'atoms/ContentTitle';
+import { BlockerLogoIcon } from 'atoms/icons';
+import Text from 'atoms/Text/Text';
+import ReactQueryTable from 'components/ReactQueryTable';
+import { EU_PRIMARY_API_ENDPOINT } from 'config';
+import { minWidth } from 'helpers/responsive';
+import { useEffect, useState } from 'react';
+import { dehydrate, QueryClient } from 'react-query';
+import { blocksService } from 'services';
+import { BLOCK_TABLE_COLUMNS } from 'services/getBlocksTableData';
+import { resetPoolSelector, usePoolStore } from 'store/pool.store';
+import styled, { css } from 'styled-components';
 
-import type { InferGetServerSidePropsType } from 'next'
+import type { InferGetServerSidePropsType, NextPage } from 'next'
 
 const ContainerStyled = styled.div`
   z-index: 1;
@@ -76,22 +81,38 @@ const TableContainerStyled = styled.div`
   margin: 17px 0 75px;
 `
 
-export const getServerSideProps = async () => ({
-  props: await getBlocksTableData(),
-})
+export const getServerSideProps = async () => {
+  const queryClient = new QueryClient()
+
+  await Promise.allSettled([
+    queryClient.prefetchQuery(['maturedBlocks', EU_PRIMARY_API_ENDPOINT, 1], blocksService.getMaturedQueryFn),
+    queryClient.prefetchQuery(['immatureBlocks', EU_PRIMARY_API_ENDPOINT, 1], blocksService.getImmatureQueryFn),
+    queryClient.prefetchQuery(['candidatesBlocks', EU_PRIMARY_API_ENDPOINT, 1], blocksService.getCandidatesQueryFn),
+  ])
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+}
 
 type TabType = 'blocks' | 'immature' | 'newblocks'
 
-const BlocksPage: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
-  props,
-) => {
-  const [changeView, setChangeView] = useState<TabType>('blocks')
+const BlocksPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
+  const [ changeView, setChangeView ] = useState<TabType>('blocks')
+
+  const resetPool = usePoolStore(resetPoolSelector)
+  useEffect(resetPool, [])
 
   return (
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<BlockerLogoIcon />}>Pool blocks</ContentTitle>
+        <ContentTitle Image={ <BlockerLogoIcon /> }>Pool blocks</ContentTitle>
+
+        <SelectPool />
+
         <TabSelector>
           <Text
             active={changeView === 'blocks'}
@@ -114,22 +135,28 @@ const BlocksPage: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
         </TabSelector>
         <TabContent active={changeView === 'blocks'}>
           <TableContainerStyled>
-            <Table data={props.blocks.data} columns={props.blocks.columns} />
+            <ReactQueryTable
+              columns={ BLOCK_TABLE_COLUMNS }
+              queryKey={['maturedBlocks']}
+              queryFn={blocksService.getMaturedQueryFn}
+            />
           </TableContainerStyled>
         </TabContent>
-        <TabContent active={changeView === 'immature'}>
+        <TabContent active={ changeView === 'immature' }>
           <TableContainerStyled>
-            <Table
-              data={props.immature.data}
-              columns={props.immature.columns}
+            <ReactQueryTable
+              columns={ BLOCK_TABLE_COLUMNS }
+              queryKey={['immatureBlocks']}
+              queryFn={blocksService.getImmatureQueryFn}
             />
           </TableContainerStyled>
         </TabContent>
         <TabContent active={changeView === 'newblocks'}>
           <TableContainerStyled>
-            <Table
-              data={props.newBlocks.data}
-              columns={props.newBlocks.columns}
+            <ReactQueryTable
+              columns={ BLOCK_TABLE_COLUMNS }
+              queryKey={['candidatesBlocks']}
+              queryFn={blocksService.getCandidatesQueryFn}
             />
           </TableContainerStyled>
         </TabContent>

@@ -1,0 +1,5 @@
+export * as blocksService from './blocks.service'
+export * as homeService from './home.service'
+export * as minersService from './miners.service'
+export * as paymentsService from './payments.service'
+export * as walletsService from './wallets.service'
