@@ -1,18 +1,17 @@
-import ContentTitle from 'atoms/ContentTitle'
-import { RecentBlocksIcon } from 'atoms/icons'
-import SearchBar from 'atoms/SearchBar'
-import Jumbotron from 'components/Jumbotron'
-import Stats from 'components/Stats'
-import BaseTable from 'components/Table'
-import { minWidth } from 'helpers/responsive'
-import useGoToWallet from 'hooks/useGoToWallet'
-import React, { FC, useState } from 'react'
-import { getHomeBlockTableData } from 'services/getHomeBlockTableData'
-import { getHomeJumbotronData } from 'services/getHomeJumbotronData'
-import { getHomeStatsData } from 'services/getHomeStatsData'
-import styled, { css } from 'styled-components'
+import ContentTitle from 'atoms/ContentTitle';
+import { RecentBlocksIcon } from 'atoms/icons';
+import SearchBar from 'atoms/SearchBar';
+import Jumbotron from 'components/Jumbotron';
+import Stats from 'components/Stats';
+import BaseTable from 'components/Table';
+import { minWidth } from 'helpers/responsive';
+import useGoToWallet from 'hooks/useGoToWallet';
+import React, { useState } from 'react';
+import { homeService } from 'services';
+import { BLOCK_TABLE_COLUMNS } from 'services/getHomeBlockTableData';
+import styled, { css } from 'styled-components';
 
-import type { InferGetServerSidePropsType } from 'next'
+import type { InferGetServerSidePropsType, NextPage } from 'next'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -81,24 +80,22 @@ const TitleStyled = styled.div`
 `
 
 export const getServerSideProps = async () => {
-  const [jumbotronData, statsData, tableData] = await Promise.all([
-    getHomeJumbotronData(),
-    getHomeStatsData(),
-    getHomeBlockTableData(),
+  const [jumbotron, stats, blocks] = await Promise.all([
+    homeService.getJumbotron(),
+    homeService.geStats(),
+    homeService.getBlocks(),
   ])
 
   return {
     props: {
-      jumbotronData,
-      statsData,
-      tableData,
+      jumbotron,
+      stats,
+      blocks,
     },
   }
 }
 
-const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
-  props,
-) => {
+const Home: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
   const [searchValue, setSearchValue] = useState('')
   const goToWallet = useGoToWallet()
   const handleSearchValueChange = (event) => {
@@ -110,7 +107,7 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
 
   return (
     <ContainerStyled>
-      <Jumbotron data={props.jumbotronData} />
+      <Jumbotron data={props.jumbotron} />
       <SearchBarContainerStyled>
         <SearchBar
           value={searchValue}
@@ -120,8 +117,8 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
       </SearchBarContainerStyled>
       <StatsContainerStyled>
         <Stats
-          chartData={props.statsData.chartData}
-          infoBoxData={props.statsData.infoBoxData}
+          chartData={props.stats.chart}
+          infoBoxData={props.stats.infoBoxes}
         />
       </StatsContainerStyled>
       <TableContainerStyled>
@@ -131,8 +128,8 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
           </ContentTitle>
         </TitleStyled>
         <BaseTable
-          data={props.tableData.data}
-          columns={props.tableData.columns}
+          data={props.blocks}
+          columns={BLOCK_TABLE_COLUMNS}
           moreLink={{ href: '/blocks', text: 'View More Blocks' }}
         />
       </TableContainerStyled>
