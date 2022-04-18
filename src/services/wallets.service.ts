@@ -52,12 +52,12 @@ export const getWorkers = async (pool: string, address: string, page: number) =>
   }
 
   try {
-    const response = await fetch(`${ pool }/workers/${ address }?limit=${ 30 }&offset=${ (page - 1) * 30 }`)
+    const response = await fetch(`${ pool }/workers/${ address }?limit=${ 10 }&offset=${ (page - 1) * 10 }`)
     result.status = response.status
     const data = await response.json()
 
     result.items = hydrateWorkers(data.workers)
-    result.pages = Math.ceil(data.workersTotal / 30)
+    result.pages = Math.ceil(data.workersTotal / 10)
 
   } catch (error) {
     console.error(error)
@@ -113,12 +113,12 @@ export const getPayouts = async (pool: string, address: string, page: number) =>
   }
 
   try {
-    const response = await fetch(`${ pool }/payments/${ address }?limit=${ 30 }&offset=${ (page - 1) * 30 }`)
+    const response = await fetch(`${ pool }/payments/${ address }?limit=${ 10 }&offset=${ (page - 1) * 10 }`)
     result.status = response.status
     const data = await response.json()
 
     result.items = hydratePayouts(data.payments)
-    result.pages = Math.ceil(data.paymentsTotal / 30)
+    result.pages = Math.ceil(data.paymentsTotal / 10)
 
   } catch (error) {
     console.error(error)

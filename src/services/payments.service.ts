@@ -45,11 +45,11 @@ export const getPayments = async (pool: string, page: number) => {
   }
 
   try {
-    const response = await fetch(`${ pool }/payments?limit=${ 30 }&offset=${ (page - 1) * 30 }`)
+    const response = await fetch(`${ pool }/payments?limit=${ 10 }&offset=${ (page - 1) * 10 }`)
     const data = await response.json()
     result = {
       items: hydratePayments(data.payments),
-      pages: Math.ceil(data.paymentsTotal / 30),
+      pages: Math.ceil(data.paymentsTotal / 10),
     }
 
   } catch (error) {

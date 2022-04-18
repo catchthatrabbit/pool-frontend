@@ -1,4 +1,3 @@
-
 import { toStringDateTime } from 'helpers/toStringDateTime';
 import { toXCBPrice } from 'helpers/toXCBPrice';
 
@@ -26,7 +25,7 @@ export const hydrateBlocks = (blocks: any[]) => {
     .map(blockMapper)
 }
 
-const getBlocks = (type: string) => async (pool: string, page: number, limit = 30) => {
+const getBlocks = (type: string) => async (pool: string, page: number, limit = 10) => {
   let result: {
     items: any[]
     pages: number

@@ -45,11 +45,11 @@ export const getMiners = async (pool: string, page: number) => {
   }
 
   try {
-    const response = await fetch(`${ pool }/miners?limit=${ 30 }&offset=${ (page - 1) * 30 }`)
+    const response = await fetch(`${ pool }/miners?limit=${ 10 }&offset=${ (page - 1) * 10 }`)
     const data = await response.json()
     result = {
       items: hydrateMiners(data.miners),
-      pages: Math.ceil(data.minersTotal / 30),
+      pages: Math.ceil(data.minersTotal / 10),
     }
 
   } catch (error) {
