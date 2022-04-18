@@ -1,3 +1,5 @@
+import { EPool } from 'enums'
+
 export const EU_PRIMARY_API_ENDPOINT = (process.env.EU_PRIMARY_API_ENDPOINT || process.env.NEXT_PUBLIC_EU_PRIMARY_API_ENDPOINT) as string
 export const EU_BACKUP_API_ENDPOINT = (process.env.EU_BACKUP_API_ENDPOINT || process.env.NEXT_PUBLIC_EU_BACKUP_API_ENDPOINT) as string
 export const AS_PRIMARY_API_ENDPOINT = (process.env.AS_PRIMARY_API_ENDPOINT || process.env.NEXT_PUBLIC_AS_PRIMARY_API_ENDPOINT) as string
@@ -10,3 +12,11 @@ export const AGGREGATE_API_ENDPOINTS = [
   AS_PRIMARY_API_ENDPOINT,
   AS_BACKUP_API_ENDPOINT,
 ]
+
+export const POOL_ENDPOINTS_MAPPER: Record<EPool | 'default', string> = {
+  [ EPool.EU_PRIMARY ]: EU_PRIMARY_API_ENDPOINT,
+  [ EPool.EU_BACKUP ]: EU_BACKUP_API_ENDPOINT,
+  [ EPool.AS_PRIMARY ]: AS_PRIMARY_API_ENDPOINT,
+  [ EPool.AS_BACKUP ]: AS_BACKUP_API_ENDPOINT,
+  default: EU_PRIMARY_API_ENDPOINT,
+}
