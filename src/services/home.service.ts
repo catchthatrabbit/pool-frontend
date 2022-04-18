@@ -155,10 +155,10 @@ export const geStats = async () => {
 
 export const getBlocks = async () => {
   const allBlocks = await resultAllSettled([
-    blocksService.getMatured(EU_PRIMARY_API_ENDPOINT, 1, 7),
-    blocksService.getMatured(EU_BACKUP_API_ENDPOINT, 1, 7),
-    blocksService.getMatured(AS_PRIMARY_API_ENDPOINT, 1, 7),
-    blocksService.getMatured(AS_BACKUP_API_ENDPOINT, 1, 7),
+    blocksService.getMatured(EU_PRIMARY_API_ENDPOINT, 1, 5),
+    blocksService.getMatured(EU_BACKUP_API_ENDPOINT, 1, 5),
+    blocksService.getMatured(AS_PRIMARY_API_ENDPOINT, 1, 5),
+    blocksService.getMatured(AS_BACKUP_API_ENDPOINT, 1, 5),
   ])
 
   const blocks = allBlocks
