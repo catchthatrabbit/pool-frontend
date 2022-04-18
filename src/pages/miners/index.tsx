@@ -1,16 +1,21 @@
-import Background from 'atoms/Background'
-import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
-import ContentTitle from 'atoms/ContentTitle'
-import { MinersIcon } from 'atoms/icons'
-import SearchBar from 'atoms/SearchBar'
-import Table from 'components/Table'
-import { minWidth } from 'helpers/responsive'
-import useGoToWallet from 'hooks/useGoToWallet'
-import React, { FC, useState } from 'react'
-import { getMinersData } from 'services/getMinersData'
-import styled, { css } from 'styled-components'
+import ReactQueryTable from '@components/ReactQueryTable';
+import SelectPool from '@components/SelectPool';
+import Background from 'atoms/Background';
+import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper';
+import ContentTitle from 'atoms/ContentTitle';
+import { MinersIcon } from 'atoms/icons';
+import SearchBar from 'atoms/SearchBar';
+import { EU_PRIMARY_API_ENDPOINT } from 'config';
+import { minWidth } from 'helpers/responsive';
+import useGoToWallet from 'hooks/useGoToWallet';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { dehydrate, QueryClient, useQuery } from 'react-query';
+import { minersService } from 'services';
+import { MINER_TABLE_COLUMNS } from 'services/getMinersData';
+import { poolEndpointSelector, resetPoolSelector, usePoolStore } from 'store/pool.store';
+import styled, { css } from 'styled-components';
 
-import type { InferGetServerSidePropsType } from 'next'
+import type { InferGetServerSidePropsType, NextPage } from 'next'
 
 const ContainerStyled = styled.div`
   margin: 36px 20px 73px;
@@ -56,13 +61,22 @@ const BoxesWrapperStyled = styled.div`
   margin: 41px 0 41px;
 `
 
-export const getServerSideProps = async () => ({
-  props: await getMinersData(),
-})
+export const getServerSideProps = async () => {
+  const queryClient = new QueryClient()
 
-const MinersPage: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
-  props,
-) => {
+  await Promise.allSettled([
+    queryClient.prefetchQuery(['miners', EU_PRIMARY_API_ENDPOINT, 1], minersService.getMinersQueryFn),
+    queryClient.prefetchQuery([ 'minersInfo', EU_PRIMARY_API_ENDPOINT ], minersService.getMinersInfoQueryFn),
+  ])
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+}
+
+const MinersPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
   const [searchValue, setValue] = useState('')
 
   const handleSearchValueChange = (event) => setValue(event.target.value)
@@ -70,6 +84,9 @@ const MinersPage: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
   const handleSearch = () => {
     goToWallet(searchValue)
   }
+
+  const resetPool = usePoolStore(resetPoolSelector)
+  useEffect(resetPool, [])
 
   return (
     <>
@@ -83,16 +100,29 @@ const MinersPage: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = (
             onSearch={handleSearch}
           />
         </SearchBarContainerStyled>
-        <BoxesWrapperStyled>
-          <BoxesWrapper data={props.minersInfoBox} />
-        </BoxesWrapperStyled>
-        <Table
-          data={props.minerTable.data}
-          columns={props.minerTable.columns}
+
+        <SelectPool />
+        <MinersInfoBoxes />
+        <ReactQueryTable
+          columns={ MINER_TABLE_COLUMNS }
+          queryKey={['miners']}
+          queryFn={minersService.getMinersQueryFn}
         />
       </ContainerStyled>
     </>
   )
 }
+
+const MinersInfoBoxes = () => {
+  const poolEndpoint = usePoolStore(poolEndpointSelector)
+  const { data } = useQuery([ 'minersInfo', poolEndpoint ], minersService.getMinersInfoQueryFn)
+
+  return (
+    <BoxesWrapperStyled>
+      <BoxesWrapper data={data ?? []} />
+    </BoxesWrapperStyled>
+  )
+}
+
 
 export default MinersPage
