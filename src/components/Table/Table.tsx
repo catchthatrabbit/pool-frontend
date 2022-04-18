@@ -1,19 +1,22 @@
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import applyTransparence from 'helpers/transparentize'
-import { colorVariables } from 'styles/variables'
-import Text from 'atoms/Text/Text'
-import Button from 'atoms/Button/Button'
-import Pagination from 'components/Pagination/Pagination'
-import useGoToBlock from 'hooks/useGoToBlock'
-import useGoToTx from 'hooks/useGoToTx'
-import useGoToWallet from 'hooks/useGoToWallet'
-import { minWidth } from 'helpers/responsive'
-import siFormat from 'helpers/siFormat'
-import ago from 'helpers/ago'
-import ok from 'helpers/ok'
-import currency from 'helpers/currency'
-import numberFormat from 'helpers/numberFormat'
+import NoData from '@components/NoData';
+import Button from 'atoms/Button/Button';
+import Text from 'atoms/Text/Text';
+import Pagination from 'components/Pagination/Pagination';
+import ago from 'helpers/ago';
+import currency from 'helpers/currency';
+import numberFormat from 'helpers/numberFormat';
+import ok from 'helpers/ok';
+import { minWidth } from 'helpers/responsive';
+import siFormat from 'helpers/siFormat';
+import applyTransparence from 'helpers/transparentize';
+import useGoToBlock from 'hooks/useGoToBlock';
+import useGoToTx from 'hooks/useGoToTx';
+import useGoToWallet from 'hooks/useGoToWallet';
+import { useRef } from 'react';
+import styled, { css } from 'styled-components';
+import { colorVariables } from 'styles/variables';
+
+import type { FC } from 'react'
 
 const WrapperStyled = styled.div`
   box-sizing: border-box;
@@ -127,17 +130,20 @@ export type Column = {
 
 type DataItem = { [key: string]: string }
 
-interface IProps {
+interface ITableProps {
   data: DataItem[]
   columns: Column[]
-  moreLink: {
+  page: number
+  pages: number
+  onPageChange: (page: number) => void
+  moreLink?: {
     text: string
     href: string
   }
 }
 
 function hideMiddleContent(value) {
-  if(value.length > 16) {
+  if(value?.length > 16) {
     return `${value.slice(0, 10)}…${value.slice(-6)}`
   } else {
     return value
@@ -173,19 +179,20 @@ function formatStatusContent(value) {
   return ok(value)
 }
 
-const Table: FC<IProps> = ({ data, columns, moreLink }) => {
-  const goToWallet = useGoToWallet()
-  const goToBlock = useGoToBlock()
-  const goToTx = useGoToTx()
+const Table: FC<ITableProps> = ({ data, columns, page, pages, onPageChange, moreLink }) => {
 
-  const handleDataClick = (value: string, column: Column) => {
-    if (column.type === 'address') {
-      goToWallet(value)
-    } else if(column.type === 'block') {
-      goToBlock(value)
-    } else if(column.type === 'tx') {
-      goToTx(value)
-    }
+  const goToMapper = useRef({
+    address: useGoToWallet(),
+    block: useGoToBlock(),
+    tx: useGoToTx(),
+  })
+
+  if (!data.length) {
+    return (
+      <WrapperStyled>
+        <NoData hint='please Try another pool' />
+      </WrapperStyled>
+    )
   }
 
   return (
@@ -194,61 +201,77 @@ const Table: FC<IProps> = ({ data, columns, moreLink }) => {
         <TableStyled>
           <thead>
             <TableRowStyled>
-              {columns.map(({ id, name }) => (
-                <th key={id}>
+              { columns.map(({ id, name }) => (
+                <th key={ id }>
                   <Text size="very-large" fontWeight="bold">
-                    {name}
+                    { name }
                   </Text>
                 </th>
-              ))}
+              )) }
             </TableRowStyled>
           </thead>
-          <tbody>
-            {data.map((dataItem, index) => (
-              <TableRowStyled key={index}>
-                {columns.map((column) => {
-                  const { id, type = 'string' } = column
 
-                  return (
-                    <td key={id}>
-                      <TextStyled
-                        fontFamily="secondary"
-                        size="medium"
-                        fontWeight="normal"
-                        color={(type === 'address' || type === 'block' || type === 'tx') ? 'apple' : 'white'}
-                        column={column}
-                        onClick={() => handleDataClick(dataItem[id], column)}
-                      >
-                        {type === 'address' && hideMiddleContent(dataItem[id])}
-                        {type === 'block' && hideMiddleContent(dataItem[id])}
-                        {type === 'tx' && hideMiddleContent(dataItem[id])}
-                        {type === 'xcb' && formatRewardContent(dataItem[id])}
-                        {type === 'number' && formatNumberContent(dataItem[id])}
-                        {type === 'time' && formatTimeContent(dataItem[id])}
-                        {type === 'ago' && formatAgoContent(dataItem[id])}
-                        {type === 'percentage' && formatPercentContent(dataItem[id])}
-                        {type === 'hashrate' && formatHashContent(dataItem[id])}
-                        {type === 'status' && formatStatusContent(dataItem[id])}
-                        {type === 'string' && dataItem[id]}
-                      </TextStyled>
-                    </td>
-                  )
-                })}
-              </TableRowStyled>
-            ))}
+          <tbody>
+            { data.map((item, index) => (
+              <TableRow
+                key={ index }
+                item={ item }
+                columns={ columns }
+                goToMapper={ goToMapper.current }
+              />
+            )) }
+
           </tbody>
         </TableStyled>
       </TableWrapperStyled>
+
       <FooterStyled>
-        {moreLink && <Button href={moreLink.href}>{moreLink.text}</Button>}
-        {!moreLink && (
+        { moreLink && <Button href={ moreLink.href }>{ moreLink.text }</Button> }
+        { pages && (
           <PaginationContainerStyled>
-            <Pagination onPageChange={() => null} pageCount={4} />
+            <Pagination
+              onPageChange={onPageChange}
+              pageCount={ pages }
+              forcePage={ page - 1 }
+            />
           </PaginationContainerStyled>
-        )}
+        ) }
       </FooterStyled>
     </WrapperStyled>
   )
 }
+
+const TableRow = ({ item, columns, goToMapper }: { item: any, columns: Column[], goToMapper: any }) => (
+  <TableRowStyled>
+    { columns.map((column) => {
+      const { id, type = 'string' } = column
+
+      return (
+        <td key={ id }>
+          <TextStyled
+            fontFamily="secondary"
+            size="medium"
+            fontWeight="normal"
+            color={ (type === 'address' || type === 'block' || type === 'tx') ? 'apple' : 'white' }
+            column={ column }
+            onClick={ () => goToMapper[ column.type ]?.(item[ id ]) }
+          >
+            { type === 'address' && hideMiddleContent(item[ id ]) }
+            { type === 'block' && hideMiddleContent(item[ id ]) }
+            { type === 'tx' && hideMiddleContent(item[ id ]) }
+            { type === 'xcb' && formatRewardContent(item[ id ]) }
+            { type === 'number' && formatNumberContent(item[ id ]) }
+            { type === 'time' && formatTimeContent(item[ id ]) }
+            { type === 'ago' && formatAgoContent(item[ id ]) }
+            { type === 'percentage' && formatPercentContent(item[ id ]) }
+            { type === 'hashrate' && formatHashContent(item[ id ]) }
+            { type === 'status' && formatStatusContent(item[ id ]) }
+            { type === 'string' && item[ id ] }
+          </TextStyled>
+        </td>
+      )
+    }) }
+  </TableRowStyled>
+)
 
 export default Table

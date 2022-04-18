@@ -83,12 +83,12 @@ const PaginationContainer = styled.div`
 interface IProps {
   onPageChange: (page: number) => void
   pageCount: number
+  forcePage?: number
 }
 
-const Pagination: FC<IProps> = ({ onPageChange, pageCount }) => {
+const Pagination: FC<IProps> = ({ onPageChange, pageCount, forcePage }) => {
   const handlePageChange = ({ selected: page }) => {
     const currentPage = page + 1
-
     onPageChange(currentPage)
   }
 
@@ -100,6 +100,7 @@ const Pagination: FC<IProps> = ({ onPageChange, pageCount }) => {
         breakLabel="..."
         breakClassName="break-me"
         pageCount={pageCount}
+        forcePage={forcePage}
         marginPagesDisplayed={1}
         pageRangeDisplayed={3}
         onPageChange={handlePageChange}
