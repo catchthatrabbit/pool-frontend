@@ -166,7 +166,7 @@ export const hydrateWalletInfoBoxes = (data: any) => {
       {
         key: '4',
         title: 'Last share',
-        value: toStringDateTime(data.lastShare),
+        value: toStringDateTime(data.stats.lastShare),
         type: 'ago',
       },
       {
@@ -178,7 +178,7 @@ export const hydrateWalletInfoBoxes = (data: any) => {
       {
         key: '6',
         title: 'Blocks found',
-        value: data.blocksFound ?? 0,
+        value: data.stats.blocksFound ?? 0,
         type: 'number',
       },
     ],
@@ -190,13 +190,13 @@ export const hydrateWalletInfoBoxes = (data: any) => {
       {
         key: '1',
         title: 'Immature balance',
-        value: toXCBPrice(data.immature),
+        value: toXCBPrice(data.stats.immature),
         type: 'xcb',
       },
       {
         key: '2',
         title: 'Pending balance',
-        value: toXCBPrice(data.pending),
+        value: toXCBPrice(data.stats.pending),
         type: 'xcb',
       },
       {
@@ -208,7 +208,7 @@ export const hydrateWalletInfoBoxes = (data: any) => {
       {
         key: '4',
         title: 'Total paid',
-        value: toXCBPrice(data.paid),
+        value: toXCBPrice(data.stats.paid),
         type: 'xcb',
       },
     ],
