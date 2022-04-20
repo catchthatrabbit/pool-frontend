@@ -26,7 +26,7 @@ const BoxesWrapperStyled = styled.ul`
     'desktop',
     css`
       li:not(:nth-child(4n)) {
-        margin-right: 95px;
+        margin-inline: 47.5px;
       }
     `,
   )}
