@@ -187,7 +187,7 @@ const Table: FC<ITableProps> = ({ data, columns, page, pages, onPageChange, more
     tx: useGoToTx(),
   })
 
-  if (!data.length) {
+  if (!data?.length) {
     return (
       <WrapperStyled>
         <NoData hint='please Try another pool' />

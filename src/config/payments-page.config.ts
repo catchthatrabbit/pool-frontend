@@ -1,7 +1,7 @@
+import { tablesConfig } from 'config';
 
 import type { Column } from '@components/Table/Table'
-
-export const PAYMENT_TABLE_COLUMNS: Column[] = [
+const PAYMENTS_TABLE_COLUMNS: Column[] = [
   {
     name: 'Time',
     id: 'time',
@@ -23,3 +23,8 @@ export const PAYMENT_TABLE_COLUMNS: Column[] = [
     type: 'tx',
   },
 ]
+
+export const PAYMENTS_TABLE = {
+  columns: PAYMENTS_TABLE_COLUMNS,
+  rowCount: tablesConfig.PAGE_LIMIT,
+}

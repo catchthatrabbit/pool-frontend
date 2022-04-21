@@ -1,3 +1,4 @@
+import { paymentsPageConfig, tablesConfig } from 'config';
 import { getNumberText } from 'helpers/text';
 import { toStringDateTime } from 'helpers/toStringDateTime';
 import { toXCBPrice } from 'helpers/toXCBPrice';
@@ -42,22 +43,24 @@ export const getPayments = async (pool: string, page: number) => {
   let result: {
     items: any[]
     pages: number
+    status: number
+  } = {
+    items: [],
+    pages: 0,
+    status: 500,
   }
 
   try {
-    const response = await fetch(`${ pool }/payments?limit=${ 10 }&offset=${ (page - 1) * 10 }`)
+    const response = await fetch(`${ pool }/payments?limit=${ paymentsPageConfig.PAYMENTS_TABLE.rowCount }&offset=${ (page - 1) * paymentsPageConfig.PAYMENTS_TABLE.rowCount }`)
+    result.status = response.status
     const data = await response.json()
-    result = {
-      items: hydratePayments(data.payments),
-      pages: Math.ceil(data.paymentsTotal / 10),
-    }
+
+    result.items = hydratePayments(data.payments),
+    result.pages = Math.ceil(data.paymentsTotal / paymentsPageConfig.PAYMENTS_TABLE.rowCount)
+    result.pages = result.pages < tablesConfig.MAX_PAGES ? result.pages : tablesConfig.MAX_PAGES
 
   } catch (error) {
-    console.error(error);
-    result = {
-      items: [],
-      pages: 0,
-    }
+    console.error(error)
   }
 
   return result
@@ -73,7 +76,7 @@ export const getPaymentsInfo = async (pool: string) => {
   let result: InfoBoxItem[]
 
   try {
-    const response = await fetch(`${ pool }/payments?limit=1&offset=0`)
+    const response = await fetch(`${ pool }/payments_stats`)
     const data = await response.json()
     result = hydratePaymentsInfoBox(data)
 

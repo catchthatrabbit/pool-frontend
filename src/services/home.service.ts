@@ -1,11 +1,4 @@
-import {
-  AGGREGATE_API_ENDPOINTS,
-  AS_BACKUP_API_ENDPOINT,
-  AS_PRIMARY_API_ENDPOINT,
-  EU_BACKUP_API_ENDPOINT,
-  EU_PRIMARY_API_ENDPOINT,
-  WHITELIST_AGGREGATE_KEYS,
-} from 'config';
+import { homePageConfig, poolEndpointsConfig } from 'config';
 import { aggregateNumbers, fetchAllSettled, reduceList, resultAllSettled } from 'helpers';
 import { getAgoText, getHashText, getNumberText, getPercentText, getXCBText } from 'helpers/text';
 import { toStringDateTime } from 'helpers/toStringDateTime';
@@ -16,6 +9,13 @@ import type { InfoBoxItem } from 'helpers/text'
 import type { ChartItem } from 'types/app'
 
 const hydrateJumbotron = (data, settings) => {
+  if (!data || !settings) {
+    return {
+      poolFee: '',
+      infoBoxItems: [],
+    }
+  }
+
   const [node] = data.nodes
   const { roundShares } = data.stats
 
@@ -48,12 +48,12 @@ const hydrateJumbotron = (data, settings) => {
  */
 export const getJumbotron = async () => {
   const statsRequests = fetchAllSettled(
-    AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + '/stats'),
+    poolEndpointsConfig.AGGREGATION_APIS.map((endpoint) => endpoint + '/stats'),
   )
 
   const results = await Promise.allSettled([
     statsRequests,
-    fetch(AGGREGATE_API_ENDPOINTS[0] + '/settings').then((settings) =>
+    fetch(poolEndpointsConfig.EU_PRIMARY_API + '/settings').then((settings) =>
       settings?.json(),
     ),
   ])
@@ -62,7 +62,7 @@ export const getJumbotron = async () => {
     (result) => 'value' in result && result.value,
   )
 
-  const aggregator = aggregateNumbers(WHITELIST_AGGREGATE_KEYS.home.jumbotron)
+  const aggregator = aggregateNumbers(homePageConfig.WHITELIST_AGGREGATION_KEYS.jumbotron)
   const stats = reduceList(allStats, aggregator)
 
   return hydrateJumbotron(stats, settings)
@@ -70,6 +70,8 @@ export const getJumbotron = async () => {
 
 
 const hydrateInfoBoxData = (data): InfoBoxItem[] => {
+  if (!data?.nodes) return []
+
   const [node] = data.nodes
 
   return [
@@ -85,6 +87,7 @@ const hydrateInfoBoxData = (data): InfoBoxItem[] => {
 }
 
 const hydrateChartData = (poolCharts: any[]): ChartItem[] => {
+  if (!poolCharts) return []
   //
   // map chart items to proper shape for the chart
   const chartItemMapper = (item) => ({
@@ -128,7 +131,7 @@ const hydrateChartData = (poolCharts: any[]): ChartItem[] => {
  */
 export const geStats = async () => {
   const allStats = await fetchAllSettled(
-    AGGREGATE_API_ENDPOINTS.map((endpoint) => endpoint + '/stats/chart'),
+    poolEndpointsConfig.AGGREGATION_APIS.map((endpoint) => endpoint + '/stats/chart'),
   )
 
   const { allPoolChartsData, allLastBlockFound } = allStats.reduce(
@@ -143,8 +146,8 @@ export const geStats = async () => {
     { allPoolChartsData: [], allLastBlockFound: [] },
   )
 
-  const aggregator = aggregateNumbers(WHITELIST_AGGREGATE_KEYS.home.stats)
-  const { poolCharts } = reduceList(allPoolChartsData, aggregator)
+  const aggregator = aggregateNumbers(homePageConfig.WHITELIST_AGGREGATION_KEYS.stats)
+  const { poolCharts } = reduceList(allPoolChartsData, aggregator) || {}
   const lastBlockFound = Math.max(...allLastBlockFound)
 
   return {
@@ -155,10 +158,10 @@ export const geStats = async () => {
 
 export const getBlocks = async () => {
   const allBlocks = await resultAllSettled([
-    blocksService.getMatured(EU_PRIMARY_API_ENDPOINT, 1, 5),
-    blocksService.getMatured(EU_BACKUP_API_ENDPOINT, 1, 5),
-    blocksService.getMatured(AS_PRIMARY_API_ENDPOINT, 1, 5),
-    blocksService.getMatured(AS_BACKUP_API_ENDPOINT, 1, 5),
+    blocksService.getMatured(poolEndpointsConfig.EU_PRIMARY_API, homePageConfig.BLOCKS_TABLE.page, homePageConfig.BLOCKS_TABLE.rowCount),
+    blocksService.getMatured(poolEndpointsConfig.EU_BACKUP_API, homePageConfig.BLOCKS_TABLE.page, homePageConfig.BLOCKS_TABLE.rowCount),
+    blocksService.getMatured(poolEndpointsConfig.AS_PRIMARY_API, homePageConfig.BLOCKS_TABLE.page, homePageConfig.BLOCKS_TABLE.rowCount),
+    blocksService.getMatured(poolEndpointsConfig.AS_BACKUP_API, homePageConfig.BLOCKS_TABLE.page, homePageConfig.BLOCKS_TABLE.rowCount),
   ])
 
   const blocks = allBlocks

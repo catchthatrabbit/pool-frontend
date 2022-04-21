@@ -4,12 +4,11 @@ import ContentTitle from 'atoms/ContentTitle';
 import { BlockerLogoIcon } from 'atoms/icons';
 import Text from 'atoms/Text/Text';
 import ReactQueryTable from 'components/ReactQueryTable';
-import { EU_PRIMARY_API_ENDPOINT } from 'config';
+import { blocksPageConfig, poolEndpointsConfig } from 'config';
 import { minWidth } from 'helpers/responsive';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
 import { blocksService } from 'services';
-import { BLOCK_TABLE_COLUMNS } from 'services/getBlocksTableData';
 import { resetPoolSelector, usePoolStore } from 'store/pool.store';
 import styled, { css } from 'styled-components';
 
@@ -85,9 +84,9 @@ export const getServerSideProps = async () => {
   const queryClient = new QueryClient()
 
   await Promise.allSettled([
-    queryClient.prefetchQuery(['maturedBlocks', EU_PRIMARY_API_ENDPOINT, 1], blocksService.getMaturedQueryFn),
-    queryClient.prefetchQuery(['immatureBlocks', EU_PRIMARY_API_ENDPOINT, 1], blocksService.getImmatureQueryFn),
-    queryClient.prefetchQuery(['candidatesBlocks', EU_PRIMARY_API_ENDPOINT, 1], blocksService.getCandidatesQueryFn),
+    queryClient.prefetchQuery(['maturedBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1], blocksService.getMaturedQueryFn),
+    queryClient.prefetchQuery(['immatureBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1], blocksService.getImmatureQueryFn),
+    queryClient.prefetchQuery(['candidatesBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1], blocksService.getCandidatesQueryFn),
   ])
 
   return {
@@ -115,48 +114,48 @@ const BlocksPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps
 
         <TabSelector>
           <Text
-            active={changeView === 'blocks'}
-            onClick={() => setChangeView('blocks')}
+            active={ changeView === 'blocks' }
+            onClick={ () => setChangeView('blocks') }
           >
             Blocks
           </Text>
           <Text
-            active={changeView === 'immature'}
-            onClick={() => setChangeView('immature')}
+            active={ changeView === 'immature' }
+            onClick={ () => setChangeView('immature') }
           >
             Immature
           </Text>
           <Text
-            active={changeView === 'newblocks'}
-            onClick={() => setChangeView('newblocks')}
+            active={ changeView === 'newblocks' }
+            onClick={ () => setChangeView('newblocks') }
           >
             New blocks
           </Text>
         </TabSelector>
-        <TabContent active={changeView === 'blocks'}>
+        <TabContent active={ changeView === 'blocks' }>
           <TableContainerStyled>
             <ReactQueryTable
-              columns={ BLOCK_TABLE_COLUMNS }
-              queryKey={['maturedBlocks']}
-              queryFn={blocksService.getMaturedQueryFn}
+              columns={ blocksPageConfig.BLOCKS_TABLE.columns }
+              queryKey={ [ 'maturedBlocks' ] }
+              queryFn={ blocksService.getMaturedQueryFn }
             />
           </TableContainerStyled>
         </TabContent>
         <TabContent active={ changeView === 'immature' }>
           <TableContainerStyled>
             <ReactQueryTable
-              columns={ BLOCK_TABLE_COLUMNS }
-              queryKey={['immatureBlocks']}
-              queryFn={blocksService.getImmatureQueryFn}
+              columns={ blocksPageConfig.BLOCKS_TABLE.columns }
+              queryKey={ [ 'immatureBlocks' ] }
+              queryFn={ blocksService.getImmatureQueryFn }
             />
           </TableContainerStyled>
         </TabContent>
-        <TabContent active={changeView === 'newblocks'}>
+        <TabContent active={ changeView === 'newblocks' }>
           <TableContainerStyled>
             <ReactQueryTable
-              columns={ BLOCK_TABLE_COLUMNS }
-              queryKey={['candidatesBlocks']}
-              queryFn={blocksService.getCandidatesQueryFn}
+              columns={ blocksPageConfig.BLOCKS_TABLE.columns }
+              queryKey={ [ 'candidatesBlocks' ] }
+              queryFn={ blocksService.getCandidatesQueryFn }
             />
           </TableContainerStyled>
         </TabContent>

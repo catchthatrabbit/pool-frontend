@@ -1,7 +1,8 @@
+import { tablesConfig } from 'config';
 
 import type { Column } from '@components/Table/Table'
 
-export const WORKERS_TABLE_COLUMNS: Column[] = [
+const WORKERS_TABLE_COLUMNS: Column[] = [
   {
     name: 'Rabbit',
     id: 'id',
@@ -29,7 +30,13 @@ export const WORKERS_TABLE_COLUMNS: Column[] = [
   },
 ]
 
-export const PAYOUTS_TABLE_COLUMNS: Column[] = [
+export const WORKERS_TABLE = {
+  columns: WORKERS_TABLE_COLUMNS,
+  rowCount: tablesConfig.PAGE_LIMIT,
+}
+
+
+const PAYOUTS_TABLE_COLUMNS: Column[] = [
   {
     name: 'Time',
     id: 'time',
@@ -46,3 +53,8 @@ export const PAYOUTS_TABLE_COLUMNS: Column[] = [
     type: 'xcb',
   },
 ]
+
+export const PAYOUTS_TABLE = {
+  columns: PAYOUTS_TABLE_COLUMNS,
+  rowCount: tablesConfig.PAGE_LIMIT,
+}

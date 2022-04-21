@@ -1,7 +1,8 @@
+import { tablesConfig } from 'config';
 
 import type { Column } from '@components/Table/Table'
 
-export const MINER_TABLE_COLUMNS: Column[] = [
+const MINERS_TABLE_COLUMNS: Column[] = [
   {
     name: 'Miner',
     id: 'miner',
@@ -18,3 +19,8 @@ export const MINER_TABLE_COLUMNS: Column[] = [
     type: 'time',
   },
 ]
+
+export const MINERS_TABLE = {
+  columns: MINERS_TABLE_COLUMNS,
+  rowCount: tablesConfig.PAGE_LIMIT,
+}
