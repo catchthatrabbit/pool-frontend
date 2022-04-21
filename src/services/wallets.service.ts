@@ -1,3 +1,4 @@
+import { tablesConfig, walletPageConfig } from 'config';
 import { toStringDateTime } from 'helpers/toStringDateTime';
 import { toXCBPrice } from 'helpers/toXCBPrice';
 
@@ -52,12 +53,13 @@ export const getWorkers = async (pool: string, address: string, page: number) =>
   }
 
   try {
-    const response = await fetch(`${ pool }/workers/${ address }?limit=${ 10 }&offset=${ (page - 1) * 10 }`)
+    const response = await fetch(`${ pool }/workers/${ address }?limit=${ walletPageConfig.WORKERS_TABLE.rowCount }&offset=${ (page - 1) * walletPageConfig.WORKERS_TABLE.rowCount }`)
     result.status = response.status
     const data = await response.json()
 
     result.items = hydrateWorkers(data.workers)
-    result.pages = Math.ceil(data.workersTotal / 10)
+    result.pages = Math.ceil(data.workersTotal / walletPageConfig.WORKERS_TABLE.rowCount)
+    result.pages = result.pages < tablesConfig.MAX_PAGES ? result.pages : tablesConfig.MAX_PAGES
 
   } catch (error) {
     console.error(error)
@@ -113,12 +115,13 @@ export const getPayouts = async (pool: string, address: string, page: number) =>
   }
 
   try {
-    const response = await fetch(`${ pool }/payments/${ address }?limit=${ 10 }&offset=${ (page - 1) * 10 }`)
+    const response = await fetch(`${ pool }/payments/${ address }?limit=${ walletPageConfig.PAYOUTS_TABLE.rowCount }&offset=${ (page - 1) * walletPageConfig.PAYOUTS_TABLE.rowCount }`)
     result.status = response.status
     const data = await response.json()
 
     result.items = hydratePayouts(data.payments)
-    result.pages = Math.ceil(data.paymentsTotal / 10)
+    result.pages = Math.ceil(data.paymentsTotal / walletPageConfig.PAYOUTS_TABLE.rowCount)
+    result.pages = result.pages < tablesConfig.MAX_PAGES ? result.pages : tablesConfig.MAX_PAGES
 
   } catch (error) {
     console.error(error)

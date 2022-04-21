@@ -5,13 +5,12 @@ import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper';
 import ContentTitle from 'atoms/ContentTitle';
 import { PaymentsIcon } from 'atoms/icons';
 import SearchBar from 'atoms/SearchBar';
-import { EU_PRIMARY_API_ENDPOINT } from 'config';
+import { paymentsPageConfig, poolEndpointsConfig } from 'config';
 import { minWidth } from 'helpers/responsive';
 import useGoToWallet from 'hooks/useGoToWallet';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient, useQuery } from 'react-query';
 import { paymentsService } from 'services';
-import { PAYMENT_TABLE_COLUMNS } from 'services/getPaymentsData';
 import { poolEndpointSelector, resetPoolSelector, usePoolStore } from 'store/pool.store';
 import styled, { css } from 'styled-components';
 
@@ -67,12 +66,12 @@ const BoxesWrapperStyled = styled.div`
   )}
 `
 
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = async () => {
   const queryClient = new QueryClient()
 
   await Promise.allSettled([
-    queryClient.prefetchQuery(['payments', EU_PRIMARY_API_ENDPOINT, 1], paymentsService.getPaymentsQueryFn),
-    queryClient.prefetchQuery([ 'paymentsInfo', EU_PRIMARY_API_ENDPOINT ], paymentsService.getPaymentsInfoQueryFn),
+    queryClient.prefetchQuery(['payments', poolEndpointsConfig.EU_PRIMARY_API, 1], paymentsService.getPaymentsQueryFn),
+    queryClient.prefetchQuery([ 'paymentsInfo', poolEndpointsConfig.EU_PRIMARY_API ], paymentsService.getPaymentsInfoQueryFn),
   ])
 
   return {
@@ -82,8 +81,8 @@ export const getServerSideProps = async (ctx) => {
   }
 }
 
-const PaymentPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
-  const [searchValue, setValue] = useState('')
+const PaymentPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
+  const [ searchValue, setValue ] = useState('')
 
   const handleSearchValueChange = (event) => setValue(event.target.value)
   const goToWallet = useGoToWallet()
@@ -97,21 +96,21 @@ const PaymentPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProp
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<PaymentsIcon />}>Payments</ContentTitle>
+        <ContentTitle Image={ <PaymentsIcon /> }>Payments</ContentTitle>
         <SearchBarContainerStyled>
           <SearchBar
-            onChange={handleSearchValueChange}
-            value={searchValue}
-            onSearch={handleSearch}
+            onChange={ handleSearchValueChange }
+            value={ searchValue }
+            onSearch={ handleSearch }
           />
         </SearchBarContainerStyled>
 
         <SelectPool />
         <PaymentsInfoBoxes />
         <ReactQueryTable
-          columns={ PAYMENT_TABLE_COLUMNS }
-          queryKey={['payments']}
-          queryFn={paymentsService.getPaymentsQueryFn}
+          columns={ paymentsPageConfig.PAYMENTS_TABLE.columns }
+          queryKey={ [ 'payments' ] }
+          queryFn={ paymentsService.getPaymentsQueryFn }
         />
       </ContainerStyled>
     </>
@@ -124,7 +123,7 @@ const PaymentsInfoBoxes = () => {
 
   return (
     <BoxesWrapperStyled>
-      <BoxesWrapper data={data ?? []} />
+      <BoxesWrapper data={ data ?? [] } />
     </BoxesWrapperStyled>
   )
 }

@@ -1,3 +1,4 @@
+import { blocksPageConfig, tablesConfig } from 'config';
 import { toStringDateTime } from 'helpers/toStringDateTime';
 import { toXCBPrice } from 'helpers/toXCBPrice';
 
@@ -25,26 +26,28 @@ export const hydrateBlocks = (blocks: any[]) => {
     .map(blockMapper)
 }
 
-const getBlocks = (type: string) => async (pool: string, page: number, limit = 10) => {
+const getBlocks = (type: string) => async (pool: string, page: number, limit = blocksPageConfig.BLOCKS_TABLE.rowCount) => {
   let result: {
     items: any[]
     pages: number
+    status: number
+  } = {
+    items: [],
+    pages: 0,
+    status: 500,
   }
 
   try {
     const response = await fetch(`${ pool }/${ type }_blocks?limit=${ limit }&offset=${ (page - 1) * limit }`)
+    result.status = response.status
     const blocks = await response.json()
-    result = {
-      items: hydrateBlocks(blocks?.[ type ] || []),
-      pages: Math.ceil(blocks?.[ `${ type }Total` ] / limit),
-    }
+
+    result.items = hydrateBlocks(blocks?.[ type ] || []),
+    result.pages = Math.ceil(blocks?.[ `${ type }Total` ] / limit)
+    result.pages = result.pages < tablesConfig.MAX_PAGES ? result.pages : tablesConfig.MAX_PAGES
 
   } catch (error) {
-    console.error(error);
-    result = {
-      items: [],
-      pages: 0,
-    }
+    console.error(error)
   }
 
   return result

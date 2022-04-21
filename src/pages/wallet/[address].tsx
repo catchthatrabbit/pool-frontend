@@ -8,14 +8,13 @@ import CopyButton from 'atoms/CopyButton';
 import { SearchResultsIcon } from 'atoms/icons';
 import Text from 'atoms/Text/Text';
 import MiningInfo from 'components/MiningInfo/MiningInfo';
-import { EU_PRIMARY_API_ENDPOINT } from 'config';
+import { poolEndpointsConfig, walletPageConfig } from 'config';
 import iban from 'helpers/iban';
 import { minWidth } from 'helpers/responsive';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient, useQuery } from 'react-query';
 import { walletsService } from 'services';
-import { PAYOUTS_TABLE_COLUMNS, WORKERS_TABLE_COLUMNS } from 'services/getWalletData';
 import { poolEndpointSelector, resetPoolSelector, usePoolStore } from 'store/pool.store';
 import styled, { css } from 'styled-components';
 
@@ -258,9 +257,9 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const queryClient = new QueryClient()
 
   await Promise.allSettled([
-    queryClient.prefetchQuery([ 'walletInfo', address, EU_PRIMARY_API_ENDPOINT ], walletsService.getWalletInfoQueryFn),
-    queryClient.prefetchQuery([ 'workers', address, EU_PRIMARY_API_ENDPOINT, 1 ], walletsService.getWorkersQueryFn),
-    queryClient.prefetchQuery([ 'payouts', address, EU_PRIMARY_API_ENDPOINT, 1 ], walletsService.getPayoutsQueryFn),
+    queryClient.prefetchQuery([ 'walletInfo', address, poolEndpointsConfig.EU_PRIMARY_API ], walletsService.getWalletInfoQueryFn),
+    queryClient.prefetchQuery([ 'workers', address, poolEndpointsConfig.EU_PRIMARY_API, 1 ], walletsService.getWorkersQueryFn),
+    queryClient.prefetchQuery([ 'payouts', address, poolEndpointsConfig.EU_PRIMARY_API, 1 ], walletsService.getPayoutsQueryFn),
   ])
 
   const dehydratedState = dehydrate(queryClient)
@@ -291,7 +290,7 @@ const Wallet: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> =
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<SearchResultsIcon />}>
+        <ContentTitle Image={ <SearchResultsIcon /> }>
           Wallet overview
         </ContentTitle>
 
@@ -299,61 +298,61 @@ const Wallet: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> =
         <ColumnContainer>
           <AddressContainer>
             <Text size="very-large" color="apple">
-              {formatAddressContent(props.address)}
+              { formatAddressContent(props.address) }
             </Text>
           </AddressContainer>
           <ButtonStyled>
-            <CopyButton value={props.address} />
+            <CopyButton value={ props.address } />
           </ButtonStyled>
         </ColumnContainer>
 
-        <WalletMiningInfoBoxes address={router.query.address as string} />
+        <WalletMiningInfoBoxes address={ router.query.address as string } />
 
         <TabSelector>
           <Text
-            active={changeView === 'workers'}
-            onClick={() => setChangeView('workers')}
+            active={ changeView === 'workers' }
+            onClick={ () => setChangeView('workers') }
           >
             Workers
           </Text>
           <Text
-            active={changeView === 'payouts'}
-            onClick={() => setChangeView('payouts')}
+            active={ changeView === 'payouts' }
+            onClick={ () => setChangeView('payouts') }
           >
             Payouts
           </Text>
         </TabSelector>
-        <TabContent active={changeView === 'workers'}>
+        <TabContent active={ changeView === 'workers' }>
           <TableContainerStyled>
-          <ReactQueryTable
-            columns={ WORKERS_TABLE_COLUMNS }
-            queryKey={['workers', router.query.address as string ]}
-            queryFn={walletsService.getWorkersQueryFn}
-          />
+            <ReactQueryTable
+              columns={ walletPageConfig.WORKERS_TABLE.columns }
+              queryKey={ [ 'workers', router.query.address as string ] }
+              queryFn={ walletsService.getWorkersQueryFn }
+            />
           </TableContainerStyled>
         </TabContent>
-        <TabContent active={changeView === 'payouts'}>
+        <TabContent active={ changeView === 'payouts' }>
           <TableContainerStyled>
-          <ReactQueryTable
-            columns={ PAYOUTS_TABLE_COLUMNS }
-            queryKey={['payouts', router.query.address as string ]}
-            queryFn={walletsService.getPayoutsQueryFn}
-          />
+            <ReactQueryTable
+              columns={ walletPageConfig.PAYOUTS_TABLE.columns }
+              queryKey={ [ 'payouts', router.query.address as string ] }
+              queryFn={ walletsService.getPayoutsQueryFn }
+            />
           </TableContainerStyled>
         </TabContent>
 
         <BoxPanel title="Connections" desc="Data sources &amp; direct links.">
-          Direct link to stats:{' '}
-          <a href={'https://' + props.address + '.ctr.watch'} target="_blank">
-            {props.address}.ctr.watch
+          Direct link to stats:{ ' ' }
+          <a href={ 'https://' + props.address + '.ctr.watch' } target="_blank">
+            { props.address }.ctr.watch
           </a>
           <br />
-          API access:{' '}
+          API access:{ ' ' }
           <a
-            href={'https://catchthatrabbit.com/api/accounts/' + props.address}
+            href={ 'https://catchthatrabbit.com/api/accounts/' + props.address }
             target="_blank"
           >
-            catchthatrabbit.com/api/accounts/{props.address}
+            catchthatrabbit.com/api/accounts/{ props.address }
           </a>
         </BoxPanel>
       </ContainerStyled>

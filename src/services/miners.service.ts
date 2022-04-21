@@ -1,3 +1,4 @@
+import { minersPageConfig, tablesConfig } from 'config';
 import { getHashText, getNumberText } from 'helpers/text';
 import { toStringDateTime } from 'helpers/toStringDateTime';
 
@@ -42,22 +43,24 @@ export const getMiners = async (pool: string, page: number) => {
   let result: {
     items: any[]
     pages: number
+    status: number
+  } = {
+    items: [],
+    pages: 0,
+    status: 500,
   }
 
   try {
-    const response = await fetch(`${ pool }/miners?limit=${ 10 }&offset=${ (page - 1) * 10 }`)
+    const response = await fetch(`${ pool }/miners?limit=${ minersPageConfig.MINERS_TABLE.rowCount }&offset=${ (page - 1) * minersPageConfig.MINERS_TABLE.rowCount }`)
+    result.status = response.status
     const data = await response.json()
-    result = {
-      items: hydrateMiners(data.miners),
-      pages: Math.ceil(data.minersTotal / 10),
-    }
+
+    result.items = hydrateMiners(data.miners),
+    result.pages = Math.ceil(data.minersTotal / minersPageConfig.MINERS_TABLE.rowCount)
+    result.pages = result.pages < tablesConfig.MAX_PAGES ? result.pages : tablesConfig.MAX_PAGES
 
   } catch (error) {
-    console.error(error);
-    result = {
-      items: [],
-      pages: 0,
-    }
+    console.error(error)
   }
 
   return result
@@ -73,7 +76,7 @@ export const getMinersInfo = async (pool: string) => {
   let result: InfoBoxItem[]
 
   try {
-    const response = await fetch(`${ pool }/miners?limit=1&offset=0`)
+    const response = await fetch(`${ pool }/miners_stats`)
     const data = await response.json()
     result = hydrateMinersInfoBox(data)
 

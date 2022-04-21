@@ -1,7 +1,8 @@
+import { tablesConfig } from 'config';
 
 import type { Column } from '@components/Table/Table'
 
-export const BLOCK_TABLE_COLUMNS: Column[] = [
+export const BLOCKS_TABLE_COLUMNS: Column[] = [
   {
     name: 'Height',
     id: 'height',
@@ -33,3 +34,8 @@ export const BLOCK_TABLE_COLUMNS: Column[] = [
     type: 'percentage',
   },
 ]
+
+export const BLOCKS_TABLE = {
+  columns: BLOCKS_TABLE_COLUMNS,
+  rowCount: tablesConfig.PAGE_LIMIT,
+}

@@ -4,11 +4,11 @@ import SearchBar from 'atoms/SearchBar';
 import Jumbotron from 'components/Jumbotron';
 import Stats from 'components/Stats';
 import BaseTable from 'components/Table';
+import { homePageConfig } from 'config';
 import { minWidth } from 'helpers/responsive';
 import useGoToWallet from 'hooks/useGoToWallet';
 import React, { useState } from 'react';
 import { homeService } from 'services';
-import { BLOCK_TABLE_COLUMNS } from 'services/getHomeBlockTableData';
 import styled, { css } from 'styled-components';
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
@@ -129,8 +129,8 @@ const Home: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (
         </TitleStyled>
         <BaseTable
           data={props.blocks}
-          columns={BLOCK_TABLE_COLUMNS}
-          moreLink={{ href: '/blocks', text: 'View More Blocks' }}
+          columns={homePageConfig.BLOCKS_TABLE.columns}
+          moreLink={homePageConfig.BLOCKS_TABLE.moreLink}
         />
       </TableContainerStyled>
     </ContainerStyled>

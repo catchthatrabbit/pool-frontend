@@ -3,4 +3,5 @@ export enum EPool {
   EU_BACKUP = 'eu-backup',
   AS_PRIMARY = 'as-primary',
   AS_BACKUP = 'as-backup',
+  DEFAULT = 'eu-primary',
 }

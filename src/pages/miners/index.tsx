@@ -5,13 +5,12 @@ import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper';
 import ContentTitle from 'atoms/ContentTitle';
 import { MinersIcon } from 'atoms/icons';
 import SearchBar from 'atoms/SearchBar';
-import { EU_PRIMARY_API_ENDPOINT } from 'config';
+import { minersPageConfig, poolEndpointsConfig } from 'config';
 import { minWidth } from 'helpers/responsive';
 import useGoToWallet from 'hooks/useGoToWallet';
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { dehydrate, QueryClient, useQuery } from 'react-query';
 import { minersService } from 'services';
-import { MINER_TABLE_COLUMNS } from 'services/getMinersData';
 import { poolEndpointSelector, resetPoolSelector, usePoolStore } from 'store/pool.store';
 import styled, { css } from 'styled-components';
 
@@ -65,8 +64,8 @@ export const getServerSideProps = async () => {
   const queryClient = new QueryClient()
 
   await Promise.allSettled([
-    queryClient.prefetchQuery(['miners', EU_PRIMARY_API_ENDPOINT, 1], minersService.getMinersQueryFn),
-    queryClient.prefetchQuery([ 'minersInfo', EU_PRIMARY_API_ENDPOINT ], minersService.getMinersInfoQueryFn),
+    queryClient.prefetchQuery(['miners', poolEndpointsConfig.EU_PRIMARY_API, 1], minersService.getMinersQueryFn),
+    queryClient.prefetchQuery([ 'minersInfo', poolEndpointsConfig.EU_PRIMARY_API ], minersService.getMinersInfoQueryFn),
   ])
 
   return {
@@ -92,21 +91,21 @@ const MinersPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<MinersIcon />}>Miners</ContentTitle>
+        <ContentTitle Image={ <MinersIcon /> }>Miners</ContentTitle>
         <SearchBarContainerStyled>
           <SearchBar
-            onChange={handleSearchValueChange}
-            value={searchValue}
-            onSearch={handleSearch}
+            onChange={ handleSearchValueChange }
+            value={ searchValue }
+            onSearch={ handleSearch }
           />
         </SearchBarContainerStyled>
 
         <SelectPool />
         <MinersInfoBoxes />
         <ReactQueryTable
-          columns={ MINER_TABLE_COLUMNS }
-          queryKey={['miners']}
-          queryFn={minersService.getMinersQueryFn}
+          columns={ minersPageConfig.MINERS_TABLE.columns }
+          queryKey={ [ 'miners' ] }
+          queryFn={ minersService.getMinersQueryFn }
         />
       </ContainerStyled>
     </>
