@@ -363,7 +363,7 @@ export const MinerDataCardData = {
 export const PoolDetailsData = [
   { key: '1', title: 'Reward scheme', value: 'PPLNS (Pay Per Last N Shares)' },
   { key: '2', title: 'Pool fee', value: '2%' },
-  { key: '3', title: 'Payout threshhold', value: 'Minimum 20 XCB' },
+  { key: '3', title: 'Payout threshold', value: 'Minimum 20 XCB' },
   { key: '4', title: 'Mining algorithm', value: 'RandomY' },
 ]
 

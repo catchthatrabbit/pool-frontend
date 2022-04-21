@@ -73,7 +73,7 @@ const hydratePoolDetailsData = (data) => {
     { key: '2', title: 'Pool fee', value: data.PoolFee + ' %' },
     {
       key: '3',
-      title: 'Payout threshhold',
+      title: 'Payout threshold',
       value: data.PayoutThreshold + 'ꞥ (nucles)',
     },
     { key: '4', title: 'Mining algorithm', value: 'RandomY' },
