@@ -1,20 +1,15 @@
-import React, { FC, useContext } from 'react'
-import styled, { css, keyframes } from 'styled-components'
-import { colorVariables } from 'styles/variables'
-
-import Button from 'atoms/Button/Button'
-import Text from 'atoms/Text/Text'
-import MapButton from 'atoms/MapButton/MapButton'
-import { Arrow } from 'atoms/icons'
-import InfoBox from 'components/InfoBox/InfoBox'
-import { InfoBoxItem } from 'helpers/text'
-import {
-  connectToUS,
-  connectToEurope,
-  connectToAsia,
-} from 'constants/paths'
-import { minWidth } from 'helpers/responsive'
-import ResponsiveContext from 'providers/responsive-provider/context'
+import Button from 'atoms/Button/Button';
+import { Arrow } from 'atoms/icons';
+import MapButton from 'atoms/MapButton/MapButton';
+import Text from 'atoms/Text/Text';
+import InfoBox from 'components/InfoBox/InfoBox';
+import { pathsConstant } from 'constant';
+import { minWidth } from 'helpers/responsive';
+import { InfoBoxItem } from 'helpers/text';
+import ResponsiveContext from 'providers/responsive-provider/context';
+import React, { FC, useContext } from 'react';
+import styled, { css, keyframes } from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
 const scrollTranslate = keyframes`
   0% {
@@ -411,12 +406,12 @@ const Jumbotron: FC<IProps> = ({ data }) => {
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <Locations>
           <EUStyle>
-            <MapButtonWrapper href={connectToEurope}>
+            <MapButtonWrapper href={pathsConstant.connectToEurope}>
               EU location
             </MapButtonWrapper>
           </EUStyle>
           <APStyle>
-            <MapButtonWrapper href={connectToAsia}>
+            <MapButtonWrapper href={pathsConstant.connectToAsia}>
               AP location
             </MapButtonWrapper>
           </APStyle>

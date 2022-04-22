@@ -1,4 +1,4 @@
-import { MILLISECOND } from 'constants/time'
+import { timeConstant } from 'constant'
 
 const TIME_OPTIONS = {
   year: 'numeric',
@@ -9,5 +9,5 @@ const TIME_OPTIONS = {
 } as const
 
 export const toStringDateTime = (timeStamp: number, options: Intl.DateTimeFormatOptions = TIME_OPTIONS) => {
-  return (!timeStamp) ? '' : new Date(timeStamp * MILLISECOND).toLocaleString('en', options)
+  return (!timeStamp) ? '' : new Date(timeStamp * timeConstant.MILLISECOND).toLocaleString('en', options)
 }

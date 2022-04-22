@@ -1,18 +1,18 @@
-import Background from 'atoms/Background'
-import ContentTitle from 'atoms/ContentTitle'
-import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons'
-import SearchBar from 'atoms/SearchBar'
-import Text from 'atoms/Text/Text'
-import MinerCard from 'components/MinerCard'
-import MiningInfo from 'components/MiningInfo'
-import { minWidth } from 'helpers/responsive'
-import useGoToWallet from 'hooks/useGoToWallet'
-import React, { FC, useState } from 'react'
-import { getStartMiningData } from 'services/getStartMiningData'
-import styled, { css } from 'styled-components'
-import { colorVariables, fonts } from 'styles/variables'
+import Background from 'atoms/Background';
+import ContentTitle from 'atoms/ContentTitle';
+import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons';
+import SearchBar from 'atoms/SearchBar';
+import Text from 'atoms/Text/Text';
+import MinerCard from 'components/MinerCard';
+import MiningInfo from 'components/MiningInfo';
+import { minWidth } from 'helpers/responsive';
+import useGoToWallet from 'hooks/useGoToWallet';
+import React, { FC, useState } from 'react';
+import { startMiningService } from 'services';
+import styled, { css } from 'styled-components';
+import { colorVariables, fonts } from 'styles/variables';
 
-import type { InferGetServerSidePropsType } from 'next'
+import type { InferGetServerSidePropsType, NextPage } from 'next'
 
 const TextStyled = styled.p`
   margin: 34px 0 0;
@@ -224,15 +224,24 @@ const TextGuide4Styled = styled(TextStyled)`
   margin-bottom: 75px;
 `
 
-export const getServerSideProps = async () => ({
-  props: await getStartMiningData(),
-})
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      minerDataInfoEu: startMiningService.MinerDataInfoEu,
+      minerDataInfoEuSec: startMiningService.MinerDataInfoEuSec,
+      minerDataInfoNa: startMiningService.MinerDataInfoNa,
+      minerDataInfoAs: startMiningService.MinerDataInfoAs,
+      minerDataInfoAsSec: startMiningService.MinerDataInfoAsSec,
+      minerDataCard: startMiningService.MinerDataCard,
+      links: startMiningService.Links,
+      poolDetails: await startMiningService.getPoolDetails(),
+    },
+  }
+}
 
 const onClickHandler = () => setTimeout(() => window.scrollBy(0, -184), 0)
 
-const StartMiningPage: FC<
-  InferGetServerSidePropsType<typeof getServerSideProps>
-> = (props) => {
+const StartMiningPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
   const [searchValue, setSearchValue] = useState('')
   const goToWallet = useGoToWallet()
 

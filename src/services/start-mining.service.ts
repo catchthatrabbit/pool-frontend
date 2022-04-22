@@ -1,4 +1,8 @@
-const MinerDataInfoDataEu = [
+import { poolEndpointsConfig } from 'config';
+import { unitsConstant } from 'constant';
+import { EPool } from 'enums';
+
+export const MinerDataInfoEu = [
   { key: '1', title: 'Server', value: 'eu.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
   {
@@ -8,7 +12,7 @@ const MinerDataInfoDataEu = [
   },
   { key: '4', title: 'Password', value: '<empty>' },
 ]
-const MinerDataInfoDataEuSec = [
+export const MinerDataInfoEuSec = [
   { key: '1', title: 'Server', value: 'eu1.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
   {
@@ -18,7 +22,7 @@ const MinerDataInfoDataEuSec = [
   },
   { key: '4', title: 'Password', value: '<empty>' },
 ]
-const MinerDataInfoDataNa = [
+export const MinerDataInfoNa = [
   { key: '1', title: 'Server', value: 'na.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
   {
@@ -28,7 +32,7 @@ const MinerDataInfoDataNa = [
   },
   { key: '4', title: 'Password', value: '<empty>' },
 ]
-const MinerDataInfoDataAs = [
+export const MinerDataInfoAs = [
   { key: '1', title: 'Server', value: 'as.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
   {
@@ -38,7 +42,7 @@ const MinerDataInfoDataAs = [
   },
   { key: '4', title: 'Password', value: '<empty>' },
 ]
-const MinerDataInfoDataAsSec = [
+export const MinerDataInfoAsSec = [
   { key: '1', title: 'Server', value: 'as1.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
   {
@@ -48,7 +52,7 @@ const MinerDataInfoDataAsSec = [
   },
   { key: '4', title: 'Password', value: '<empty>' },
 ]
-const MinerDataCardData = {
+export const MinerDataCard = {
   title: 'CoreMiner',
   description:
     'Fast & Open-source miner with excellent hardware support & 0% fees.',
@@ -56,14 +60,14 @@ const MinerDataCardData = {
   configLink: 'https://gist.github.com/raisty/54a68880cb913da81273edfcb05c2270',
   minerLink: 'https://github.com/catchthatrabbit/coreminer/releases',
 }
-const LinksData = [
+export const Links = [
   { href: '#pool-europe', text: 'European pool [EU]' },
   { href: '#pool-europe-1', text: 'European backup [EU1]' },
   { href: '#pool-asia', text: 'Asian pool [AS]' },
   { href: '#pool-asia-1', text: 'Asian backup [AS1]' },
 ]
 
-const hydratePoolDetailsData = (data) => {
+const hydratePoolDetails = (data) => {
   return [
     {
       key: '1',
@@ -74,7 +78,7 @@ const hydratePoolDetailsData = (data) => {
     {
       key: '3',
       title: 'Payout threshold',
-      value: data.PayoutThreshold + 'ꞥ (nucles)',
+      value: (data.PayoutThreshold / unitsConstant.MOLI) + '₥ (moli)',
     },
     { key: '4', title: 'Mining algorithm', value: 'RandomY' },
   ]
@@ -89,18 +93,21 @@ const hydratePoolDetailsData = (data) => {
     - linksData
     - poolDetailsData
  */
-export const getStartMiningData = async () => {
-  const result = await fetch(process.env.API_ENDPOINT + '/settings.json')
-  const data = await result.json()
+export const getPoolDetails = async () => {
+  let result: {
+    key: string;
+    title: string;
+    value: string;
+  }[] = []
 
-  return {
-    minerDataInfoEu: MinerDataInfoDataEu,
-    minerDataInfoEuSec: MinerDataInfoDataEuSec,
-    minerDataInfoNa: MinerDataInfoDataNa,
-    minerDataInfoAs: MinerDataInfoDataAs,
-    minerDataInfoAsSec: MinerDataInfoDataAsSec,
-    minerDataCard: MinerDataCardData,
-    links: LinksData,
-    poolDetails: hydratePoolDetailsData(data),
+  try {
+    const response = await fetch(poolEndpointsConfig.MAPPER[ EPool.DEFAULT ] + '/settings')
+    const settings = await response.json()
+    result = hydratePoolDetails(settings)
+
+  } catch (error) {
+    console.error(error)
   }
+
+  return result
 }
