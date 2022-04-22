@@ -1,4 +1,4 @@
-import { INTERVALS, MILLISECOND } from 'constants/time'
+import { timeConstant } from 'constant'
 
 /**
  * Given a date string, return a string that says how long ago that date was
@@ -7,10 +7,10 @@ import { INTERVALS, MILLISECOND } from 'constants/time'
  * @returns a string that is the number of seconds ago that the date was.
  */
 export default function ago(date: string, short = false) {
-  const seconds = (Date.now() - Date.parse(date)) / MILLISECOND
+  const seconds = (Date.now() - Date.parse(date)) / timeConstant.MILLISECOND
 
   let result = ''
-  for (const interval of INTERVALS) {
+  for (const interval of timeConstant.INTERVALS) {
     if ((seconds / interval.unitInSeconds) > 1) {
       result = `${ Math.floor(seconds / interval.unitInSeconds) } ${ interval.getUnit(short) } ago`
       break
