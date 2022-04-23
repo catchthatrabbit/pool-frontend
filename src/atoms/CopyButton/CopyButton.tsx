@@ -41,7 +41,7 @@ const CopyButton: FC<ICopyButtonProps> = ({ value }) => {
   const [ isOnce, setIsOnce ] = useState(false)
   const timeoutId = useRef<NodeJS.Timeout>()
 
-  const showNotification = useCallback(() => {
+  const handleOnCopy = useCallback(() => {
     if (isOnce) return
 
     setIsOnce(true)
@@ -56,7 +56,7 @@ const CopyButton: FC<ICopyButtonProps> = ({ value }) => {
 
   return (
     <CopyToClipboard text={ value }>
-      <ButtonStyled type="button" title="copy to clipboard" onClick={ showNotification }>
+      <ButtonStyled type="button" title="copy to clipboard" onClick={ handleOnCopy }>
         <CopyIcon />
         <Text>COPY</Text>
       </ButtonStyled>
