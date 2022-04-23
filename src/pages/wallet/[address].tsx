@@ -308,7 +308,7 @@ const Wallet: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> =
 
         <WalletMiningInfoBoxes address={ router.query.address as string } />
 
-        <TabSelector>
+        {/* <TabSelector>
           <Text
             active={ changeView === 'workers' }
             onClick={ () => setChangeView('workers') }
@@ -354,7 +354,7 @@ const Wallet: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> =
           >
             catchthatrabbit.com/api/accounts/{ props.address }
           </a>
-        </BoxPanel>
+        </BoxPanel> */}
       </ContainerStyled>
     </>
   )
