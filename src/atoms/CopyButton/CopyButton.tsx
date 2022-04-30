@@ -1,20 +1,26 @@
-import React, { FC } from 'react'
-import { colorVariables } from 'styles/variables'
-import styled from 'styled-components'
-import applyTransparence from 'helpers/transparentize'
-import { CopyIcon } from '../icons'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { notify } from 'atoms/Toaster';
+import { notificationsConfig } from 'config';
+import applyTransparence from 'helpers/transparentize';
+import React, { FC, useCallback, useRef, useState } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import styled from 'styled-components';
+import { colorVariables } from 'styles/variables';
+
+import { CopyIcon } from '../icons';
+import Text from '../Text';
+
 
 const ButtonStyled = styled.button`
   box-sizing: border-box;
-  display: inline-block;
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
   color: ${colorVariables.white};
   text-align: center;
   white-space: nowrap;
-  width: 37px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
   height: 37px;
   border: 1px solid ${applyTransparence(0.5, colorVariables.gunPowder)};
   background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
@@ -27,17 +33,34 @@ const ButtonStyled = styled.button`
   }
 `
 
-interface IProps {
+interface ICopyButtonProps {
   value: string
 }
 
-const CopyButton: FC<IProps> = ({ value }) => {
+const CopyButton: FC<ICopyButtonProps> = ({ value }) => {
+  const [ isOnce, setIsOnce ] = useState(false)
+  const timeoutId = useRef<NodeJS.Timeout>()
+
+  const handleOnCopy = useCallback(() => {
+    if (isOnce) return
+
+    setIsOnce(true)
+    timeoutId.current && clearTimeout(timeoutId.current)
+    timeoutId.current = setTimeout(() => setIsOnce(false), notificationsConfig.COPY_TO_CLIPBOARD_OPTIONS.duration)
+
+    notify.success(
+      <Text fontFamily='secondary'>Copied to your clipboard</Text>,
+      notificationsConfig.COPY_TO_CLIPBOARD_OPTIONS,
+    )
+  }, [ isOnce ])
+
   return (
-    <ButtonStyled type="button">
-      <CopyToClipboard text={value}>
+    <CopyToClipboard text={ value }>
+      <ButtonStyled type="button" title="copy to clipboard" onClick={ handleOnCopy }>
         <CopyIcon />
-      </CopyToClipboard>
-    </ButtonStyled>
+        <Text>COPY</Text>
+      </ButtonStyled>
+    </CopyToClipboard>
   )
 }
 
