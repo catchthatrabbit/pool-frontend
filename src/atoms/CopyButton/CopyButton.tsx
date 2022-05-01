@@ -49,14 +49,14 @@ const CopyButton: FC<ICopyButtonProps> = ({ value }) => {
     timeoutId.current = setTimeout(() => setIsOnce(false), notificationsConfig.COPY_TO_CLIPBOARD_OPTIONS.duration)
 
     notify.success(
-      <Text fontFamily='secondary'>Copied to your clipboard</Text>,
+      <Text fontFamily='secondary'>Address copied</Text>,
       notificationsConfig.COPY_TO_CLIPBOARD_OPTIONS,
     )
   }, [ isOnce ])
 
   return (
     <CopyToClipboard text={ value }>
-      <ButtonStyled type="button" title="copy to clipboard" onClick={ handleOnCopy }>
+      <ButtonStyled type="button" title="copy address" onClick={ handleOnCopy }>
         <CopyIcon />
         <Text>COPY</Text>
       </ButtonStyled>
