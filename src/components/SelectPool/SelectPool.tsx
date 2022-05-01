@@ -92,6 +92,7 @@ const CustomPoolOptions = styled.div`
   overflow: hidden;
   opacity: 0;
   padding: 0 1rem;
+  user-select: none;
 
   &[data-visible="true"] {
     z-index: 1;
