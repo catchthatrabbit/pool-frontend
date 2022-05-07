@@ -268,7 +268,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     props: {
       address,
       dehydratedState,
-      notFound: dehydratedState.queries.some(q => (q.state.data as any)?.status === 404),
+      // notFound: dehydratedState.queries.some(q => (q.state.data as any)?.status === 404),
     },
   }
 }
@@ -282,9 +282,9 @@ const Wallet: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> =
   const resetPool = usePoolStore(resetPoolSelector)
   useEffect(resetPool, [])
 
-  if (props.notFound) {
-    return <NotFound />
-  }
+  // if (props.notFound) {
+  //   return <NotFound />
+  // }
 
   return (
     <>

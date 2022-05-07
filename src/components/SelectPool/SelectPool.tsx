@@ -159,20 +159,20 @@ const SelectPool = () => {
 
         <CustomSelectArrow data-open={ optionsVisibility }>&rsaquo;</CustomSelectArrow>
 
-        <CustomPoolOptions data-visible={ optionsVisibility } onClick={ handleOnSelectPool }>
-          <CustomPoolOption data-pool={ EPool.EU_PRIMARY } data-active={ EPool.EU_PRIMARY === pool }>
+        <CustomPoolOptions data-visible={ optionsVisibility }>
+          <CustomPoolOption data-pool={ EPool.EU_PRIMARY } data-active={ EPool.EU_PRIMARY === pool } onClick={ handleOnSelectPool }>
             Primary European Pool
           </CustomPoolOption>
 
-          <CustomPoolOption data-pool={ EPool.EU_BACKUP } data-active={ EPool.EU_BACKUP === pool }>
+          <CustomPoolOption data-pool={ EPool.EU_BACKUP } data-active={ EPool.EU_BACKUP === pool } onClick={ handleOnSelectPool }>
             Backup European Pool
           </CustomPoolOption>
 
-          <CustomPoolOption data-pool={ EPool.AS_PRIMARY } data-active={ EPool.AS_PRIMARY === pool }>
+          <CustomPoolOption data-pool={ EPool.AS_PRIMARY } data-active={ EPool.AS_PRIMARY === pool } onClick={ handleOnSelectPool }>
             Primary Asian Pool
           </CustomPoolOption>
 
-          <CustomPoolOption data-pool={ EPool.AS_BACKUP } data-active={ EPool.AS_BACKUP === pool }>
+          <CustomPoolOption data-pool={ EPool.AS_BACKUP } data-active={ EPool.AS_BACKUP === pool } onClick={ handleOnSelectPool }>
             Backup Asian Pool
           </CustomPoolOption>
 
