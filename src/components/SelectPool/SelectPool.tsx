@@ -56,7 +56,7 @@ const PoolSelect = styled.select`
   }
 `
 const PoolOption = styled.option`
-  display: none;
+  /* display: none; */
 `
 const CustomSelectArrow = styled.span`
   position: absolute;
@@ -148,8 +148,9 @@ const SelectPool = () => {
       <PoolSelectionWrapper>
         <PoolSelect
           value={ pool }
-          onChange={ () => null }
-          onClick={ () => setOptionsVisibility(visibility => !visibility) }
+          onChange={ (event) => setPool(event.target.value as EPool) }
+          // onChange={ () => null }
+          // onClick={ () => setOptionsVisibility(visibility => !visibility) }
         >
           <PoolOption value={ EPool.EU_PRIMARY }>Primary European Pool</PoolOption>
           <PoolOption value={ EPool.EU_BACKUP }>Backup European Pool</PoolOption>
@@ -157,7 +158,7 @@ const SelectPool = () => {
           <PoolOption value={ EPool.AS_BACKUP }>Backup Asian Pool</PoolOption>
         </PoolSelect>
 
-        <CustomSelectArrow data-open={ optionsVisibility }>&rsaquo;</CustomSelectArrow>
+        {/* <CustomSelectArrow data-open={ optionsVisibility }>&rsaquo;</CustomSelectArrow>
 
         <CustomPoolOptions data-visible={ optionsVisibility }>
           <CustomPoolOption data-pool={ EPool.EU_PRIMARY } data-active={ EPool.EU_PRIMARY === pool } onClick={ handleOnSelectPool }>
@@ -178,7 +179,7 @@ const SelectPool = () => {
 
         </CustomPoolOptions>
 
-        <CustomSelectBackdrop data-visible={ optionsVisibility } onClick={ () => setOptionsVisibility(false) } />
+        <CustomSelectBackdrop data-visible={ optionsVisibility } onClick={ () => setOptionsVisibility(false) } /> */}
       </PoolSelectionWrapper>
     </PoolSelectionContainer>
   )
