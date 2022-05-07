@@ -8,6 +8,8 @@ import { blocksService } from 'services';
 import type { InfoBoxItem } from 'helpers/text'
 import type { ChartItem } from 'types/app'
 
+const BLOCK_TIME = 7 as const
+
 const hydrateJumbotron = (data, settings) => {
   if (!data || !settings) {
     return {
@@ -25,9 +27,9 @@ const hydrateJumbotron = (data, settings) => {
       { title: 'Pools hashrate', value: getHashText(data.hashrate) },
       {
         title: 'Network hashrate',
-        value: getHashText((node.difficulty / node.blocktime).toFixed(2)),
+        value: getHashText(node.difficulty / BLOCK_TIME),
       },
-      { title: 'Network difficulty', value: getHashText(node.difficulty) },
+      { title: 'Network difficulty', value: getHashText(node.difficulty, '') },
       { title: 'Active miners', value: getNumberText(data.minersTotal) },
       {
         title: 'Round variance',
@@ -58,7 +60,7 @@ export const getJumbotron = async () => {
     ),
   ])
 
-  const [allStats, settings] = results.map(
+  const [ allStats, settings ] = results.map(
     (result) => 'value' in result && result.value,
   )
 

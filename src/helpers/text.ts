@@ -17,11 +17,10 @@ export type TextType = {
   suffix: string
 }
 
-
-export const getHashText = (value: string | number): TextType => ({
+export const getHashText = (value: string | number, suffix: string = 'h/s'): TextType => ({
   text: numberToString(siFormat(value,2)),
   prefix: '',
-  suffix: 'h/s',
+  suffix,
 })
 
 export const getPercentText = (value: string | number): TextType => ({
