@@ -45,7 +45,7 @@ const PAYOUTS_TABLE_COLUMNS: Column[] = [
   {
     name: 'Tx id',
     id: 'tx',
-    type: 'block',
+    type: 'tx',
   },
   {
     name: 'Amount',
