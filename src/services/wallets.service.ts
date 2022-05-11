@@ -1,6 +1,5 @@
 import { tablesConfig, walletPageConfig } from 'config';
 import { toStringDateTime } from 'helpers/toStringDateTime';
-import { toXCBPrice } from 'helpers/toXCBPrice';
 
 import type { QueryFunctionContext } from 'react-query';
 
@@ -87,7 +86,7 @@ export const hydratePayouts = (payouts: any[]) => {
   const payoutMapper = (payout) => ({
     time: toStringDateTime(payout.timestamp),
     tx: payout.tx,
-    amount: toXCBPrice(payout.amount),
+    amount: payout.amount,
   })
 
   return payouts
@@ -193,25 +192,25 @@ export const hydrateWalletInfoBoxes = (data: any) => {
       {
         key: '1',
         title: 'Immature balance',
-        value: toXCBPrice(data.stats.immature),
+        value: data.stats.immature,
         type: 'xcb',
       },
       {
         key: '2',
         title: 'Pending balance',
-        value: toXCBPrice(data.stats.pending),
+        value: data.stats.pending,
         type: 'xcb',
       },
       {
         key: '3',
         title: 'Total payments',
-        value: toXCBPrice(data.paymentsTotal),
+        value: data.paymentsTotal,
         type: 'number',
       },
       {
         key: '4',
         title: 'Total paid',
-        value: toXCBPrice(data.stats.paid),
+        value: data.stats.paid,
         type: 'xcb',
       },
     ],

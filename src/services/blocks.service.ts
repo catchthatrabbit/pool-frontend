@@ -1,6 +1,5 @@
 import { blocksPageConfig, tablesConfig } from 'config';
 import { toStringDateTime } from 'helpers/toStringDateTime';
-import { toXCBPrice } from 'helpers/toXCBPrice';
 
 import type { QueryFunctionContext } from 'react-query'
 
@@ -17,7 +16,7 @@ export const hydrateBlocks = (blocks: any[]) => {
     type: block.uncle ? 'Uncle' : block.orphan ? 'Orphan' : 'Block',
     'mined on': toStringDateTime(block.timestamp),
     'block hash': block.hash,
-    reward: toXCBPrice(block.reward),
+    reward: block.reward,
     variance: (block.difficulty / block.shares).toFixed(2),
   })
 

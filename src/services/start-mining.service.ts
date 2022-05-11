@@ -1,5 +1,4 @@
 import { poolEndpointsConfig } from 'config';
-import { unitsConstant } from 'constant';
 import { EPool } from 'enums';
 
 export const MinerDataInfoEu = [
@@ -78,7 +77,7 @@ const hydratePoolDetails = (data) => {
     {
       key: '3',
       title: 'Payout threshold',
-      value: (data.PayoutThreshold / unitsConstant.MOLI) + '₥ (moli)',
+      value: data.PayoutThreshold + '₥ (moli)',
     },
     { key: '4', title: 'Mining algorithm', value: 'RandomY' },
   ]
