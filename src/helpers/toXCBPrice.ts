@@ -1,3 +1,3 @@
 import { unitsConstant } from 'constant';
 
-export const toXCBPrice = (value: number) => (value / unitsConstant.NUCLE)
+export const toXCBPrice = (value: number) => (value / unitsConstant.CORE)

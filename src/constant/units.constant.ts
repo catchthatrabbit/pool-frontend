@@ -6,3 +6,4 @@ export const GRAV = ONE_K * WAV
 export const NUCLE = ONE_K * GRAV
 export const ATOM = ONE_K * NUCLE
 export const MOLI = ONE_K * ATOM
+export const CORE = ONE_K * MOLI
