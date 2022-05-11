@@ -1,8 +1,8 @@
 import { homePageConfig, poolEndpointsConfig } from 'config';
-import { unitsConstant } from 'constant';
 import { aggregateNumbers, fetchAllSettled, reduceList, resultAllSettled } from 'helpers';
 import { getAgoText, getHashText, getNumberText, getPercentText, getXCBText } from 'helpers/text';
 import { toStringDateTime } from 'helpers/toStringDateTime';
+import { toXCBPrice } from 'helpers/toXCBPrice';
 import { blocksService } from 'services';
 
 import type { InfoBoxItem } from 'helpers/text'
@@ -84,7 +84,7 @@ const hydrateInfoBoxData = (data): InfoBoxItem[] => {
       title: 'Last block found',
       value: getAgoText(toStringDateTime(data.stats.lastBlockFound)),
     },
-    { title: 'Block reward', value: getXCBText((data.blockReward / unitsConstant.CORE)) },
+    { title: 'Block reward', value: getXCBText(toXCBPrice(data.blockReward)) },
   ]
 }
 

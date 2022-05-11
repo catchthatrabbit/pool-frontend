@@ -1,9 +1,8 @@
 import { tablesConfig, walletPageConfig } from 'config';
-import { unitsConstant } from 'constant';
 import { toStringDateTime } from 'helpers/toStringDateTime';
+import { toXCBPrice } from 'helpers/toXCBPrice';
 
 import type { QueryFunctionContext } from 'react-query';
-
 /**
  * It takes a workers map and returns an array of worker
  * @param workers - {}
@@ -193,13 +192,13 @@ export const hydrateWalletInfoBoxes = (data: any) => {
       {
         key: '1',
         title: 'Immature balance',
-        value: (data.stats.immature / unitsConstant.NUCLE),
+        value: toXCBPrice(data.stats.immature),
         type: 'xcb',
       },
       {
         key: '2',
         title: 'Pending balance',
-        value: (data.stats.pending / unitsConstant.NUCLE),
+        value: toXCBPrice(data.stats.pending),
         type: 'xcb',
       },
       {
@@ -211,7 +210,7 @@ export const hydrateWalletInfoBoxes = (data: any) => {
       {
         key: '4',
         title: 'Total paid',
-        value: (data.stats.paid / unitsConstant.NUCLE),
+        value: toXCBPrice(data.stats.paid),
         type: 'xcb',
       },
     ],
