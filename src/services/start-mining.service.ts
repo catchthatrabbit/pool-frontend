@@ -78,7 +78,7 @@ const hydratePoolDetails = (data) => {
     {
       key: '3',
       title: 'Payout threshold',
-      value: (data.PayoutThreshold / unitsConstant.MOLI) + '₥ (moli)',
+      value: (data.PayoutThreshold / unitsConstant.NUCLE).toString(),
     },
     { key: '4', title: 'Mining algorithm', value: 'RandomY' },
   ]
