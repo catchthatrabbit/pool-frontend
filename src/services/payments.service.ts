@@ -1,6 +1,7 @@
 import { paymentsPageConfig, tablesConfig } from 'config';
 import { getNumberText } from 'helpers/text';
 import { toStringDateTime } from 'helpers/toStringDateTime';
+import { toXCBPrice } from 'helpers/toXCBPrice';
 
 import type { InfoBoxItem } from 'helpers/text';
 import type { QueryFunctionContext } from 'react-query';
@@ -29,7 +30,7 @@ export const hydratePayments = (payments: any[]) => {
   const paymentMapper = (payment) => ({
     'tx id': payment.tx,
     address: payment.address,
-    amount: payment.amount,
+    amount: toXCBPrice(payment.amount),
     time: toStringDateTime(payment.timestamp),
   })
 

@@ -1,8 +1,8 @@
 import { blocksPageConfig, tablesConfig } from 'config';
 import { toStringDateTime } from 'helpers/toStringDateTime';
+import { toXCBPrice } from 'helpers/toXCBPrice';
 
 import type { QueryFunctionContext } from 'react-query'
-
 /**
  * It takes an array of blocks, sorts them by timestamp, and returns an array of objects with the
  * block's height, type, timestamp, hash, reward, and variance
@@ -16,7 +16,7 @@ export const hydrateBlocks = (blocks: any[]) => {
     type: block.uncle ? 'Uncle' : block.orphan ? 'Orphan' : 'Block',
     'mined on': toStringDateTime(block.timestamp),
     'block hash': block.hash,
-    reward: block.reward,
+    reward: toXCBPrice(block.reward),
     variance: (block.difficulty / block.shares).toFixed(2),
   })
 
