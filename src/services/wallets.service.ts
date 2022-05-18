@@ -87,7 +87,7 @@ export const hydratePayouts = (payouts: any[]) => {
   const payoutMapper = (payout) => ({
     time: toStringDateTime(payout.timestamp),
     tx: payout.tx,
-    amount: payout.amount,
+    amount: (payout.amount / unitsConstant.NUCLE),
   })
 
   return payouts
