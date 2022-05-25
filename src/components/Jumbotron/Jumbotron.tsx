@@ -1,15 +1,15 @@
-import Button from 'atoms/Button/Button';
-import { Arrow } from 'atoms/icons';
-import MapButton from 'atoms/MapButton/MapButton';
-import Text from 'atoms/Text/Text';
-import InfoBox from 'components/InfoBox/InfoBox';
-import { pathsConstant } from 'constant';
-import { minWidth } from 'helpers/responsive';
-import { InfoBoxItem } from 'helpers/text';
-import ResponsiveContext from 'providers/responsive-provider/context';
-import React, { FC, useContext } from 'react';
-import styled, { css, keyframes } from 'styled-components';
-import { colorVariables } from 'styles/variables';
+import Button from 'atoms/Button/Button'
+import { Arrow } from 'atoms/icons'
+import MapButton from 'atoms/MapButton/MapButton'
+import Text from 'atoms/Text/Text'
+import InfoBox from 'components/InfoBox/InfoBox'
+import { pathsConstant } from 'constant'
+import { minWidth } from 'helpers/responsive'
+import { InfoBoxItem } from 'helpers/text'
+import ResponsiveContext from 'providers/responsive-provider/context'
+import React, { FC, useContext } from 'react'
+import styled, { css, keyframes } from 'styled-components'
+import { colorVariables } from 'styles/variables'
 
 const scrollTranslate = keyframes`
   0% {
@@ -31,7 +31,8 @@ const ScrollStyle = styled.div`
   height: 8px;
   background: ${colorVariables.white};
   border-radius: 25%;
-  animation: ${scrollTranslate} 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+  animation: ${scrollTranslate} 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94)
+    infinite;
 `
 const MouseStyle = styled.div`
   width: 3px;
@@ -74,16 +75,12 @@ const MouseContainerStyle = styled.div`
 `
 
 const Locations = styled.div`
-  top: 0;
   position: absolute;
-  width: auto;
-  ${minWidth(
-    'mobileL',
-    css`
-      top: 120px;
-      width: 100vw;
-    `,
-  )}
+  top: 40%;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  ${minWidth('mobileL', css``)}
   ${minWidth(
     'tablet',
     css`
@@ -101,7 +98,13 @@ const Locations = styled.div`
 `
 
 const LocationStyle = styled.div`
-  position: absolute;
+  position: relative;
+  ${minWidth(
+    'tablet',
+    css`
+      position: absolute;
+    `,
+  )}
 `
 const USStyle = styled(LocationStyle)`
   ${minWidth(
@@ -114,7 +117,7 @@ const USStyle = styled(LocationStyle)`
   ${minWidth(
     'tablet',
     css`
-      position: relative;
+      position: absolute;
       padding: 5px 20px;
     `,
   )}
@@ -144,7 +147,7 @@ const EUStyle = styled(LocationStyle)`
   ${minWidth(
     'tablet',
     css`
-      position: relative;
+      position: absolute;
       padding: 5px 20px;
     `,
   )}
@@ -174,7 +177,7 @@ const APStyle = styled(LocationStyle)`
   ${minWidth(
     'tablet',
     css`
-      position: relative;
+      position: absolute;
       padding: 5px 20px;
     `,
   )}
@@ -344,8 +347,8 @@ const ImageStyled = styled.img`
 
 interface IProps {
   data: {
-    infoBoxItems: InfoBoxItem[];
-    poolFee: string;
+    infoBoxItems: InfoBoxItem[]
+    poolFee: string
   }
 }
 
@@ -354,9 +357,7 @@ const MapButtonWrapper = ({ href, children }) => {
   const showGlowingCircle = !(
     displayType === 'tablet' || displayType === 'mobileL'
   )
-  const showFullBtn = (
-    displayType === 'tablet' || displayType === 'mobileL'
-  )
+  const showFullBtn = displayType === 'tablet' || displayType === 'mobileL'
 
   if (showGlowingCircle) return <MapButton href={href}>{children}</MapButton>
 
@@ -381,15 +382,11 @@ const Jumbotron: FC<IProps> = ({ data }) => {
 
   const title = (
     <TitleTexStyled>
-      <Text size="ultra-large">
-        Dedicated Pool for
-      </Text>
+      <Text size="ultra-large">Dedicated Pool for</Text>
       <Text size="ultra-large" color="apple">
         Core Coin
       </Text>
-      <Text size="ultra-large">
-        &amp; IoT devices
-      </Text>
+      <Text size="ultra-large">&amp; IoT devices</Text>
     </TitleTexStyled>
   )
   return (
@@ -420,37 +417,42 @@ const Jumbotron: FC<IProps> = ({ data }) => {
       <InfoComponentStyled>
         {!displayTitleTop && title}
         <InfoTextContent>
-          <Text
-            color="santasGray"
-            fontFamily="secondary"
-            space="initial"
-          >
-          «Core mining pool in the Lotus land of Ores.»<br />
-          Use waste energy to dig some Ores.
-          <br /><br />
+          <Text color="santasGray" fontFamily="secondary" space="initial">
+            «Core mining pool in the Lotus land of Ores.»
+            <br />
+            Use waste energy to dig some Ores.
+            <br />
+            <br />
           </Text>
-          <Text
-            color="santasGray"
-            fontFamily="secondary"
-            space="initial"
-          >
-            <Text fontFamily = 'secondary' color="apple">Pay-per-last-N-shares</Text> (PPLNS) system with only  <Text fontFamily = 'secondary' color="apple">{ data.poolFee }% fee</Text>.
+          <Text color="santasGray" fontFamily="secondary" space="initial">
+            <Text fontFamily="secondary" color="apple">
+              Pay-per-last-N-shares
+            </Text>{' '}
+            (PPLNS) system with only{' '}
+            <Text fontFamily="secondary" color="apple">
+              {data.poolFee}% fee
+            </Text>
+            .
           </Text>
-          <Text
-            color="santasGray"
-            fontFamily="secondary"
-            space="initial"
-          >
-            Please, select one of the locations to <a href="/start-mining"><Text fontFamily = 'secondary' color="apple">start your mining today</Text></a>!
+          <Text color="santasGray" fontFamily="secondary" space="initial">
+            Please, select one of the locations to{' '}
+            <a href="/start-mining">
+              <Text fontFamily="secondary" color="apple">
+                start your mining today
+              </Text>
+            </a>
+            !
           </Text>
         </InfoTextContent>
       </InfoComponentStyled>
-      <MouseContainerStyle>
-        <MouseStyle>
-          <ScrollStyle />
-        </MouseStyle>
-        <Arrow />
-      </MouseContainerStyle>
+      {displayType !== 'mobileL' && (
+        <MouseContainerStyle>
+          <MouseStyle>
+            <ScrollStyle />
+          </MouseStyle>
+          <Arrow />
+        </MouseContainerStyle>
+      )}
     </JumbotronStyle>
   )
 }

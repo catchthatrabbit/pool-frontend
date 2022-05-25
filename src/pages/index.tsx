@@ -1,15 +1,15 @@
-import ContentTitle from 'atoms/ContentTitle';
-import { RecentBlocksIcon } from 'atoms/icons';
-import SearchBar from 'atoms/SearchBar';
-import Jumbotron from 'components/Jumbotron';
-import Stats from 'components/Stats';
-import BaseTable from 'components/Table';
-import { homePageConfig } from 'config';
-import { minWidth } from 'helpers/responsive';
-import useGoToWallet from 'hooks/useGoToWallet';
-import React, { useState } from 'react';
-import { homeService } from 'services';
-import styled, { css } from 'styled-components';
+import ContentTitle from 'atoms/ContentTitle'
+import { RecentBlocksIcon } from 'atoms/icons'
+import SearchBar from 'atoms/SearchBar'
+import Jumbotron from 'components/Jumbotron'
+import Stats from 'components/Stats'
+import BaseTable from 'components/Table'
+import { homePageConfig } from 'config'
+import { minWidth } from 'helpers/responsive'
+import useGoToWallet from 'hooks/useGoToWallet'
+import React, { useState } from 'react'
+import { homeService } from 'services'
+import styled, { css } from 'styled-components'
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 
@@ -40,23 +40,23 @@ const SearchBarContainerStyled = styled.div`
   )}
 `
 const StatsContainerStyled = styled.div`
-  width: 90vw;
+  width: 100%;
   ${minWidth(
     'tablet',
     css`
-      width: 90vw;
+      width: 100%;
     `,
   )}
   ${minWidth(
     'laptop',
     css`
-      width: 90vw;
+      width: 100%;
     `,
   )}
   ${minWidth(
     'desktop',
     css`
-      width: 90vw;
+      width: 100%;
     `,
   )}
 `
@@ -95,7 +95,9 @@ export const getServerSideProps = async () => {
   }
 }
 
-const Home: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
+const Home: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (
+  props,
+) => {
   const [searchValue, setSearchValue] = useState('')
   const goToWallet = useGoToWallet()
   const handleSearchValueChange = (event) => {

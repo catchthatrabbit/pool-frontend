@@ -49,12 +49,12 @@ const TextStyled = styled.span<IProps>`
 
   ${(props: IProps) =>
     `font-size: ${
-      (props.size === 'tiny' && '11px') ||
-      (props.size === 'small' && '14px') ||
-      (props.size === 'medium' && '16px') ||
-      (props.size === 'large' && '18px') ||
-      (props.size === 'very-large' && '22px') ||
-      (props.size === 'ultra-large' && '38px')
+      (props.size === 'tiny' && '10px') ||
+      (props.size === 'small' && '12px') ||
+      (props.size === 'medium' && '14px') ||
+      (props.size === 'large' && '15px') ||
+      (props.size === 'very-large' && '18px') ||
+      (props.size === 'ultra-large' && '20px')
     };`};
   ${(props: IProps) =>
     minWidth(

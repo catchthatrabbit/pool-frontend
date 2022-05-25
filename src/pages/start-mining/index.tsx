@@ -1,16 +1,16 @@
-import Background from 'atoms/Background';
-import ContentTitle from 'atoms/ContentTitle';
-import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons';
-import SearchBar from 'atoms/SearchBar';
-import Text from 'atoms/Text/Text';
-import MinerCard from 'components/MinerCard';
-import MiningInfo from 'components/MiningInfo';
-import { minWidth } from 'helpers/responsive';
-import useGoToWallet from 'hooks/useGoToWallet';
-import React, { FC, useState } from 'react';
-import { startMiningService } from 'services';
-import styled, { css } from 'styled-components';
-import { colorVariables, fonts } from 'styles/variables';
+import Background from 'atoms/Background'
+import ContentTitle from 'atoms/ContentTitle'
+import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons'
+import SearchBar from 'atoms/SearchBar'
+import Text from 'atoms/Text/Text'
+import MinerCard from 'components/MinerCard'
+import MiningInfo from 'components/MiningInfo'
+import { minWidth } from 'helpers/responsive'
+import useGoToWallet from 'hooks/useGoToWallet'
+import React, { FC, useState } from 'react'
+import { startMiningService } from 'services'
+import styled, { css } from 'styled-components'
+import { colorVariables, fonts } from 'styles/variables'
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 
@@ -160,6 +160,7 @@ const BoxContentStyled = styled.div`
     border-radius: 3px;
     padding: 0.3em;
     margin: 0.5rem;
+    white-space: break-spaces;
   }
 `
 const BoxGuideStyled = styled.div`
@@ -241,7 +242,9 @@ export const getServerSideProps = async () => {
 
 const onClickHandler = () => setTimeout(() => window.scrollBy(0, -184), 0)
 
-const StartMiningPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
+const StartMiningPage: NextPage<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = (props) => {
   const [searchValue, setSearchValue] = useState('')
   const goToWallet = useGoToWallet()
 
@@ -272,13 +275,13 @@ const StartMiningPage: NextPage<InferGetServerSidePropsType<typeof getServerSide
           </MiningInfoStyled>
           <MiningInfoStyled id="pool-asia">
             <MiningInfo
-              data={ props.minerDataInfoAs }
+              data={props.minerDataInfoAs}
               title="Connect to Asian Pool"
             />
           </MiningInfoStyled>
-		      <MiningInfoStyled id="pool-asia-1">
+          <MiningInfoStyled id="pool-asia-1">
             <MiningInfo
-              data={ props.minerDataInfoAsSec }
+              data={props.minerDataInfoAsSec}
               title="Backup Asian Pool"
             />
           </MiningInfoStyled>
@@ -330,7 +333,9 @@ const StartMiningPage: NextPage<InferGetServerSidePropsType<typeof getServerSide
               <br />
               <Text space="initial">Wallet Generator command</Text>
               <Text space="initial" fontFamily="secondary">
-                <kbd>chmod -x wallet-generator &amp;&amp; ./wallet-generator</kbd>
+                <kbd>
+                  chmod -x wallet-generator &amp;&amp; ./wallet-generator
+                </kbd>
               </Text>
             </TextGuide1Styled>
             <TextGuideStyled>
