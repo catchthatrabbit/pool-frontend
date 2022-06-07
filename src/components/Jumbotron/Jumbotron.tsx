@@ -49,19 +49,7 @@ const MouseContainerStyle = styled.div`
   align-items: center;
   width: 24px;
   height: 64px;
-  display: flex;
-  ${minWidth(
-    'mobileL',
-    css`
-      display: none;
-    `,
-  )}
-  ${minWidth(
-    'tablet',
-    css`
-      display: none;
-    `,
-  )}
+  display: none;
   ${minWidth(
     'laptopL',
     css`
@@ -107,18 +95,12 @@ const LocationStyle = styled.div`
   )}
 `
 const USStyle = styled(LocationStyle)`
-  ${minWidth(
-    'mobileL',
-    css`
-      position: relative;
-      padding: 5px 20px;
-    `,
-  )}
+  position: relative;
+  padding: 5px 20px;
   ${minWidth(
     'tablet',
     css`
       position: absolute;
-      padding: 5px 20px;
     `,
   )}
   ${minWidth(
@@ -137,18 +119,12 @@ const USStyle = styled(LocationStyle)`
   )}
 `
 const EUStyle = styled(LocationStyle)`
-  ${minWidth(
-    'mobileL',
-    css`
-      position: relative;
-      padding: 5px 20px;
-    `,
-  )}
+  position: relative;
+  padding: 5px 20px;
   ${minWidth(
     'tablet',
     css`
       position: absolute;
-      padding: 5px 20px;
     `,
   )}
   ${minWidth(
@@ -167,18 +143,12 @@ const EUStyle = styled(LocationStyle)`
   )}
 `
 const APStyle = styled(LocationStyle)`
-  ${minWidth(
-    'mobileL',
-    css`
-      position: relative;
-      padding: 5px 20px;
-    `,
-  )}
+  position: relative;
+  padding: 5px 20px;
   ${minWidth(
     'tablet',
     css`
       position: absolute;
-      padding: 5px 20px;
     `,
   )}
   ${minWidth(
@@ -398,7 +368,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
           </li>
         ))}
       </ul>
-      {displayTitleTop && title}
+      {/*{displayTitleTop && title}*/}
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <Locations>
@@ -415,7 +385,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
         </Locations>
       </MapStyle>
       <InfoComponentStyled>
-        {!displayTitleTop && title}
+        {title}
         <InfoTextContent>
           <Text color="santasGray" fontFamily="secondary" space="initial">
             «Core mining pool in the Lotus land of Ores.»
@@ -445,14 +415,12 @@ const Jumbotron: FC<IProps> = ({ data }) => {
           </Text>
         </InfoTextContent>
       </InfoComponentStyled>
-      {displayType !== 'mobileL' && (
-        <MouseContainerStyle>
-          <MouseStyle>
-            <ScrollStyle />
-          </MouseStyle>
-          <Arrow />
-        </MouseContainerStyle>
-      )}
+      <MouseContainerStyle>
+        <MouseStyle>
+          <ScrollStyle />
+        </MouseStyle>
+        <Arrow />
+      </MouseContainerStyle>
     </JumbotronStyle>
   )
 }
