@@ -445,7 +445,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
           </Text>
         </InfoTextContent>
       </InfoComponentStyled>
-      {displayType !== 'mobileL' && (
+      {displayType !== 'tablet' && (
         <MouseContainerStyle>
           <MouseStyle>
             <ScrollStyle />
