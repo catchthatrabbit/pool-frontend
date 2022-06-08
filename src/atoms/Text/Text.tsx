@@ -54,7 +54,7 @@ const TextStyled = styled.span<IProps>`
       (props.size === 'medium' && '14px') ||
       (props.size === 'large' && '15px') ||
       (props.size === 'very-large' && '18px') ||
-      (props.size === 'ultra-large' && '20px')
+      (props.size === 'ultra-large' && '22px')
     };`};
   ${(props: IProps) =>
     minWidth(

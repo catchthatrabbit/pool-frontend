@@ -9,13 +9,23 @@ import ok from 'helpers/ok'
 import currency from 'helpers/currency'
 import numberFormat from 'helpers/numberFormat'
 import epoch from 'helpers/epoch'
+import { minWidth } from 'helpers/responsive'
 
 export type InfoTableItem = {
   key: number
   title: string
   value: string
   color: TextColor
-  type: 'xcb' | 'number' | 'time' | 'epoch' | 'ago' | 'percentage' | 'hashrate' | 'status' | 'string'
+  type:
+    | 'xcb'
+    | 'number'
+    | 'time'
+    | 'epoch'
+    | 'ago'
+    | 'percentage'
+    | 'hashrate'
+    | 'status'
+    | 'string'
 }
 
 export type WidthStyle = 'small' | 'large'
@@ -54,7 +64,7 @@ function formatPercentContent(value) {
 }
 
 function formatHashContent(value) {
-  return `${siFormat(value,2)}h/s`
+  return `${siFormat(value, 2)}h/s`
 }
 
 function formatStatusContent(value) {
@@ -81,16 +91,36 @@ const TableRowStyled = styled.tr<IPropsWidth>`
   th {
     ${cellStyling};
     padding: ${(props: IPropsWidth) =>
-      (props.width === 'large' && '16px 0 16px 47px') ||
+      (props.width === 'large' && '8px 5px 8px 27px') ||
       (props.width === 'small' && '16px 0 16px 47px')};
+    ${(props: IPropsWidth) =>
+      minWidth(
+        'tablet',
+        `
+        padding: ${
+          (props.width === 'large' && '16px 0 16px 47px') ||
+          (props.width === 'small' && '16px 0 16px 47px')
+        };
+      `,
+      )};
     border-right: 1px solid ${({ theme }) => theme.colors.gunPowder};
   }
 
   td {
     ${cellStyling};
     padding: ${(props: IPropsWidth) =>
-      (props.width === 'large' && '16px 0 16px 64px') ||
+      (props.width === 'large' && '8px 0 8px 22px') ||
       (props.width === 'small' && '16px 0 16px 45px')};
+    ${(props: IPropsWidth) =>
+      minWidth(
+        'tablet',
+        `
+        padding: ${
+          (props.width === 'large' && '16px 0 16px 64px') ||
+          (props.width === 'small' && '16px 0 16px 45px')
+        };
+      `,
+      )};
   }
 `
 

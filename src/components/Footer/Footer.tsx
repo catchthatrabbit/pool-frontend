@@ -1,15 +1,15 @@
-import Button from 'atoms/Button/Button';
-import ContentTitle from 'atoms/ContentTitle/ContentTitle';
-import { LogoIcon, StartMiningIcon } from 'atoms/icons';
-import Link from 'atoms/Link/Link';
-import Text from 'atoms/Text/Text';
-import { pathsConstant } from 'constant';
-import { minWidth } from 'helpers/responsive';
-import applyTransparence from 'helpers/transparentize';
-import ResponsiveContext from 'providers/responsive-provider/context';
-import React, { useContext } from 'react';
-import styled, { css } from 'styled-components';
-import { colorVariables, fonts } from 'styles/variables';
+import Button from 'atoms/Button/Button'
+import ContentTitle from 'atoms/ContentTitle/ContentTitle'
+import { LogoIcon, StartMiningIcon } from 'atoms/icons'
+import Link from 'atoms/Link/Link'
+import Text from 'atoms/Text/Text'
+import { pathsConstant } from 'constant'
+import { minWidth } from 'helpers/responsive'
+import applyTransparence from 'helpers/transparentize'
+import ResponsiveContext from 'providers/responsive-provider/context'
+import React, { useContext } from 'react'
+import styled, { css } from 'styled-components'
+import { colorVariables, fonts } from 'styles/variables'
 
 const InfoStyled = styled.div`
   font-family: ${fonts.secondary};
