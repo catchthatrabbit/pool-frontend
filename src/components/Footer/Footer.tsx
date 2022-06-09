@@ -7,7 +7,7 @@ import { pathsConstant } from 'constant'
 import { minWidth } from 'helpers/responsive'
 import applyTransparence from 'helpers/transparentize'
 import ResponsiveContext from 'providers/responsive-provider/context'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
 

@@ -368,7 +368,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
           </li>
         ))}
       </ul>
-      {/*{displayTitleTop && title}*/}
+      {displayTitleTop && title}
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <Locations>
@@ -385,7 +385,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
         </Locations>
       </MapStyle>
       <InfoComponentStyled>
-        {title}
+        {!displayTitleTop && title}
         <InfoTextContent>
           <Text color="santasGray" fontFamily="secondary" space="initial">
             «Core mining pool in the Lotus land of Ores.»
