@@ -61,7 +61,7 @@ const StatsContainerStyled = styled.div`
   )}
 `
 const TableContainerStyled = styled.div`
-  margin: 17px 50px 75px;
+  margin: 17px 15px 75px;
   ${minWidth(
     'laptopL',
     css`

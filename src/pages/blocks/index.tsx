@@ -1,22 +1,22 @@
-import SelectPool from '@components/SelectPool';
-import Background from 'atoms/Background';
-import ContentTitle from 'atoms/ContentTitle';
-import { BlockerLogoIcon } from 'atoms/icons';
-import Text from 'atoms/Text/Text';
-import ReactQueryTable from 'components/ReactQueryTable';
-import { blocksPageConfig, poolEndpointsConfig } from 'config';
-import { minWidth } from 'helpers/responsive';
-import { useEffect, useState } from 'react';
-import { dehydrate, QueryClient } from 'react-query';
-import { blocksService } from 'services';
-import { resetPoolSelector, usePoolStore } from 'store/pool.store';
-import styled, { css } from 'styled-components';
+import SelectPool from '@components/SelectPool'
+import Background from 'atoms/Background'
+import ContentTitle from 'atoms/ContentTitle'
+import { BlockerLogoIcon } from 'atoms/icons'
+import Text from 'atoms/Text/Text'
+import ReactQueryTable from 'components/ReactQueryTable'
+import { blocksPageConfig, poolEndpointsConfig } from 'config'
+import { minWidth } from 'helpers/responsive'
+import { useEffect, useState } from 'react'
+import { dehydrate, QueryClient } from 'react-query'
+import { blocksService } from 'services'
+import { resetPoolSelector, usePoolStore } from 'store/pool.store'
+import styled, { css } from 'styled-components'
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 
 const ContainerStyled = styled.div`
   z-index: 1;
-  margin: 36px 20px 73px;
+  margin: 36px 15px 73px;
   ${minWidth(
     'tablet',
     css`
@@ -84,9 +84,18 @@ export const getServerSideProps = async () => {
   const queryClient = new QueryClient()
 
   await Promise.allSettled([
-    queryClient.prefetchQuery(['maturedBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1], blocksService.getMaturedQueryFn),
-    queryClient.prefetchQuery(['immatureBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1], blocksService.getImmatureQueryFn),
-    queryClient.prefetchQuery(['candidatesBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1], blocksService.getCandidatesQueryFn),
+    queryClient.prefetchQuery(
+      ['maturedBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1],
+      blocksService.getMaturedQueryFn,
+    ),
+    queryClient.prefetchQuery(
+      ['immatureBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1],
+      blocksService.getImmatureQueryFn,
+    ),
+    queryClient.prefetchQuery(
+      ['candidatesBlocks', poolEndpointsConfig.EU_PRIMARY_API, 1],
+      blocksService.getCandidatesQueryFn,
+    ),
   ])
 
   return {
@@ -98,8 +107,10 @@ export const getServerSideProps = async () => {
 
 type TabType = 'blocks' | 'immature' | 'newblocks'
 
-const BlocksPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
-  const [ changeView, setChangeView ] = useState<TabType>('blocks')
+const BlocksPage: NextPage<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = () => {
+  const [changeView, setChangeView] = useState<TabType>('blocks')
 
   const resetPool = usePoolStore(resetPoolSelector)
   useEffect(resetPool, [])
@@ -108,54 +119,54 @@ const BlocksPage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={ <BlockerLogoIcon /> }>Pool blocks</ContentTitle>
+        <ContentTitle Image={<BlockerLogoIcon />}>Pool blocks</ContentTitle>
 
         <SelectPool />
 
         <TabSelector>
           <Text
-            active={ changeView === 'blocks' }
-            onClick={ () => setChangeView('blocks') }
+            active={changeView === 'blocks'}
+            onClick={() => setChangeView('blocks')}
           >
             Blocks
           </Text>
           <Text
-            active={ changeView === 'immature' }
-            onClick={ () => setChangeView('immature') }
+            active={changeView === 'immature'}
+            onClick={() => setChangeView('immature')}
           >
             Immature
           </Text>
           <Text
-            active={ changeView === 'newblocks' }
-            onClick={ () => setChangeView('newblocks') }
+            active={changeView === 'newblocks'}
+            onClick={() => setChangeView('newblocks')}
           >
             New blocks
           </Text>
         </TabSelector>
-        <TabContent active={ changeView === 'blocks' }>
+        <TabContent active={changeView === 'blocks'}>
           <TableContainerStyled>
             <ReactQueryTable
-              columns={ blocksPageConfig.BLOCKS_TABLE.columns }
-              queryKey={ [ 'maturedBlocks' ] }
-              queryFn={ blocksService.getMaturedQueryFn }
+              columns={blocksPageConfig.BLOCKS_TABLE.columns}
+              queryKey={['maturedBlocks']}
+              queryFn={blocksService.getMaturedQueryFn}
             />
           </TableContainerStyled>
         </TabContent>
-        <TabContent active={ changeView === 'immature' }>
+        <TabContent active={changeView === 'immature'}>
           <TableContainerStyled>
             <ReactQueryTable
-              columns={ blocksPageConfig.BLOCKS_TABLE.columns }
-              queryKey={ [ 'immatureBlocks' ] }
-              queryFn={ blocksService.getImmatureQueryFn }
+              columns={blocksPageConfig.BLOCKS_TABLE.columns}
+              queryKey={['immatureBlocks']}
+              queryFn={blocksService.getImmatureQueryFn}
             />
           </TableContainerStyled>
         </TabContent>
-        <TabContent active={ changeView === 'newblocks' }>
+        <TabContent active={changeView === 'newblocks'}>
           <TableContainerStyled>
             <ReactQueryTable
-              columns={ blocksPageConfig.BLOCKS_TABLE.columns }
-              queryKey={ [ 'candidatesBlocks' ] }
-              queryFn={ blocksService.getCandidatesQueryFn }
+              columns={blocksPageConfig.BLOCKS_TABLE.columns}
+              queryKey={['candidatesBlocks']}
+              queryFn={blocksService.getCandidatesQueryFn}
             />
           </TableContainerStyled>
         </TabContent>

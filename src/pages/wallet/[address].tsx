@@ -34,7 +34,7 @@ function formatAddressContent(address) {
 
 const ContainerStyled = styled.div`
   z-index: 1;
-  margin: 36px 20px 73px;
+  margin: 10px 15px 73px;
   ${minWidth(
     'tablet',
     css`

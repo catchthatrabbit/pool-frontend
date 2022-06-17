@@ -7,7 +7,7 @@ import BoxEmail from 'atoms/BoxEmail'
 import { minWidth } from 'helpers/responsive'
 
 const ContainerStyled = styled.div`
-  margin: 36px 20px 73px;
+  margin: 10px 15px 26px;
   width: auto;
   ${minWidth(
     'tablet',
@@ -40,13 +40,15 @@ const ContactsPage: FC = () => (
       <ContentTitle Image={<ContactUsIcon />}>Contact</ContentTitle>
       <BoxContentStyled>
         <BoxEmail title="Support" email="support@catchthatrabbit.com">
-          If you have any questions about our pool, you can contact us freely through this email.
+          If you have any questions about our pool, you can contact us freely
+          through this email.
         </BoxEmail>
         <BoxEmail
           title="Security &amp; Bug reports"
           email="security@catchthatrabbit.com"
         >
-          Any bug or any other security issue reports are highly and greatly appreciated.
+          Any bug or any other security issue reports are highly and greatly
+          appreciated.
         </BoxEmail>
         <BoxEmail
           title="Legal &amp; Commercial"

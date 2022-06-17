@@ -20,13 +20,7 @@ const InfoStyled = styled.div`
       margin-top: 10px;
     }
   }
-  margin-top: 24px;
-  ${minWidth(
-    'tablet',
-    css`
-      margin-top: 0;
-    `,
-  )}
+  margin-top: 0;
 `
 const FooterSection = styled.div`
   box-sizing: border-box;
@@ -82,7 +76,7 @@ const MainSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
   max-width: 1200px;
-  margin: 10px 50px 28px;
+  margin: 10px 15px 28px;
   flex-flow: column;
   ${minWidth(
     'tablet',
