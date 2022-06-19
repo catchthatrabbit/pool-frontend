@@ -365,21 +365,13 @@ const Wallet: NextPage<
           </TableContainerStyled>
         </TabContent>
 
-        <BoxPanel title="Connections" desc="Data sources &amp; direct links.">
+        <BoxPanel title="Connections" desc="Direct link.">
           Direct link to stats:{' '}
           <AStyled
             href={'https://' + props.address + '.ctr.watch'}
             target="_blank"
           >
             {props.address}.ctr.watch
-          </AStyled>
-          <br />
-          API access:{' '}
-          <AStyled
-            href={'https://catchthatrabbit.com/api/accounts/' + props.address}
-            target="_blank"
-          >
-            catchthatrabbit.com/api/accounts/{props.address}
           </AStyled>
         </BoxPanel>
       </ContainerStyled>
