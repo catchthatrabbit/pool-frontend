@@ -34,10 +34,8 @@ const PoolSelect = styled.select`
   height: 100%;
   cursor: pointer;
   font-family: ${fonts.primary};
-  letter-spacing: 0.05em;
   color: ${colorVariables.white};
   font-style: normal;
-  font-weight: 600;
   white-space: initial;
   font-size: 18px;
   text-align: center;
@@ -45,7 +43,6 @@ const PoolSelect = styled.select`
   border: 1px solid ${({ theme }) => theme.colors.spindle};
   border-radius: 10px;
   padding: 15px;
-  padding-right: 30px;
   position: relative;
   z-index: 1;
 
