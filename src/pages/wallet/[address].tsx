@@ -183,46 +183,22 @@ const TabSelector = styled(ColumnContainer)`
 `
 const MiningInfoContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
   align-self: center;
+  justify-content: space-between;
   margin: 18px 0 97px;
   padding: 0;
-  flex-flow: row wrap;
   width: 100%;
   & > * {
+    width: 49%;
     flex-grow: 1;
     margin-right: 0;
-
-    &:last-child {
-      margin-right: 0;
-      margin-top: 24px;
-    }
   }
-  ${minWidth(
-    'tablet',
-    css`
-      display: flex;
-      & > * {
-        flex-grow: 1;
-        margin-right: 0;
-
-        &:last-child {
-          margin-right: 0;
-          margin-top: 24px;
-        }
-      }
-    `,
-  )}
   ${minWidth(
     'laptopL',
     css`
-      & > * {
-        margin-right: 16px;
-
-        &:last-child {
-          margin-right: 0;
-          margin-top: 0;
-        }
-      }
+        gap: 16px;
     `,
   )}
 `
