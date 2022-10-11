@@ -216,13 +216,13 @@ export const hydrateWalletInfoBoxes = (data: any) => {
       },
       {
         key: '5',
-        title: `Total paid on ${new Date().toLocaleDateString('default', { month: 'long', year: 'numeric' })}`,
+        title: `Total paid in ${new Date().toLocaleDateString('default', { month: 'long', year: 'numeric' })}`,
         value: (data.paidThisMonth / unitsConstant.NUCLE),
         type: 'xcb',
       },
       {
         key: '6',
-        title: `Total paid on ${ new Date(new Date().setMonth(new Date().getMonth() - 1)).toLocaleDateString('default', { month: 'long', year: 'numeric' }) }`,
+        title: `Total paid in ${ new Date(new Date().setMonth(new Date().getMonth() - 1)).toLocaleDateString('default', { month: 'long', year: 'numeric' }) }`,
         value: (data.paidLastMonth / unitsConstant.NUCLE),
         type: 'xcb',
       },
