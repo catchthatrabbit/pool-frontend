@@ -14,6 +14,9 @@ import type { AppProps } from 'next/app'
 
 const Footer = dynamic(() => import('components/Footer'), { ssr: false })
 
+import info from '../pool.json'
+import official from 'helpers/official'
+
 function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter()
   const isErrorPage = pathname === '/404' || pathname === '/_error'
@@ -23,17 +26,21 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Toaster />
 
       <Head>
-        <title>Catch that Rabbit</title>
-        <meta name="description" content="Catch that Rabbit — ₡ORE mining pool" />
-        <meta name="keywords" content="catch,that,rabbit,mining,pool,core,ore,₡ORE,blockchain,xcb,xce,xab,network,open-source,open,source,mainnet,devin" />
-        <meta property="wallet:xcb" content="cb7936b9b7980a0544a6da7ae1cea8424bac9046d997" />
-        <meta property="og:title" content="Catch that Rabbit" />
-        <meta property="og:description" content="Catch that Rabbit — ₡ORE mining pool" />
-        <meta property="og:image" content="/images/ctr-og.jpg" />
+        <title>{ (info.name !== "" && info.name !== undefined) ? info.name : "Community pool" }</title>
+        <meta name="description" content={ (info.description !== "" && info.description !== undefined) ? info.description : "" } />
+        <meta name="keywords" content={ (info.keywords !== "" && info.keywords !== undefined) ? info.keywords : "" } />
+        {Object.keys(info.wallet).map((key, id) => {
+          return (
+            <meta property={"wallet:" + key.toLowerCase()} content={info.wallet[key].toLowerCase()} key={id} />
+          )
+        })}
+        <meta property="og:title" content={ (info.name !== "" && info.name !== undefined) ? info.name : "Community pool" } />
+        <meta property="og:description" content={ (info.description !== "" && info.description !== undefined) ? info.description : "" } />
+        <meta property="og:image" content={ (info.images.og !== "" && info.images.og !== undefined) ? info.images.og : "" } />
         <meta property="og:type" content="website" />
-        <meta property="twitter:title" content="Catch that Rabbit" />
-        <meta property="twitter:description" content="Catch that Rabbit — ₡ORE mining pool" />
-        <meta property="twitter:image" content="/images/ctr-tw.jpg" />
+        <meta property="twitter:title" content={ (info.name !== "" && info.name !== undefined) ? info.name : "Community pool" } />
+        <meta property="twitter:description" content={ (info.description !== "" && info.description !== undefined) ? info.description : "" } />
+        <meta property="twitter:image" content={ (info.images.twitter !== "" && info.images.twitter !== undefined) ? info.images.twitter : "" } />
         <meta property="twitter:card" content="summary" />
       </Head>
 

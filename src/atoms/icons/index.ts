@@ -1,6 +1,7 @@
 // @ts-nocheck
 import Arrow from './icons/arrow.svg'
 import BlockerLogoIcon from './icons/blocker-logo.svg'
+import LogoCommunityIcon from './icons/logo-community.svg'
 import LogoIcon from './icons/logo.svg'
 import ContactUsIcon from './icons/contact-us.svg'
 import MinersIcon from './icons/miners.svg'
@@ -16,6 +17,7 @@ import CopyIcon from './icons/copy.svg'
 export {
   Arrow,
   BlockerLogoIcon,
+  LogoCommunityIcon,
   LogoIcon,
   ContactUsIcon,
   MinersIcon,

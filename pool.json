@@ -1,0 +1,28 @@
+{
+  "name": "Catch that Rabbit",
+  "description": "Catch that Rabbit — ₡ORE mining pool",
+  "maintainers": {
+    "Support": {
+      "email": "support@catchthatrabbit.com",
+      "description": "If you have any questions about our pool, you can contact us freely through this email."
+    },
+    "Security": {
+      "email": "security@catchthatrabbit.com",
+      "description": "Any bug or any other security issue reports are highly and greatly appreciated."
+    },
+    "Commercial": {
+      "email": "contact@catchthatrabbit.com",
+      "description": "Please, feel free to email us with any legal and commercial questions."
+    }
+  },
+  "keywords": "catch,that,rabbit,mining,pool,core,ore,₡ORE,blockchain,xcb,xce,xab,network,open-source,open,source,mainnet,devin",
+  "images": {
+    "logo": "",
+    "og": "/images/ctr-og.jpg",
+    "twitter": "/images/ctr-tw.jpg"
+  },
+  "wallet": {
+    "xcb": "cb7936b9b7980a0544a6da7ae1cea8424bac9046d997"
+  },
+  "estd": "2020"
+}

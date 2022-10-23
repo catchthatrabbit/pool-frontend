@@ -30,6 +30,19 @@ Official website is: [catchthatrabbit.com](https://catchthatrabbit.com)
 
 Any other site can be a copy of the website. We are not responsible for it and its content.
 
+## Legal notice
+
+**You CAN NOT:**
+1. Modify, delete, or alter the *legal notification window*.
+1. Modify, delete, or alter the *code* of the legal notification window.
+1. Modify or add new *pool endpoints*. (Server, Port, Username, Password)
+1. Put the *official logo* on the copies.
+1. Refer to *miner software* with false or misleading information.
+1. Host the copy on a *similar address* to catchthatrabbit.com.
+1. Use *official contact emails* for the copies.
+
+Any violation of the rules will result in blacklisting the instance without notice.
+
 ## Contributions
 
 Feel free to contribute in any way.
@@ -41,7 +54,7 @@ We appreciate:
 - Open [pull request](https://github.com/catchthatrabbit/pool-frontend/pulls)
 - [Propose feature](https://github.com/catchthatrabbit/pool-frontend/issues/new?template=feature.yml)
 - Improve the stylesheets
-- Improve styled components and [Storybook](https://storybook.js.org/)
+- Improve [styled components](https://styled-components.com/) and [Storybook](https://storybook.js.org/)
 - Star this repository
 
 ## Epigram

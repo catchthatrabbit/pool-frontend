@@ -1,6 +1,6 @@
 import Button from 'atoms/Button/Button'
 import ContentTitle from 'atoms/ContentTitle/ContentTitle'
-import { LogoIcon, StartMiningIcon } from 'atoms/icons'
+import { LogoIcon, LogoCommunityIcon, StartMiningIcon } from 'atoms/icons'
 import Link from 'atoms/Link/Link'
 import Text from 'atoms/Text/Text'
 import { pathsConstant } from 'constant'
@@ -10,6 +10,8 @@ import ResponsiveContext from 'providers/responsive-provider/context'
 import React, { useContext, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
+import official from 'helpers/official'
+import info from '../../../pool.json'
 
 const InfoStyled = styled.div`
   font-family: ${fonts.secondary};
@@ -175,7 +177,6 @@ const Footer = () => {
       title: 'About',
       list: [
         { text: 'Contact', href: '/contact' },
-        { text: 'Support', href: 'mailto:support@catchthatrabbit.com' },
       ],
     },
   ]
@@ -192,9 +193,12 @@ const Footer = () => {
       </HeaderSection>
       <MainSection>
         <LogoStyled>
-          <LogoIcon />
+          { official()
+            ? <LogoIcon />
+            : <LogoCommunityIcon />
+          }
           <LogoTextStyle>
-            <Text size={fontSize}>Dedicated Pool</Text>
+            <Text size={fontSize}>{ official() ? "Dedicated" : "Community" } Pool</Text>
             <br />
             <Text size={fontSize}>for </Text>
             <Text color="apple" size={fontSize}>
@@ -212,8 +216,7 @@ const Footer = () => {
       </MainSection>
       <FooterSection>
         <Text size="tiny">
-          © 2020-{new Date().getFullYear()} Catch That Rabbit. All rights
-          reserved.
+          © {(info.estd !== "" && info.estd !== undefined) ? info.estd+"-" : ""}{ new Date().getFullYear() } { (info.name !== "" && info.name !== undefined) ? info.name : "Test pool" }. { official() ? "All rights reserved" : "Some rights reserved" }.
         </Text>
       </FooterSection>
     </FooterStyled>

@@ -10,6 +10,8 @@ import ResponsiveContext from 'providers/responsive-provider/context'
 import React, { FC, useContext } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import { colorVariables } from 'styles/variables'
+import official from 'helpers/official'
+import info from '../../../pool.json'
 
 const scrollTranslate = keyframes`
   0% {
@@ -284,7 +286,7 @@ const InfoComponentStyled = styled.div`
     'laptopL',
     css`
       text-align: start;
-      margin-left: 100px;
+      margin-left: 5vw;
       width: 20%;
       top: 20%;
       position: absolute;
@@ -297,7 +299,7 @@ const InfoComponentStyled = styled.div`
     'desktop',
     css`
       text-align: start;
-      margin-left: 140px;
+      margin-left: 5vw;
       width: 20%;
       top: 20%;
       position: absolute;
@@ -313,6 +315,31 @@ const InfoTextContent = styled.div`
 const ImageStyled = styled.img`
   height: 100%;
   width: 100%;
+`
+
+const LegalWrapper = styled.div`
+  width: 90vw;
+  text-align: left;
+`
+
+const LegalBox = styled.div`
+  text-align: left;
+  padding: 1em;
+  background-color: rgb(93, 99, 115, 0.1);
+  color: #999eac;
+  border-radius: 1em;
+`
+
+const LegalTitle = styled.div`
+  font-size: 1.3em;
+  font-family: Orbitron,sans-serif;
+  color: #fff;
+  margin-bottom: 0.3em;
+  letter-spacing: 0.1em;
+`
+
+const LegalMessage = styled.div`
+  line-height: 1.4em;
 `
 
 interface IProps {
@@ -346,15 +373,27 @@ const MapButtonWrapper = ({ href, children }) => {
   }
 }
 
+const LegalNotice = () => {
+  if (official()) { return null }
+  return (
+    <LegalWrapper>
+      <LegalBox>
+        <LegalTitle>The rabbit community is here 🐰🐰🐰</LegalTitle>
+        <LegalMessage>This is not an offical pool, but its community distribution running on the domain: {window.location.hostname}<br />The official Catch that Rabbit pool is located at <a href="https://catchthatrabbit.com" target="_blank">catchthatrabbit.com</a>.<br />Please, report any malicious instance to at: <a href="mailto:security@catchthatrabbit.com">security@catchthatrabbit.com</a></LegalMessage>
+      </LegalBox>
+    </LegalWrapper>
+  )
+}
+
 const Jumbotron: FC<IProps> = ({ data }) => {
   const displayType = useContext(ResponsiveContext)
   const displayTitleTop = displayType === 'tablet' || displayType === 'mobileL'
 
   const title = (
     <TitleTexStyled>
-      <Text size="ultra-large">Dedicated Pool for</Text>
+      <Text size="ultra-large">{ official() ? "Dedicated" : "Community" } Pool for</Text>
       <Text size="ultra-large" color="apple">
-        Core Coin
+        {' '}Core Coin{' '}
       </Text>
       <Text size="ultra-large">&amp; IoT devices</Text>
     </TitleTexStyled>
@@ -368,7 +407,7 @@ const Jumbotron: FC<IProps> = ({ data }) => {
           </li>
         ))}
       </ul>
-      {/*{displayTitleTop && title}*/}
+      <LegalNotice />
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <Locations>
@@ -390,7 +429,10 @@ const Jumbotron: FC<IProps> = ({ data }) => {
           <Text color="santasGray" fontFamily="secondary" space="initial">
             «Core mining pool in the Lotus land of Ores.»
             <br />
-            Use waste energy to dig some Ores.
+            <br />
+            <Text fontFamily="primary" color="apple" size="large">
+              Estd. {(info.estd !== "" && info.estd !== undefined) ? info.estd : new Date().getFullYear()}
+            </Text>
             <br />
             <br />
           </Text>

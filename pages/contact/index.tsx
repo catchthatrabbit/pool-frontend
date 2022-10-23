@@ -5,6 +5,8 @@ import { ContactUsIcon } from 'atoms/icons'
 import Background from 'atoms/Background'
 import BoxEmail from 'atoms/BoxEmail'
 import { minWidth } from 'helpers/responsive'
+import official from 'helpers/official'
+import info from '../../pool.json'
 
 const ContainerStyled = styled.div`
   margin: 10px 15px 26px;
@@ -39,23 +41,15 @@ const ContactsPage: FC = () => (
     <ContainerStyled>
       <ContentTitle Image={<ContactUsIcon />}>Contact</ContentTitle>
       <BoxContentStyled>
-        <BoxEmail title="Support" email="support@catchthatrabbit.com">
-          If you have any questions about our pool, you can contact us freely
-          through this email.
-        </BoxEmail>
-        <BoxEmail
-          title="Security &amp; Bug reports"
-          email="security@catchthatrabbit.com"
-        >
-          Any bug or any other security issue reports are highly and greatly
-          appreciated.
-        </BoxEmail>
-        <BoxEmail
-          title="Legal &amp; Commercial"
-          email="contact@catchthatrabbit.com"
-        >
-          Please, feel free to email us with any legal and commercial questions.
-        </BoxEmail>
+        {Object.keys(info.maintainers).map((key, id) => {
+          if((info.maintainers[key].email.slice(-19)==="catchthatrabbit.com" && official()) || (info.maintainers[key].email.slice(-19)!=="catchthatrabbit.com" && !official())) {
+            return (
+              <BoxEmail title={key} email={info.maintainers[key].email} key={id}>
+                {info.maintainers[key].description}
+              </BoxEmail>
+            )
+          }
+        })}
       </BoxContentStyled>
     </ContainerStyled>
   </>
