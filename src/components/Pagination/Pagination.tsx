@@ -1,9 +1,8 @@
-import ReactPaginate from 'react-paginate'
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import { colorVariables, fonts } from 'styles/variables'
-import applyTransparence from 'helpers/transparentize'
-import { minWidth } from 'helpers/responsive'
+import { minWidth } from 'helpers/responsive';
+import applyTransparence from 'helpers/transparentize';
+import ReactPaginate from 'react-paginate';
+import styled, { css } from 'styled-components';
+import { colorVariables, fonts } from 'styles/variables';
 
 const PaginationContainer = styled.div`
   ul.pagination {
@@ -80,13 +79,13 @@ const PaginationContainer = styled.div`
   )}
 `
 
-interface IProps {
+interface IPaginationProps {
   onPageChange: (page: number) => void
   pageCount: number
   forcePage?: number
 }
 
-const Pagination: FC<IProps> = ({ onPageChange, pageCount, forcePage }) => {
+const Pagination = ({ onPageChange, pageCount, forcePage }: IPaginationProps) => {
   const handlePageChange = ({ selected: page }) => {
     const currentPage = page + 1
     onPageChange(currentPage)

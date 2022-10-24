@@ -1,14 +1,13 @@
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import { colorVariables } from 'styles/variables'
+import styled, { css } from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
-interface IProps {
+interface IHamburgerButtonProps {
   opened: boolean
   onClick?: () => void
   className?: string
 }
 
-const ButtonStyled = styled.button<IProps>`
+const ButtonStyled = styled.button<IHamburgerButtonProps>`
   height: 48px;
   width: 40px;
   background: inherit;
@@ -53,7 +52,7 @@ const ButtonStyled = styled.button<IProps>`
     `}
 `
 
-const HamburgerButton: FC<IProps> = ({ opened, onClick, className }) => {
+const HamburgerButton = ({ opened, onClick, className }: IHamburgerButtonProps) => {
   return (
     <ButtonStyled
       type="button"

@@ -1,9 +1,8 @@
 import Text from 'atoms/Text/Text';
 import { minWidth } from 'helpers/responsive';
-import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 
-import type { InfoBoxItem } from 'helpers/text'
+import type { InfoBoxItemProps } from 'helpers/text'
 
 const WrapperStyled = styled.div`
   height: 70px;
@@ -26,7 +25,7 @@ const WrapperStyled = styled.div`
   )}
 `
 
-const InfoBox: FC<InfoBoxItem> = ({ value, title }) => (
+const InfoBox = ({ value, title }: InfoBoxItemProps) => (
   <WrapperStyled>
     <Text size="large" fontWeight="bold">
       {value.prefix}

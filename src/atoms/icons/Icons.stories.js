@@ -1,4 +1,3 @@
-import React from 'react'
 import * as icons from './index'
 import styled from 'styled-components'
 

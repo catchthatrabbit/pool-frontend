@@ -1,22 +1,14 @@
-import React, { FC, useContext } from 'react'
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Label,
-  ResponsiveContainer,
-  Tooltip,
-} from 'recharts'
-import { colorVariables, fonts } from 'styles/variables'
-import ResponsiveContext from 'providers/responsive-provider/context'
+import ResponsiveContext from 'providers/responsive-provider/context';
+import { useContext } from 'react';
+import { CartesianGrid, Label, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { colorVariables, fonts } from 'styles/variables';
 
-interface IProps {
+interface IChartLineProps {
   data: []
+  children: React.ReactNode;
 }
 
-const ChartLine: FC<IProps> = ({ data }) => {
+const ChartLine = ({ data }: IChartLineProps) => {
   const displayType = useContext(ResponsiveContext)
   const fontSize =
     displayType === 'mobileL' || displayType === 'tablet' ? '14px' : '27px'

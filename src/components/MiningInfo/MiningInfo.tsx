@@ -1,9 +1,8 @@
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import InfoTable, { InfoTableItem, WidthStyle } from 'atoms/InfoTable/InfoTable'
-import { colorVariables } from 'styles/variables'
-import Text, { TextColor } from 'atoms/Text/Text'
-import { minWidth } from 'helpers/responsive'
+import InfoTable, { InfoTableItem, WidthStyle } from 'atoms/InfoTable/InfoTable';
+import Text, { TextColor } from 'atoms/Text/Text';
+import { minWidth } from 'helpers/responsive';
+import styled, { css } from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
 const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gunPowder};
@@ -42,19 +41,19 @@ const TableContainer = styled.div`
   margin: 16px 0;
 `
 
-interface IProps {
+interface IIMinerCardPropsProps {
   data: InfoTableItem[]
   title: string
   width: WidthStyle
   color: TextColor
 }
 
-const MiningInfo: FC<IProps> = ({
+const MiningInfo = ({
   data,
   title,
   width = 'large',
   color = 'apple',
-}) => (
+}: IIMinerCardPropsProps) => (
   <Container>
     <TitleContainer>
       <Text size="very-large" color={color}>

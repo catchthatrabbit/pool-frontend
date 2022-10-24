@@ -1,4 +1,3 @@
-import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import Button from '../Button/index'
@@ -12,11 +11,12 @@ const MapButtonStyled = styled.div`
   height: 125px;
 `
 
-interface IProps {
+interface IMapButtonProps {
   href: string
+  children: React.ReactNode;
 }
 
-const MapButton: FC<IProps> = ({ children, href = '' }) => (
+const MapButton = ({ children, href = '' }: IMapButtonProps) => (
   <MapButtonStyled>
     <MapCircle />
     <Button theme="transparent" href={href}>

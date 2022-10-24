@@ -1,21 +1,19 @@
-import 'styles/fonts.css'
-import dynamic from 'next/dynamic'
+import 'styles/fonts.css';
+
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+
+import info from '../pool.json';
+import RootProvider from '../src/providers';
 
 const MainContent = dynamic(() => import('atoms/MainContent/MainContent'), { ssr: false })
 const Toaster = dynamic(() => import('atoms/Toaster'), { ssr: false })
 const Header = dynamic(() => import('components/Header/Header'), { ssr: false })
 const Head = dynamic(() => import('next/head'), { ssr: false })
-import { useRouter } from 'next/router'
-import React from 'react'
-
-import RootProvider from '../src/providers'
 
 import type { AppProps } from 'next/app'
 
 const Footer = dynamic(() => import('components/Footer'), { ssr: false })
-
-import info from '../pool.json'
-import official from 'helpers/official'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter()

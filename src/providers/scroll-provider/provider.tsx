@@ -1,46 +1,33 @@
-import { PureComponent } from 'react'
-import ScrollContext, { ScrollState } from './context'
-import { throttle } from '../../helpers/throttle'
+import { memo, useEffect, useState } from 'react';
 
-class ScrollProvider extends PureComponent<null, ScrollState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      prevScrollPos: 0,
-      currentScrollPos: 0,
-    };
-  }
+import { throttle } from '../../helpers/throttle';
+import ScrollContext, { ScrollState } from './context';
 
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
-  }
-
-  handleScroll() {
-    return throttle(() => {
-      const scrollPos = window.pageYOffset
-
-      const { currentScrollPos } = this.state
-
-      this.setState({
-        prevScrollPos: currentScrollPos,
-        currentScrollPos: scrollPos,
-      })
-    }, 60)
-  }
-
-  render() {
-    const { children } = this.props
-
-    return (
-      <ScrollContext.Provider value={this.state}>
-        {children}
-      </ScrollContext.Provider>
-    )
-  }
+interface IScrollProviderProps {
+  children: React.ReactNode;
 }
-export default ScrollProvider
+
+const ScrollProvider = ({ children }: IScrollProviderProps) => {
+  const [ state, setState ] = useState<ScrollState>({
+    prevScrollPos: 0,
+    currentScrollPos: 0,
+  })
+
+  const handleOnScroll = throttle(
+    () => setState(prev => ({ prevScrollPos: prev.currentScrollPos, currentScrollPos: window.pageYOffset })),
+      60,
+    )
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleOnScroll)
+    return () => window.removeEventListener('scroll', handleOnScroll)
+  }, [])
+
+  return (
+    <ScrollContext.Provider value={ state }>
+      { children }
+    </ScrollContext.Provider>
+  )
+}
+
+export default memo(ScrollProvider)

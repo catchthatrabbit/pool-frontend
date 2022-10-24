@@ -1,4 +1,3 @@
-import React from 'react'
 import BoxPanel from './BoxPanel.tsx'
 
 export default {

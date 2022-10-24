@@ -1,8 +1,7 @@
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { colorVariables } from 'styles/variables'
-import Text from 'atoms/Text'
-import Button from 'atoms/Button'
+import Button from 'atoms/Button';
+import Text from 'atoms/Text';
+import styled from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
 const BoxStyled = styled.div`
   display: flex;
@@ -24,12 +23,13 @@ const TextContentStyled = styled.div`
   margin-top: 37px;
 `
 
-interface IProps {
+interface IBoxEmailProps {
   title: string
   email: string
+  children: React.ReactNode;
 }
 
-const BoxEmail: FC<IProps> = ({ title, email, children }) => (
+const BoxEmail = ({ title, email, children }: IBoxEmailProps) => (
   <BoxStyled>
     <TextTitleStyled>
       <Text size="very-large">

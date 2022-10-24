@@ -1,8 +1,7 @@
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import InfoBox from 'components/InfoBox'
-import { InfoBoxItem } from 'helpers/text'
-import { minWidth } from 'helpers/responsive'
+import InfoBox from 'components/InfoBox';
+import { minWidth } from 'helpers/responsive';
+import {  InfoBoxItemProps } from 'helpers/text';
+import styled, { css } from 'styled-components';
 
 const BoxesWrapperStyled = styled.ul`
   display: flex;
@@ -31,11 +30,11 @@ const BoxesWrapperStyled = styled.ul`
     `,
   )}
 `
-interface IProps {
-  data: InfoBoxItem[]
+interface IBoxesWrapperProps {
+  data:  InfoBoxItemProps[]
 }
 
-const BoxesWrapper: FC<IProps> = ({ data }) => (
+const BoxesWrapper = ({ data }: IBoxesWrapperProps) => (
   <BoxesWrapperStyled>
     {data.map(({ title, value }) => (
       <li key={title}>

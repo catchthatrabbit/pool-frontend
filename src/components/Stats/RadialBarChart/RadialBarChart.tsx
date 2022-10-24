@@ -1,10 +1,9 @@
 // @ts-nocheck
-import * as d3 from 'd3'
-import React, { FC, useEffect } from 'react'
-import { colorVariables, fonts } from 'styles/variables'
-
-import styled from 'styled-components'
-import { ChartData } from 'types/app'
+import * as d3 from 'd3';
+import { useEffect } from 'react';
+import styled from 'styled-components';
+import { colorVariables, fonts } from 'styles/variables';
+import { ChartData } from 'types/app';
 
 const axisCircleClass = 'radial-bar-axis-circle'
 const hourClass = 'radial-bar-hour'
@@ -38,11 +37,11 @@ const Chart = styled.div`
   }
 `
 
-interface IProps {
+interface IRadialBarChartProps {
   data: ChartData
 }
 
-const RadialBarChart: FC<IProps> = ({ data = null }) => {
+const RadialBarChart = ({ data = null }: IRadialBarChartProps) => {
   const size = 900
   const innerRadius = 250
   const outerRadius = size * 0.6

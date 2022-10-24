@@ -1,6 +1,9 @@
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import { minWidth } from 'helpers/responsive'
+import { minWidth } from 'helpers/responsive';
+import styled, { css } from 'styled-components';
+
+interface IMainContentProps {
+  children: React.ReactNode;
+}
 
 const MainContentStyled = styled.div`
   display: flex;
@@ -24,7 +27,7 @@ const MainContentStyled = styled.div`
   )}
 `
 
-const MainContent: FC = ({ children }) => (
+const MainContent = ({ children }: IMainContentProps) => (
   <MainContentStyled>{children}</MainContentStyled>
 )
 

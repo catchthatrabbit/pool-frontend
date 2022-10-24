@@ -1,10 +1,9 @@
 import Text from 'atoms/Text/Text';
 import { minWidth } from 'helpers/responsive';
-import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { colorVariables } from 'styles/variables';
 
-import type { InfoBoxItem } from 'helpers/text'
+import type {  InfoBoxItemProps } from 'helpers/text'
 
 const WrapperStyled = styled.div`
   border: 1px solid ${colorVariables.gunPowder};
@@ -60,11 +59,12 @@ const TextStyled = styled.div`
   )}
 `
 
-interface IProps {
+interface IInfoCardProps {
   title: string
-  data: InfoBoxItem[]
+  data:  InfoBoxItemProps[]
 }
-const InfoCard: FC<IProps> = ({ title, data }) => (
+
+const InfoCard = ({ title, data }: IInfoCardProps) => (
   <WrapperStyled>
     <TitleStyled>
       <Text size="very-large" fontWeight="bold">

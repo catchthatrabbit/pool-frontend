@@ -1,23 +1,16 @@
-import React, { FC, useContext } from 'react'
-import {
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Label,
-  BarChart,
-  Bar,
-  ResponsiveContainer,
-  Tooltip,
-} from 'recharts'
-import { colorVariables, fonts } from 'styles/variables'
-import checkData from 'helpers/chartDataTransform'
-import ResponsiveContext from 'providers/responsive-provider/context'
+import checkData from 'helpers/chartDataTransform';
+import ResponsiveContext from 'providers/responsive-provider/context';
+import { useContext } from 'react';
+import { Bar, BarChart, CartesianGrid, Label, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { colorVariables, fonts } from 'styles/variables';
 
-interface IProps {
+interface IChartBarSpacingProps {
   data: []
+  children: React.ReactNode;
 }
 
-const ChartBarSpacing: FC<IProps> = ({ data }) => {
+
+const ChartBarSpacing = ({ data }: IChartBarSpacingProps) => {
   const chartData = checkData(data, 57)
   const displayType = useContext(ResponsiveContext)
   const fontSize =

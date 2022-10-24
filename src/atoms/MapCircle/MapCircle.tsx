@@ -1,7 +1,6 @@
-import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import { colorVariables } from 'styles/variables'
-import applyTransparence from 'helpers/transparentize'
+import applyTransparence from 'helpers/transparentize';
+import styled, { keyframes } from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
 const Circle = styled.div`
   height: 24px;

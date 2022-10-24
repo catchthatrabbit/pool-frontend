@@ -1,22 +1,21 @@
-import NoData from '@components/NoData'
-import Button from 'atoms/Button/Button'
-import Text from 'atoms/Text/Text'
-import Pagination from 'components/Pagination/Pagination'
-import ago from 'helpers/ago'
-import currency from 'helpers/currency'
-import numberFormat from 'helpers/numberFormat'
-import ok from 'helpers/ok'
-import { minWidth } from 'helpers/responsive'
-import siFormat from 'helpers/siFormat'
-import applyTransparence from 'helpers/transparentize'
-import useGoToBlock from 'hooks/useGoToBlock'
-import useGoToTx from 'hooks/useGoToTx'
-import useGoToWallet from 'hooks/useGoToWallet'
-import { useRef } from 'react'
-import styled, { css } from 'styled-components'
-import { colorVariables } from 'styles/variables'
+import NoData from '@components/NoData';
+import Button from 'atoms/Button/Button';
+import Text from 'atoms/Text/Text';
+import Pagination from 'components/Pagination/Pagination';
+import ago from 'helpers/ago';
+import currency from 'helpers/currency';
+import numberFormat from 'helpers/numberFormat';
+import ok from 'helpers/ok';
+import { minWidth } from 'helpers/responsive';
+import siFormat from 'helpers/siFormat';
+import applyTransparence from 'helpers/transparentize';
+import useGoToBlock from 'hooks/useGoToBlock';
+import useGoToTx from 'hooks/useGoToTx';
+import useGoToWallet from 'hooks/useGoToWallet';
+import { useRef } from 'react';
+import styled, { css } from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
-import type { FC } from 'react'
 
 const WrapperStyled = styled.div`
   box-sizing: border-box;
@@ -179,7 +178,7 @@ function formatStatusContent(value) {
   return ok(value)
 }
 
-const Table: FC<ITableProps> = ({ data, columns, page, pages, onPageChange, moreLink }) => {
+const Table = ({ data, columns, page, pages, onPageChange, moreLink }: ITableProps) => {
 
   const goToMapper = useRef({
     address: useGoToWallet(),

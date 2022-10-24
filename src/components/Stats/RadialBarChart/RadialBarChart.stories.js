@@ -1,4 +1,4 @@
-import React from 'react'
+
 import RadialBarChart from './RadialBarChart'
 import styled from 'styled-components'
 

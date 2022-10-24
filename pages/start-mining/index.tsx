@@ -1,16 +1,16 @@
-import Background from 'atoms/Background'
-import ContentTitle from 'atoms/ContentTitle'
-import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons'
-import SearchBar from 'atoms/SearchBar'
-import Text from 'atoms/Text/Text'
-import MinerCard from 'components/MinerCard'
-import MiningInfo from 'components/MiningInfo'
-import { minWidth } from 'helpers/responsive'
-import useGoToWallet from 'hooks/useGoToWallet'
-import React, { FC, useState } from 'react'
-import { startMiningService } from 'services'
-import styled, { css } from 'styled-components'
-import { colorVariables, fonts } from 'styles/variables'
+import Background from 'atoms/Background';
+import ContentTitle from 'atoms/ContentTitle';
+import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons';
+import SearchBar from 'atoms/SearchBar';
+import Text from 'atoms/Text/Text';
+import MinerCard from 'components/MinerCard';
+import MiningInfo from 'components/MiningInfo';
+import { minWidth } from 'helpers/responsive';
+import useGoToWallet from 'hooks/useGoToWallet';
+import { useState } from 'react';
+import { startMiningService } from 'services';
+import styled, { css } from 'styled-components';
+import { colorVariables, fonts } from 'styles/variables';
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 

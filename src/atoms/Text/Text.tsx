@@ -1,12 +1,10 @@
-import React, { FC, MouseEventHandler } from 'react'
-import { colorVariables, fonts } from 'styles/variables'
-
-import styled from 'styled-components'
-import { minWidth } from 'helpers/responsive'
+import { minWidth } from 'helpers/responsive';
+import styled from 'styled-components';
+import { colorVariables, fonts } from 'styles/variables';
 
 export type TextColor = 'white' | 'apple' | 'santasGray' | 'red'
 
-interface IProps {
+interface ITextProps {
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'very-large' | 'ultra-large'
   fontFamily?: 'primary' | 'secondary'
   color?: TextColor
@@ -14,22 +12,23 @@ interface IProps {
   fontWeight?: 'bold' | 'normal' | 'light'
   active?: boolean
   className?: string
-  onClick?: MouseEventHandler
+  onClick?: React.MouseEventHandler
   space?: 'nowrap' | 'initial'
+  children: React.ReactNode;
 }
 
-const TextStyled = styled.span<IProps>`
-  font-family: ${(props: IProps) =>
+const TextStyled = styled.span<ITextProps>`
+  font-family: ${(props: ITextProps) =>
     props.fontFamily === 'primary' ? fonts.primary : fonts.secondary};
-  letter-spacing: ${(props: IProps) =>
+  letter-spacing: ${(props: ITextProps) =>
     props.fontFamily === 'primary' ? '0.05em' : '0.05em'};
-  color: ${(props: IProps) =>
+  color: ${(props: ITextProps) =>
     (props.color === 'white' && colorVariables.white) ||
     (props.color === 'apple' && colorVariables.apple) ||
     (props.color === 'santasGray' && colorVariables.santasGray) ||
     (props.color === 'red' && colorVariables.red)};
-  font-style: ${(props: IProps) => (props.italic ? 'italic' : 'normal')};
-  font-weight: ${(props: IProps) =>
+  font-style: ${(props: ITextProps) => (props.italic ? 'italic' : 'normal')};
+  font-weight: ${(props: ITextProps) =>
     (props.fontWeight === 'bold' && '600') ||
     (props.fontWeight === 'normal' && '400') ||
     (props.fontWeight === 'light' && '100') ||
@@ -47,7 +46,7 @@ const TextStyled = styled.span<IProps>`
     `) ||
     `white-space: initial;`};
 
-  ${(props: IProps) =>
+  ${(props: ITextProps) =>
     `font-size: ${
       (props.size === 'tiny' && '10px') ||
       (props.size === 'small' && '12px') ||
@@ -56,7 +55,7 @@ const TextStyled = styled.span<IProps>`
       (props.size === 'very-large' && '18px') ||
       (props.size === 'ultra-large' && '22px')
     };`};
-  ${(props: IProps) =>
+  ${(props: ITextProps) =>
     minWidth(
       'tablet',
       `
@@ -70,7 +69,7 @@ const TextStyled = styled.span<IProps>`
         };
       `,
     )};
-  ${(props: IProps) =>
+  ${(props: ITextProps) =>
     minWidth(
       'laptop',
       `
@@ -84,7 +83,7 @@ const TextStyled = styled.span<IProps>`
         };
       `,
     )};
-  ${(props: IProps) =>
+  ${(props: ITextProps) =>
     minWidth(
       'laptopL',
       `
@@ -100,7 +99,7 @@ const TextStyled = styled.span<IProps>`
     )};
 `
 
-const Text: FC<IProps> = ({
+const Text = ({
   children,
   size = 'medium',
   fontFamily = 'primary',
@@ -111,7 +110,7 @@ const Text: FC<IProps> = ({
   className,
   onClick,
   space = 'nowrap',
-}) => (
+}: ITextProps) => (
   <TextStyled
     size={size}
     fontFamily={fontFamily}

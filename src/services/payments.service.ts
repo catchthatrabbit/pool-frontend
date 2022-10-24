@@ -3,15 +3,15 @@ import { unitsConstant } from 'constant';
 import { getNumberText } from 'helpers/text';
 import { toStringDateTime } from 'helpers/toStringDateTime';
 
-import type { InfoBoxItem } from 'helpers/text';
+import type {  InfoBoxItemProps } from 'helpers/text';
 import type { QueryFunctionContext } from 'react-query';
 
 /**
- * It takes a data object and returns an array of InfoBoxItem objects
+ * It takes a data object and returns an array of  InfoBoxItemProps objects
  * @param data - the data object that is passed to the component
  * @returns An array of objects with title and value properties.
  */
-export const hydratePaymentsInfoBox = (data: any): InfoBoxItem[] => {
+export const hydratePaymentsInfoBox = (data: any):  InfoBoxItemProps[] => {
   return [
     { title: 'Sent payments', value: getNumberText(data.paymentsTotal) },
     //{ title: 'XCB Price', value: getEuroText(200) }, // TODO: activate after listing
@@ -73,7 +73,7 @@ export const getPaymentsQueryFn = ({ queryKey }: QueryFunctionContext<[ string, 
 
 
 export const getPaymentsInfo = async (pool: string) => {
-  let result: InfoBoxItem[]
+  let result:  InfoBoxItemProps[]
 
   try {
     const response = await fetch(`${ pool }/payments_stats`)

@@ -3,14 +3,14 @@ import { getHashText, getNumberText } from 'helpers/text';
 import { toStringDateTime } from 'helpers/toStringDateTime';
 
 import type { QueryFunctionContext } from 'react-query';
-import type { InfoBoxItem } from 'helpers/text';
+import type {  InfoBoxItemProps } from 'helpers/text';
 
 /**
- * It takes in a data object and returns an array of InfoBoxItem objects
+ * It takes in a data object and returns an array of  InfoBoxItemProps objects
  * @param data - any
- * @returns {InfoBoxItem} An array of objects with two properties: title and value.
+ * @returns { InfoBoxItemProps} An array of objects with two properties: title and value.
  */
-export const hydrateMinersInfoBox = (data: any): InfoBoxItem[] => {
+export const hydrateMinersInfoBox = (data: any):  InfoBoxItemProps[] => {
   return [
     { title: 'Total miners', value: getNumberText(data.minersTotal) },
     { title: 'Total hashrate', value: getHashText(data.hashrate) },
@@ -73,7 +73,7 @@ export const getMinersQueryFn = ({ queryKey }: QueryFunctionContext<[ string, st
 
 
 export const getMinersInfo = async (pool: string) => {
-  let result: InfoBoxItem[]
+  let result:  InfoBoxItemProps[]
 
   try {
     const response = await fetch(`${ pool }/miners_stats`)

@@ -1,4 +1,3 @@
-import React, { FC } from 'react'
 import ContentTitle from 'atoms/ContentTitle'
 import styled, { css } from 'styled-components'
 import { ContactUsIcon } from 'atoms/icons'
@@ -7,6 +6,8 @@ import BoxEmail from 'atoms/BoxEmail'
 import { minWidth } from 'helpers/responsive'
 import official from 'helpers/official'
 import info from '../../pool.json'
+
+import type { NextPage } from 'next';
 
 const ContainerStyled = styled.div`
   margin: 10px 15px 26px;
@@ -35,7 +36,7 @@ const BoxContentStyled = styled.div`
   margin-top: 41px;
 `
 
-const ContactsPage: FC = () => (
+const ContactsPage: NextPage = () => (
   <>
     <Background />
     <ContainerStyled>

@@ -1,9 +1,8 @@
-import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { StatisticsIcon } from 'atoms/icons'
 import { ChartData } from 'types/app'
 import ContentTitle from 'atoms/ContentTitle/ContentTitle'
-import { InfoBoxItem } from 'helpers/text'
+import {  InfoBoxItemProps } from 'helpers/text'
 import InfoBox from 'components/InfoBox/InfoBox'
 import RadialBarChart from './RadialBarChart/index'
 import { minWidth } from 'helpers/responsive'
@@ -133,12 +132,12 @@ const ContentContainer = styled.div`
   )}
 `
 
-interface IProps {
+interface IStatsProps {
   chartData: ChartData
-  infoBoxData: InfoBoxItem[]
+  infoBoxData:  InfoBoxItemProps[]
 }
 
-const Stats: FC<IProps> = ({ chartData, infoBoxData }) => (
+const Stats  = ({ chartData, infoBoxData }: IStatsProps) => (
   <StatsStyled>
     <ContentTitle Image={<StatisticsIcon />}>Pool Statistics</ContentTitle>
 

@@ -5,9 +5,9 @@ import Text from 'atoms/Text/Text'
 import InfoBox from 'components/InfoBox/InfoBox'
 import { pathsConstant } from 'constant'
 import { minWidth } from 'helpers/responsive'
-import { InfoBoxItem } from 'helpers/text'
+import {  InfoBoxItemProps } from 'helpers/text'
 import ResponsiveContext from 'providers/responsive-provider/context'
-import React, { FC, useContext } from 'react'
+import  { useContext } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import { colorVariables } from 'styles/variables'
 import official from 'helpers/official'
@@ -342,9 +342,9 @@ const LegalMessage = styled.div`
   line-height: 1.4em;
 `
 
-interface IProps {
+interface IJumbotronProps {
   data: {
-    infoBoxItems: InfoBoxItem[]
+    infoBoxItems:  InfoBoxItemProps[]
     poolFee: string
   }
 }
@@ -385,7 +385,7 @@ const LegalNotice = () => {
   )
 }
 
-const Jumbotron: FC<IProps> = ({ data }) => {
+const Jumbotron = ({ data }: IJumbotronProps) => {
   const displayType = useContext(ResponsiveContext)
   const displayTitleTop = displayType === 'tablet' || displayType === 'mobileL'
 

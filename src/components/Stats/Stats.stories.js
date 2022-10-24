@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Stats from './Stats'
 import styled from 'styled-components'
 
