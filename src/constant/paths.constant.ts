@@ -1,5 +1,5 @@
 export const startMining = '/start-mining'
-export const connectToUS = '/start-mining#united_states'
-export const connectToEurope = '/start-mining#europe'
-export const connectToAsia = '/start-mining#asia'
+export const connectToUsa = '/start-mining#pool-usa'
+export const connectToEurope = '/start-mining#pool-europe'
+export const connectToAsia = '/start-mining#pool-asia'
 export const blocks = '/blocks'

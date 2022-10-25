@@ -163,7 +163,12 @@ const Footer = () => {
   const footerData = [
     {
       title: 'Start',
-      list: [{ text: 'Start mining', href: '/start-mining' }],
+      list: [
+        { text: 'Start mining', href: '/start-mining' },
+        { text: 'EU pool', href: '/start-mining#pool-europe' },
+        { text: 'AS pool', href: '/start-mining#pool-asia' },
+        { text: 'US pool', href: '/start-mining#pool-usa' },
+      ],
     },
     {
       title: 'Stats',
@@ -177,6 +182,8 @@ const Footer = () => {
       title: 'About',
       list: [
         { text: 'Contact', href: '/contact' },
+        { text: 'Pool details', href: '/start-mining#pool-details' },
+        { text: 'Mining software', href: '/start-mining#software' },
       ],
     },
   ]

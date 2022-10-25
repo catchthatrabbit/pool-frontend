@@ -22,16 +22,6 @@ export const MinerDataInfoEuSec = [
   },
   { key: '4', title: 'Password', value: '<empty>' },
 ]
-export const MinerDataInfoNa = [
-  { key: '1', title: 'Server', value: 'na.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '8008' },
-  {
-    key: '3',
-    title: 'Username',
-    value: '<your wallet address>.<worker name>',
-  },
-  { key: '4', title: 'Password', value: '<empty>' },
-]
 export const MinerDataInfoAs = [
   { key: '1', title: 'Server', value: 'as.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
@@ -44,6 +34,26 @@ export const MinerDataInfoAs = [
 ]
 export const MinerDataInfoAsSec = [
   { key: '1', title: 'Server', value: 'as1.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '8008' },
+  {
+    key: '3',
+    title: 'Username',
+    value: '<your wallet address>.<worker name>',
+  },
+  { key: '4', title: 'Password', value: '<empty>' },
+]
+export const MinerDataInfoUs = [
+  { key: '1', title: 'Server', value: 'us.catchthatrabbit.com' },
+  { key: '2', title: 'Port', value: '8008' },
+  {
+    key: '3',
+    title: 'Username',
+    value: '<your wallet address>.<worker name>',
+  },
+  { key: '4', title: 'Password', value: '<empty>' },
+]
+export const MinerDataInfoUsSec = [
+  { key: '1', title: 'Server', value: 'us1.catchthatrabbit.com' },
   { key: '2', title: 'Port', value: '8008' },
   {
     key: '3',
@@ -65,6 +75,8 @@ export const Links = [
   { href: '#pool-europe-1', text: 'European backup [EU1]' },
   { href: '#pool-asia', text: 'Asian pool [AS]' },
   { href: '#pool-asia-1', text: 'Asian backup [AS1]' },
+  { href: '#pool-usa', text: 'US pool [US]' },
+  { href: '#pool-usa-1', text: 'US backup [US1]' },
 ]
 
 const hydratePoolDetails = (data) => {
@@ -78,7 +90,7 @@ const hydratePoolDetails = (data) => {
     {
       key: '3',
       title: 'Payout threshold',
-      value: (data.PayoutThreshold / unitsConstant.NUCLE).toString(),
+      value: (data.PayoutThreshold / unitsConstant.NUCLE).toString()+'₡',
     },
     { key: '4', title: 'Mining algorithm', value: 'RandomY' },
   ]

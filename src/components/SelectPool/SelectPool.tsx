@@ -181,6 +181,18 @@ const SelectPool = () => {
           >
             Backup Asian Pool
           </CustomPoolOption>
+          <CustomPoolOption
+            value={EPool.US_PRIMARY}
+            data-active={EPool.US_PRIMARY === pool}
+          >
+            Primary US Pool
+          </CustomPoolOption>
+          <CustomPoolOption
+            value={EPool.US_BACKUP}
+            data-active={EPool.US_BACKUP === pool}
+          >
+            Backup US Pool
+          </CustomPoolOption>
         </PoolSelect>
 
         {/* <CustomSelectArrow data-open={ optionsVisibility }>&rsaquo;</CustomSelectArrow>

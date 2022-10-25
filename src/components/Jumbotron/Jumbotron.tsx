@@ -373,17 +373,19 @@ const MapButtonWrapper = ({ href, children }) => {
   }
 }
 
+// START: DO NOT MODIFY LEGAL NOTICE
 const LegalNotice = () => {
   if (official()) { return null }
   return (
     <LegalWrapper>
       <LegalBox>
-        <LegalTitle>The rabbit community is here 🐰🐰🐰</LegalTitle>
+        <LegalTitle>The Rabbit community is aboard! 🐰🐰🐰</LegalTitle>
         <LegalMessage>This is not an offical pool, but its community distribution.<br />The official Catch that Rabbit pool is located at <a href="https://catchthatrabbit.com" target="_blank">catchthatrabbit.com</a>.<br />Please, report any malicious instance to at: <a href="mailto:security@catchthatrabbit.com">security@catchthatrabbit.com</a></LegalMessage>
       </LegalBox>
     </LegalWrapper>
   )
 }
+// END: DO NOT MODIFY LEGAL NOTICE
 
 const Jumbotron = ({ data }: IJumbotronProps) => {
   const displayType = useContext(ResponsiveContext)
@@ -411,6 +413,11 @@ const Jumbotron = ({ data }: IJumbotronProps) => {
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <Locations>
+          <USStyle>
+            <MapButtonWrapper href={pathsConstant.connectToUsa}>
+              US location
+            </MapButtonWrapper>
+          </USStyle>
           <EUStyle>
             <MapButtonWrapper href={pathsConstant.connectToEurope}>
               EU location
