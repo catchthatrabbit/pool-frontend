@@ -11,7 +11,7 @@ import  { useContext, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
 import official from 'helpers/official'
-import info from '../../../pool.json'
+import { poolConfig } from 'config'
 
 const InfoStyled = styled.div`
   font-family: ${fonts.secondary};
@@ -223,7 +223,7 @@ const Footer = () => {
       </MainSection>
       <FooterSection>
         <Text size="tiny">
-          © {(info.estd !== "" && info.estd !== undefined) ? info.estd+"-" : ""}{ new Date().getFullYear() } { (info.name !== "" && info.name !== undefined) ? info.name : "Test pool" }. { official() ? "All rights reserved" : "Some rights reserved" }.
+          © { poolConfig.POOL_OPTIONS.estd }—{ new Date().getFullYear() } { poolConfig.POOL_OPTIONS.name }. { official() ? "All rights reserved" : "Some rights reserved" }.
         </Text>
       </FooterSection>
     </FooterStyled>

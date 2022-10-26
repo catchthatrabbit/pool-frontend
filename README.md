@@ -19,8 +19,20 @@ If you do not have the required version of the Node - `nvm install v{version}` w
 You can use your preferred package manager, such as `yarn`, `npm`, `npx`.
 
 - Install the dependencies with `yarn` or `npm i`
-- Run `yarn dev` for developer preview
+- Run `yarn dev` (`npm run dev`) for developer preview
 - Navigate to [localhost:3000](http://localhost:3000/)
+
+### Automated deployment
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcatchthatrabbit%2Fpool-frontend&env=PAGE_NAME,PAGE_DESCRIPTION,PAGE_KEYWORDS,IMAGES_LOGO,IMAGES_OG,IMAGES_TWITTER&envDescription=Variables%20for%20the%20custom%20instance.%20%2F%2F%20Leave%20empty%20for%20the%20default%20values.&envLink=https%3A%2F%2Fgithub.com%2Fcatchthatrabbit%2Fpool-frontend%23automated-deployment&project-name=ctr-pool&repo-name=ctr-pool)
+
+Variables:
+- `PAGE_NAME` Name of the website.
+- `PAGE_DESCRIPTION` Description of the website.
+- `PAGE_KEYWORDS` Keywords of the website.
+- `IMAGES_LOGO` Logo of the website.
+- `IMAGES_OG` Open Graph image.
+- `IMAGES_TWITTER` Twitter image.
 
 ## Security
 

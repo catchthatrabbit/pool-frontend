@@ -1,10 +1,10 @@
-import 'styles/fonts.css';
+import 'styles/fonts.css'
 
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 
-import info from '../pool.json';
-import RootProvider from '../src/providers';
+import { poolConfig } from 'config'
+import RootProvider from '../src/providers'
 
 const MainContent = dynamic(() => import('atoms/MainContent/MainContent'), { ssr: false })
 const Toaster = dynamic(() => import('atoms/Toaster'), { ssr: false })
@@ -24,21 +24,21 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Toaster />
 
       <Head>
-        <title>{ (info.name !== "" && info.name !== undefined) ? info.name : "Community pool" }</title>
-        <meta name="description" content={ (info.description !== "" && info.description !== undefined) ? info.description : "" } />
-        <meta name="keywords" content={ (info.keywords !== "" && info.keywords !== undefined) ? info.keywords : "" } />
-        {Object.keys(info.wallet).map((key, id) => {
+        <title>{ poolConfig.POOL_OPTIONS.name }</title>
+        <meta name="description" content={ poolConfig.POOL_OPTIONS.description } />
+        <meta name="keywords" content={ poolConfig.POOL_OPTIONS.keywords } />
+        {Object.keys(poolConfig.POOL_OPTIONS.wallet).map((key, id) => {
           return (
-            <meta property={"wallet:" + key.toLowerCase()} content={info.wallet[key].toLowerCase()} key={id} />
+            <meta property={"wallet:" + key.toLowerCase()} content={poolConfig.POOL_OPTIONS.wallet[key].toLowerCase()} key={id} />
           )
         })}
-        <meta property="og:title" content={ (info.name !== "" && info.name !== undefined) ? info.name : "Community pool" } />
-        <meta property="og:description" content={ (info.description !== "" && info.description !== undefined) ? info.description : "" } />
-        <meta property="og:image" content={ (info.images.og !== "" && info.images.og !== undefined) ? info.images.og : "" } />
+        <meta property="og:title" content={ poolConfig.POOL_OPTIONS.name } />
+        <meta property="og:description" content={ poolConfig.POOL_OPTIONS.description } />
+        <meta property="og:image" content={ poolConfig.POOL_OPTIONS.images.og } />
         <meta property="og:type" content="website" />
-        <meta property="twitter:title" content={ (info.name !== "" && info.name !== undefined) ? info.name : "Community pool" } />
-        <meta property="twitter:description" content={ (info.description !== "" && info.description !== undefined) ? info.description : "" } />
-        <meta property="twitter:image" content={ (info.images.twitter !== "" && info.images.twitter !== undefined) ? info.images.twitter : "" } />
+        <meta property="twitter:title" content={ poolConfig.POOL_OPTIONS.name } />
+        <meta property="twitter:description" content={ poolConfig.POOL_OPTIONS.description } />
+        <meta property="twitter:image" content={ poolConfig.POOL_OPTIONS.images.twitter } />
         <meta property="twitter:card" content="summary" />
       </Head>
 

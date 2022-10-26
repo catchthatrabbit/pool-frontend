@@ -1,3 +1,5 @@
+import { poolConfig } from 'config'
+
 export default function official() {
   if (typeof window !== 'undefined') {
     if (window.location.hostname === "catchthatrabbit.com" && window.location.protocol === "https:") {
@@ -6,6 +8,6 @@ export default function official() {
       return false
     }
   } else {
-    return false
+    poolConfig.POOL_OFFICIAL
   }
 }

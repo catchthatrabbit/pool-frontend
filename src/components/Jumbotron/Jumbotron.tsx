@@ -5,13 +5,13 @@ import Text from 'atoms/Text/Text'
 import InfoBox from 'components/InfoBox/InfoBox'
 import { pathsConstant } from 'constant'
 import { minWidth } from 'helpers/responsive'
-import {  InfoBoxItemProps } from 'helpers/text'
+import { InfoBoxItemProps } from 'helpers/text'
 import ResponsiveContext from 'providers/responsive-provider/context'
 import  { useContext } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import { colorVariables } from 'styles/variables'
 import official from 'helpers/official'
-import info from '../../../pool.json'
+import { poolConfig } from 'config'
 
 const scrollTranslate = keyframes`
   0% {
@@ -438,7 +438,7 @@ const Jumbotron = ({ data }: IJumbotronProps) => {
             <br />
             <br />
             <Text fontFamily="primary" color="apple" size="large">
-              Estd. {(info.estd !== "" && info.estd !== undefined) ? info.estd : new Date().getFullYear()}
+              Estd. {poolConfig.POOL_OPTIONS.estd}
             </Text>
             <br />
             <br />

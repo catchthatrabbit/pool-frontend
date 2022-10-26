@@ -5,7 +5,7 @@ import Background from 'atoms/Background'
 import BoxEmail from 'atoms/BoxEmail'
 import { minWidth } from 'helpers/responsive'
 import official from 'helpers/official'
-import info from '../../pool.json'
+import { poolConfig } from 'config'
 
 import type { NextPage } from 'next';
 
@@ -42,11 +42,11 @@ const ContactsPage: NextPage = () => (
     <ContainerStyled>
       <ContentTitle Image={<ContactUsIcon />}>Contact</ContentTitle>
       <BoxContentStyled>
-        {Object.keys(info.maintainers).map((key, id) => {
-          if((info.maintainers[key].email.slice(-19)==="catchthatrabbit.com" && official()) || (info.maintainers[key].email.slice(-19)!=="catchthatrabbit.com" && !official())) {
+        {Object.keys(poolConfig.POOL_OPTIONS.maintainers).map((key, id) => {
+          if((poolConfig.POOL_OPTIONS.maintainers[key].email.slice(-19)==="catchthatrabbit.com" && official()) || (poolConfig.POOL_OPTIONS.maintainers[key].email.slice(-19)!=="catchthatrabbit.com" && !official())) {
             return (
-              <BoxEmail title={key} email={info.maintainers[key].email} key={id}>
-                {info.maintainers[key].description}
+              <BoxEmail title={key} email={poolConfig.POOL_OPTIONS.maintainers[key].email} key={id}>
+                { poolConfig.POOL_OPTIONS.maintainers[key].description }
               </BoxEmail>
             )
           }
