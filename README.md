@@ -22,6 +22,16 @@ You can use your preferred package manager, such as `yarn`, `npm`, `npx`.
 - Run `yarn dev` (`npm run dev`) for developer preview
 - Navigate to [localhost:3000](http://localhost:3000/)
 
+### Customization
+
+You can improve or edit instances if you will respect [License](LICENSE) and [Legal notice](#legal-notice).
+
+To set up base website settings (such as name, description, etc.), please follow the set up:
+- The variables in automated deployment.
+- [pool.config.json](https://github.com/catchthatrabbit/pool-frontend/blob/master/pool.config.json) file.
+
+We will be happy to see any new PR for the official instance.
+
 ### Automated deployment
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcatchthatrabbit%2Fpool-frontend&env=PAGE_NAME,PAGE_DESCRIPTION,PAGE_KEYWORDS,IMAGES_LOGO,IMAGES_OG,IMAGES_TWITTER&envDescription=Variables%20for%20the%20custom%20instance.%20%2F%2F%20Leave%20empty%20for%20the%20default%20values.&envLink=https%3A%2F%2Fgithub.com%2Fcatchthatrabbit%2Fpool-frontend%23automated-deployment&project-name=ctr-pool&repo-name=ctr-pool)
