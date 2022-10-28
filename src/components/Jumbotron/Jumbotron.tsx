@@ -434,7 +434,7 @@ const Jumbotron = ({ data }: IJumbotronProps) => {
         {title}
         <InfoTextContent>
           <Text color="santasGray" fontFamily="secondary" space="initial">
-            «Core mining pool in the Lotus land of Ores.»
+            「Core mining pool in the lotusland of Ores.」
             <br />
             <br />
             <Text fontFamily="primary" color="apple" size="large">
