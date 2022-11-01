@@ -1,7 +1,6 @@
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { colorVariables } from 'styles/variables'
-import Text from 'atoms/Text'
+import Text from 'atoms/Text';
+import styled from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
 const BoxStyled = styled.div`
   display: flex;
@@ -23,12 +22,13 @@ const TextContentStyled = styled.div`
   margin-top: 37px;
 `
 
-interface IProps {
+interface IBoxPanelProps {
   title: string
   desc: string
+  children: React.ReactNode;
 }
 
-const BoxPanel: FC<IProps> = ({ title, desc, children }) => (
+const BoxPanel = ({ title, desc, children }: IBoxPanelProps) => (
   <BoxStyled>
     <TextTitleStyled>
       <Text size="very-large">

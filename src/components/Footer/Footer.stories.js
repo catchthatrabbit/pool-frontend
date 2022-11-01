@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Footer from './Footer.tsx'
 import styled from 'styled-components'
 

@@ -1,22 +1,18 @@
-import ReactQueryTable from '@components/ReactQueryTable'
-import SelectPool from '@components/SelectPool'
-import Background from 'atoms/Background'
-import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper'
-import ContentTitle from 'atoms/ContentTitle'
-import { MinersIcon } from 'atoms/icons'
-import SearchBar from 'atoms/SearchBar'
-import { minersPageConfig, poolEndpointsConfig } from 'config'
-import { minWidth } from 'helpers/responsive'
-import useGoToWallet from 'hooks/useGoToWallet'
-import React, { useEffect, useState } from 'react'
-import { dehydrate, QueryClient, useQuery } from 'react-query'
-import { minersService } from 'services'
-import {
-  poolEndpointSelector,
-  resetPoolSelector,
-  usePoolStore,
-} from 'store/pool.store'
-import styled, { css } from 'styled-components'
+import ReactQueryTable from '@components/ReactQueryTable';
+import SelectPool from '@components/SelectPool';
+import Background from 'atoms/Background';
+import BoxesWrapper from 'atoms/BoxesWrapper/BoxesWrapper';
+import ContentTitle from 'atoms/ContentTitle';
+import { MinersIcon } from 'atoms/icons';
+import SearchBar from 'atoms/SearchBar';
+import { minersPageConfig, poolEndpointsConfig } from 'config';
+import { minWidth } from 'helpers/responsive';
+import useGoToWallet from 'hooks/useGoToWallet';
+import { useEffect, useState } from 'react';
+import { dehydrate, QueryClient, useQuery } from 'react-query';
+import { minersService } from 'services';
+import { poolEndpointSelector, resetPoolSelector, usePoolStore } from 'store/pool.store';
+import styled, { css } from 'styled-components';
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 

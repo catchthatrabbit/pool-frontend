@@ -1,16 +1,16 @@
-import Background from 'atoms/Background'
-import ContentTitle from 'atoms/ContentTitle'
-import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons'
-import SearchBar from 'atoms/SearchBar'
-import Text from 'atoms/Text/Text'
-import MinerCard from 'components/MinerCard'
-import MiningInfo from 'components/MiningInfo'
-import { minWidth } from 'helpers/responsive'
-import useGoToWallet from 'hooks/useGoToWallet'
-import React, { FC, useState } from 'react'
-import { startMiningService } from 'services'
-import styled, { css } from 'styled-components'
-import { colorVariables, fonts } from 'styles/variables'
+import Background from 'atoms/Background';
+import ContentTitle from 'atoms/ContentTitle';
+import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons';
+import SearchBar from 'atoms/SearchBar';
+import Text from 'atoms/Text/Text';
+import MinerCard from 'components/MinerCard';
+import MiningInfo from 'components/MiningInfo';
+import { minWidth } from 'helpers/responsive';
+import useGoToWallet from 'hooks/useGoToWallet';
+import { useState } from 'react';
+import { startMiningService } from 'services';
+import styled, { css } from 'styled-components';
+import { colorVariables, fonts } from 'styles/variables';
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 
@@ -230,9 +230,10 @@ export const getServerSideProps = async () => {
     props: {
       minerDataInfoEu: startMiningService.MinerDataInfoEu,
       minerDataInfoEuSec: startMiningService.MinerDataInfoEuSec,
-      minerDataInfoNa: startMiningService.MinerDataInfoNa,
       minerDataInfoAs: startMiningService.MinerDataInfoAs,
       minerDataInfoAsSec: startMiningService.MinerDataInfoAsSec,
+      minerDataInfoUs: startMiningService.MinerDataInfoUs,
+      minerDataInfoUsSec: startMiningService.MinerDataInfoUsSec,
       minerDataCard: startMiningService.MinerDataCard,
       links: startMiningService.Links,
       poolDetails: await startMiningService.getPoolDetails(),
@@ -283,6 +284,18 @@ const StartMiningPage: NextPage<
             <MiningInfo
               data={props.minerDataInfoAsSec}
               title="Backup Asian Pool"
+            />
+          </MiningInfoStyled>
+          <MiningInfoStyled id="pool-usa">
+            <MiningInfo
+              data={props.minerDataInfoUs}
+              title="Connect to US Pool"
+            />
+          </MiningInfoStyled>
+          <MiningInfoStyled id="pool-usa-1">
+            <MiningInfo
+              data={props.minerDataInfoUsSec}
+              title="Backup US Pool"
             />
           </MiningInfoStyled>
         </MiningInfoContainerStyled>
@@ -338,7 +351,7 @@ const StartMiningPage: NextPage<
                 </kbd>
               </Text>
             </TextGuide1Styled>
-            <TextGuideStyled>
+            <TextGuideStyled id="software">
               <Text space="initial" size="large">
                 Step 2: Download Mining software
               </Text>
@@ -401,6 +414,7 @@ const StartMiningPage: NextPage<
             </SearchBarContainerStyled>
           </BoxGuideStyled>
         </BoxContentStyled>
+        <a id="pool-details"></a>
         <MiningInfo
           data={props.poolDetails}
           title="Pool details"

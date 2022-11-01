@@ -1,10 +1,9 @@
-import styled from 'styled-components'
-import React, { FC } from 'react'
-import Text from 'atoms/Text/Text'
-import { colorVariables } from 'styles/variables'
-import { minWidth } from 'helpers/responsive'
+import Text from 'atoms/Text/Text';
+import { minWidth } from 'helpers/responsive';
+import styled from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
-interface IProps {
+interface IInfoStatsBoxProps {
   title: string
   subtitle: string
   value: string
@@ -88,13 +87,13 @@ const TextContainerStyled = styled.div`
   `};
 `
 
-const InfoStatsBox: FC<IProps> = ({
+const InfoStatsBox = ({
   title,
   subtitle,
   value,
   suffix,
   size = 'small',
-}) => {
+}: IInfoStatsBoxProps) => {
   return (
     <WrapperStyled size={size}>
       <TitleContainerStyled size={size}>

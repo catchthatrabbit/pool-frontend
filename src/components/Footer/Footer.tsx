@@ -1,15 +1,17 @@
 import Button from 'atoms/Button/Button'
 import ContentTitle from 'atoms/ContentTitle/ContentTitle'
-import { LogoIcon, StartMiningIcon } from 'atoms/icons'
+import { LogoIcon, LogoCommunityIcon, StartMiningIcon } from 'atoms/icons'
 import Link from 'atoms/Link/Link'
 import Text from 'atoms/Text/Text'
 import { pathsConstant } from 'constant'
 import { minWidth } from 'helpers/responsive'
 import applyTransparence from 'helpers/transparentize'
 import ResponsiveContext from 'providers/responsive-provider/context'
-import React, { useContext, useEffect } from 'react'
+import  { useContext, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { colorVariables, fonts } from 'styles/variables'
+import official from 'helpers/official'
+import { poolConfig } from 'config'
 
 const InfoStyled = styled.div`
   font-family: ${fonts.secondary};
@@ -161,7 +163,12 @@ const Footer = () => {
   const footerData = [
     {
       title: 'Start',
-      list: [{ text: 'Start mining', href: '/start-mining' }],
+      list: [
+        { text: 'Start mining', href: '/start-mining' },
+        { text: 'EU pool', href: '/start-mining#pool-europe' },
+        { text: 'AS pool', href: '/start-mining#pool-asia' },
+        { text: 'US pool', href: '/start-mining#pool-usa' },
+      ],
     },
     {
       title: 'Stats',
@@ -175,7 +182,8 @@ const Footer = () => {
       title: 'About',
       list: [
         { text: 'Contact', href: '/contact' },
-        { text: 'Support', href: 'mailto:support@catchthatrabbit.com' },
+        { text: 'Pool details', href: '/start-mining#pool-details' },
+        { text: 'Mining software', href: '/start-mining#software' },
       ],
     },
   ]
@@ -192,9 +200,12 @@ const Footer = () => {
       </HeaderSection>
       <MainSection>
         <LogoStyled>
-          <LogoIcon />
+          { official()
+            ? <LogoIcon />
+            : <LogoCommunityIcon />
+          }
           <LogoTextStyle>
-            <Text size={fontSize}>Dedicated Pool</Text>
+            <Text size={fontSize}>{ official() ? "Dedicated" : "Community" } Pool</Text>
             <br />
             <Text size={fontSize}>for </Text>
             <Text color="apple" size={fontSize}>
@@ -212,8 +223,7 @@ const Footer = () => {
       </MainSection>
       <FooterSection>
         <Text size="tiny">
-          © 2020-{new Date().getFullYear()} Catch That Rabbit. All rights
-          reserved.
+          © { poolConfig.POOL_OPTIONS.estd }—{ new Date().getFullYear() } { poolConfig.POOL_OPTIONS.name }. { official() ? "All rights reserved" : "Some rights reserved" }.
         </Text>
       </FooterSection>
     </FooterStyled>

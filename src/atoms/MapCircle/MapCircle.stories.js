@@ -1,4 +1,3 @@
-import React from 'react'
 import MapCircle from './MapCircle.tsx'
 
 export default {

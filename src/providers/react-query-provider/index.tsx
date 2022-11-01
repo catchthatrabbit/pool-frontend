@@ -2,13 +2,14 @@ import { useRef } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import type { FC } from 'react';
+import type { DehydratedState } from 'react-query';
 
-interface IReactQueryProviderProps {
-  dehydratedState?: unknown
+export interface IReactQueryProviderProps {
+  dehydratedState?: DehydratedState;
+  children: React.ReactNode;
 }
 
-const ReactQueryProvider: FC<IReactQueryProviderProps> = ({ children, dehydratedState }) => {
+const ReactQueryProvider = ({ children, dehydratedState }: IReactQueryProviderProps) => {
   const queryClient = useRef(new QueryClient())
 
   return (

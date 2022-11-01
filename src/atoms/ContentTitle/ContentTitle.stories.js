@@ -1,4 +1,3 @@
-import React, { ReactNode } from 'react'
 import { StartMiningIcon } from 'atoms/icons'
 import ContentTitle from './ContentTitle.tsx'
 

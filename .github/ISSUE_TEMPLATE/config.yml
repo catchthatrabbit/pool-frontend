@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Readme
+    url: https://github.com/catchthatrabbit/pool-frontend#readme
+    about: Read more about the pool code
+  - name: Contact
+    url: https://catchthatrabbit.com
+    about: Get contact information

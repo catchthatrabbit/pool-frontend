@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import 'styles/fonts.css'
 import './decorator.css'

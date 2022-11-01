@@ -7,7 +7,7 @@ import numberFormat from 'helpers/numberFormat'
 
 type TypeNumber = 'hashSpeed' | 'hash' | 'percent' | 'number' | 'euro' | 'xcb' | 'time' | 'ago'
 
-export type InfoBoxItem = {
+export type InfoBoxItemProps = {
   title: string
   value: TextType
 }

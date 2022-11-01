@@ -1,8 +1,11 @@
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import { minWidth } from 'helpers/responsive'
+import { minWidth } from 'helpers/responsive';
+import styled, { css } from 'styled-components';
 
-const BackgroundStyled = styled.img<IProps>`
+interface IBackgroundProps {
+  image?: string
+}
+
+const BackgroundStyled = styled.img`
   width: 100%;
   position: absolute;
   top: 30%;
@@ -13,11 +16,7 @@ const BackgroundStyled = styled.img<IProps>`
     `,
   )}
 `
-interface IProps {
-  image?: string
-}
-
-const Background: FC<IProps> = ({ image = '/images/statistics_bg.png' }) => (
+const Background = ({ image = '/images/statistics_bg.png' }: IBackgroundProps) => (
   <BackgroundStyled src={image} alt="background image" />
 )
 

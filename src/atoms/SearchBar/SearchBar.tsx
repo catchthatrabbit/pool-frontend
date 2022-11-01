@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { colorVariables, fonts } from 'styles/variables'
-import applyTransparence from 'helpers/transparentize'
-import { SearchIcon } from '../icons'
+import applyTransparence from 'helpers/transparentize';
+import styled from 'styled-components';
+import { colorVariables, fonts } from 'styles/variables';
+
+import { SearchIcon } from '../icons';
 
 const SearchBarStyle = styled.div`
   display: flex;
@@ -50,19 +50,19 @@ const SearchBarStyle = styled.div`
   }
 `
 
-interface IProps {
+interface ISearchBarProps {
   value: string
   placeholder: string
   onChange: React.ChangeEventHandler<HTMLInputElement>
   onSearch: () => void
 }
 
-const SearchBar: FC<IProps> = ({
+const SearchBar = ({
   onChange,
   onSearch,
   placeholder = 'Search by wallet address...',
   value = '',
-}) => {
+}: ISearchBarProps) => {
   const handleKeyDown = (event) => event.keyCode === 13 && onSearch()
   return (
     <SearchBarStyle>

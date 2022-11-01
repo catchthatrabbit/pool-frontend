@@ -5,7 +5,7 @@ import { getAgoText, getHashText, getNumberText, getPercentText, getXCBText } fr
 import { toStringDateTime } from 'helpers/toStringDateTime';
 import { blocksService } from 'services';
 
-import type { InfoBoxItem } from 'helpers/text'
+import type {  InfoBoxItemProps } from 'helpers/text'
 import type { ChartItem } from 'types/app'
 
 const BLOCK_TIME = 7 as const
@@ -71,7 +71,7 @@ export const getJumbotron = async () => {
 }
 
 
-const hydrateInfoBoxData = (data): InfoBoxItem[] => {
+const hydrateInfoBoxData = (data):  InfoBoxItemProps[] => {
   if (!data?.nodes) return []
 
   const [node] = data.nodes
@@ -136,7 +136,7 @@ export const geStats = async () => {
     poolEndpointsConfig.AGGREGATION_APIS.map((endpoint) => endpoint + '/stats/chart'),
   )
 
-  const { allPoolChartsData, allLastBlockFound } = allStats.reduce(
+  const { allPoolChartsData, allLastBlockFound } = allStats.reduce<{ allPoolChartsData: any[], allLastBlockFound: any[] }>(
     (acc, item) => {
       const { poolCharts, stats } = item
 
@@ -149,12 +149,12 @@ export const geStats = async () => {
   )
 
   const aggregator = aggregateNumbers(homePageConfig.WHITELIST_AGGREGATION_KEYS.stats)
-  const { poolCharts } = reduceList(allPoolChartsData, aggregator) || {}
+  const all = reduceList<any>(allPoolChartsData, aggregator)
   const lastBlockFound = Math.max(...allLastBlockFound)
 
   return {
     infoBoxes: hydrateInfoBoxData({ ...allStats[0], lastBlockFound }),
-    chart: hydrateChartData(poolCharts),
+    chart: hydrateChartData(all?.poolCharts || []),
   }
 }
 

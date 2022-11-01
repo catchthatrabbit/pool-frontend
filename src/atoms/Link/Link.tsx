@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import Link from 'next/link'
+import Link from 'next/link';
+import React from 'react';
 
 interface LinkProps extends React.ComponentPropsWithoutRef<'button'> {
   to: string

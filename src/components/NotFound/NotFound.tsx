@@ -1,7 +1,6 @@
-import Text from 'atoms/Text'
-import { FC } from 'react'
-import Head from 'next/head'
-import styled from 'styled-components'
+import Text from 'atoms/Text';
+import Head from 'next/head';
+import styled from 'styled-components';
 
 const ContentStyled = styled.div`
   display: flex;
@@ -9,7 +8,7 @@ const ContentStyled = styled.div`
   margin: 200px 100px;
 `
 
-const NotFound: FC = () => {
+const NotFound = () => {
   return (
     <>
       <Head>

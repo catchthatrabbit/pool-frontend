@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-import React, { FC, ReactNode } from 'react'
-import Text from 'atoms/Text/Text'
+import Text from 'atoms/Text/Text';
+import styled from 'styled-components';
 
 const WrapperStyled = styled.div`
   display: flex;
@@ -15,11 +14,12 @@ const ImageStyled = styled.div`
   height: 96px;
 `
 
-interface IProps {
-  Image: ReactNode
+interface IContentTitleProps {
+  Image: React.ReactNode
+  children: React.ReactNode;
 }
 
-const ContentTitle: FC<IProps> = ({ children: title, Image }) => (
+const ContentTitle = ({ children: title, Image }: IContentTitleProps) => (
   <WrapperStyled>
     <ImageStyled>{Image}</ImageStyled>
     <Text size="ultra-large">

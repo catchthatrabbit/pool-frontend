@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { LogoIcon } from 'atoms/icons'
+import { LogoIcon, LogoCommunityIcon } from 'atoms/icons'
 import HamburgerButton from 'atoms/HamburgerButton/HamburgerButton'
 import { colorVariables } from 'styles/variables'
 import { minWidth } from 'helpers/responsive'
@@ -59,7 +59,7 @@ const HeaderBodyStyled = styled.div`
   ${minWidth(
     'laptopL',
     css`
-      max-width: 95%;
+      max-width: 90vw;
       flex-direction: row;
       justify-content: space-between;
       height: 70px;
@@ -68,7 +68,7 @@ const HeaderBodyStyled = styled.div`
    ${minWidth(
     'desktop',
     css`
-      max-width: 86%;
+      max-width: 90vw;
       height: 50px;
     `,
   )}
@@ -94,12 +94,24 @@ const NavHeaderStyled = styled.div`
   ${minWidth(
     'desktop',
     css`
-      width: 90%;
+      width: 90vw;
     `,
   )}
 `
 
 const LogoStyled = styled(LogoIcon)`
+  width: 120px;
+  height: auto;
+  transform: scale(0.8);
+  ${minWidth(
+    'laptopL',
+    css`
+      transform: scale(1);
+    `,
+  )}
+`
+
+const LogoCommunityStyled = styled(LogoCommunityIcon)`
   width: 120px;
   height: auto;
   transform: scale(0.8);
@@ -159,6 +171,7 @@ export {
   HeaderStyled,
   HeaderBodyStyled,
   NavHeaderStyled,
+  LogoCommunityStyled,
   LogoStyled,
   NavBarStyled,
   HamburgerButtonStyled,

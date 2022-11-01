@@ -1,7 +1,7 @@
-import React from 'react'
-import { ThemeProvider as StyleComponentThemeProvider } from 'styled-components'
-import catchThatRabbitTheme from './theme'
-import GlobalStyle from './theme/general-style'
+import { ThemeProvider as StyleComponentThemeProvider } from 'styled-components';
+
+import catchThatRabbitTheme from './theme';
+import GlobalStyle from './theme/general-style';
 
 const ThemeProvider = ({ children }) => (
   <StyleComponentThemeProvider theme={catchThatRabbitTheme}>

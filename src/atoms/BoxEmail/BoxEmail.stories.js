@@ -1,4 +1,3 @@
-import React from 'react'
 import BoxEmail from './BoxEmail.tsx'
 
 export default {

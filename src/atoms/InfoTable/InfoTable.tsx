@@ -1,15 +1,14 @@
-import styled, { css } from 'styled-components'
-import React, { FC } from 'react'
-import applyTransparence from 'helpers/transparentize'
-import { colorVariables } from 'styles/variables'
-import Text, { TextColor } from 'atoms/Text/Text'
-import siFormat from 'helpers/siFormat'
-import ago from 'helpers/ago'
-import ok from 'helpers/ok'
-import currency from 'helpers/currency'
-import numberFormat from 'helpers/numberFormat'
-import epoch from 'helpers/epoch'
-import { minWidth } from 'helpers/responsive'
+import Text, { TextColor } from 'atoms/Text/Text';
+import ago from 'helpers/ago';
+import currency from 'helpers/currency';
+import epoch from 'helpers/epoch';
+import numberFormat from 'helpers/numberFormat';
+import ok from 'helpers/ok';
+import { minWidth } from 'helpers/responsive';
+import siFormat from 'helpers/siFormat';
+import applyTransparence from 'helpers/transparentize';
+import styled, { css } from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
 export type InfoTableItem = {
   key: number
@@ -30,7 +29,7 @@ export type InfoTableItem = {
 
 export type WidthStyle = 'small' | 'large'
 
-interface IProps {
+interface IMapButtonProps {
   data: InfoTableItem[]
   width: WidthStyle
 }
@@ -124,7 +123,7 @@ const TableRowStyled = styled.tr<IPropsWidth>`
   }
 `
 
-const InfoTable: FC<IProps> = ({ data, width = 'small' }) => (
+const InfoTable = ({ data, width = 'small' }: IMapButtonProps) => (
   <TableWrapperStyled>
     <tbody>
       {data.map(({ key, title, value, color, type = 'string' }) => (

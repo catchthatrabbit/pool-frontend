@@ -1,4 +1,3 @@
-import React from 'react'
 import MapButton from './MapButton.tsx'
 
 export default {

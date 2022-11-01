@@ -237,6 +237,7 @@ const AStyled = styled.a`
 const TextStyled = styled(Text)`
   white-space: normal;
   line-break: anywhere;
+  font-family: monospace;
 `
 
 export const getServerSideProps = async (

@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 import Button from 'atoms/Button'
 import { MiningInfo } from 'types/app'
-import React, { FC } from 'react'
 import applyTransparence from 'helpers/transparentize'
 import { colorVariables } from 'styles/variables'
 import Text from 'atoms/Text/Text'
@@ -77,11 +76,11 @@ const ButtonContentStyled = styled.div`
   justify-content: center;
 `
 
-interface IProps {
+interface IMinerCardProps {
   data: MiningInfo
 }
 
-const MinerCard: FC<IProps> = ({ data }) => {
+const MinerCard = ({ data }: IMinerCardProps) => {
   const { title, description, info, configLink, minerLink } = data
 
   return (

@@ -1,7 +1,7 @@
 import { notify } from 'atoms/Toaster';
 import { notificationsConfig } from 'config';
 import applyTransparence from 'helpers/transparentize';
-import React, { FC, useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import styled from 'styled-components';
 import { colorVariables } from 'styles/variables';
@@ -37,7 +37,7 @@ interface ICopyButtonProps {
   value: string
 }
 
-const CopyButton: FC<ICopyButtonProps> = ({ value }) => {
+const CopyButton = ({ value }: ICopyButtonProps) => {
   const [ isOnce, setIsOnce ] = useState(false)
   const timeoutId = useRef<NodeJS.Timeout>()
 

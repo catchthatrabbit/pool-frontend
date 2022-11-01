@@ -1,15 +1,15 @@
-import ContentTitle from 'atoms/ContentTitle'
-import { RecentBlocksIcon } from 'atoms/icons'
-import SearchBar from 'atoms/SearchBar'
-import Jumbotron from 'components/Jumbotron'
-import Stats from 'components/Stats'
-import BaseTable from 'components/Table'
-import { homePageConfig } from 'config'
-import { minWidth } from 'helpers/responsive'
-import useGoToWallet from 'hooks/useGoToWallet'
-import React, { useState } from 'react'
-import { homeService } from 'services'
-import styled, { css } from 'styled-components'
+import ContentTitle from 'atoms/ContentTitle';
+import { RecentBlocksIcon } from 'atoms/icons';
+import SearchBar from 'atoms/SearchBar';
+import Jumbotron from 'components/Jumbotron';
+import Stats from 'components/Stats';
+import BaseTable from 'components/Table';
+import { homePageConfig } from 'config';
+import { minWidth } from 'helpers/responsive';
+import useGoToWallet from 'hooks/useGoToWallet';
+import { useState } from 'react';
+import { homeService } from 'services';
+import styled, { css } from 'styled-components';
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 

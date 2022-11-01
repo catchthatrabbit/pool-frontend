@@ -5,6 +5,7 @@ import {
   HeaderStyled,
   HeaderBodyStyled,
   NavHeaderStyled,
+  LogoCommunityStyled,
   LogoStyled,
   HamburgerButtonStyled,
   NavBarStyled,
@@ -13,7 +14,7 @@ import {
 import Text from 'atoms/Text/Text'
 import { useScroll } from 'providers/scroll-provider'
 import Link from 'atoms/Link/Link'
-
+import official from 'helpers/official'
 
 const links = [
   { text: 'Blocks', href: '/blocks' },
@@ -46,7 +47,10 @@ const Header = () => {
       <HeaderBodyStyled>
         <NavHeaderStyled>
           <Link to="/">
-            <LogoStyled />
+            { official()
+              ? <LogoStyled />
+              : <LogoCommunityStyled />
+            }
           </Link>
           <HamburgerButtonStyled
             opened={menuOpened}

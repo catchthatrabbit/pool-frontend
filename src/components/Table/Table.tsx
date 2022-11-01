@@ -16,7 +16,6 @@ import { useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { colorVariables } from 'styles/variables';
 
-import type { FC } from 'react'
 
 const WrapperStyled = styled.div`
   box-sizing: border-box;
@@ -179,7 +178,7 @@ function formatStatusContent(value) {
   return ok(value)
 }
 
-const Table: FC<ITableProps> = ({ data, columns, page, pages, onPageChange, moreLink }) => {
+const Table = ({ data, columns, page, pages, onPageChange, moreLink }: ITableProps) => {
 
   const goToMapper = useRef({
     address: useGoToWallet(),

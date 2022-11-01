@@ -1,4 +1,3 @@
-import React from 'react'
 import Background from './Background.tsx'
 import styled from 'styled-components'
 

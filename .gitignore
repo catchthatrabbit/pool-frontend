@@ -3,6 +3,8 @@
 /.pnp
 .pnp.js
 tsconfig.tsbuildinfo
+package-lock.json
+yarn.lock
 
 # testing
 /coverage
