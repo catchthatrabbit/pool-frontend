@@ -1,11 +1,17 @@
-import styled, { css } from 'styled-components'
-import { StatisticsIcon } from 'atoms/icons'
-import { ChartData } from 'types/app'
-import ContentTitle from 'atoms/ContentTitle/ContentTitle'
-import { InfoBoxItemProps } from 'helpers/text'
-import InfoBox from 'components/InfoBox/InfoBox'
-import RadialBarChart from './RadialBarChart/index'
-import { minWidth } from 'helpers/responsive'
+import Center from 'atoms/Center';
+import ContentTitle from 'atoms/ContentTitle/ContentTitle';
+import { StatisticsIcon } from 'atoms/icons';
+import Text from 'atoms/Text/Text';
+import InfoBox from 'components/InfoBox/InfoBox';
+import { minWidth } from 'helpers/responsive';
+import { InfoBoxItemProps } from 'helpers/text';
+import { useRef } from 'react';
+import { useQuery } from 'react-query';
+import { homeService } from 'services';
+import styled, { css } from 'styled-components';
+import { ChartData } from 'types/app';
+
+import RadialBarChart from './RadialBarChart';
 
 const ChartContainer = styled.div`
   width: 100%;
@@ -132,28 +138,48 @@ const ContentContainer = styled.div`
   )}
 `
 
-interface IStatsProps {
-  chartData: ChartData
-  infoBoxData:  InfoBoxItemProps[]
+const Stats = () => {
+  const { data, isLoading } = useQuery('StatsData', homeService.geStats)
+
+  const infoBoxesPlaceholder = useRef([
+    { title: 'Network difficulty', value: { text: '--', prefix: '', suffix: '' } },
+    { title: 'Blockchain Height', value: { text: '--', prefix: '', suffix: '' } },
+    { title: 'Round Shares', value: { text: '--', prefix: '', suffix: '' } },
+    { title: 'Last block found', value: { text: '--', prefix: '', suffix: '' } },
+    { title: 'Block reward', value: { text: '--', prefix: '', suffix: '' } },
+  ])
+
+  const chartPlaceholder = useRef(new Array(24).fill(null).map((_, index) => ({
+    value: 0,
+    time: index + 1,
+    hour: index + 1,
+  }))
+  )
+
+  return (
+    <StatsStyled>
+      <ContentTitle Image={ <StatisticsIcon /> }>Pool Statistics</ContentTitle>
+
+      { (!isLoading && !data) &&
+        <Center>
+          <Text color='red'>Ohh..Something went wrong!</Text>
+        </Center>
+      }
+
+      <ContentContainer>
+        <ChartContainer>
+          <RadialBarChart data={ data?.chart ?? chartPlaceholder.current } />
+        </ChartContainer>
+        <ul>
+          { (data?.infoBoxes ?? infoBoxesPlaceholder.current).map(({ title, value }) => (
+            <li key={ title }>
+              <InfoBox title={ title } value={ value } />
+            </li>
+          )) }
+        </ul>
+      </ContentContainer>
+    </StatsStyled>
+  )
 }
-
-const Stats  = ({ chartData, infoBoxData }: IStatsProps) => (
-  <StatsStyled>
-    <ContentTitle Image={<StatisticsIcon />}>Pool Statistics</ContentTitle>
-
-    <ContentContainer>
-      <ChartContainer>
-        <RadialBarChart data={chartData} />
-      </ChartContainer>
-      <ul>
-        {infoBoxData.map(({ title, value }) => (
-          <li key={title}>
-            <InfoBox title={title} value={value} />
-          </li>
-        ))}
-      </ul>
-    </ContentContainer>
-  </StatsStyled>
-)
 
 export default Stats
