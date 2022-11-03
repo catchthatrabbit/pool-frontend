@@ -139,6 +139,7 @@ interface ITableProps {
     text: string
     href: string
   }
+  NoDataComponent?: () => JSX.Element
 }
 
 function hideMiddleContent(value) {
@@ -178,7 +179,7 @@ function formatStatusContent(value) {
   return ok(value)
 }
 
-const Table = ({ data, columns, page, pages, onPageChange, moreLink }: ITableProps) => {
+const Table = ({ data, columns, page, pages, onPageChange, moreLink, NoDataComponent }: ITableProps) => {
 
   const goToMapper = useRef({
     address: useGoToWallet(),
@@ -189,7 +190,7 @@ const Table = ({ data, columns, page, pages, onPageChange, moreLink }: ITablePro
   if (!data?.length) {
     return (
       <WrapperStyled>
-        <NoData hint='please Try another pool' />
+        {NoDataComponent ? <NoDataComponent /> : <NoData hint='please Try another pool' />}
       </WrapperStyled>
     )
   }

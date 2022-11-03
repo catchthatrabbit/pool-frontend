@@ -1,17 +1,20 @@
+import Center from 'atoms/Center';
 import ContentTitle from 'atoms/ContentTitle';
 import { RecentBlocksIcon } from 'atoms/icons';
 import SearchBar from 'atoms/SearchBar';
+import Text from 'atoms/Text';
 import Jumbotron from 'components/Jumbotron';
 import Stats from 'components/Stats';
 import BaseTable from 'components/Table';
 import { homePageConfig } from 'config';
 import { minWidth } from 'helpers/responsive';
 import useGoToWallet from 'hooks/useGoToWallet';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useQuery } from 'react-query';
 import { homeService } from 'services';
 import styled, { css } from 'styled-components';
 
-import type { InferGetServerSidePropsType, NextPage } from 'next'
+import type { NextPage } from 'next'
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -79,25 +82,34 @@ const TitleStyled = styled.div`
   margin-bottom: 60px;
 `
 
-export const getServerSideProps = async () => {
-  const [jumbotron, stats, blocks] = await Promise.all([
-    homeService.getJumbotron(),
-    homeService.geStats(),
-    homeService.getBlocks(),
-  ])
+const RecentBlocksTable = () => {
+  const { data, isLoading } = useQuery('BlocksData', homeService.getBlocks)
 
-  return {
-    props: {
-      jumbotron,
-      stats,
-      blocks,
-    },
-  }
+  const NoData = useRef(() => (
+    <Center>
+      <Text color='red'>Ohh..Something went wrong!</Text>
+    </Center>
+  ))
+
+  return (
+    <TableContainerStyled>
+      <TitleStyled>
+        <ContentTitle Image={ <RecentBlocksIcon /> }>
+          Recent blocks
+        </ContentTitle>
+      </TitleStyled>
+
+
+      <BaseTable
+        data={ data }
+        columns={ homePageConfig.BLOCKS_TABLE.columns }
+        NoDataComponent={ !(isLoading || data) && NoData.current }
+      />
+    </TableContainerStyled>
+  )
 }
 
-const Home: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (
-  props,
-) => {
+const Home: NextPage = () => {
   const [searchValue, setSearchValue] = useState('')
   const goToWallet = useGoToWallet()
   const handleSearchValueChange = (event) => {
@@ -109,7 +121,8 @@ const Home: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (
 
   return (
     <ContainerStyled>
-      <Jumbotron data={props.jumbotron} />
+      <Jumbotron />
+
       <SearchBarContainerStyled>
         <SearchBar
           value={searchValue}
@@ -117,25 +130,14 @@ const Home: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (
           onSearch={handleSearch}
         />
       </SearchBarContainerStyled>
+
       <StatsContainerStyled>
-        <Stats
-          chartData={props.stats.chart}
-          infoBoxData={props.stats.infoBoxes}
-        />
+        <Stats />
       </StatsContainerStyled>
-      <TableContainerStyled>
-        <TitleStyled>
-          <ContentTitle Image={<RecentBlocksIcon />}>
-            Recent blocks
-          </ContentTitle>
-        </TitleStyled>
-        <BaseTable
-          data={props.blocks}
-          columns={homePageConfig.BLOCKS_TABLE.columns}
-          moreLink={homePageConfig.BLOCKS_TABLE.moreLink}
-        />
-      </TableContainerStyled>
+
+      <RecentBlocksTable />
     </ContainerStyled>
   )
 }
+
 export default Home
