@@ -1,17 +1,24 @@
-import Button from 'atoms/Button/Button'
-import { Arrow } from 'atoms/icons'
-import MapButton from 'atoms/MapButton/MapButton'
-import Text from 'atoms/Text/Text'
-import InfoBox from 'components/InfoBox/InfoBox'
-import { pathsConstant } from 'constant'
-import { minWidth } from 'helpers/responsive'
-import { InfoBoxItemProps } from 'helpers/text'
-import ResponsiveContext from 'providers/responsive-provider/context'
-import  { useContext } from 'react'
-import styled, { css, keyframes } from 'styled-components'
-import { colorVariables } from 'styles/variables'
-import official from 'helpers/official'
-import { poolConfig } from 'config'
+import Button from 'atoms/Button/Button';
+import Center from 'atoms/Center';
+import { Arrow } from 'atoms/icons';
+import MapButton from 'atoms/MapButton/MapButton';
+import Text from 'atoms/Text/Text';
+import InfoBox from 'components/InfoBox/InfoBox';
+import { poolConfig } from 'config';
+import { pathsConstant } from 'constant';
+import official from 'helpers/official';
+import { minWidth } from 'helpers/responsive';
+import { InfoBoxItemProps } from 'helpers/text';
+import ResponsiveContext from 'providers/responsive-provider/context';
+import { useContext } from 'react';
+import { Suspense } from 'react';
+import { useRef } from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
+import { homeService } from 'services';
+import styled, { css, keyframes } from 'styled-components';
+import { colorVariables } from 'styles/variables';
 
 const scrollTranslate = keyframes`
   0% {
@@ -342,11 +349,30 @@ const LegalMessage = styled.div`
   line-height: 1.4em;
 `
 
-interface IJumbotronProps {
-  data: {
-    infoBoxItems:  InfoBoxItemProps[]
-    poolFee: string
-  }
+interface IJumbotronInfoBoxItemsProps {
+  items?: InfoBoxItemProps[]
+}
+
+const JumbotronInfoBoxItems = ({ items }: IJumbotronInfoBoxItemsProps) => {
+  const placeholder = useRef([
+    { title: 'Pools hashrate', value: { text: '--', prefix: '', suffix: '' } },
+    { title: 'Network hashrate', value: { text: '--', prefix: '', suffix: '' } },
+    { title: 'Network difficulty', value: { text: '--', prefix: '', suffix: '' } },
+    { title: 'Active miners', value: { text: '--', prefix: '', suffix: '' } },
+    { title: 'Round variance', value: { text: '--', prefix: '', suffix: '' } },
+  ])
+
+  return (
+    <ul>
+      {
+        (items ?? placeholder.current).map(({ title, value }) => (
+          <li key={ title }>
+            <InfoBox title={ title } value={ value } />
+          </li>
+        ))
+      }
+    </ul>
+  )
 }
 
 const MapButtonWrapper = ({ href, children }) => {
@@ -387,29 +413,35 @@ const LegalNotice = () => {
 }
 // END: DO NOT MODIFY LEGAL NOTICE
 
-const Jumbotron = ({ data }: IJumbotronProps) => {
+const Jumbotron = () => {
   const displayType = useContext(ResponsiveContext)
   const displayTitleTop = displayType === 'tablet' || displayType === 'mobileL'
+
+  const { data, isLoading } = useQuery('JumbotronData', homeService.getJumbotron)
+
 
   const title = (
     <TitleTexStyled>
       <Text size="ultra-large">{ official() ? "Dedicated" : "Community" } Pool for</Text>
       <Text size="ultra-large" color="apple">
-        {' '}Core Coin{' '}
+        &nbsp;Core Coin&nbsp;
       </Text>
       <Text size="ultra-large">&amp; IoT devices</Text>
     </TitleTexStyled>
   )
+
   return (
     <JumbotronStyle>
-      <ul>
-        {data.infoBoxItems.map(({ title, value }) => (
-          <li key={title}>
-            <InfoBox title={title} value={value} />
-          </li>
-        ))}
-      </ul>
+      <JumbotronInfoBoxItems items={ data?.infoBoxItems } />
+
+      { (!isLoading && !data) && (
+        <Center style={{ marginBlock: '2rem' }}>
+          <Text color='red'>Ohh..Something went wrong!</Text>
+        </Center>
+      ) }
+
       <LegalNotice />
+
       <MapStyle>
         <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
         <Locations>
@@ -446,15 +478,15 @@ const Jumbotron = ({ data }: IJumbotronProps) => {
           <Text color="santasGray" fontFamily="secondary" space="initial">
             <Text fontFamily="secondary" color="apple">
               Pay-per-last-N-shares
-            </Text>{' '}
-            (PPLNS) system with only{' '}
+            </Text>&nbsp;
+            (PPLNS) system with only&nbsp;
             <Text fontFamily="secondary" color="apple">
-              {data.poolFee}% fee
+              {Boolean(data) ? `${data?.poolFee}%` : '-'} fee
             </Text>
             .
           </Text>
           <Text color="santasGray" fontFamily="secondary" space="initial">
-            Please, select one of the locations to{' '}
+            Please, select one of the locations to&nbsp;
             <a href="/start-mining">
               <Text fontFamily="secondary" color="apple">
                 start your mining today
