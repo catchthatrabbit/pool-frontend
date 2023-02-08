@@ -19,10 +19,19 @@
   "images": {
     "logo": "",
     "og": "/images/ctr-og.jpg",
-    "twitter": "/images/ctr-tw.jpg"
+    "twitter": "/images/ctr-tw.jpg",
+    "hero": "/images/map_bg.png"
   },
-  "wallet": {
-    "xcb": "cb7936b9b7980a0544a6da7ae1cea8424bac9046d997"
+  "slogan": {
+    "primary": "Dedicated Pool for Core Coin and IoT devices",
+    "secondary": "「Core mining pool in the lotusland of Ores」"
+  },
+  "effects": {
+    "showLocations": true,
+    "showActionIcons": true
+  },
+  "meta": {
+    "ican:xcb": "cb7936b9b7980a0544a6da7ae1cea8424bac9046d997"
   },
   "estd": "2022"
 }

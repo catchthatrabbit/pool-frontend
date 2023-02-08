@@ -220,9 +220,9 @@ const RadialBarChart = ({ data = null }: IRadialBarChartProps) => {
             cy="0"
             fr="180"
           >
-            <stop offset="0%" style={{ stopColor: '#365e67' }} />
-            <stop offset="30%" style={{ stopColor: '#396a72' }} />
-            <stop offset="60%" style={{ stopColor: '#67a542' }} />
+            <stop offset="0%" style={{ stopColor: colorVariables.abbey }} />
+            <stop offset="30%" style={{ stopColor: colorVariables.casal }} />
+            <stop offset="60%" style={{ stopColor: colorVariables.apple }} />
           </radialGradient>
         </defs>
       </svg>

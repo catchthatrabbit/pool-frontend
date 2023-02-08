@@ -27,9 +27,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>{ poolConfig.POOL_OPTIONS.name }</title>
         <meta name="description" content={ poolConfig.POOL_OPTIONS.description } />
         <meta name="keywords" content={ poolConfig.POOL_OPTIONS.keywords } />
-        {Object.keys(poolConfig.POOL_OPTIONS.wallet).map((key, id) => {
+        {Object.keys(poolConfig.POOL_OPTIONS.meta).map((key, id) => {
           return (
-            <meta property={"wallet:" + key.toLowerCase()} content={poolConfig.POOL_OPTIONS.wallet[key].toLowerCase()} key={id} />
+            <meta property={key.toLowerCase()} content={poolConfig.POOL_OPTIONS.meta[key].toLowerCase()} key={id} />
           )
         })}
         <meta property="og:title" content={ poolConfig.POOL_OPTIONS.name } />
