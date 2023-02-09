@@ -18,7 +18,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { homeService } from 'services';
 import styled, { css, keyframes } from 'styled-components';
-import { colorVariables } from 'styles/variables';
+import { fonts, colorVariables } from 'styles/variables';
 
 const scrollTranslate = keyframes`
   0% {
@@ -339,14 +339,15 @@ const LegalBox = styled.div`
 
 const LegalTitle = styled.div`
   font-size: 1.3em;
-  font-family: Orbitron,sans-serif;
-  color: #fff;
+  font-family: ${fonts.primary};
+  color: ${colorVariables.white};
   margin-bottom: 0.3em;
   letter-spacing: 0.1em;
 `
 
 const LegalMessage = styled.div`
   line-height: 1.4em;
+  color: ${colorVariables.santasGray};
 `
 
 interface IJumbotronInfoBoxItemsProps {
@@ -422,11 +423,7 @@ const Jumbotron = () => {
 
   const title = (
     <TitleTexStyled>
-      <Text size="ultra-large">{ official() ? "Dedicated" : "Community" } Pool for</Text>
-      <Text size="ultra-large" color="apple">
-        &nbsp;Core Coin&nbsp;
-      </Text>
-      <Text size="ultra-large">&amp; IoT devices</Text>
+      <Text size="large">{poolConfig.POOL_OPTIONS.slogan.primary}</Text>
     </TitleTexStyled>
   )
 
@@ -436,14 +433,15 @@ const Jumbotron = () => {
 
       { (!isLoading && !data) && (
         <Center style={{ marginBlock: '2rem' }}>
-          <Text color='red'>Ohh..Something went wrong!</Text>
+          <Text color='red'>Cannot load the data! Please, contact support.</Text>
         </Center>
       ) }
 
       <LegalNotice />
 
       <MapStyle>
-        <ImageStyled src={'/images/map_bg.png'} alt={'Mining locations'} />
+        <ImageStyled src={poolConfig.POOL_OPTIONS.images.hero} alt={'Mining locations'} />
+        { poolConfig.POOL_OPTIONS.effects.showLocations && (
         <Locations>
           <USStyle>
             <MapButtonWrapper href={pathsConstant.connectToUsa}>
@@ -461,12 +459,13 @@ const Jumbotron = () => {
             </MapButtonWrapper>
           </APStyle>
         </Locations>
+        )}
       </MapStyle>
       <InfoComponentStyled>
         {title}
         <InfoTextContent>
           <Text color="santasGray" fontFamily="secondary" space="initial">
-            「Core mining pool in the lotusland of Ores.」
+            {poolConfig.POOL_OPTIONS.slogan.secondary}
             <br />
             <br />
             <Text fontFamily="primary" color="apple" size="large">

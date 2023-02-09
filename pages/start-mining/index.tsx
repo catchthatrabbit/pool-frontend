@@ -155,7 +155,7 @@ const BoxContentStyled = styled.div`
   margin-bottom: 31px;
 
   kbd {
-    color: green;
+    color: ${colorVariables.apple};
     border: 1px solid ${colorVariables.gunPowder};
     border-radius: 3px;
     padding: 0.3em;
@@ -390,7 +390,7 @@ const StartMiningPage: NextPage<
                   <Text
                     fontFamily="primary"
                     fontWeight="bold"
-                    size="very-large"
+                    size="large"
                   >
                     {text}
                   </Text>

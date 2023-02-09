@@ -43,6 +43,11 @@ Variables:
 - `IMAGES_LOGO` Logo of the website.
 - `IMAGES_OG` Open Graph image.
 - `IMAGES_TWITTER` Twitter image.
+- `IMAGES_HERO` Hero image.
+- `SLOGAN_PRIMARY` Primary slogan in the main page.
+- `SLOGAN_SECONDARY` Secondary slogan in the main page.
+- `EFFECTS_LOCATIONS` Show the locations in the hero image.
+- `EFFECTS_ACTIONS` Show rabbit actions icons in the title.
 
 ## Security
 

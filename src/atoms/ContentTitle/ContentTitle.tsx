@@ -1,5 +1,6 @@
 import Text from 'atoms/Text/Text';
 import styled from 'styled-components';
+import { poolConfig } from 'config';
 
 const WrapperStyled = styled.div`
   display: flex;
@@ -21,7 +22,9 @@ interface IContentTitleProps {
 
 const ContentTitle = ({ children: title, Image }: IContentTitleProps) => (
   <WrapperStyled>
+    { poolConfig.POOL_OPTIONS.effects.showActionIcons && (
     <ImageStyled>{Image}</ImageStyled>
+    )}
     <Text size="ultra-large">
       {title}
     </Text>
