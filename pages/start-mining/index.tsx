@@ -390,7 +390,7 @@ const StartMiningPage: NextPage<
                   <Text
                     fontFamily="primary"
                     fontWeight="bold"
-                    size="very-large"
+                    size="large"
                   >
                     {text}
                   </Text>

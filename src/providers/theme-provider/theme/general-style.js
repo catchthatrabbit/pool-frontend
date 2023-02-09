@@ -9,17 +9,17 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: ${({ theme }) => theme.typography.secondary};
     background: ${({ theme }) => theme.colors.woodsmoke};
-    color: ${({ theme }) => theme.colors.white};
+    color: ${colorVariables.white};
     font-size: 14px;
   }
 
   a {
-    color: inherit;
+    color: ${colorVariables.apple};
     text-decoration: none;
-	border-bottom: dashed 1px;
+	   border-bottom: 1px dashed ${colorVariables.white};
   }
   a:hover {
-	border-bottom: solid 1px;
+	   border-bottom: 1px solid ${colorVariables.white};
   }
 
   main {
