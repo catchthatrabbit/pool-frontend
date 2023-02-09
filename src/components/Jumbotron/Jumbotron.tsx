@@ -340,13 +340,14 @@ const LegalBox = styled.div`
 const LegalTitle = styled.div`
   font-size: 1.3em;
   font-family: ${fonts.primary};
-  color: #fff;
+  color: ${colorVariables.white};
   margin-bottom: 0.3em;
   letter-spacing: 0.1em;
 `
 
 const LegalMessage = styled.div`
   line-height: 1.4em;
+  color: ${colorVariables.santasGray};
 `
 
 interface IJumbotronInfoBoxItemsProps {

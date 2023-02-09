@@ -205,14 +205,7 @@ const Footer = () => {
             : <LogoCommunityIcon />
           }
           <LogoTextStyle>
-            <Text size={fontSize}>{ official() ? "Dedicated" : "Community" } Pool</Text>
-            <br />
-            <Text size={fontSize}>for </Text>
-            <Text color="apple" size={fontSize}>
-              CORE COIN
-            </Text>
-            <br />
-            <Text size={fontSize}>&amp; IoT devices</Text>
+            <Text size={fontSize}>{poolConfig.POOL_OPTIONS.slogan.primary}</Text>
           </LogoTextStyle>
         </LogoStyled>
         <FooterInfoContent>
