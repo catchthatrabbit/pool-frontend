@@ -14,7 +14,7 @@ import {
 import Text from 'atoms/Text/Text'
 import { useScroll } from 'providers/scroll-provider'
 import Link from 'atoms/Link/Link'
-import official from 'helpers/official'
+import { poolConfig } from 'config';
 
 const links = [
   { text: 'Blocks', href: '/blocks' },
@@ -46,11 +46,8 @@ const Header = () => {
     <HeaderStyled hidden={headerHiddenState} fullHeight={menuOpened}>
       <HeaderBodyStyled>
         <NavHeaderStyled>
-          <Link to="/">
-            { official()
-              ? <LogoStyled />
-              : <LogoCommunityStyled />
-            }
+          <Link to="/" className="nohover">
+            <LogoStyled src={poolConfig.POOL_OPTIONS.images.logo} alt={poolConfig.POOL_OPTIONS.name} />
           </Link>
           <HamburgerButtonStyled
             opened={menuOpened}

@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: ${({ theme }) => theme.typography.secondary};
-    background: ${({ theme }) => theme.colors.woodsmoke};
+    background: ${colorVariables.woodsmoke};
     color: ${colorVariables.white};
     font-size: 14px;
   }

@@ -68,6 +68,17 @@ const LinkStyled = styled(ParagraphStyled)`
   margin-bottom: 43px;
 `
 
+const InputStyled = styled.input`
+  color: ${colorVariables.apple};
+  font-size: 1.2em;
+  width: calc(100% - 17px);
+  border: 1px solid ${colorVariables.gunPowder};
+  background-color: ${colorVariables.woodsmoke};
+  border-radius: 3px;
+  padding: 0.3em;
+  border-radius: 3px;
+`
+
 const ButtonStyled = styled(Button)`
   padding: 38px 17px 37px 18px;
 `
@@ -81,7 +92,7 @@ interface IMinerCardProps {
 }
 
 const MinerCard = ({ data }: IMinerCardProps) => {
-  const { title, description, info, configLink, minerLink } = data
+  const { title, description, info, command, minerLink } = data
 
   return (
     <BoxStyled>
@@ -96,14 +107,12 @@ const MinerCard = ({ data }: IMinerCardProps) => {
           // eslint-disable-next-line react/no-array-index-key
           <InfoStyled key={index}>{item}</InfoStyled>
         ))}
-        <LinkStyled>
-          <a href={configLink} target="_blank" rel="noreferrer noopener">
-            View config file
-          </a>
-        </LinkStyled>
+        <br /><br />
+        <DescriptionStyled>Command to configure the software:</DescriptionStyled>
+        <InputStyled type="text" value={command} onFocus={e => e.target.select()} readonly />
       </InfoContentStyled>
       <ButtonContentStyled>
-        <ButtonStyled href={minerLink}>DOWNLOAD SOFTWARE</ButtonStyled>
+        <ButtonStyled href={minerLink}>Download Release</ButtonStyled>
       </ButtonContentStyled>
     </BoxStyled>
   )

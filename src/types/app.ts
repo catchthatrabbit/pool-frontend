@@ -8,7 +8,7 @@ export type MiningInfo = {
   title: string
   description: string
   info: string[]
-  configLink: string
+  command: string
   minerLink: string
 }
 

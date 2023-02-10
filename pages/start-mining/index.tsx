@@ -1,4 +1,5 @@
 import Background from 'atoms/Background';
+import Button from 'atoms/Button/Button';
 import ContentTitle from 'atoms/ContentTitle';
 import { RecentBlocksIcon, StartMiningIcon } from 'atoms/icons';
 import SearchBar from 'atoms/SearchBar';
@@ -6,11 +7,13 @@ import Text from 'atoms/Text/Text';
 import MinerCard from 'components/MinerCard';
 import MiningInfo from 'components/MiningInfo';
 import { minWidth } from 'helpers/responsive';
+import applyTransparence from 'helpers/transparentize';
 import useGoToWallet from 'hooks/useGoToWallet';
 import { useState } from 'react';
 import { startMiningService } from 'services';
 import styled, { css } from 'styled-components';
 import { colorVariables, fonts } from 'styles/variables';
+import { poolConfig } from 'config';
 
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 
@@ -149,6 +152,53 @@ const MiningCardStyled = styled.div`
 const TitleContainerStyled = styled.div`
   margin: 57px 0 73px;
 `
+const MiningContainerStyled = styled.div`
+  border: 1px solid ${colorVariables.gunPowder};
+  border-radius: 10px;
+  overflow: scroll;
+  overflow-y: hidden;
+  width: 100%;
+  margin-bottom: 31px;
+  ${minWidth(
+    'tablet',
+    css`
+      overflow: hidden;
+    `,
+  )}
+  ${minWidth(
+    'laptopL',
+    css`
+      width: auto;
+    `,
+  )}
+`
+const MiningTitleContainerStyled = styled.div`
+  border-bottom: 1px solid ${colorVariables.gunPowder};
+  margin: 0 27px;
+  padding: 30px 0 15px 0;
+  ${minWidth(
+    'tablet',
+    css`
+      margin: 0 47px;
+      padding: 50px 0 25px 0;
+    `,
+  )}
+`
+
+const MiningTableContainerStyled = styled.div`
+  margin: 16px 0;
+  & > div:nth-child(2n) {
+    background-color: ${applyTransparence(0.1, colorVariables.gunPowder)};
+  }
+`
+const MiningTableRowStyled = styled.div`
+  margin: 0;
+  padding: 20px 47px 10px 47px;
+  font-size: 1.3em;
+  & > span:first-child {
+    margin-right: 20px;
+  }
+`
 const BoxContentStyled = styled.div`
   border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
@@ -224,18 +274,14 @@ const TextGuide3Styled = styled(TextStyled)`
 const TextGuide4Styled = styled(TextStyled)`
   margin-bottom: 75px;
 `
+const ButtonStyled = styled(Button)`
+  margin: 10px 15px;
+`
 
 export const getServerSideProps = async () => {
   return {
     props: {
-      minerDataInfoEu: startMiningService.MinerDataInfoEu,
-      minerDataInfoEuSec: startMiningService.MinerDataInfoEuSec,
-      minerDataInfoAs: startMiningService.MinerDataInfoAs,
-      minerDataInfoAsSec: startMiningService.MinerDataInfoAsSec,
-      minerDataInfoUs: startMiningService.MinerDataInfoUs,
-      minerDataInfoUsSec: startMiningService.MinerDataInfoUsSec,
       minerDataCard: startMiningService.MinerDataCard,
-      links: startMiningService.Links,
       poolDetails: await startMiningService.getPoolDetails(),
     },
   }
@@ -260,44 +306,22 @@ const StartMiningPage: NextPage<
     <>
       <Background />
       <ContainerStyled>
-        <ContentTitle Image={<StartMiningIcon />}>Start mining</ContentTitle>
+        <ContentTitle Image={<StartMiningIcon />}>Pools</ContentTitle>
         <MiningInfoContainerStyled>
-          <MiningInfoStyled id="pool-europe">
-            <MiningInfo
-              data={props.minerDataInfoEu}
-              title="Connect to European Pool"
-            />
-          </MiningInfoStyled>
-          <MiningInfoStyled id="pool-europe-1">
-            <MiningInfo
-              data={props.minerDataInfoEuSec}
-              title="Backup European Pool"
-            />
-          </MiningInfoStyled>
-          <MiningInfoStyled id="pool-asia">
-            <MiningInfo
-              data={props.minerDataInfoAs}
-              title="Connect to Asian Pool"
-            />
-          </MiningInfoStyled>
-          <MiningInfoStyled id="pool-asia-1">
-            <MiningInfo
-              data={props.minerDataInfoAsSec}
-              title="Backup Asian Pool"
-            />
-          </MiningInfoStyled>
-          <MiningInfoStyled id="pool-usa">
-            <MiningInfo
-              data={props.minerDataInfoUs}
-              title="Connect to US Pool"
-            />
-          </MiningInfoStyled>
-          <MiningInfoStyled id="pool-usa-1">
-            <MiningInfo
-              data={props.minerDataInfoUsSec}
-              title="Backup US Pool"
-            />
-          </MiningInfoStyled>
+          {Object.keys(poolConfig.POOL_OPTIONS.pools).map((keyname,i) =>
+            <MiningContainerStyled id={keyname}>
+              <MiningTitleContainerStyled>
+                <Text size="very-large" color="apple">
+                  {poolConfig.POOL_OPTIONS.pools[keyname].name}
+                </Text>
+              </MiningTitleContainerStyled>
+              <MiningTableContainerStyled>
+                {Object.keys(poolConfig.POOL_OPTIONS.pools[keyname]).map((key,id) => key!='name' &&
+                  <MiningTableRowStyled><span>{key.charAt(0).toUpperCase() + key.slice(1)}:</span><span>{poolConfig.POOL_OPTIONS.pools[keyname][key]}</span></MiningTableRowStyled>
+                )}
+              </MiningTableContainerStyled>
+            </MiningContainerStyled>
+          )}
         </MiningInfoContainerStyled>
         <TitleContainerStyled>
           <ContentTitle Image={<RecentBlocksIcon />}>Get started</ContentTitle>
@@ -339,12 +363,12 @@ const StartMiningPage: NextPage<
                 No Private key = No Coins!
               </Text>
               <br />
-              <Text>Go-core command</Text>
+              <Text>Go-core command:</Text>
               <Text fontFamily="secondary">
                 <kbd>chmod -x gocore &amp;&amp; ./gocore account new</kbd>
               </Text>
               <br />
-              <Text space="initial">Wallet Generator command</Text>
+              <Text space="initial">Wallet Generator command:</Text>
               <Text space="initial" fontFamily="secondary">
                 <kbd>
                   chmod -x wallet-generator &amp;&amp; ./wallet-generator
@@ -353,22 +377,20 @@ const StartMiningPage: NextPage<
             </TextGuide1Styled>
             <TextGuideStyled id="software">
               <Text space="initial" size="large">
-                Step 2: Download Mining software
+                Step 2: Download & Configure Verification software
               </Text>
             </TextGuideStyled>
             <TextGuide2Styled>
               <Text space="initial" fontFamily="secondary">
-                You need to download the Mining software, install and configure
-                it to start the mining application.
+                You can automatically download and configure software with just one command.
               </Text>
               <Text space="initial" fontFamily="secondary">
-                To configure the Mining client, run the script{' '}
-                <kbd>bash ./mine.sh</kbd> and follow the instructions.
+                Or you can download the software and set it up.
               </Text>
               <br />
               <br />
               <Text space="initial" fontFamily="secondary">
-                We recommend the following miner/s:
+                You can choose from the following software:
               </Text>
             </TextGuide2Styled>
             <MinerCardsWrapperStyled>
@@ -385,17 +407,9 @@ const StartMiningPage: NextPage<
               We have Geo-locations to choose from:
             </TextGuide3Styled>
             <LinksWrapperStyled>
-              {props.links.map(({ href, text }) => (
-                <a key={text} href={href} onClick={onClickHandler}>
-                  <Text
-                    fontFamily="primary"
-                    fontWeight="bold"
-                    size="large"
-                  >
-                    {text}
-                  </Text>
-                </a>
-              ))}
+              {Object.keys(poolConfig.POOL_OPTIONS.pools).map((keyname,i) =>
+                <ButtonStyled href={'#' + keyname} key={keyname}  onClick={onClickHandler}>{poolConfig.POOL_OPTIONS.pools[keyname].name}</ButtonStyled>
+              )}
             </LinksWrapperStyled>
             <TextGuideStyled>
               <Text space="initial" size="large">

@@ -2,82 +2,14 @@ import { poolEndpointsConfig } from 'config';
 import { unitsConstant } from 'constant';
 import { EPool } from 'enums';
 
-export const MinerDataInfoEu = [
-  { key: '1', title: 'Server', value: 'eu.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '8008' },
-  {
-    key: '3',
-    title: 'Username',
-    value: '<your wallet address>.<worker name>',
-  },
-  { key: '4', title: 'Password', value: '<empty>' },
-]
-export const MinerDataInfoEuSec = [
-  { key: '1', title: 'Server', value: 'eu1.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '8008' },
-  {
-    key: '3',
-    title: 'Username',
-    value: '<your wallet address>.<worker name>',
-  },
-  { key: '4', title: 'Password', value: '<empty>' },
-]
-export const MinerDataInfoAs = [
-  { key: '1', title: 'Server', value: 'as.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '8008' },
-  {
-    key: '3',
-    title: 'Username',
-    value: '<your wallet address>.<worker name>',
-  },
-  { key: '4', title: 'Password', value: '<empty>' },
-]
-export const MinerDataInfoAsSec = [
-  { key: '1', title: 'Server', value: 'as1.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '8008' },
-  {
-    key: '3',
-    title: 'Username',
-    value: '<your wallet address>.<worker name>',
-  },
-  { key: '4', title: 'Password', value: '<empty>' },
-]
-export const MinerDataInfoUs = [
-  { key: '1', title: 'Server', value: 'us.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '8008' },
-  {
-    key: '3',
-    title: 'Username',
-    value: '<your wallet address>.<worker name>',
-  },
-  { key: '4', title: 'Password', value: '<empty>' },
-]
-export const MinerDataInfoUsSec = [
-  { key: '1', title: 'Server', value: 'us1.catchthatrabbit.com' },
-  { key: '2', title: 'Port', value: '8008' },
-  {
-    key: '3',
-    title: 'Username',
-    value: '<your wallet address>.<worker name>',
-  },
-  { key: '4', title: 'Password', value: '<empty>' },
-]
 export const MinerDataCard = {
   title: 'CoreMiner',
   description:
     'Fast & Open-source miner with excellent hardware support & 0% fees.',
   info: ['OS: Ubuntu, Raspbian', 'CPUs: AMD, Intel, ARM', 'Fee: 0%'],
-  configLink: 'https://gist.github.com/raisty/54a68880cb913da81273edfcb05c2270',
+  command: 'bash <(curl -s https://raw.githubusercontent.com/catchthatrabbit/coreminer/master/mine.sh)',
   minerLink: 'https://github.com/catchthatrabbit/coreminer/releases',
 }
-export const Links = [
-  { href: '#pool-europe', text: 'European pool [EU]' },
-  { href: '#pool-europe-1', text: 'European backup [EU1]' },
-  { href: '#pool-asia', text: 'Asian pool [AS]' },
-  { href: '#pool-asia-1', text: 'Asian backup [AS1]' },
-  { href: '#pool-usa', text: 'US pool [US]' },
-  { href: '#pool-usa-1', text: 'US backup [US1]' },
-]
 
 const hydratePoolDetails = (data) => {
   return [

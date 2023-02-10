@@ -321,7 +321,7 @@ const InfoTextContent = styled.div`
 `
 const ImageStyled = styled.img`
   height: 100%;
-  width: 100%;
+  width: ${poolConfig.POOL_OPTIONS.effects.scaleHero};
 `
 
 const LegalWrapper = styled.div`
@@ -406,7 +406,7 @@ const LegalNotice = () => {
   return (
     <LegalWrapper>
       <LegalBox>
-        <LegalTitle>The Rabbit community is aboard! 🐰🐰🐰</LegalTitle>
+        <LegalTitle>The Rabbit community is aboard! {poolConfig.POOL_OPTIONS.effects.emoji + poolConfig.POOL_OPTIONS.effects.emoji + poolConfig.POOL_OPTIONS.effects.emoji}</LegalTitle>
         <LegalMessage>This is not an offical pool, but its community distribution.<br />The official Catch that Rabbit pool is located at <a href="https://catchthatrabbit.com" target="_blank">catchthatrabbit.com</a>.<br />Please, report any malicious instance to at: <a href="mailto:security@catchthatrabbit.com">security@catchthatrabbit.com</a></LegalMessage>
       </LegalBox>
     </LegalWrapper>

@@ -12,7 +12,7 @@ export default {
         title: 'Coreminer',
         description: 'Fast miner with 0% fees',
         info: ['OS: Linux', 'CPUs: AMD, Intel, ARM', 'Fee: 0%'],
-        configLink: '',
+        command: '',
         minerLink: '',
       },
     },

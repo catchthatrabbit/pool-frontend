@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { colorVariables } from 'styles/variables';
 
 const Container = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.gunPowder};
+  border: 1px solid ${colorVariables.gunPowder};
   border-radius: 10px;
   overflow: scroll;
   overflow-y: hidden;
