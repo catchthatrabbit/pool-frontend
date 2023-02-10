@@ -5,7 +5,6 @@ import {
   HeaderStyled,
   HeaderBodyStyled,
   NavHeaderStyled,
-  LogoCommunityStyled,
   LogoStyled,
   HamburgerButtonStyled,
   NavBarStyled,
