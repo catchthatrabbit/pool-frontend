@@ -101,7 +101,7 @@ const NavHeaderStyled = styled.div`
 
 const LogoStyled = styled.img`
   width: auto;
-  min-height: 90px;
+  height: 90px;
   max-width: 140px;
   max-height: 100px;
   transform: scale(0.8);
