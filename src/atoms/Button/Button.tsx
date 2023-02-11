@@ -78,10 +78,10 @@ const Button = ({ onClick, children, href, theme = 'outline', full = false }: IB
     </ButtonStyled>
   )
   if (theme === 'email') {
-    return <Link href={'mailto:' + children}>{renderedButton}</Link>
+    return <Link href={'mailto:' + children} className="buttonlink">{renderedButton}</Link>
   }
   if (href) {
-    return <Link href={href}>{renderedButton}</Link>
+    return <Link href={href} className="buttonlink">{renderedButton}</Link>
   }
   return renderedButton
 }

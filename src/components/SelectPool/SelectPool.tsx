@@ -1,5 +1,6 @@
 import { EPool } from 'enums'
 import { minWidth } from 'helpers/responsive'
+import applyTransparence from 'helpers/transparentize'
 import { useState } from 'react'
 import { poolSelector, setPoolSelector, usePoolStore } from 'store/pool.store'
 import styled, { css } from 'styled-components'
@@ -40,11 +41,12 @@ const PoolSelect = styled.select`
   font-size: 18px;
   text-align: center;
   display: inline-block;
-  border: 1px solid ${({ theme }) => theme.colors.spindle};
+  border: 1px solid ${applyTransparence(0.5, colorVariables.gunPowder)};
   border-radius: 10px;
-  padding: 15px;
+  padding: 17px;
   position: relative;
   z-index: 1;
+  left: -10%;
 
   &:hover,
   &:focus {
@@ -52,7 +54,7 @@ const PoolSelect = styled.select`
   }
   & + span.dicon {
     position: relative;
-    right: 20px;
+    right: 46px;
     pointer-events: none;
   }
 `

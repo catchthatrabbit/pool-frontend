@@ -16,10 +16,19 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: ${colorVariables.apple};
     text-decoration: none;
-	   border-bottom: 1px dashed ${colorVariables.white};
+	  border-bottom: 1px dashed ${colorVariables.white};
   }
   a:hover {
 	   border-bottom: 1px solid ${colorVariables.white};
+  }
+  a.buttonlink {
+    border-bottom: 0;
+  }
+  a:hover.buttonlink {
+    border-bottom: 0;
+  }
+  nav a:hover {
+    border-bottom: 0;
   }
 
   main {
