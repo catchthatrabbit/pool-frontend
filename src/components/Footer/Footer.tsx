@@ -138,7 +138,7 @@ const FooterInfoContent = styled.div`
 `
 const LogoImgStyled = styled.img`
   max-width: 256px;
-  max-height: 96px;
+  max-height: 128px;
 `
 
 const FooterInfo = ({ title, list }) => (
