@@ -27,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>{ poolConfig.POOL_OPTIONS.name }</title>
         <meta name="description" content={ poolConfig.POOL_OPTIONS.description } />
         <meta name="keywords" content={ poolConfig.POOL_OPTIONS.keywords } />
+        <link rel="icon" type="image/x-icon" href={ poolConfig.POOL_OPTIONS.images.favicon } />
         {Object.keys(poolConfig.POOL_OPTIONS.meta).map((key, id) => {
           return (
             <meta property={key.toLowerCase()} content={poolConfig.POOL_OPTIONS.meta[key].toLowerCase()} key={id} />

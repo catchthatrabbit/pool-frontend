@@ -8,8 +8,8 @@ interface LinkProps extends React.ComponentPropsWithoutRef<'button'> {
 export default React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ to, children }, ref: any) => {
     return (
-      <Link href={to}>
-        <a ref={ref}>{children}</a>
+      <Link href={to} ref={ref}>
+        {children}
       </Link>
     )
   },

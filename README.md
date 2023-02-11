@@ -41,6 +41,7 @@ Variables:
 - `PAGE_DESCRIPTION` Description of the website.
 - `PAGE_KEYWORDS` Keywords of the website.
 - `IMAGES_LOGO` Logo of the website.
+- `IMAGES_FAVICON` Favicon `ico` file.
 - `IMAGES_OG` Open Graph image.
 - `IMAGES_TWITTER` Twitter image.
 - `IMAGES_HERO` Hero image.

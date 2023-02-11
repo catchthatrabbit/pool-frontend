@@ -17,7 +17,8 @@
   },
   "keywords": "catch,that,rabbit,mining,pool,core,ore,₡ORE,blockchain,xcb,xce,xab,network,open-source,open,source,mainnet,devin",
   "images": {
-    "logo": "",
+    "logo": "/images/logo.svg",
+    "favicon": "favicon.ico",
     "og": "/images/ctr-og.jpg",
     "twitter": "/images/ctr-tw.jpg",
     "hero": "/images/map_bg.png"
@@ -28,10 +29,56 @@
   },
   "effects": {
     "showLocations": true,
-    "showActionIcons": true
+    "showActionIcons": true,
+    "scaleHero": true,
+    "emoji": "🐰"
   },
   "meta": {
     "ican:xcb": "cb7936b9b7980a0544a6da7ae1cea8424bac9046d997"
+  },
+  "pools": {
+    "eu": {
+      "name": "European Pool",
+      "server": "eu.catchthatrabbit.com",
+      "port": "8008",
+      "username": "<your wallet address>.<worker name>",
+      "password": "<empty>"
+    },
+    "eu1": {
+      "name": "Backup European Pool",
+      "server": "eu1.catchthatrabbit.com",
+      "port": "8008",
+      "username": "<your wallet address>.<worker name>",
+      "password": "<empty>"
+    },
+    "as": {
+      "name": "Asian Pool",
+      "server": "as.catchthatrabbit.com",
+      "port": "8008",
+      "username": "<your wallet address>.<worker name>",
+      "password": "<empty>"
+    },
+    "as1": {
+      "name": "Backup Asian Pool",
+      "server": "as1.catchthatrabbit.com",
+      "port": "8008",
+      "username": "<your wallet address>.<worker name>",
+      "password": "<empty>"
+    },
+    "us": {
+      "name": "US Pool",
+      "server": "us.catchthatrabbit.com",
+      "port": "8008",
+      "username": "<your wallet address>.<worker name>",
+      "password": "<empty>"
+    },
+    "us1": {
+      "name": "Backup US Pool",
+      "server": "us1.catchthatrabbit.com",
+      "port": "8008",
+      "username": "<your wallet address>.<worker name>",
+      "password": "<empty>"
+    }
   },
   "estd": "2022"
 }

@@ -1,6 +1,6 @@
 import Button from 'atoms/Button/Button'
 import ContentTitle from 'atoms/ContentTitle/ContentTitle'
-import { LogoIcon, LogoCommunityIcon, StartMiningIcon } from 'atoms/icons'
+import { StartMiningIcon } from 'atoms/icons'
 import Link from 'atoms/Link/Link'
 import Text from 'atoms/Text/Text'
 import { pathsConstant } from 'constant'
@@ -136,6 +136,10 @@ const FooterInfoContent = styled.div`
     cursor: pointer;
   }
 `
+const LogoImgStyled = styled.img`
+  max-width: 256px;
+  max-height: 96px;
+`
 
 const FooterInfo = ({ title, list }) => (
   <InfoStyled>
@@ -165,9 +169,9 @@ const Footer = () => {
       title: 'Start',
       list: [
         { text: 'Start mining', href: '/start-mining' },
-        { text: 'EU pool', href: '/start-mining#pool-europe' },
-        { text: 'AS pool', href: '/start-mining#pool-asia' },
-        { text: 'US pool', href: '/start-mining#pool-usa' },
+        { text: 'EU pool', href: '/start-mining#eu' },
+        { text: 'AS pool', href: '/start-mining#as' },
+        { text: 'US pool', href: '/start-mining#us' },
       ],
     },
     {
@@ -200,10 +204,7 @@ const Footer = () => {
       </HeaderSection>
       <MainSection>
         <LogoStyled>
-          { official()
-            ? <LogoIcon />
-            : <LogoCommunityIcon />
-          }
+          <LogoImgStyled src={poolConfig.POOL_OPTIONS.images.logo} alt={poolConfig.POOL_OPTIONS.name} />
           <LogoTextStyle>
             <Text size={fontSize}>{poolConfig.POOL_OPTIONS.slogan.primary}</Text>
           </LogoTextStyle>

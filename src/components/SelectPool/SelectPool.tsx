@@ -1,5 +1,6 @@
 import { EPool } from 'enums'
 import { minWidth } from 'helpers/responsive'
+import applyTransparence from 'helpers/transparentize'
 import { useState } from 'react'
 import { poolSelector, setPoolSelector, usePoolStore } from 'store/pool.store'
 import styled, { css } from 'styled-components'
@@ -30,7 +31,7 @@ const PoolSelect = styled.select`
   appearance: none;
   margin: 0;
   background: transparent;
-  width: 100%;
+  min-width: 120%;
   height: 100%;
   cursor: pointer;
   font-family: ${fonts.primary};
@@ -40,15 +41,21 @@ const PoolSelect = styled.select`
   font-size: 18px;
   text-align: center;
   display: inline-block;
-  border: 1px solid ${({ theme }) => theme.colors.spindle};
+  border: 1px solid ${applyTransparence(0.5, colorVariables.gunPowder)};
   border-radius: 10px;
-  padding: 15px;
+  padding: 17px;
   position: relative;
   z-index: 1;
+  left: -10%;
 
   &:hover,
   &:focus {
     outline: none;
+  }
+  & + span.dicon {
+    position: relative;
+    right: 46px;
+    pointer-events: none;
   }
 `
 const PoolOption = styled.option`
@@ -194,29 +201,7 @@ const SelectPool = () => {
             Backup US Pool
           </CustomPoolOption>
         </PoolSelect>
-
-        {/* <CustomSelectArrow data-open={ optionsVisibility }>&rsaquo;</CustomSelectArrow>
-
-        <CustomPoolOptions data-visible={ optionsVisibility }>
-          <CustomPoolOption data-pool={ EPool.EU_PRIMARY } data-active={ EPool.EU_PRIMARY === pool } onClick={ handleOnSelectPool }>
-            Primary European Pool
-          </CustomPoolOption>
-
-          <CustomPoolOption data-pool={ EPool.EU_BACKUP } data-active={ EPool.EU_BACKUP === pool } onClick={ handleOnSelectPool }>
-            Backup European Pool
-          </CustomPoolOption>
-
-          <CustomPoolOption data-pool={ EPool.AS_PRIMARY } data-active={ EPool.AS_PRIMARY === pool } onClick={ handleOnSelectPool }>
-            Primary Asian Pool
-          </CustomPoolOption>
-
-          <CustomPoolOption data-pool={ EPool.AS_BACKUP } data-active={ EPool.AS_BACKUP === pool } onClick={ handleOnSelectPool }>
-            Backup Asian Pool
-          </CustomPoolOption>
-
-        </CustomPoolOptions>
-
-        <CustomSelectBackdrop data-visible={ optionsVisibility } onClick={ () => setOptionsVisibility(false) } /> */}
+        <span className="dicon">▼</span>
       </PoolSelectionWrapper>
     </PoolSelectionContainer>
   )

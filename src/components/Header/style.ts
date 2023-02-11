@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import { LogoIcon, LogoCommunityIcon } from 'atoms/icons'
 import HamburgerButton from 'atoms/HamburgerButton/HamburgerButton'
 import { colorVariables } from 'styles/variables'
 import { minWidth } from 'helpers/responsive'
@@ -84,6 +83,7 @@ const NavHeaderStyled = styled.div`
   }
   & > a:hover {
     text-decoration: none;
+    border-bottom: none;
   }
   ${minWidth(
     'laptopL',
@@ -99,21 +99,11 @@ const NavHeaderStyled = styled.div`
   )}
 `
 
-const LogoStyled = styled(LogoIcon)`
-  width: 120px;
-  height: auto;
-  transform: scale(0.8);
-  ${minWidth(
-    'laptopL',
-    css`
-      transform: scale(1);
-    `,
-  )}
-`
-
-const LogoCommunityStyled = styled(LogoCommunityIcon)`
-  width: 120px;
-  height: auto;
+const LogoStyled = styled.img`
+  width: auto;
+  min-width: 120px;
+  max-width: 140px;
+  max-height: 100px;
   transform: scale(0.8);
   ${minWidth(
     'laptopL',
@@ -171,7 +161,6 @@ export {
   HeaderStyled,
   HeaderBodyStyled,
   NavHeaderStyled,
-  LogoCommunityStyled,
   LogoStyled,
   NavBarStyled,
   HamburgerButtonStyled,
