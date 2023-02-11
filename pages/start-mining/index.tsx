@@ -42,7 +42,9 @@ const MinerCardsWrapperStyled = styled.div`
 
 const LinksWrapperStyled = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin: 70px 0 100px;
+  gap: 20px 30px;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
@@ -408,7 +410,7 @@ const StartMiningPage: NextPage<
             </TextGuide3Styled>
             <LinksWrapperStyled>
               {Object.keys(poolConfig.POOL_OPTIONS.pools).map((keyname,i) =>
-                <ButtonStyled href={'#' + keyname} key={keyname}  onClick={onClickHandler}>{poolConfig.POOL_OPTIONS.pools[keyname].name}</ButtonStyled>
+                <ButtonStyled href={'#' + keyname} key={keyname} onClick={onClickHandler}>{poolConfig.POOL_OPTIONS.pools[keyname].name}</ButtonStyled>
               )}
             </LinksWrapperStyled>
             <TextGuideStyled>

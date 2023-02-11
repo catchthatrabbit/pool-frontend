@@ -321,7 +321,7 @@ const InfoTextContent = styled.div`
 `
 const ImageStyled = styled.img`
   height: 100%;
-  width: ${poolConfig.POOL_OPTIONS.effects.scaleHero};
+  width: ${poolConfig.POOL_OPTIONS.effects.scaleHero ? '100%' : 'auto'};
 `
 
 const LegalWrapper = styled.div`

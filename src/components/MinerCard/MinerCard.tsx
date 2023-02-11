@@ -109,7 +109,7 @@ const MinerCard = ({ data }: IMinerCardProps) => {
         ))}
         <br /><br />
         <DescriptionStyled>Command to configure the software:</DescriptionStyled>
-        <InputStyled type="text" value={command} onFocus={e => e.target.select()} readonly />
+        <InputStyled type="text" value={command} onFocus={e => e.target.select()} readOnly />
       </InfoContentStyled>
       <ButtonContentStyled>
         <ButtonStyled href={minerLink}>Download Release</ButtonStyled>
